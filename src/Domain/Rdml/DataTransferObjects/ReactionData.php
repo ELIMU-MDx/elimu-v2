@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Rdml\DataTransferObjects;
 
+use Domain\Rdml\Collections\AmplificationDataCollection;
+use Domain\Rdml\Collections\MeltingCurveDataCollection;
 use Spatie\DataTransferObject\DataTransferObject;
 
 final class ReactionData extends DataTransferObject
@@ -14,9 +16,7 @@ final class ReactionData extends DataTransferObject
 
     public ?float $cq;
 
-    /** @var \Domain\Rdml\DataTransferObjects\AmplificationDataPoint[] */
-    public array $amplificationDataPoints;
+    public AmplificationDataCollection $amplificationDataPoints;
 
-    /** @var \Domain\Rdml\DataTransferObjects\MeltingCurveDataPoint[] */
-    public array $meltingDataPoints;
+    public MeltingCurveDataCollection $meltingDataPoints;
 }

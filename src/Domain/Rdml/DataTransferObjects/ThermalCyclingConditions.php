@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Rdml\DataTransferObjects;
 
+use Domain\Rdml\Collections\StepCollection;
 use Spatie\DataTransferObject\DataTransferObject;
 
 final class ThermalCyclingConditions extends DataTransferObject
@@ -14,6 +15,5 @@ final class ThermalCyclingConditions extends DataTransferObject
 
     public ?float $lidTemperature;
 
-    /** @var \Domain\Rdml\DataTransferObjects\Step[] */
-    public array $steps;
+    public StepCollection $steps;
 }

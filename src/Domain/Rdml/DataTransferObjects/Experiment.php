@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Rdml\DataTransferObjects;
 
+use Domain\Rdml\Collections\RunCollection;
 use Spatie\DataTransferObject\DataTransferObject;
 
 final class Experiment extends DataTransferObject
@@ -12,5 +13,5 @@ final class Experiment extends DataTransferObject
 
     public ?string $description;
 
-    public array $runs;
+    public RunCollection $runs;
 }

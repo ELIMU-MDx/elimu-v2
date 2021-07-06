@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Rdml\DataTransferObjects;
 
+use Domain\Rdml\Collections\ReactionCollection;
 use Spatie\DataTransferObject\DataTransferObject;
 
 final class Run extends DataTransferObject
@@ -12,7 +13,7 @@ final class Run extends DataTransferObject
 
     public ?string $description;
 
-    public ?string $experimenterId;
+    public ?Experimenter $experimenter;
 
     public ?string $instrument;
 
@@ -20,5 +21,5 @@ final class Run extends DataTransferObject
 
     public ?PCRFormat $pcrFormat;
 
-    public array $reactions;
+    public ReactionCollection $reactions;
 }

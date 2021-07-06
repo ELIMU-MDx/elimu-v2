@@ -8,7 +8,7 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 final class AmplificationDataPoint extends DataTransferObject
 {
-    public float $cylce;
+    public float $cycle;
 
     public ?float $temperature;
 

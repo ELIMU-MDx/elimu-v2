@@ -5,6 +5,12 @@ declare(strict_types=1);
 namespace Domain\Rdml\DataTransferObjects;
 
 use Carbon\CarbonImmutable;
+use Domain\Rdml\Collections\DyeCollection;
+use Domain\Rdml\Collections\ExperimentCollection;
+use Domain\Rdml\Collections\ExperimenterCollection;
+use Domain\Rdml\Collections\SampleCollection;
+use Domain\Rdml\Collections\TargetCollection;
+use Domain\Rdml\Collections\ThermalCyclingConditionsCollection;
 use Spatie\DataTransferObject\DataTransferObject;
 
 final class Rdml extends DataTransferObject
@@ -15,21 +21,15 @@ final class Rdml extends DataTransferObject
 
     public ?CarbonImmutable $updatedAt;
 
-    /** @var \Domain\Rdml\DataTransferObjects\Experimenter[] */
-    public array $experimenter;
+    public ExperimenterCollection $experimenter;
 
-    /** @var \Domain\Rdml\DataTransferObjects\Dye[] */
-    public array $dyes;
+    public DyeCollection $dyes;
 
-    /** @var \Domain\Rdml\DataTransferObjects\Sample[] */
-    public array $samples;
+    public SampleCollection $samples;
 
-    /** @var \Domain\Rdml\DataTransferObjects\Target[] */
-    public array $targets;
+    public TargetCollection $targets;
 
-    /** @var \Domain\Rdml\DataTransferObjects\ThermalCyclingConditions[] */
-    public array $thermalCyclingConditions;
+    public ThermalCyclingConditionsCollection $thermalCyclingConditions;
 
-    /** @var \Domain\Rdml\DataTransferObjects\Experiment[] */
-    public array $experiments;
+    public ExperimentCollection $experiments;
 }

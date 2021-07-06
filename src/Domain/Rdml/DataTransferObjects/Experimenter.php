@@ -10,9 +10,9 @@ final class Experimenter extends DataTransferObject
 {
     public string $id;
 
-    public string $firstName;
+    public ?string $firstName;
 
-    public string $lastName;
+    public ?string $lastName;
 
     public ?string $email;
 

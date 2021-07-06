@@ -13,29 +13,9 @@
     </x-primary-button>
 
     @foreach($targets as $key => $target)
-        <div class="space-y-6">
+        <div class="space-y-6" x-data="{quantify: @entangle('targets.'.$key.'.quantify').defer}">
             <h3 class="font-bold text-2xl bg-gray-50 p-4 -mx-4 rounded">{{$target['target']}}
                 | {{$target['fluor']}}</h3>
-            <div class="grid md:grid-cols-4 md:items-center">
-                <div class="col-span-2">
-                    <x-label for="pathogen-{{$key}}">Pathogen</x-label>
-                </div>
-                <div class="col-span-2">
-                    <x-input name="pathogen-{{$key}}" wire:model.defer="pathogen"/>
-                </div>
-            </div>
-            <div class="grid md:grid-cols-4 md:items-center">
-                <div class="col-span-2">
-                    <x-label for="quantify-{{$key}}">Quantify</x-label>
-                </div>
-                <div class="col-span-2">
-                    <label class="flex items-center">
-                        <x-checkbox name="quantify-{{$key}}" value="1"/>
-                        <span class="ml-4">Yes</span>
-                    </label>
-                </div>
-            </div>
-
             <div class="grid md:grid-cols-4 md:items-center">
                 <div class="col-span-2">
                     <x-label for="threshold-{{$key}}">Threshold</x-label>
@@ -64,6 +44,18 @@
 
             <div class="grid md:grid-cols-4 md:items-center">
                 <div class="col-span-2">
+                    <x-label for="quantify-{{$key}}">Quantify</x-label>
+                </div>
+                <div class="col-span-2">
+                    <label class="flex items-center">
+                        <x-checkbox name="quantify-{{$key}}" value="1" x-model="quantify"/>
+                        <span class="ml-4">Yes</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-4 md:items-center" x-show="quantify">
+                <div class="col-span-2">
                     <x-label for="slope-{{$key}}">Slope</x-label>
                 </div>
                 <div class="col-span-2">
@@ -71,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-4 md:items-center">
+            <div class="grid md:grid-cols-4 md:items-center" x-show="quantify">
                 <div class="col-span-2">
                     <x-label for="intercep-{{$key}}">Intercept</x-label>
                 </div>

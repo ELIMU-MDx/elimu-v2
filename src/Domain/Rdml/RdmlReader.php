@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Rdml;
 
-use Illuminate\Http\File;
+use Symfony\Component\HttpFoundation\File\File;
 use InvalidArgumentException;
 use ZipArchive;
 
@@ -36,7 +36,7 @@ final class RdmlReader
 
         if ($this->zipArchive->numFiles > 1) {
             $this->zipArchive->close();
-            throw new InvalidArgumentException("An rdml file can only contain 1 file. {$archive->numFiles} found");
+            throw new InvalidArgumentException("An rdml file can only contain 1 file. {$this->zipArchive->numFiles} found");
         }
 
         $xmlContent = $this->zipArchive->getFromIndex(0);

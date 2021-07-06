@@ -58,9 +58,6 @@
 
                             <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Features</a>
 
-                            <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Marketplace</a>
-
-                            <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Company</a>
                         </div>
                         <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                             <span class="inline-flex rounded-md shadow">
@@ -138,105 +135,7 @@
             </div>
             <div class="max-w-lg mx-auto mt-16">
                 <div class="bg-white p-8 shadow-md rounded-lg">
-                    <x-form action="http://example.com" class="space-y-6">
-                        <x-secondary-button as="label">
-                            <input type="file" class="hidden">
-                            Choose .rdml File
-                        </x-secondary-button>
-
-                        <div class="grid md:grid-cols-3 md:items-center">
-                            <div class="col-span-1">
-                                <x-label for="target">Target</x-label>
-                            </div>
-                            <div class="col-span-2">
-                                <x-input name="target"/>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-3 md:items-center">
-                            <div class="col-span-1">
-                                <x-label for="fluor">Fluor</x-label>
-                            </div>
-                            <div class="col-span-2">
-                                <x-input name="fluor"/>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-3 md:items-center">
-                            <div class="col-span-1">
-                                <x-label for="pathogen">Pathogen</x-label>
-                            </div>
-                            <div class="col-span-2">
-                                <x-input name="pathogen"/>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-3 md:items-center">
-                            <div class="col-span-1">
-                                <x-label for="quantify">Quantify</x-label>
-                            </div>
-                            <div class="col-span-2">
-                                <label class="flex items-center">
-                                    <x-checkbox name="quantify" value="1"/>
-                                    <span class="ml-4">Yes</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="grid md:grid-cols-3 md:items-center">
-                            <div class="col-span-1">
-                                <x-label for="threshold">Threshold</x-label>
-                            </div>
-                            <div class="col-span-2">
-                                <x-input name="threshold"/>
-                            </div>
-                        </div>
-
-                        <div class="grid md:grid-cols-3 md:items-center">
-                            <div class="col-span-1">
-                                <x-label for="cutoff">Cutoff</x-label>
-                            </div>
-                            <div class="col-span-2">
-                                <x-input name="cutoff"/>
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-3 md:items-center">
-                            <div class="col-span-1">
-                                <x-label for="cutoff_stddev">Cutoff Stddev</x-label>
-                            </div>
-                            <div class="col-span-2">
-                                <x-input name="cutoff_stddev"/>
-                            </div>
-                        </div>
-
-                        <div class="grid md:grid-cols-3 md:items-center">
-                            <div class="col-span-1">
-                                <x-label for="slope">Slope</x-label>
-                            </div>
-                            <div class="col-span-2">
-                                <x-input name="slope"/>
-                            </div>
-                        </div>
-
-                        <div class="grid md:grid-cols-3 md:items-center">
-                            <div class="col-span-1">
-                                <x-label for="intercept">Intercept</x-label>
-                            </div>
-                            <div class="col-span-2">
-                                <x-input name="intercept"/>
-                            </div>
-                        </div>
-
-                        <div class="grid md:grid-cols-3 md:items-center">
-                            <div class="col-span-1">
-                                <x-label for="repetitions">Required repetitions</x-label>
-                            </div>
-                            <div class="col-span-2">
-                                <x-input name="repetitions" type="number" min="1" value="1"/>
-                            </div>
-                        </div>
-
-                        <x-primary-button type="submit">
-                            Analyze
-                        </x-primary-button>
-                    </x-form>
+                    <livewire:demo-form/>
                 </div>
             </div>
         </div>

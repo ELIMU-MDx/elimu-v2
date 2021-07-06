@@ -33,10 +33,8 @@
                          aria-label="Global">
                         <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                             <div class="flex items-center justify-between w-full md:w-auto">
-                                <a href="#">
-                                    <span class="sr-only">Workflow</span>
-                                    <img class="h-8 w-auto sm:h-10"
-                                         src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="">
+                                <a href="#" class="font-bold text-2xl text-indigo-600">
+                                    Elimu
                                 </a>
                                 <div class="-mr-2 flex items-center md:hidden">
                                     <button type="button"

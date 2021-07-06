@@ -16,16 +16,16 @@
         <div class="space-y-6">
             <h3 class="font-bold text-2xl bg-gray-50 p-4 -mx-4 rounded">{{$target['target']}}
                 | {{$target['fluor']}}</h3>
-            <div class="grid md:grid-cols-3 md:items-center">
-                <div class="col-span-1">
+            <div class="grid md:grid-cols-4 md:items-center">
+                <div class="col-span-2">
                     <x-label for="pathogen-{{$key}}">Pathogen</x-label>
                 </div>
                 <div class="col-span-2">
                     <x-input name="pathogen-{{$key}}" wire:model.defer="pathogen"/>
                 </div>
             </div>
-            <div class="grid md:grid-cols-3 md:items-center">
-                <div class="col-span-1">
+            <div class="grid md:grid-cols-4 md:items-center">
+                <div class="col-span-2">
                     <x-label for="quantify-{{$key}}">Quantify</x-label>
                 </div>
                 <div class="col-span-2">
@@ -36,8 +36,8 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-3 md:items-center">
-                <div class="col-span-1">
+            <div class="grid md:grid-cols-4 md:items-center">
+                <div class="col-span-2">
                     <x-label for="threshold-{{$key}}">Threshold</x-label>
                 </div>
                 <div class="col-span-2">
@@ -45,16 +45,16 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-3 md:items-center">
-                <div class="col-span-1">
+            <div class="grid md:grid-cols-4 md:items-center">
+                <div class="col-span-2">
                     <x-label for="cutoff-{{$key}}">Cutoff</x-label>
                 </div>
                 <div class="col-span-2">
                     <x-input name="cutoff-{{$key}}"/>
                 </div>
             </div>
-            <div class="grid md:grid-cols-3 md:items-center">
-                <div class="col-span-1">
+            <div class="grid md:grid-cols-4 md:items-center">
+                <div class="col-span-2">
                     <x-label for="cutoff_stddev-{{$key}}">Cutoff Stddev</x-label>
                 </div>
                 <div class="col-span-2">
@@ -62,8 +62,8 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-3 md:items-center">
-                <div class="col-span-1">
+            <div class="grid md:grid-cols-4 md:items-center">
+                <div class="col-span-2">
                     <x-label for="slope-{{$key}}">Slope</x-label>
                 </div>
                 <div class="col-span-2">
@@ -71,8 +71,8 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-3 md:items-center">
-                <div class="col-span-1">
+            <div class="grid md:grid-cols-4 md:items-center">
+                <div class="col-span-2">
                     <x-label for="intercep-{{$key}}">Intercept</x-label>
                 </div>
                 <div class="col-span-2">
@@ -80,8 +80,8 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-3 md:items-center">
-                <div class="col-span-1">
+            <div class="grid md:grid-cols-4 md:items-center">
+                <div class="col-span-2">
                     <x-label for="repetitions-{{$key}}">Required repetitions</x-label>
                 </div>
                 <div class="col-span-2">

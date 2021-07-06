@@ -1,3 +1,3 @@
-<label for="{{ $for }}" {{ $attributes }}>
+<label for="{{ $for }}" {{ $attributes->merge(['class' => 'font-semibold']) }}>
     {{ $slot ?? $fallback }}
 </label>

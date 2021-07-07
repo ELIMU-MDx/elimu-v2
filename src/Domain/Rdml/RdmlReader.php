@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Rdml;
 
-use Symfony\Component\HttpFoundation\File\File;
 use InvalidArgumentException;
+use Symfony\Component\HttpFoundation\File\File;
 use ZipArchive;
 
 final class RdmlReader
@@ -30,7 +30,7 @@ final class RdmlReader
     {
         $result = $this->zipArchive->open($file->getRealPath(), ZipArchive::RDONLY);
 
-        if($result !== true) {
+        if ($result !== true) {
             throw new InvalidArgumentException("Archive could not be opened '{$this->errorCodes[$result]}'");
         }
 

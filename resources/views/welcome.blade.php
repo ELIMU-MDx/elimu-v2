@@ -78,7 +78,7 @@
                     From: "opacity-100 scale-100"
                     To: "opacity-0 scale-95"
                 -->
-                <div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+                <div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right hidden">
                     <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                         <div class="px-5 pt-4 flex items-center justify-between">
                             <div>
@@ -131,7 +131,7 @@
                     </p>
                 </div>
             </div>
-            <div class="max-w-lg mx-auto mt-16">
+            <div class="max-w-4xl mx-auto mt-16">
                 <div class="bg-white p-8 shadow-md rounded-lg">
                     <livewire:demo-form/>
                 </div>

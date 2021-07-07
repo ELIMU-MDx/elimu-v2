@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Domain\Rdml\DataTransferObjects;
 
 use Domain\Rdml\Collections\ReactionCollection;
+use Illuminate\Contracts\Support\Arrayable;
 use Spatie\DataTransferObject\DataTransferObject;
 
-final class Run extends DataTransferObject
+final class Run extends DataTransferObject implements Arrayable
 {
     public string $id;
 

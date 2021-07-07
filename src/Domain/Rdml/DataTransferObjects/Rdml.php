@@ -11,9 +11,10 @@ use Domain\Rdml\Collections\ExperimenterCollection;
 use Domain\Rdml\Collections\SampleCollection;
 use Domain\Rdml\Collections\TargetCollection;
 use Domain\Rdml\Collections\ThermalCyclingConditionsCollection;
+use Illuminate\Contracts\Support\Arrayable;
 use Spatie\DataTransferObject\DataTransferObject;
 
-final class Rdml extends DataTransferObject
+final class Rdml extends DataTransferObject implements Arrayable
 {
     public string $version;
 

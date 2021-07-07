@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Support;
 
 use Carbon\CarbonImmutable;
-use Exception;
 use Illuminate\Support\Arr;
 use OutOfBoundsException;
 
@@ -18,6 +17,11 @@ final class ArrayReader
     public function getBoolean(string $key): bool
     {
         return (bool) $this->find($key);
+    }
+
+    public function find(string $key, mixed $default = null): mixed
+    {
+        return Arr::get($this->data, $key, $default);
     }
 
     public function getString(string $key, ?string $default = null): string
@@ -121,11 +125,6 @@ final class ArrayReader
         }
 
         return $value;
-    }
-
-    public function find(string $key, mixed $default = null): mixed
-    {
-        return Arr::get($this->data, $key, $default);
     }
 
     public function toArray(): array

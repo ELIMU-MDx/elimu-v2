@@ -6,10 +6,14 @@ namespace Domain\Rdml\Collections;
 
 use BadMethodCallException;
 use Domain\Rdml\DataTransferObjects\Dye;
-use Exception;
 use Illuminate\Support\Collection;
-use OutOfBoundsException;
 
+/**
+ * @method Dye offsetGet($key)
+ * @method Dye first(callable $callback = null, ?Dye $default = null)
+ * @method Dye last(callable $callback = null, ?Dye $default = null)
+ * @method Dye firstWhere($key, $operator = null, $value = null)
+ */
 final class DyeCollection extends Collection
 {
     public function getById(string $id): Dye

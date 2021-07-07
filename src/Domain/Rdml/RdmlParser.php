@@ -63,26 +63,6 @@ final class RdmlParser
         );
     }
 
-    /**
-     * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
-     */
-    private function experimenters(ArrayReader $arrayReader): ExperimenterCollection
-    {
-        return ExperimenterCollection::make($arrayReader->findList('experimenter'))
-            ->map(function (array $experimenter) {
-                $reader = new ArrayReader($experimenter);
-
-                return new Experimenter(
-                    id: $reader->getString('@attributes.id'),
-                    firstName: $reader->findString('firstName'),
-                    lastName: $reader->findString('lastName'),
-                    email: $reader->findString('email'),
-                    labName: $reader->findString('labName'),
-                    labAddress: $reader->findString('labAddress'),
-                );
-            });
-    }
-
     private function xmlToArray(string $xml): ArrayReader
     {
         $data = json_decode(json_encode(
@@ -130,6 +110,26 @@ final class RdmlParser
                     id: $reader->getString('@attributes.id'),
                     type: $reader->getString('type'),
                     dye: $dyeCollection->getById($reader->getString('dyeId.@attributes.id')),
+                );
+            });
+    }
+
+    /**
+     * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
+     */
+    private function experimenters(ArrayReader $arrayReader): ExperimenterCollection
+    {
+        return ExperimenterCollection::make($arrayReader->findList('experimenter'))
+            ->map(function (array $experimenter) {
+                $reader = new ArrayReader($experimenter);
+
+                return new Experimenter(
+                    id: $reader->getString('@attributes.id'),
+                    firstName: $reader->findString('firstName'),
+                    lastName: $reader->findString('lastName'),
+                    email: $reader->findString('email'),
+                    labName: $reader->findString('labName'),
+                    labAddress: $reader->findString('labAddress'),
                 );
             });
     }

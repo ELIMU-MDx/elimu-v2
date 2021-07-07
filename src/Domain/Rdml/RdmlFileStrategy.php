@@ -13,19 +13,19 @@ final class RdmlFileStrategy extends AbstractFileStrategy
     /**
      * {@inheritdoc}
      */
-    protected function getServiceNames(): array
+    public function getFileExtension()
     {
-        return [
-            ZipAdapter::class,
-            ZipExtensionAdapter::class
-        ];
+        return 'rdml';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getFileExtension()
+    protected function getServiceNames(): array
     {
-        return 'rdml';
+        return [
+            ZipAdapter::class,
+            ZipExtensionAdapter::class,
+        ];
     }
 }

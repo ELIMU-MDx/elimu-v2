@@ -166,7 +166,7 @@ class DemoForm extends Component
                                 (float) $this->targets[$target]['intercept'])
                             : null,
                         'qualification' => $targetData->dataPoints->qualify($this->targets[$target]['cutoff']),
-                        'standardDeviation' => $targetData->dataPoints->standardDeviationCq(),
+                        'standardDeviation' => $targetData->dataPoints->count() > 1 ? $targetData->dataPoints->standardDeviationCq() : null,
                         'replications' => $targetData->dataPoints->count(),
                         'errors' => $targetData->errors,
                     ];

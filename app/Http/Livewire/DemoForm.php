@@ -116,11 +116,11 @@ class DemoForm extends Component
     public function analyze(): void
     {
         $this->validate([
-            'targets.*.cutoff' => 'required|float',
-            'targets.*.cutoff_stddev' => 'required|float',
+            'targets.*.cutoff' => 'required|numeric',
+            'targets.*.cutoff_stddev' => 'required|numeric',
             'targets.*.quantify' => 'required|boolean',
-            'targets.*.slope' => 'required_with:quantify|float',
-            'targets.*.intercept' => 'required_with:quantify|float',
+            'targets.*.slope' => 'required_with:quantify|numeric',
+            'targets.*.intercept' => 'required_with:quantify|numeric',
             'targets.*.repetitions' => 'required|integer|min:1',
         ], attributes: [
             'targets.*.cutoff' => 'cutoff',

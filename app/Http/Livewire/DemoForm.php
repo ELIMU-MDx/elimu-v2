@@ -56,7 +56,7 @@ class DemoForm extends Component
             'cutoff_stddev' => '',
             'slope' => '',
             'intercept' => '',
-            'repetitions' => '',
+            'repetitions' => '1',
         ];
     }
 
@@ -94,7 +94,7 @@ class DemoForm extends Component
                 $this->targets[$target]['quantify'] = false;
                 $this->targets[$target]['slope'] = '';
                 $this->targets[$target]['intercept'] = '';
-                $this->targets[$target]['repetitions'] = '';
+                $this->targets[$target]['repetitions'] = '1';
             }
 
             return;
@@ -115,6 +115,22 @@ class DemoForm extends Component
 
     public function analyze(): void
     {
+        $this->validate([
+            'targets.*.cutoff' => 'required|float',
+            'targets.*.cutoff_stddev' => 'required|float',
+            'targets.*.quantify' => 'required|boolean',
+            'targets.*.slope' => 'required_with:quantify|float',
+            'targets.*.intercept' => 'required_with:quantify|float',
+            'targets.*.repetitions' => 'required|integer|min:1',
+        ], attributes: [
+            'targets.*.cutoff' => 'cutoff',
+            'targets.*.cutoff_stddev' => 'cutoff standard deviation',
+            'targets.*.quantify' => 'quantify',
+            'targets.*.slope' => 'slope',
+            'targets.*.intercept' => 'intercept',
+            'targets.*.repetitions' => 'repetitions',
+        ]);
+
         $rdml = $this->getRdml($this->rdml);
 
         $data = (new RdmlConverter($rdml))->toSampleData();

@@ -37,13 +37,19 @@
                         <div class="col-span-2">
                             <x-input name="cutoff-{{$key}}" wire:model.defer="targets.{{$key}}.cutoff"/>
                         </div>
+                        <div class="col-start-3 col-span-2">
+                            <x-error field="targets.{{$key}}.cutoff" />
+                        </div>
                     </div>
                     <div class="grid md:grid-cols-4 md:items-center">
                         <div class="col-span-2">
                             <x-label for="cutoff_stddev-{{$key}}">Cutoff Stddev</x-label>
                         </div>
                         <div class="col-span-2">
-                            <x-input name="cutoff_stddev-{{$key}}" wire:model.defer="targets.{{$key}}.cutoff"/>
+                            <x-input name="cutoff_stddev-{{$key}}" wire:model.defer="targets.{{$key}}.cutoff_stddev"/>
+                        </div>
+                        <div class="col-start-3 col-span-2">
+                            <x-error field="targets.{{$key}}.cutoff_stddev" />
                         </div>
                     </div>
 
@@ -66,6 +72,9 @@
                         <div class="col-span-2">
                             <x-input name="slope-{{$key}}" wire:model.defer="targets.{{$key}}.slope"/>
                         </div>
+                        <div class="col-start-3 col-span-2">
+                            <x-error field="targets.{{$key}}.slope" />
+                        </div>
                     </div>
 
                     <div class="grid md:grid-cols-4 md:items-center" x-show="quantify">
@@ -74,6 +83,10 @@
                         </div>
                         <div class="col-span-2">
                             <x-input name="intercept-{{$key}}" wire:model.defer="targets.{{$key}}.intercept"/>
+                            <x-error field="targets.{{$key}}.intercept" />
+                        </div>
+                        <div class="col-start-3 col-span-2">
+                            <x-error field="targets.{{$key}}.intercept" />
                         </div>
                     </div>
 
@@ -84,6 +97,9 @@
                         <div class="col-span-2">
                             <x-input name="repetitions-{{$key}}" type="number" min="1" value="1"
                                      wire:model.defer="targets.{{$key}}.repetitions"/>
+                        </div>
+                        <div class="col-start-3 col-span-2">
+                            <x-error field="targets.{{$key}}.repetitions" />
                         </div>
                     </div>
                 </div>

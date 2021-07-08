@@ -10,4 +10,6 @@ use Spatie\DataTransferObject\DataTransferObject;
 final class DataPoint extends DataTransferObject implements Arrayable
 {
     public ?float $cq;
+
+    public bool $excluded = false;
 }

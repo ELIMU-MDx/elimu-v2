@@ -15,12 +15,17 @@ final class RoundedNumber
         return $this->number;
     }
 
-    public function __toString(): string
+    public function toString(): string
     {
         if ($this->number === null) {
             return '';
         }
 
         return number_format(round($this->number, $this->precision), $this->precision);
+    }
+
+    public function __toString(): string
+    {
+        return $this->toString();
     }
 }

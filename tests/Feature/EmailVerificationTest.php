@@ -2,14 +2,13 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Domain\Users\Models\User;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\URL;
 use Laravel\Fortify\Features;
-use Laravel\Jetstream\Features as JetstreamFeatures;
 use Tests\TestCase;
 
 class EmailVerificationTest extends TestCase

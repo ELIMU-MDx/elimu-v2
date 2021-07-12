@@ -1,5 +1,5 @@
 <{{$as}} {{$attributes->merge([
-    'class' => 'w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 cursor-pointer hover:bg-indigo-700 md:py-4 md:text-lg md:px-10',
+    'class' => 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500',
     'tabindex' => '0'
     ])}}>
 {{$slot}}

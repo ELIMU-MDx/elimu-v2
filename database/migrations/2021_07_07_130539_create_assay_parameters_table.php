@@ -6,12 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('assay_parameters', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('assay_id')->constrained();
+            $table->foreignId('assay_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('target');
             $table->integer('required_repetitions');
             $table->float('cutoff');

@@ -15,7 +15,7 @@
 
         @if($assays && $rdml)
             <div>
-                <x-label for="assay">Choose an assay or use a custom one</x-label>
+                <x-jet-label for="assay">Choose an assay or use a custom one</x-jet-label>
                 <select class="w-full rounded" name="assay" id="assay" wire:model="selectedAssay">
                     <option>Choose an assay</option>
                     <option value="new">Custom</option>

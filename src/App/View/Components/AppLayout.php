@@ -2,12 +2,16 @@
 
 namespace App\View\Components;
 
+use Illuminate\Http\Request;
 use Illuminate\View\Component;
 
 class AppLayout extends Component
 {
-    public function __construct(public array $links = [])
+    public bool $navigation;
+
+    public function __construct(Request $request, bool $navigation = true)
     {
+        $this->navigation = $request->user()->study_id && $navigation;
     }
 
     /**

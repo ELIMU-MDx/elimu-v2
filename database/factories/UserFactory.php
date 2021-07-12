@@ -5,9 +5,13 @@ namespace Database\Factories;
 use Domain\Users\Models\Team;
 use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
 
+/**
+ * @method User|User[] create($attributes = [], ?Model $parent = null)
+ */
 class UserFactory extends Factory
 {
     /**

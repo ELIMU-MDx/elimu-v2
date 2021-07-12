@@ -1,6 +1,6 @@
 @unless($result)
     <form class="space-y-6" wire:submit.prevent="analyze">
-        <x-primary-button as="label" wire:loading.class="!bg-indigo-400" wire:target="rdml">
+        <x-hero-button as="label" wire:loading.class="!bg-indigo-400" wire:target="rdml">
             <input type="file" class="hidden" wire:model="rdml">
             <span wire:loading wire:target="rdml">Uploading...</span>
             <span wire:loading.remove wire:target="rdml">
@@ -10,7 +10,8 @@
                     Choose .rdml File
                 @endif
             </span>
-        </x-primary-button>
+        </x-hero-button>
+
 
         @if($assays && $rdml)
             <div>
@@ -28,85 +29,72 @@
         @if($selectedAssay)
             @foreach($targets as $key => $target)
                 <div class="space-y-6" x-data="{quantify: @entangle('targets.'.$key.'.quantify').defer}">
-                    <h3 class="font-bold text-2xl bg-gray-50 p-4 -mx-4 rounded">{{$target['target']}}
-                        | {{$target['fluor']}}</h3>
-                    <div class="grid md:grid-cols-4 md:items-center">
-                        <div class="col-span-2">
-                            <x-label for="cutoff-{{$key}}">Cutoff</x-label>
-                        </div>
-                        <div class="col-span-2">
-                            <x-input name="cutoff-{{$key}}" wire:model.defer="targets.{{$key}}.cutoff"/>
-                        </div>
-                        <div class="col-start-3 col-span-2">
-                            <x-error field="targets.{{$key}}.cutoff" />
-                        </div>
-                    </div>
-                    <div class="grid md:grid-cols-4 md:items-center">
-                        <div class="col-span-2">
-                            <x-label for="cutoff_stddev-{{$key}}">Cutoff Stddev</x-label>
-                        </div>
-                        <div class="col-span-2">
-                            <x-input name="cutoff_stddev-{{$key}}" wire:model.defer="targets.{{$key}}.cutoff_stddev"/>
-                        </div>
-                        <div class="col-start-3 col-span-2">
-                            <x-error field="targets.{{$key}}.cutoff_stddev" />
+                    <div class="md:grid md:grid-cols-3 md:gap-6">
+                        <x-jet-section-title>
+                            <x-slot name="title">
+                                {{$target['target']}} | {{$target['fluor']}}
+                            </x-slot>
+
+                            <x-slot name="description">
+                                Define parameters for the target {{$target['target']}}
+                            </x-slot>
+                        </x-jet-section-title>
+
+                        <div class="mt-5 md:mt-0 md:col-span-2">
+                            <div class="space-y-6">
+                                <div class="col-span-6 sm:col-span-4">
+                                    <x-jet-label for="cutoff-{{$key}}" value="{{ __('Cutoff') }}"/>
+                                    <x-input name="cutoff-{{$key}}" class="mt-1 block w-full"
+                                             wire:model.defer="targets.{{$key}}.cutoff"/>
+                                    <x-jet-input-error for="targets.{{$key}}.cutoff" class="mt-2"/>
+                                </div>
+                                <div class="col-span-6 sm:col-span-4">
+                                    <x-jet-label for="cutoff_stddev-{{$key}}"
+                                                 value="{{ __('Cutoff standard deviation') }}"/>
+                                    <x-input name="cutoff_stddev-{{$key}}" class="mt-1 block w-full"
+                                             wire:model.defer="targets.{{$key}}.cutoff_stddev"/>
+                                    <x-jet-input-error for="targets.{{$key}}.cutoff_stddev" class="mt-2"/>
+                                </div>
+                                <div class="col-span-6 sm:col-span-4">
+                                    <x-jet-label for="quantify-{{$key}}" value="{{ __('Quantify') }}"/>
+                                    <label class="flex items-center mt-1">
+                                        <x-checkbox name="quantify-{{$key}}" value="1" x-model="quantify"/>
+                                        <span class="ml-4">Yes</span>
+                                    </label>
+                                    <x-jet-input-error for="targets.{{$key}}.quantify" class="mt-2"/>
+                                </div>
+                                <div class="col-span-6 sm:col-span-4" x-show="quantify">
+                                    <x-jet-label for="slope-{{$key}}" value="{{ __('Slope') }}"/>
+                                    <x-input name="slope-{{$key}}" class="mt-1 block w-full"
+                                             wire:model.defer="targets.{{$key}}.slope"/>
+                                    <x-jet-input-error for="targets.{{$key}}.slope" class="mt-2"/>
+                                </div>
+                                <div class="col-span-6 sm:col-span-4" x-show="quantify">
+                                    <x-jet-label for="intercept-{{$key}}" value="{{ __('Intercept') }}"/>
+                                    <x-input name="intercept-{{$key}}" class="mt-1 block w-full"
+                                             wire:model.defer="targets.{{$key}}.intercept"/>
+                                    <x-jet-input-error for="targets.{{$key}}.intercept" class="mt-2"/>
+                                </div>
+                                <div class="col-span-6 sm:col-span-4">
+                                    <x-jet-label for="repetitions-{{$key}}"
+                                                 value="{{ __('Required repetitions') }}"/>
+                                    <x-input name="repetitions-{{$key}}" type="number" min="1" value="1"
+                                             class="mt-1 block w-full"
+                                             wire:model.defer="targets.{{$key}}.repetitions"/>
+                                    <x-jet-input-error for="targets.{{$key}}.repetitions" class="mt-2"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="grid md:grid-cols-4 md:items-center">
-                        <div class="col-span-2">
-                            <x-label for="quantify-{{$key}}">Quantify</x-label>
-                        </div>
-                        <div class="col-span-2">
-                            <label class="flex items-center">
-                                <x-checkbox name="quantify-{{$key}}" value="1" x-model="quantify"/>
-                                <span class="ml-4">Yes</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-4 md:items-center" x-show="quantify">
-                        <div class="col-span-2">
-                            <x-label for="slope-{{$key}}">Slope</x-label>
-                        </div>
-                        <div class="col-span-2">
-                            <x-input name="slope-{{$key}}" wire:model.defer="targets.{{$key}}.slope"/>
-                        </div>
-                        <div class="col-start-3 col-span-2">
-                            <x-error field="targets.{{$key}}.slope" />
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-4 md:items-center" x-show="quantify">
-                        <div class="col-span-2">
-                            <x-label for="intercep-{{$key}}">Intercept</x-label>
-                        </div>
-                        <div class="col-span-2">
-                            <x-input name="intercept-{{$key}}" wire:model.defer="targets.{{$key}}.intercept"/>
-                            <x-error field="targets.{{$key}}.intercept" />
-                        </div>
-                        <div class="col-start-3 col-span-2">
-                            <x-error field="targets.{{$key}}.intercept" />
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-4 md:items-center">
-                        <div class="col-span-2">
-                            <x-label for="repetitions-{{$key}}">Required repetitions</x-label>
-                        </div>
-                        <div class="col-span-2">
-                            <x-input name="repetitions-{{$key}}" type="number" min="1" value="1"
-                                     wire:model.defer="targets.{{$key}}.repetitions"/>
-                        </div>
-                        <div class="col-start-3 col-span-2">
-                            <x-error field="targets.{{$key}}.repetitions" />
-                        </div>
-                    </div>
+                    @unless($loop->last)
+                        <x-jet-section-border/>
+                    @endunless
                 </div>
             @endforeach
-            <x-primary-button type="submit">
+            <x-hero-button type="submit">
                 Analyze
-            </x-primary-button>
+            </x-hero-button>
         @endif
     </form>
 @else

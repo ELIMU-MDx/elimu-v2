@@ -102,6 +102,7 @@ final class CreateAssayForm extends Component
             });
 
         $this->assay->study_id = $this->visible ? null : Auth::user()->study_id;
+        $this->assay->user_id = Auth::user()->id;
         $this->assay->save();
         $this->assay->parameters()->saveMany($parameters);
 

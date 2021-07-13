@@ -18,7 +18,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware(EnsureHasStudy::class)->group(function () {
         Route::view('dashboard', 'dashboard')->name('dashboard');
 
-        Route::get('assays', ListAssaysController::class);
+        Route::get('assays', ListAssaysController::class)->name('list-assays');
         Route::get('assays/create', CreateAssayController::class);
     });
     Route::get('studies/create-first', CreateFirstStudyController::class)->name('create-first-study');

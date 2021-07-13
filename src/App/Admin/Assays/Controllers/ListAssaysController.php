@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Admin\Assays\Controllers;
 
-use Carbon\Carbon;
+use Domain\Assay\Models\Assay;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -12,29 +12,19 @@ final class ListAssaysController
 {
     public function __invoke(Request $request): View
     {
-        $assays = [
-            (object) [
-                'name' => 'PlasQ_RDT_V1-2',
-                'sample_type' => 'RDT_2019',
-                'study' => null,
-                'created_by' => 'Silvan',
-                'created_at' => Carbon::now(),
-            ],
-            (object) [
-                'name' => 'PlasQ_RDT_V1-2',
-                'sample_type' => 'RDT_2019',
-                'study' => 'EGbyRDT',
-                'created_by' => 'Silvan',
-                'created_at' => Carbon::now(),
-            ],
-            (object) [
-                'name' => 'PlasQ_RDT_V1-2',
-                'sample_type' => 'RDT_2019',
-                'study' => 'EGbyRDT',
-                'created_by' => 'Silvan',
-                'created_at' => Carbon::now(),
-            ],
-        ];
+        $assays = Assay::whereIn('study_id', [null, $request->user()->study_id])
+            ->orderBy('name')
+            ->with(['creator:id,name', 'study:id,name'])
+            ->get()
+            ->map(function (Assay $assay) {
+                return (object) [
+                    'name' => $assay->name,
+                    'sample_type' => $assay->sample_type,
+                    'study' => $assay->study->name ?? null,
+                    'created_by' => $assay->creator->name,
+                    'created_at' => $assay->created_at,
+                ];
+            });
 
         return view('admin.assays.index', compact('assays'));
     }

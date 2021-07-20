@@ -28,15 +28,15 @@ final class CreateAssayForm extends Component
 
     protected $rules = [
         'assay.name' => 'required|string|max:255',
-        'assay.sample_type' => 'required|string|max:255',
+        'assay.sample_type' => 'string|max:255',
         'visible' => 'required|bool',
         'targets' => 'required|string',
         'parameters.*.target' => 'required|string',
         'parameters.*.cutoff' => 'required|numeric',
         'parameters.*.standard_deviation_cutoff' => 'required|numeric',
         'parameters.*.quantify' => 'nullable|boolean',
-        'parameters.*.slope' => 'required_with:parameters.*.quantify|nullable|numeric',
-        'parameters.*.intercept' => 'required_with:parameters.*.quantify|nullable|numeric',
+        'parameters.*.slope' => 'required_if:parameters.*.quantify,1|nullable|numeric',
+        'parameters.*.intercept' => 'required_if:parameters.*.quantify,1|nullable|numeric',
         'parameters.*.required_repetitions' => 'required|integer|min:1',
     ];
 
@@ -57,6 +57,13 @@ final class CreateAssayForm extends Component
     {
         $this->assay = $assay ?? new Assay();
         $this->parameters = $this->assay->parameters ?? new Collection();
+        $this->parameters->map(function (AssayParameter $parameter) {
+            $parameter->quantify = $parameter->slope && $parameter->intercept;
+
+            return $parameter;
+        });
+        $this->targets = $this->parameters->pluck('target')->join(', ');
+        $this->visible = $this->assay->study_id ? 0 : 1;
     }
 
     /**
@@ -96,13 +103,17 @@ final class CreateAssayForm extends Component
 
         $parameters = $this->parameters
             ->map(function (AssayParameter $assayParameter) {
+                if ($assayParameter->quantify !== '1') {
+                    $assayParameter->slope = null;
+                    $assayParameter->intercept = null;
+                }
                 unset($assayParameter->quantify);
 
                 return $assayParameter;
             });
 
         $this->assay->study_id = $this->visible ? null : Auth::user()->study_id;
-        $this->assay->user_id = Auth::user()->id;
+        $this->assay->user_id = $this->assay->id ? $this->assay->user_id : Auth::user()->id;
         $this->assay->save();
         $this->assay->parameters()->saveMany($parameters);
 

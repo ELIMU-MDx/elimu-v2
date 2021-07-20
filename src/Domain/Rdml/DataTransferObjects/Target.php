@@ -13,5 +13,5 @@ final class Target extends DataTransferObject implements Arrayable
 
     public string $type;
 
-    public Dye $dye;
+    public string $dye;
 }

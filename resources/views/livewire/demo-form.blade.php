@@ -1,7 +1,7 @@
 @unless($result)
     <form class="space-y-6" wire:submit.prevent="analyze">
         <x-hero-button as="label" wire:loading.class="!bg-indigo-400" wire:target="rdml">
-            <input type="file" class="hidden" wire:model="rdml">
+            <input type="file" class="hidden" wire:model="rdml" accept=".rdml">
             <span wire:loading wire:target="rdml">Uploading...</span>
             <span wire:loading.remove wire:target="rdml">
                 @if($rdml)

@@ -4,112 +4,42 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Domain\Rdml\Converters;
 
-use Domain\Rdml\Collections\AmplificationDataCollection;
-use Domain\Rdml\Collections\DyeCollection;
-use Domain\Rdml\Collections\ExperimentCollection;
-use Domain\Rdml\Collections\ExperimenterCollection;
-use Domain\Rdml\Collections\MeltingCurveDataCollection;
-use Domain\Rdml\Collections\ReactionCollection;
-use Domain\Rdml\Collections\ReactionDataCollection;
-use Domain\Rdml\Collections\RunCollection;
-use Domain\Rdml\Collections\SampleCollection;
+use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\Collections\TargetCollection;
-use Domain\Rdml\Collections\ThermalCyclingConditionsCollection;
 use Domain\Rdml\Converters\RdmlConverter;
-use Domain\Rdml\DataTransferObjects\Dye;
-use Domain\Rdml\DataTransferObjects\Experiment;
+use Domain\Rdml\DataTransferObjects\Measurement;
 use Domain\Rdml\DataTransferObjects\Rdml;
-use Domain\Rdml\DataTransferObjects\Reaction;
-use Domain\Rdml\DataTransferObjects\ReactionData;
-use Domain\Rdml\DataTransferObjects\Run;
-use Domain\Rdml\DataTransferObjects\Sample;
-use Domain\Rdml\DataTransferObjects\Target;
-use PHPUnit\Framework\TestCase;
+use Tests\UnitTestCase;
 
-final class RdmlConverterTest extends TestCase
+final class RdmlConverterTest extends UnitTestCase
 {
-    /** @test */
+    /** @test
+     * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
+     */
     public function itConvertsAnRdml(): void
     {
-        $converter = new RdmlConverter($this->rdml(
-            new ExperimentCollection([
-                new Experiment([
-                    'id' => '1',
-                    'runs' => new RunCollection([
-                        new Run([
-                            'id' => '1',
-                            'reactions' => new ReactionCollection([
-                                new Reaction([
-                                    'sample' => new Sample([
-                                        'id' => '1234',
-                                        'type' => 'blood',
-                                    ]),
-                                    'data' => new ReactionDataCollection([
-                                        new ReactionData([
-                                            'target' => new Target([
-                                                'id' => 'target-1',
-                                                'type' => 'unkwn',
-                                                'dye' => new Dye(['id' => 'abc']),
-                                            ]),
-                                            'cq' => 123,
-                                            'amplificationDataPoints' => new AmplificationDataCollection(),
-                                            'meltingDataPoints' => new MeltingCurveDataCollection(),
-                                        ]),
-                                    ]),
-                                ]),
-                            ]),
-                        ]),
-                        new Run([
-                            'id' => '1',
-                            'reactions' => new ReactionCollection([
-                                new Reaction([
-                                    'sample' => new Sample([
-                                        'id' => '1234',
-                                        'type' => 'blood',
-                                    ]),
-                                    'data' => new ReactionDataCollection([
-                                        new ReactionData([
-                                            'target' => new Target([
-                                                'id' => 'target-1',
-                                                'type' => 'unkwn',
-                                                'dye' => new Dye(['id' => 'abc']),
-                                            ]),
-                                            'cq' => 123,
-                                            'amplificationDataPoints' => new AmplificationDataCollection(),
-                                            'meltingDataPoints' => new MeltingCurveDataCollection(),
-                                        ]),
-                                    ]),
-                                ]),
-                            ]),
-                        ]),
-
-                        new Run([
-                            'id' => '1',
-                            'reactions' => new ReactionCollection([
-                                new Reaction([
-                                    'sample' => new Sample([
-                                        'id' => '1234',
-                                        'type' => 'blood',
-                                    ]),
-                                    'data' => new ReactionDataCollection([
-                                        new ReactionData([
-                                            'target' => new Target([
-                                                'id' => 'target-2',
-                                                'type' => 'unkwn',
-                                                'dye' => new Dye(['id' => 'abc']),
-                                            ]),
-                                            'cq' => 321,
-                                            'amplificationDataPoints' => new AmplificationDataCollection(),
-                                            'meltingDataPoints' => new MeltingCurveDataCollection(),
-                                        ]),
-                                    ]),
-                                ]),
-                            ]),
-                        ]),
-                    ]),
-                ]),
-            ]),
-        ));
+        $converter = new RdmlConverter(
+            $this->rdml([
+                [
+                    'experiment' => '12',
+                    'run' => '12',
+                    'sample' => 'sample-xy',
+                    'target' => 'target-a',
+                    'position' => 'A1',
+                    'excluded' => false,
+                    'cq' => 123,
+                ],
+                [
+                    'experiment' => '12',
+                    'run' => '12',
+                    'sample' => 'sample-xy',
+                    'target' => 'target-b',
+                    'position' => 'A1',
+                    'excluded' => false,
+                    'cq' => 321,
+                ],
+            ])
+        );
 
         $result = $converter->toSampleData();
 
@@ -118,16 +48,60 @@ final class RdmlConverterTest extends TestCase
         $this->assertEquals(321, $result->first()->targets->last()->dataPoints->first()->cq);
     }
 
-    private function rdml(ExperimentCollection $experimentCollection): Rdml
+    /** @test */
+    public function itConvertsARdmlToAnExperiment(): void
+    {
+        $converter = new RdmlConverter($this->rdml([
+            [
+                'experiment' => '12',
+                'run' => '12',
+                'sample' => 'sample-xy',
+                'target' => 'target-a',
+                'position' => 'A1',
+                'excluded' => false,
+                'cq' => 123,
+            ],
+            [
+                'experiment' => '12',
+                'run' => '12',
+                'sample' => 'sample-xy',
+                'target' => 'target-b',
+                'position' => 'A2',
+                'excluded' => false,
+                'cq' => 321,
+            ],
+            [
+                'experiment' => '12',
+                'run' => '12',
+                'sample' => 'sample-xy',
+                'target' => 'target-b',
+                'position' => 'A3',
+                'excluded' => false,
+                'cq' => 321,
+            ],
+        ]));
+
+        $measurements = $converter->toMeasurements();
+
+        $this->assertCount(3, $measurements);
+        $this->assertEquals(123, $measurements->first()->cq);
+        $this->assertSame($measurements->first()->sample, $measurements->last()->sample);
+    }
+
+    /**
+     * @param  array  $measurements
+     * @return \Domain\Rdml\DataTransferObjects\Rdml
+     * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
+     */
+    private function rdml(array $measurements): Rdml
     {
         return new Rdml([
             'version' => '1.1',
-            'experimenter' => new ExperimenterCollection(),
-            'dyes' => new DyeCollection(),
-            'samples' => new SampleCollection(),
             'targets' => new TargetCollection(),
-            'thermalCyclingConditions' => new ThermalCyclingConditionsCollection(),
-            'experiments' => $experimentCollection,
+            'measurements' => MeasurementCollection::make($measurements)
+                ->map(function (array $measurement) {
+                    return new Measurement($measurement);
+                }),
         ]);
     }
 }

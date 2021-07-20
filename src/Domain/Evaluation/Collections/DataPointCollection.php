@@ -18,6 +18,13 @@ use Support\RoundedNumber;
  */
 final class DataPointCollection extends CustomCollection
 {
+    public function included(): static
+    {
+        return $this->filter(function (DataPoint $dataPoint) {
+            return !$dataPoint->excluded;
+        });
+    }
+
     public function qualify(float $cutoff): QualitativeResult
     {
         return Math::qualifyCq($this->averageCq()->raw(), $cutoff);
@@ -44,7 +51,7 @@ final class DataPointCollection extends CustomCollection
 
     public function positives(float $cutoff): DataPointCollection
     {
-        return $this->filter(function(DataPoint $point) use ($cutoff) {
+        return $this->filter(function (DataPoint $point) use ($cutoff) {
             return Math::qualifyCq($point->cq, $cutoff) === QualitativeResult::POSITIVE();
         });
     }

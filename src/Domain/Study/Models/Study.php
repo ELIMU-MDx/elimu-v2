@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Study\Models;
 
+use Domain\Experiment\Models\Experiment;
+use Domain\Experiment\Models\Sample;
 use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -23,5 +25,15 @@ final class Study extends Model
     public function invitations(): HasMany
     {
         return $this->hasMany(Invitation::class);
+    }
+
+    public function experiments(): HasMany
+    {
+        return $this->hasMany(Experiment::class);
+    }
+
+    public function samples(): HasMany
+    {
+        return $this->hasMany(Sample::class);
     }
 }

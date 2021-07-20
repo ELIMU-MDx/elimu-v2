@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Domain\Study\Actions;
 
 use Domain\Study\DataTransferObject\CreateStudyParameter;
-use Domain\Study\Enums\Role;
 use Domain\Study\Models\Study;
 use Domain\Study\Roles\Owner;
 use Domain\Users\Models\User;

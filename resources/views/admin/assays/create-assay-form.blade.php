@@ -18,8 +18,7 @@
                     </div>
                     <div class="col-span-6 sm:col-span-4">
                         <x-jet-label for="sample_type" value="{{ __('Sample type') }}"/>
-                        <x-input name="sample_type" class="mt-1 block w-full" wire:model.defer="assay.sample_type"
-                                 required/>
+                        <x-input name="sample_type" class="mt-1 block w-full" wire:model.defer="assay.sample_type"/>
                         <x-jet-input-error for="assay.sample_type" class="mt-2"/>
                     </div>
                     <div class="col-span-6 sm:col-span-4">

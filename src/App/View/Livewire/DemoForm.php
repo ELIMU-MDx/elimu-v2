@@ -12,8 +12,8 @@ use Domain\Evaluation\Validators\SampleValidator;
 use Domain\Rdml\Converters\RdmlConverter;
 use Domain\Rdml\DataTransferObjects\Rdml;
 use Domain\Rdml\DataTransferObjects\Target;
+use Domain\Rdml\RdmlFileReader;
 use Domain\Rdml\RdmlParser;
-use Domain\Rdml\RdmlReader;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
@@ -76,7 +76,7 @@ class DemoForm extends Component
             $query->whereHas('parameters', function (Builder $query) use ($target) {
                 return $query->where('target', strtolower($target->id));
             });
-            $this->addTarget($target->id, $target->dye->id);
+            $this->addTarget($target->id, $target->dye);
         });
 
         $this->assays = $query->get();
@@ -162,7 +162,7 @@ class DemoForm extends Component
 
     private function getRdml(TemporaryUploadedFile $file): Rdml
     {
-        return app(RdmlParser::class)->extract(app(RdmlReader::class)->read($file));
+        return app(RdmlParser::class)->extract(app(RdmlFileReader::class)->read($file));
     }
 
     private function evaluateResults(SampleDataCollection $data): Collection

@@ -15,7 +15,7 @@
             <ul class="divide-y divide-gray-200">
                 @foreach($assays as $assay)
                     <li>
-                        <a href="#" class="block hover:bg-gray-50">
+                        <a href="{{ route('edit-assay', $assay->id) }}" class="block hover:bg-gray-50">
                             <div class="px-4 py-4 sm:px-6">
                                 <div class="flex items-center justify-between">
                                     <p class="text-sm font-medium text-indigo-600 truncate">
@@ -28,14 +28,16 @@
                                     </div>
                                 </div>
                                 <div class="mt-2 sm:flex sm:justify-between">
-                                    <div class="sm:flex">
-                                        <p class="flex items-center text-sm text-gray-500">
-                                            <x-heroicon-o-beaker class="flex-shrink-0 mr-2 h-5 w-5 text-gray-400"/>
-                                            {{$assay->sample_type}}
-                                        </p>
+                                    <div class="space-y-2 sm:flex sm:space-y-0 sm:space-x-6">
+                                        @if($assay->sample_type)
+                                            <p class="flex items-center text-sm text-gray-500">
+                                                <x-heroicon-o-beaker class="flex-shrink-0 mr-2 h-5 w-5 text-gray-400"/>
+                                                {{$assay->sample_type}}
+                                            </p>
+                                        @endif
 
                                         @if($assay->study)
-                                            <p class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
+                                            <p class="flex items-center text-sm text-gray-500">
                                                 <x-heroicon-o-academic-cap
                                                         class="flex-shrink-0 mr-2 h-5 w-5 text-gray-400"/>
                                                 {{$assay->study}}

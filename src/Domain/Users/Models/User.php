@@ -73,6 +73,6 @@ final class User extends Authenticatable
 
     public function isCurrentStudy(Study $study): bool
     {
-        return $study->id === $this->currentStudy->id;
+        return $study->id === $this->study_id;
     }
 }

@@ -2,12 +2,11 @@
 
 namespace Database\Factories;
 
-use Domain\Users\Models\Team;
+use Domain\Study\Roles\Owner;
 use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Laravel\Jetstream\Features;
 
 /**
  * @method User|User[] create($attributes = [], ?Model $parent = null)
@@ -21,12 +20,7 @@ class UserFactory extends Factory
      */
     protected $model = User::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
-    public function definition()
+    public function definition(): array
     {
         return [
             'name' => $this->faker->name(),
@@ -51,23 +45,12 @@ class UserFactory extends Factory
         });
     }
 
-    /**
-     * Indicate that the user should have a personal team.
-     *
-     * @return $this
-     */
-    public function withPersonalTeam()
+    public function withStudy(): UserFactory
     {
-        if (! Features::hasTeamFeatures()) {
-            return $this->state([]);
-        }
-
-        return $this->has(
-            Team::factory()
-                ->state(function (array $attributes, User $user) {
-                    return ['name' => $user->name.'\'s Team', 'user_id' => $user->id, 'personal_team' => true];
-                }),
-            'ownedTeams'
-        );
+        return $this->state([
+            'study_id' => StudyFactory::new(),
+        ])->afterCreating(function (User $user) {
+            $user->studies()->attach($user->study_id, ['role' => new Owner()]);
+        });
     }
 }

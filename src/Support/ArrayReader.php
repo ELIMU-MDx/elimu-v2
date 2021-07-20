@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Support;
 
+use ArrayIterator;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Arr;
+use IteratorAggregate;
 use OutOfBoundsException;
 
-final class ArrayReader
+final class ArrayReader implements IteratorAggregate
 {
     public function __construct(private array $data)
     {
@@ -112,23 +114,33 @@ final class ArrayReader
         return CarbonImmutable::parse($value);
     }
 
-    public function findList(string $key): array
+    public function findList(string $key): ArrayReader
     {
         $value = $this->find($key);
 
         if (!is_array($value)) {
-            return [];
+            return new ArrayReader([]);
         }
 
         if (!isset($value[0])) {
-            return [$value];
+            return new ArrayReader([$value]);
         }
 
-        return $value;
+        return new ArrayReader($value);
+    }
+
+    public function has(string $key): bool
+    {
+        return Arr::has($this->data, $key);
     }
 
     public function toArray(): array
     {
         return $this->data;
+    }
+
+    public function getIterator()
+    {
+        return new ArrayIterator($this->data);
     }
 }

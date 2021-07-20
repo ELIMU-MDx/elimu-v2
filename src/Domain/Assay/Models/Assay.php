@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Assay\Models;
 
+use Domain\Evaluation\Models\Result;
 use Domain\Study\Models\Study;
 use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -28,5 +29,10 @@ final class Assay extends Model
             'name' => 'Unknown',
             'id' => -1,
         ]);
+    }
+
+    public function results(): HasMany
+    {
+        return $this->hasMany(Result::class);
     }
 }

@@ -16,7 +16,7 @@ final class DataPointCollectionTest extends TestCase
     {
         $collection = $this->dataPoints(10.0, 18.0);
 
-        $this->assertEquals(14.0, $collection->averageCq());
+        $this->assertEquals(14.0, $collection->averageCq()->raw());
     }
 
     /** @test */
@@ -24,7 +24,7 @@ final class DataPointCollectionTest extends TestCase
     {
         $collection = $this->dataPoints(10.0, 18.0);
 
-        $this->assertEquals(QualitativeResult::POSITIVE(), $collection->quantify(20));
+        $this->assertEquals(QualitativeResult::POSITIVE(), $collection->qualify(20));
     }
 
     /** @test */
@@ -32,7 +32,7 @@ final class DataPointCollectionTest extends TestCase
     {
         $collection = $this->dataPoints(10.0, 18.0);
 
-        $this->assertEquals(QualitativeResult::NEGATIVE(), $collection->quantify(9));
+        $this->assertEquals(QualitativeResult::NEGATIVE(), $collection->qualify(9));
     }
 
     /** @test */
@@ -40,8 +40,8 @@ final class DataPointCollectionTest extends TestCase
     {
         $collection = $this->dataPoints(10.0, 18.0);
 
-        $this->assertNotNull($collection->qualify(0.1, 10));
-        $this->assertEquals(251188643150.96, $collection->qualify(0.1, 10));
+        $this->assertNotNull($collection->quantify(0.1, 10));
+        $this->assertEquals(251188643150.96, $collection->quantify(0.1, 10));
     }
 
     private function dataPoints(?float ...$cqs): DataPointCollection
@@ -49,7 +49,10 @@ final class DataPointCollectionTest extends TestCase
         $collection = new DataPointCollection();
 
         foreach ($cqs as $cq) {
-            $collection->add(new DataPoint(cq: $cq));
+            $collection->add(new DataPoint(
+                target: 'Foo',
+                cq: $cq
+            ));
         }
 
         return $collection;

@@ -10,6 +10,9 @@ use Domain\Evaluation\Collections\TargetDataCollection;
 use Domain\Evaluation\DataTransferObjects\DataPoint;
 use Domain\Evaluation\DataTransferObjects\SampleData;
 use Domain\Evaluation\DataTransferObjects\TargetData;
+use Domain\Experiment\Models\Measurement;
+use Domain\Experiment\Models\Sample;
+use Domain\Rdml\DataTransferObjects\Measurement as MeasurementDTO;
 use Domain\Rdml\DataTransferObjects\Rdml;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
@@ -23,39 +26,62 @@ final class RdmlConverter implements Arrayable
         $this->rdml = $rdml;
     }
 
+    /**
+     * @return Collection
+     */
+    public function toMeasurements(): Collection
+    {
+        $sampleLookupTable = $this->rdml
+            ->measurements
+            ->pluck('sample')
+            ->mapWithKeys(function (string $sampleIdentifier) {
+                return [
+                    $sampleIdentifier => new Sample([
+                        'identifier' => $sampleIdentifier,
+                    ]),
+                ];
+            });
+
+        return $this->rdml
+            ->measurements
+            ->map(function (MeasurementDTO $measurement) use ($sampleLookupTable) {
+                return new Measurement([
+                    'sample' => $sampleLookupTable->get($measurement->sample),
+                    'cq' => $measurement->cq,
+                    'position' => $measurement->position,
+                    'excluded' => $measurement->excluded,
+                    'target' => $measurement->target,
+                ]);
+            });
+    }
+
     public function toSampleData(): SampleDataCollection
     {
-        $result = new Collection($this->toArray());
-
-        return new SampleDataCollection($result->pluck('runs.*.reactions')
-            ->flatten(2)
-            ->groupBy('sample.id')
-            ->map(function (Collection $reactions) {
-                return $reactions->groupBy('data.*.target.id')
-                    ->map(function (Collection $reactions) {
-                        return $reactions->pluck('data.*.cq')
-                            ->flatten()
-                            ->map(function (?float $cq) {
-                                return new DataPoint(cq: $cq);
-                            });
-                    });
-            })
+        return SampleDataCollection::make($this->rdml->measurements)
+            ->groupBy(['sample', 'target'])
             ->map(function (Collection $targets, string $sampleId) {
                 return new SampleData([
                     'id' => $sampleId,
-                    'targets' => new TargetDataCollection(
-                        $targets->map(function (Collection $dataPoints, string $targetId) {
+                    'targets' => TargetDataCollection::make($targets)
+                        ->map(function (Collection $measurements, string $target) {
                             return new TargetData([
-                                'id' => $targetId,
-                                'dataPoints' => new DataPointCollection($dataPoints),
+                                'id' => $target,
+                                'dataPoints' => DataPointCollection::make($measurements)
+                                    ->map(function (MeasurementDTO $measurement) {
+                                        return new DataPoint([
+                                            'target' => $measurement->target,
+                                            'cq' => $measurement->cq,
+                                            'excluded' => $measurement->excluded,
+                                        ]);
+                                    }),
                             ]);
-                        })),
+                        }),
                 ]);
-            }));
+            });
     }
 
     public function toArray(): array
     {
-        return json_decode($this->rdml->experiments->toJson(), true);
+        return json_decode($this->rdml->measurements->toJson(), true);
     }
 }

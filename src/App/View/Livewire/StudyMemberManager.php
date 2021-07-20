@@ -3,9 +3,9 @@
 namespace App\View\Livewire;
 
 use Auth;
+use Domain\Study\Actions\AddMemberAction;
 use Domain\Study\Actions\RemoveStudyInvitationAction;
 use Domain\Study\Actions\RemoveTeamMemberAction;
-use Domain\Study\Enums\InvitationStatus;
 use Domain\Study\Models\Invitation;
 use Domain\Study\Models\Study;
 use Domain\Study\Roles\RoleFactory;
@@ -44,13 +44,13 @@ class StudyMemberManager extends Component
     /** @var int */
     public $teamMemberIdBeingRemoved;
 
-    public function mount(RoleFactory $roleFactory, $study): void
+    public function mount(RoleFactory $roleFactory, Study $study): void
     {
         $this->roles = Collection::make($roleFactory->toArray());
         $this->study = $study;
     }
 
-    public function addMember()
+    public function addMember(AddMemberAction $addMemberAction): void
     {
         $this->resetErrorBag();
 
@@ -67,12 +67,12 @@ class StudyMemberManager extends Component
         ]);
         // TODO: send email, check if user has not rejected invitation already
 
-        $this->study->invitations()->save(new Invitation([
-            'email' => $this->addMemberForm['email'],
-            'role' => $this->addMemberForm['role'],
-            'user_id' => Auth::user()->id,
-            'status' => InvitationStatus::PENDING(),
-        ]));
+        $addMemberAction->execute(
+            email: $this->addMemberForm['email'],
+            role: $this->addMemberForm['role'],
+            inviterId: Auth::user()->id,
+            studyId: $this->study->id
+        );
 
         $this->addMemberForm = [
             'email' => '',

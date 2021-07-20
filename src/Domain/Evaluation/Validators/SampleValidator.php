@@ -28,7 +28,7 @@ final class SampleValidator
             $errors[] = "Needs repetition since not all messurements evaluate to the same result";
         }
 
-        if ($numberOfPositiveResults > 0 && $dataPoints->standardDeviationCq()->raw() > $validationParameter->standardDeviationCutoff) {
+        if ($numberOfPositiveResults > 0 && $numberOfResults > 1 && $dataPoints->standardDeviationCq()->raw() > $validationParameter->standardDeviationCutoff) {
             $errors[] = "Standard deviation for the data points exceeds the defined cutoff";
         }
 

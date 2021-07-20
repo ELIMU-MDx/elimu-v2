@@ -3,7 +3,7 @@
 namespace Tests\Feature\Auth;
 
 use App\Providers\RouteServiceProvider;
-use Domain\Users\Models\User;
+use Database\Factories\UserFactory;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
@@ -21,7 +21,7 @@ class EmailVerificationTest extends TestCase
             return $this->markTestSkipped('Email verification not enabled.');
         }
 
-        $user = User::factory()->withPersonalTeam()->create([
+        $user = UserFactory::new()->withPersonalTeam()->create([
             'email_verified_at' => null,
         ]);
 
@@ -38,7 +38,7 @@ class EmailVerificationTest extends TestCase
 
         Event::fake();
 
-        $user = User::factory()->create([
+        $user = UserFactory::new()->create([
             'email_verified_at' => null,
         ]);
 
@@ -62,7 +62,7 @@ class EmailVerificationTest extends TestCase
             return $this->markTestSkipped('Email verification not enabled.');
         }
 
-        $user = User::factory()->create([
+        $user = UserFactory::new()->create([
             'email_verified_at' => null,
         ]);
 

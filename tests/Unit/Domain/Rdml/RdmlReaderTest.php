@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Domain\Rdml;
 
-use Domain\Rdml\RdmlReader;
+use Domain\Rdml\RdmlFileReader;
 use Illuminate\Http\File;
 use JetBrains\PhpStorm\Pure;
 use Tests\UnitTestCase;
@@ -22,8 +22,8 @@ class RdmlReaderTest extends UnitTestCase
     }
 
     #[Pure]
-    private function getReader(): RdmlReader
+    private function getReader(): RdmlFileReader
     {
-        return new RdmlReader(new ZipArchive());
+        return new RdmlFileReader(new ZipArchive());
     }
 }

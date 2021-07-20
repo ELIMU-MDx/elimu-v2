@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Studies;
 
 use Database\Factories\UserFactory;
+use Domain\Study\Models\Study;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -23,7 +24,7 @@ final class CreateStudyTest extends TestCase
                 'name' => 'New Study',
             ])
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/studies/1');
+            ->assertRedirect('/experiments');
 
         $this->assertDatabaseHas(
             'studies',
@@ -34,7 +35,7 @@ final class CreateStudyTest extends TestCase
             'users',
             [
                 'id' => $user->id,
-                'study_id' => 1,
+                'study_id' => Study::latest()->first()->id,
             ]
         );
     }

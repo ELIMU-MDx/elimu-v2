@@ -26,8 +26,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::view('dashboard', 'dashboard')->name('dashboard');
 
         Route::get('assays', ListAssaysController::class)->name('list-assays');
-        Route::get('assays/{assay}', EditAssayController::class)->name('edit-assay');
         Route::get('assays/create', CreateAssayController::class);
+        Route::get('assays/{assay}', EditAssayController::class)->name('edit-assay');
     });
     Route::get('studies/create-first', CreateFirstStudyController::class)->name('create-first-study');
     Route::get('studies/create', CreateStudyController::class)->name('create-study');

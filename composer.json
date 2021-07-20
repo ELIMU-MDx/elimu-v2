@@ -17,6 +17,7 @@
     "fideloper/proxy": "^4.4",
     "fruitcake/laravel-cors": "^2.0",
     "guzzlehttp/guzzle": "^7.0.1",
+    "honeybadger-io/honeybadger-laravel": "^3.12",
     "kirschbaum-development/eloquent-power-joins": "^2.4",
     "laravel/framework": "^8.40",
     "laravel/jetstream": "^2.3",

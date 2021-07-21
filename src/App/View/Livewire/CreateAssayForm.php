@@ -117,7 +117,7 @@ final class CreateAssayForm extends Component
         $this->assay->save();
         $this->assay->parameters()->saveMany($parameters);
 
-        return redirect()->to(route('list-assays'));
+        return redirect()->to(route('assays.index'));
     }
 
     public function render(): View

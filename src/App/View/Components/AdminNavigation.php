@@ -21,10 +21,16 @@ class AdminNavigation extends Component
                 'active' => $request->is('dashboard'),
             ],
             [
-                'href' => route('list-experiments'),
+                'href' => route('results.index'),
                 'label' => 'Experiments',
                 'icon' => 'heroicon-o-beaker',
                 'active' => $request->is('experiments*'),
+            ],
+            [
+                'href' => route('results.index'),
+                'label' => 'Results',
+                'icon' => 'heroicon-o-chart-pie',
+                'active' => $request->is('results*'),
             ],
             [
                 'href' => url('/assays'),

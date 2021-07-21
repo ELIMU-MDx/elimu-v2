@@ -6,7 +6,7 @@ namespace App\Admin\Experiments\Controllers;
 
 use Illuminate\View\View;
 
-final class ListExperimentsController
+final class ListResultsController
 {
     public function __invoke(): View
     {

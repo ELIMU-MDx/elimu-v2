@@ -100,18 +100,16 @@ final class CreateExperimentForm extends Component
             'form.rdml' => 'rdml file',
         ]);
 
-        $experiment = $createExperimentAction->execute(
+        $createExperimentAction->execute(
             $this->form['rdml'],
             Assay::find($this->form['assay_id']),
             $this->user->study_id,
             $this->user->id
         );
-        $experiment->addMedia($this->form['rdml']->getRealPath())
-            ->toMediaCollection('rdmls');
         $this->reset('form', 'openModal');
         $this->resetErrorBag();
 
-        return redirect()->to(route('list-experiments'));
+        return redirect()->to(route('results.index'));
     }
 
     public function render(): View

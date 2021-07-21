@@ -8,11 +8,15 @@ use Auth;
 use Domain\Assay\Models\Assay;
 use Domain\Experiment\Models\Sample;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 final class ListExperimentResults extends Component
 {
+    use WithPagination;
+
     /** @var Collection<\Domain\Assay\Models\Assay> */
     public $assays;
 
@@ -21,6 +25,12 @@ final class ListExperimentResults extends Component
 
     /** @var int|null */
     public $currentlyEditingSampleKey = null;
+
+    /** @var string */
+    public $search = '';
+
+    /** @var string */
+    public $resultFilter = 'all';
 
     /** @var string[] */
     protected $rules = [
@@ -31,30 +41,46 @@ final class ListExperimentResults extends Component
     {
         $this->assays = Assay::whereHas('results')
             ->where('study_id', Auth::user()->study_id)
-            ->pluck('name', 'id');
+            ->with('parameters')
+            ->get();
 
         if ($this->assays->isEmpty()) {
             return;
         }
 
-        $this->currentAssayId = $this->assays->keys()->first();
+        $this->currentAssayId = $this->assays->first()->id;
     }
 
-    public function getSamplesProperty(): Collection
+    public function updating(): void
+    {
+        $this->resetPage();
+    }
+
+    public function getCurrentAssayProperty(): ?Assay
+    {
+        return $this->assays->firstWhere('id', $this->currentAssayId);
+    }
+
+    public function getSamplesProperty(): LengthAwarePaginator
     {
         if (!$this->currentAssayId) {
-            return new Collection();
+            return new LengthAwarePaginator([], 0, 15);
         }
 
-        return Sample::with([
-            'results.assay.parameters' => function ($query) {
-                return $query->where('assay_id', $this->currentAssayId);
-            }, 'results.resultErrors', 'results.measurements',
-        ])
-            ->where('study_id', Auth::user()->study_id)
-            ->whereHas('results')
-            ->orderBy('identifier')
-            ->get();
+        return Sample::listAll($this->currentAssayId, Auth::user()->study_id)
+            ->searchBySampleIdentifier($this->search)
+            ->filterByResult($this->resultFilter)
+            ->paginate();
+    }
+
+    public function getTotalSamplesProperty(): int
+    {
+        if (!$this->currentAssayId) {
+            return 0;
+        }
+
+        return Sample::countAll($this->currentAssayId, Auth::user()->study_id)
+            ->count();
     }
 
     public function render(): View

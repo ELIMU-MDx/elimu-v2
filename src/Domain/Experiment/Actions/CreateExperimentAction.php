@@ -34,6 +34,7 @@ final class CreateExperimentAction
                 'assay_id' => $assay->id,
                 'user_id' => $creatorId,
                 'name' => $rdmlFile->getClientOriginalName(),
+                'rdml_path' => $rdmlFile->storePublicly('rdmls'),
             ]);
             $measurements = (new RdmlConverter($this->rdmlReader->read($rdmlFile)))->toMeasurements();
 

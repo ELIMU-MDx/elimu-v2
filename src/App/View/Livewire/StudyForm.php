@@ -40,7 +40,7 @@ final class StudyForm extends Component
                 name: $this->study->name
             ));
 
-            return redirect()->to(route('show-study'));
+            return redirect()->to(route('currentStudy.show'));
         }
 
         $this->study->save();

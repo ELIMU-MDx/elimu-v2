@@ -15,57 +15,92 @@
             </div>
         </div>
     @else
-        <div class="flex flex-wrap items-end justify-between mb-8">
-            <div>
-                <x-jet-label for="assay">Assay</x-jet-label>
-                <x-select name="assay" id="assay" class="mt-1" wire:model="currentAssayId">
-                    @foreach($assays as $assayId => $assayName)
-                        <option value="{{$assayId}}">{{$assayName}}</option>
-                    @endforeach
-                </x-select>
-            </div>
-
-            <div class="ml-4">
-                <livewire:create-experiment-form/>
-            </div>
-        </div>
-
         <section>
             <div class="flex flex-col">
-                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                            <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-50">
-                                <tr>
-                                    <th scope="col"
-                                        class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Sample
-                                    </th>
-                                    @foreach($this->samples->first()->results as $result)
-                                        <th scope="col"
-                                            class="px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            {{ $result->target }} Cq
-                                        </th>
-                                        <th scope="col"
-                                            class="px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wide">
-                                            {{ $result->target }} Result
-                                        </th>
-                                        <th scope="col"
-                                            class="px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            {{ $result->target }} Repetitions
-                                        </th>
-                                    @endforeach
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($this->samples as $sampleKey => $sample)
-                                    <livewire:experiment-result-row :even="$loop->even" :sample="$sample"/>
+                <div class="shadow sm:rounded-lg overflow-hidden">
+                    <div class="bg-white flex flex-wrap items-baseline px-3 py-3">
+                        <div class="relative flex items-stretch focus-within:z-10">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
+                                     viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                          clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <x-jet-input type="search" name="search" id="search" class="pl-9" wire:model="search"/>
+                        </div>
+                        <div class="text-gray-500 text-sm mx-2">
+                            {{ $this->samples->count() }} / {{$this->totalSamples}} Results
+                        </div>
+                        <div class="ml-auto space-x-4">
+                            <x-select name="assay" id="assay" class="mt-1" wire:model="resultFilter">
+                                <option value="all">All</option>
+                                <option value="valid">Valid</option>
+                                <option value="invalid">Invalid</option>
+                                <option value="positive">Positive</option>
+                                <option value="negative">Negative</option>
+                            </x-select>
+
+                            <x-select name="assay" id="assay" class="mt-1" wire:model="currentAssayId">
+                                @foreach($assays as $assay)
+                                    <option value="{{$assay->id}}">{{$assay->name}}</option>
                                 @endforeach
-                                </tbody>
-                            </table>
+                            </x-select>
                         </div>
                     </div>
+
+                    <div class="-my-2 overflow-x-auto">
+                        <div class="py-2 align-middle inline-block min-w-full">
+                            <div class="overflow-hidden border-b border-t border-gray-200">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col"
+                                            class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Sample
+                                        </th>
+                                        @foreach($this->currentAssay->parameters as $parameter)
+                                            <th scope="col"
+                                                class="px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border-l border-gray-300">
+                                                {{ $parameter->target }} Cq
+                                            </th>
+                                            <th scope="col"
+                                                class="px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wide">
+                                                {{ $parameter->target }} Result
+                                            </th>
+                                            <th scope="col"
+                                                class="px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                {{ $parameter->target }} Repetitions
+                                            </th>
+                                        @endforeach
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @if ($this->samples->isNotEmpty())
+                                        @foreach($this->samples as $sample)
+                                            <livewire:experiment-result-row :even="$loop->even" :sample="$sample"
+                                                                            :wire:key="$sample->id"/>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td class="px-3 py-4 whitespace-nowrap text-left"
+                                                colspan="{{ $this->currentAssay->parameters->count() * 3 + 1 }}">No
+                                                results found
+                                            </td>
+                                        </tr>
+                                    @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if ($this->samples->hasPages())
+                        <div class="bg-white px-3 py-3">
+                            {{$this->samples->links()}}
+                        </div>
+                    @endif
                 </div>
             </div>
         </section>

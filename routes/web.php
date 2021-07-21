@@ -3,6 +3,7 @@
 use App\Admin\Assays\Controllers\CreateAssayController;
 use App\Admin\Assays\Controllers\EditAssayController;
 use App\Admin\Assays\Controllers\ListAssaysController;
+use App\Admin\Experiments\Controllers\ListResultsController;
 use App\Admin\Studies\Controllers\AcceptInvitationController;
 use App\Admin\Studies\Controllers\CreateFirstStudyController;
 use App\Admin\Studies\Controllers\CreateStudyController;
@@ -25,16 +26,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware(EnsureHasStudy::class)->group(function () {
         Route::view('dashboard', 'dashboard')->name('dashboard');
 
-        Route::get('assays', ListAssaysController::class)->name('list-assays');
+        Route::get('assays', ListAssaysController::class)->name('assays.index');
         Route::get('assays/create', CreateAssayController::class);
-        Route::get('assays/{assay}', EditAssayController::class)->name('edit-assay');
+        Route::get('assays/{assay}', EditAssayController::class)->name('assays.edit');
     });
-    Route::get('studies/create-first', CreateFirstStudyController::class)->name('create-first-study');
-    Route::get('studies/create', CreateStudyController::class)->name('create-study');
-    Route::post('studies', StoreStudyController::class)->name('store-study');
-    Route::get('current-study/settings', ShowStudySettingsController::class)->name('show-study');
-    Route::put('current-study', SwitchStudyController::class)->name('switch-study');
+    Route::get('studies/create-first', CreateFirstStudyController::class)->name('studies.create-first');
+    Route::get('studies/create', CreateStudyController::class)->name('studies.create');
+    Route::post('studies', StoreStudyController::class)->name('studies.store');
+    Route::get('current-study/settings', ShowStudySettingsController::class)->name('currentStudy.show');
+    Route::put('current-study', SwitchStudyController::class)->name('currentStudy.switch');
 
-    Route::get('experiments',
-        \App\Admin\Experiments\Controllers\ListExperimentsController::class)->name('list-experiments');
+    Route::get('results', ListResultsController::class)->name('results.index');
 });

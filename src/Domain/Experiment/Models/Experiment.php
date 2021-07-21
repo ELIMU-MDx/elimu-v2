@@ -10,13 +10,10 @@ use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-final class Experiment extends Model implements HasMedia
+final class Experiment extends Model
 {
-    use InteractsWithMedia;
-
     public function study(): BelongsTo
     {
         return $this->belongsTo(Study::class);

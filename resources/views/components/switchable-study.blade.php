@@ -1,6 +1,6 @@
 @props(['study', 'component' => 'jet-dropdown-link'])
 
-<form method="POST" action="{{route('switch-study')}}">
+<form method="POST" action="{{route('currentStudy.switch')}}">
 @method('PUT')
 @csrf
 

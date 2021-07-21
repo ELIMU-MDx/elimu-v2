@@ -28,11 +28,11 @@
                             {{ __('Manage Study') }}
                         </div>
 
-                        <x-jet-dropdown-link href="{{route('show-study')}}">
+                        <x-jet-dropdown-link href="{{route('currentStudy.show')}}">
                             {{ __('Study setting') }}
                         </x-jet-dropdown-link>
 
-                        <x-jet-dropdown-link href="{{ route('create-study') }}">
+                        <x-jet-dropdown-link href="{{ route('studies.create') }}">
                             {{ __('Create New Study') }}
                         </x-jet-dropdown-link>
 

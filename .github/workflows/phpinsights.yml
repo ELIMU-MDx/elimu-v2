@@ -1,0 +1,30 @@
+name: PHP Insights
+
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+   
+
+jobs:
+  phpinsights:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - uses: MilesChou/composer-action@main
+      with:
+        args: install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist   
+    - uses: stefanzweifel/laravel-phpinsights-action@v1.1.1
+      with:
+        args: --fix
+    - name: Commit changes
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+          commit_message: Fix styling
+
+    - uses: stefanzweifel/laravel-phpinsights-action@v1.1.1
+      with:
+        args: --min-quality=90 --min-complexity=90 --min-architecture=90 --min-style=90 -n --ansi --format=github-action

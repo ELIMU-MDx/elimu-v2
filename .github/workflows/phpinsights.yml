@@ -14,9 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - uses: MilesChou/composer-action@master
-      with:
-        args: install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist   
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - uses: stefanzweifel/laravel-phpinsights-action@v1.1.1
       with:
         args: --fix

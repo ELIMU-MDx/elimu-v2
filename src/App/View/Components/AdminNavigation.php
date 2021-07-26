@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\View\Components;
 
 use Illuminate\Http\Request;
@@ -10,7 +12,6 @@ class AdminNavigation extends Component
     public array $links;
 
     public bool $responsive;
-
     public function __construct(Request $request, bool $responsive = false)
     {
         $this->links = [

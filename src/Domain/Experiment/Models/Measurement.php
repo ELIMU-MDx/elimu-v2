@@ -39,5 +39,4 @@ final class Measurement extends Model
     {
         return MeasurementCollection::make($models);
     }
-
 }

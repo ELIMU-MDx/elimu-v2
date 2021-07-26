@@ -6,7 +6,6 @@ namespace Domain\Study\Roles;
 
 final class Scientist implements Role
 {
-
     public function identifier(): string
     {
         return 'scientist';

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Domain\Study\DataTransferObject;
+namespace Domain\Study\DataTransferObjects;
 
 use Spatie\DataTransferObject\DataTransferObject;
 

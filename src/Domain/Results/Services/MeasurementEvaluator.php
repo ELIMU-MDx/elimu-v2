@@ -15,8 +15,8 @@ use Illuminate\Support\Collection;
 final class MeasurementEvaluator
 {
     /**
-     * @param  Collection  $measurements
      * @param  Collection<ResultCalculationParameter>  $parameters
+     *
      * @return \Illuminate\Support\Collection<Result>
      */
     public function results(Collection $measurements, Collection $parameters): Collection

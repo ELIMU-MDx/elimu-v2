@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\View\Livewire;
 
 use Domain\Assay\Models\Assay;
@@ -72,7 +74,7 @@ class DemoForm extends Component
 
         $query = Assay::with('parameters')->orderBy('name');
 
-        $rdml->targets->each(function (Target $target) use ($query) {
+        $rdml->targets->each(function (Target $target) use ($query): void {
             $query->whereHas('parameters', function (Builder $query) use ($target) {
                 return $query->where('target', strtolower($target->id));
             });
@@ -137,8 +139,10 @@ class DemoForm extends Component
 
         $data = $data->map(function (SampleData $sampleData) {
             $sampleData->targets = $sampleData->targets->map(function (TargetData $targetData) {
-                $targetData->errors = (new SampleValidator())->validate($targetData->dataPoints,
-                    $this->getValidationParameterForTarget($targetData->id));
+                $targetData->errors = (new SampleValidator())->validate(
+                    $targetData->dataPoints,
+                    $this->getValidationParameterForTarget($targetData->id)
+                );
 
                 return $targetData;
             });
@@ -178,8 +182,10 @@ class DemoForm extends Component
                         'id' => $targetData->id,
                         'cq' => $targetData->dataPoints->averageCq(),
                         'quantification' => $this->targets[$target]['slope'] && $this->targets[$target]['intercept'] && $qualification === QualitativeResult::POSITIVE()
-                            ? $targetData->dataPoints->quantify((float) $this->targets[$target]['slope'],
-                                (float) $this->targets[$target]['intercept'])
+                            ? $targetData->dataPoints->quantify(
+                                (float) $this->targets[$target]['slope'],
+                                (float) $this->targets[$target]['intercept']
+                            )
                             : null,
                         'qualification' => $targetData->dataPoints->qualify($this->targets[$target]['cutoff']),
                         'standardDeviation' => $targetData->dataPoints->count() > 1 ? $targetData->dataPoints->standardDeviationCq() : null,

@@ -39,6 +39,7 @@
     "mouadziani/laravel-query-inspector": "^1.0",
     "nunomaduro/collision": "^5.0",
     "nunomaduro/larastan": "^0.7.11",
+    "nunomaduro/phpinsights": "^2.0",
     "phpunit/phpunit": "^9.3.3",
     "spatie/laravel-stubs": "^2.1"
   },

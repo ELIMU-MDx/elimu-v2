@@ -33,5 +33,4 @@ final class MeasurementType extends Enum
             'NTC_CONTROL' => 'ntc control',
         ];
     }
-
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use Illuminate\Foundation\Http\Kernel;
@@ -22,7 +24,6 @@ class HttpKernel extends Kernel
         \Support\Middlewares\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
-
     /**
      * The application's route middleware groups.
      *
@@ -44,7 +45,6 @@ class HttpKernel extends Kernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
-
     /**
      * The application's route middleware.
      *

@@ -32,7 +32,7 @@ final class ListResults extends Component
     /** @var string */
     public $resultFilter = 'all';
 
-    /** @var string[] */
+    /** @var array<string> */
     protected $rules = [
         'assay' => 'required|boolean',
     ];

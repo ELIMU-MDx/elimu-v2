@@ -8,12 +8,12 @@ use Illuminate\Support\ServiceProvider;
 
 final class ElimuServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $this->configureRoles();
     }
 
-    private function configureRoles()
+    private function configureRoles(): void
     {
     }
 }

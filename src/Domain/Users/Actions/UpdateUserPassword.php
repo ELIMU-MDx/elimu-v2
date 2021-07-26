@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Domain\Users\Actions;
 
 use Illuminate\Support\Facades\Hash;
@@ -9,25 +11,22 @@ use Laravel\Fortify\Contracts\UpdatesUserPasswords;
 class UpdateUserPassword implements UpdatesUserPasswords
 {
     use PasswordValidationRules;
-
     /**
      * Validate and update the user's password.
      *
-     * @param  mixed  $user
      * @param  array  $input
-     * @return void
      */
-    public function update($user, array $input)
+    public function update(mixed $user, array $input): void
     {
         Validator::make($input, [
             'current_password' => ['required', 'string'],
             'password' => $this->passwordRules(),
-        ])->after(function ($validator) use ($user, $input) {
-            if (! isset($input['current_password']) || ! Hash::check($input['current_password'], $user->password)) {
-                $validator->errors()->add('current_password', __('The provided password does not match your current password.'));
+        ])->after(function ($validator) use ($user, $input): void {
+            if (!isset($input['current_password']) || !Hash::check($input['current_password'], $user->password)) {
+                $validator->errors()->add('current_password',
+                    __('The provided password does not match your current password.'));
             }
         })->validateWithBag('updatePassword');
-
         $user->forceFill([
             'password' => Hash::make($input['password']),
         ])->save();

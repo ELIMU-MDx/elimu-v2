@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Domain\Users\Actions;
 
 use Laravel\Fortify\Rules\Password;
@@ -11,8 +13,8 @@ trait PasswordValidationRules
      *
      * @return array
      */
-    protected function passwordRules()
+    protected function passwordRules(): array
     {
-        return ['required', 'string', new Password, 'confirmed'];
+        return ['required', 'string', new Password(), 'confirmed'];
     }
 }

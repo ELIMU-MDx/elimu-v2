@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use Illuminate\Foundation\Exceptions\Handler;
@@ -13,9 +15,8 @@ class ExceptionHandler extends Handler
      * @var array
      */
     protected $dontReport = [
-        //
-    ];
 
+    ];
     /**
      * A list of the inputs that are never flashed for validation exceptions.
      *
@@ -26,15 +27,12 @@ class ExceptionHandler extends Handler
         'password',
         'password_confirmation',
     ];
-
     /**
      * Register the exception handling callbacks for the application.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
+        $this->reportable(function (Throwable $e): void {
             if (app()->bound('honeybadger') && $this->shouldReport($e)) {
                 app('honeybadger')->notify($e, app('request'));
             }

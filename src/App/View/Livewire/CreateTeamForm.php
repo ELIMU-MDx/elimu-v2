@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\View\Livewire;
 
 use Illuminate\Support\Facades\Auth;
@@ -19,30 +21,24 @@ class CreateTeamForm extends Component
 
     /**
      * Create a new team.
-     *
-     * @return void
      */
-    public function createTeam()
+    public function createTeam(): void
     {
         $this->resetErrorBag();
     }
 
     /**
      * Get the current user of the application.
-     *
-     * @return mixed
      */
-    public function getUserProperty()
+    public function getUserProperty(): mixed
     {
         return Auth::user();
     }
 
     /**
      * Render the component.
-     *
-     * @return \Illuminate\View\View
      */
-    public function render()
+    public function render(): \Illuminate\View\View
     {
         return view('teams.create-team-form');
     }

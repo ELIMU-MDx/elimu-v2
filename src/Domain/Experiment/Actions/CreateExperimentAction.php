@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Domain\Experiment\Actions;
 
-use Domain\Assay\Models\Assay;
+use Domain\Experiment\DataTransferObjects\CreateExperimentParameter;
 use Domain\Experiment\Models\Experiment;
 use Domain\Experiment\Models\Measurement;
 use Domain\Experiment\Models\Sample;
 use Domain\Rdml\Converters\RdmlConverter;
-use Domain\Rdml\RdmlReader;
+use Domain\Rdml\Services\RdmlReader;
 use Illuminate\Database\Connection;
-use Illuminate\Http\UploadedFile;
 
 final class CreateExperimentAction
 {
@@ -26,28 +25,26 @@ final class CreateExperimentAction
      * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
      * @throws \JsonException
      */
-    public function execute(UploadedFile $rdmlFile, Assay $assay, int $studyId, int $creatorId): Experiment
+    public function execute(CreateExperimentParameter $parameter): Experiment
     {
-        return $this->connection->transaction(function () use ($rdmlFile, $creatorId, $assay, $studyId) {
-            $experiment = Experiment::create([
-                'study_id' => $studyId,
-                'assay_id' => $assay->id,
-                'user_id' => $creatorId,
-                'name' => $rdmlFile->getClientOriginalName(),
-                'rdml_path' => $rdmlFile->storePublicly('rdmls'),
-            ]);
-            $measurements = (new RdmlConverter($this->rdmlReader->read($rdmlFile)))->toMeasurements();
+        return $this->connection->transaction(function () use ($parameter) {
+            $rdml = $this->rdmlReader->read($parameter->rdml);
+            $experiment = $parameter->getExperiment();
+            $experiment->experiment_date = $rdml->updatedAt;
+            $experiment->save();
+
+            $measurements = (new RdmlConverter($rdml))->toMeasurements();
 
             $sampleLookupTable = Sample::whereIn('identifier', $measurements->pluck('sample.identifier'))
-                ->where('study_id', $studyId)
+                ->where('study_id', $parameter->studyId)
                 ->pluck('id', 'identifier');
 
             $sampleLookupTable = $measurements
                 ->filter(function (Measurement $measurement) use ($sampleLookupTable) {
                     return !$sampleLookupTable->has($measurement->sample->identifier);
                 })
-                ->mapWithKeys(function (Measurement $measurement) use ($experiment, $studyId) {
-                    $measurement->sample->study_id = $studyId;
+                ->mapWithKeys(function (Measurement $measurement) use ($parameter, $experiment) {
+                    $measurement->sample->study_id = $parameter->studyId;
                     $measurement->created_at = $experiment->created_at;
                     $measurement->updated_at = $experiment->updated_at;
 
@@ -77,10 +74,10 @@ final class CreateExperimentAction
                 ->save();
 
             $this->recalculateResultsAction->execute(
-                Measurement::whereHas('experiment', function ($join) use ($assay, $studyId) {
-                    $join
-                        ->where('study_id', $studyId)
-                        ->where('assay_id', $assay->id);
+                Measurement::whereHas('experiment', function ($join) use ($parameter) {
+                    return $join
+                        ->where('study_id', $parameter->studyId)
+                        ->where('assay_id', $parameter->assayId);
                 })
                     ->whereIn('sample_id', $measurements->pluck('sample_id'))
                     ->whereIn('target', $measurements->pluck('target'))

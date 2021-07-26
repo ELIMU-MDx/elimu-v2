@@ -24,7 +24,7 @@ final class CreateStudyTest extends TestCase
                 'name' => 'New Study',
             ])
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/experiments');
+            ->assertRedirect('/current-study/settings');
 
         $this->assertDatabaseHas(
             'studies',

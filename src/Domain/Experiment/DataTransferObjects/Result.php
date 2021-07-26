@@ -21,6 +21,6 @@ final class Result extends DataTransferObject
 
     public int $replications;
 
-    /** @var \Illuminate\Support\Collection<\Domain\Evaluation\ResultValidationErrors\ResultValidationError> */
+    /** @var \Illuminate\Support\Collection<\Domain\Results\ResultValidationErrors\ResultValidationError> */
     public Collection $errors;
 }

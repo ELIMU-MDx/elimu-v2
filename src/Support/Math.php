@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Support;
 
-use Domain\Evaluation\Enums\QualitativeResult;
+use Domain\Results\Enums\QualitativeResult;
 
 final class Math
 {

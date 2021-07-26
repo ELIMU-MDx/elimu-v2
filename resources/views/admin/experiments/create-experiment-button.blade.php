@@ -50,15 +50,9 @@
                         <x-jet-input-error for="assayFile"/>
                     </div>
                     <div>
-                        <x-jet-label for="meta">Meta Data</x-jet-label>
-                        <x-file-button name="meta"
-                                       wire:model.defer="form.meta"
-                                       accept=".xlsx"
-                                       class="mt-1"
-                                       :file="$form['meta']">
-                            Import meta data
-                        </x-file-button>
-                        <x-jet-input-error for="form.meta"/>
+                        <x-jet-label for="meta">Link to ELN</x-jet-label>
+                        <x-jet-input type="text" name="eln" wire:model.defer="form.eln" class="mt-1"/>
+                        <x-jet-input-error for="form.eln"/>
                     </div>
                 </div>
             </x-slot>

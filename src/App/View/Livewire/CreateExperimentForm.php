@@ -7,6 +7,7 @@ namespace App\View\Livewire;
 use Domain\Assay\Actions\CreateAssayFromFileAction;
 use Domain\Assay\Models\Assay;
 use Domain\Experiment\Actions\CreateExperimentAction;
+use Domain\Experiment\DataTransferObjects\CreateExperimentParameter;
 use Domain\Users\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -28,7 +29,7 @@ final class CreateExperimentForm extends Component
     /** @var bool */
     public $openModal = false;
 
-    /** @var \Illuminate\Database\Eloquent\Collection<Assay> */
+    /** @var array */
     public $assays;
 
     /** @var \Livewire\TemporaryUploadedFile */
@@ -38,13 +39,14 @@ final class CreateExperimentForm extends Component
     public $form = [
         'rdml' => null,
         'assay_id' => null,
-        'meta' => null,
+        'eln' => null,
     ];
 
     public function mount()
     {
         $this->assays = Assay::where('study_id', $this->user->study_id)
-            ->pluck('name', 'id');
+            ->pluck('name', 'id')
+            ->toArray();
     }
 
     public function getUserProperty(): User
@@ -72,9 +74,11 @@ final class CreateExperimentForm extends Component
                     })->toArray(),
             ]);
         }
-        $this->assays = $this->assays
+        $this->assayFile = null;
+        $this->assays = collect($this->assays)
             ->put($newAssay->id, $newAssay->name)
-            ->sort();
+            ->sort()
+            ->toArray();
         $this->form['assay_id'] = $newAssay->id;
     }
 
@@ -87,25 +91,22 @@ final class CreateExperimentForm extends Component
         $this->validate([
             'form.rdml' => 'required|file|mimetypes:application/zip',
             'form.assay_id' => [
-                'required_without:form.assay', Rule::exists('assays', 'id')->where('study_id', $this->user->study_id),
+                'required', Rule::exists('assays', 'id')->where('study_id', $this->user->study_id),
             ],
-            'form.assay' => ['nullable', 'file', 'mimes:xlsx'],
-            'form.meta' => ['nullable', 'file', 'mimes:xlsx'],
-        ], [
-            'form.assay.required_without' => 'You either need to choose an assay or import a new one',
-        ], [
+            'form.eln' => ['nullable', 'string', 'max:255'],
+        ], [], [
             'form.assay_id' => 'assay',
-            'form.assay' => 'assay',
-            'form.meta' => 'meta',
+            'form.eln' => 'ELN',
             'form.rdml' => 'rdml file',
         ]);
 
-        $createExperimentAction->execute(
-            $this->form['rdml'],
-            Assay::find($this->form['assay_id']),
-            $this->user->study_id,
-            $this->user->id
-        );
+        $createExperimentAction->execute(new CreateExperimentParameter(
+            rdml: $this->form['rdml'],
+            assayId: $this->form['assay_id'],
+            studyId: $this->user->study_id,
+            creatorId: $this->user->id,
+            eln: $this->form['eln']
+        ));
         $this->reset('form', 'openModal');
         $this->resetErrorBag();
 

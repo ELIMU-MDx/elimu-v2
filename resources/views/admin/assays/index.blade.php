@@ -6,12 +6,12 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="flex justify-end mb-8">
+        <div class="flex justify-end">
             <div>
                 <x-primary-button as="a" href="{{ url('/assays/create') }}">Create assay</x-primary-button>
             </div>
         </div>
-        <div class="bg-white shadow overflow-hidden sm:rounded-md">
+        <div class="bg-white shadow overflow-hidden sm:rounded-md mt-8">
             <ul class="divide-y divide-gray-200">
                 @foreach($assays as $assay)
                     <li>

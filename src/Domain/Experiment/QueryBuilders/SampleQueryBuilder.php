@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Domain\Experiment\QueryBuilders;
 
 use Auth;
-use Domain\Evaluation\Enums\QualitativeResult;
+use Domain\Rdml\Enums\MeasurementType;
+use Domain\Results\Enums\QualitativeResult;
 use Illuminate\Database\Eloquent\Builder;
 use Str;
 
@@ -13,8 +14,9 @@ final class SampleQueryBuilder extends Builder
 {
     public function countAll(int $assayId, int $studyId): SampleQueryBuilder
     {
-        return $this->whereHas('results', function (Builder $query) use ($assayId) {
-            return $query->where('assay_id', $assayId);
+        return $this->whereHas('results.measurements', function (Builder $query) use ($assayId) {
+            return $query->where('assay_id', $assayId)
+                ->where('type', MeasurementType::SAMPLE());
         })->where('study_id', $studyId);
     }
 
@@ -27,10 +29,16 @@ final class SampleQueryBuilder extends Builder
                         return $query->where('assay_id', $assayId);
                     },
                 'results.resultErrors',
-                'results.measurements',
+                'results.measurements' => function ($query) {
+                    return $query->orderBy('target')
+                        ->where('type', MeasurementType::SAMPLE());
+                },
             ])
             ->where('study_id', Auth::user()->study_id)
-            ->whereHas('results')
+            ->whereHas('results.measurements', function ($query) {
+                return $query->orderBy('target')
+                    ->where('type', MeasurementType::SAMPLE());
+            })
             ->orderBy('identifier');
     }
 
@@ -40,8 +48,11 @@ final class SampleQueryBuilder extends Builder
             return $this;
         }
 
-        return $this->where('identifier', 'LIKE',
-            (string) Str::of($search)->replace(['%', '_'], ['\%', '\_'])->append('%'));
+        return $this->where(
+            'identifier',
+            'LIKE',
+            (string) Str::of($search)->replace(['%', '_'], ['\%', '\_'])->append('%')
+        );
     }
 
     public function filterByResult(string $filter): SampleQueryBuilder

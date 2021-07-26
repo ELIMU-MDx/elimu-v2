@@ -5,15 +5,15 @@ namespace App\View\Livewire;
 use Domain\Assay\Models\Assay;
 use Domain\Evaluation\Collections\SampleDataCollection;
 use Domain\Evaluation\DataTransferObjects\SampleData;
-use Domain\Evaluation\DataTransferObjects\SampleValidationParameter;
 use Domain\Evaluation\DataTransferObjects\TargetData;
-use Domain\Evaluation\Enums\QualitativeResult;
 use Domain\Evaluation\Validators\SampleValidator;
 use Domain\Rdml\Converters\RdmlConverter;
 use Domain\Rdml\DataTransferObjects\Rdml;
 use Domain\Rdml\DataTransferObjects\Target;
-use Domain\Rdml\RdmlFileReader;
-use Domain\Rdml\RdmlParser;
+use Domain\Rdml\Services\RdmlFileReader;
+use Domain\Rdml\Services\RdmlParser;
+use Domain\Results\DataTransferObjects\ResultValidationParameter;
+use Domain\Results\Enums\QualitativeResult;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
@@ -149,11 +149,11 @@ class DemoForm extends Component
         $this->result = $this->evaluateResults($data);
     }
 
-    private function getValidationParameterForTarget(string $target): SampleValidationParameter
+    private function getValidationParameterForTarget(string $target): ResultValidationParameter
     {
         $target = strtolower($target);
 
-        return new SampleValidationParameter([
+        return new ResultValidationParameter([
             'requiredRepetitions' => (int) $this->targets[$target]['repetitions'] ?: 1,
             'cutoff' => (float) $this->targets[$target]['cutoff'],
             'standardDeviationCutoff' => (float) $this->targets[$target]['cutoff_stddev'],

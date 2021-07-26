@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use Domain\Experiment\Models\Measurement;
+use Domain\Rdml\Enums\MeasurementType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,6 +26,12 @@ final class MeasurementFactory extends Factory
             'target' => $this->faker->word,
             'position' => strtoupper($this->faker->randomLetter).$this->faker->randomNumber(2),
             'excluded' => $this->faker->boolean,
+            'type' => MeasurementType::SAMPLE(),
         ];
+    }
+
+    public function included(): MeasurementFactory
+    {
+        return $this->state(['excluded' => false]);
     }
 }

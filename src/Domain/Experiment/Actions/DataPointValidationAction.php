@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Domain\Experiment\Actions;
 
-use Domain\Evaluation\Collections\DataPointCollection;
-use Domain\Evaluation\DataTransferObjects\SampleValidationParameter;
-use Domain\Evaluation\ResultValidationErrors\ResultValidationError;
-use Domain\Evaluation\ResultValidationErrors\ResultValidationErrorFactory;
+use Domain\Rdml\Collections\MeasurementCollection;
+use Domain\Results\DataTransferObjects\ResultValidationParameter;
+use Domain\Results\ResultValidationErrors\ResultValidationError;
+use Domain\Results\ResultValidationErrors\ResultValidationErrorFactory;
 use Illuminate\Support\Collection;
 
 final class DataPointValidationAction
 {
     /**
-     * @param  \Domain\Evaluation\Collections\DataPointCollection  $dataPoints
-     * @param  \Domain\Evaluation\DataTransferObjects\SampleValidationParameter  $parameter
+     * @param  MeasurementCollection  $dataPoints
+     * @param  \Domain\Results\DataTransferObjects\ResultValidationParameter  $parameter
      * @return \Illuminate\Support\Collection<ResultValidationError>
      */
-    public function execute(DataPointCollection $dataPoints, SampleValidationParameter $parameter): Collection
+    public function execute(MeasurementCollection $dataPoints, ResultValidationParameter $parameter): Collection
     {
         return ResultValidationErrorFactory::all()
             ->filter(function (ResultValidationError $error) use ($parameter, $dataPoints) {

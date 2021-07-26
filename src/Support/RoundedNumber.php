@@ -15,6 +15,11 @@ final class RoundedNumber
         return $this->number;
     }
 
+    public function rounded(): ?float
+    {
+        return $this->number === null ? null : round($this->number, $this->precision);
+    }
+
     public function toString(): string
     {
         if ($this->number === null) {

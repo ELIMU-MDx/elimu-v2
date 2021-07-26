@@ -25,6 +25,7 @@ final class AssayParameterFactory extends Factory
             'target' => $this->faker->word,
             'required_repetitions' => $this->faker->numberBetween(1, 4),
             'cutoff' => $this->faker->randomFloat(2, 2, 40),
+            'standard_deviation_cutoff' => $this->faker->randomFloat(2, 2, 40),
             'slope' => $quantify ? null : $this->faker->randomFloat(2, -1, 0),
             'intercept' => $quantify ? null : $this->faker->randomFloat(2, 2, 20),
         ];

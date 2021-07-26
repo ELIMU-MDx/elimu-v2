@@ -1,6 +1,9 @@
 <?php
 
-function stddev(array $values)
+function is_url(string $string): bool
 {
-
+    return Validator::make(
+        ['url' => $string],
+        ['url' => 'required|url']
+    )->passes();
 }

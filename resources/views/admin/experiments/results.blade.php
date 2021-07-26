@@ -1,0 +1,13 @@
+<x-app-layout>
+    <x-slot name="header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <h1 class="text-2xl font-semibold text-gray-900">Results
+                <span class="text-gray-400 text-sm">for {{$experiment->name}}</span>
+            </h1>
+        </div>
+    </x-slot>
+
+    <div class="py-12">
+        <livewire:list-results :experiment="$experiment"/>
+    </div>
+</x-app-layout>

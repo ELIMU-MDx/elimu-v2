@@ -33,8 +33,7 @@ final class NewUserAcceptInvitationTest extends TestCase
         $invitation = InvitationFactory::new()->create();
 
         $password = $this->faker->password;
-        $this->withoutExceptionHandling()
-            ->disableSignatureValidation()
+        $this->disableSignatureValidation()
             ->post(route('accept-invitation', $invitation), [
                 'name' => 'John Doe',
                 'password' => $password,

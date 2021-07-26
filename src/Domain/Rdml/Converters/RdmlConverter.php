@@ -51,37 +51,13 @@ final class RdmlConverter implements Arrayable
                     'position' => $measurement->position,
                     'excluded' => $measurement->excluded,
                     'target' => $measurement->target,
-                ]);
-            });
-    }
-
-    public function toSampleData(): SampleDataCollection
-    {
-        return SampleDataCollection::make($this->rdml->measurements)
-            ->groupBy(['sample', 'target'])
-            ->map(function (Collection $targets, string $sampleId) {
-                return new SampleData([
-                    'id' => $sampleId,
-                    'targets' => TargetDataCollection::make($targets)
-                        ->map(function (Collection $measurements, string $target) {
-                            return new TargetData([
-                                'id' => $target,
-                                'dataPoints' => DataPointCollection::make($measurements)
-                                    ->map(function (MeasurementDTO $measurement) {
-                                        return new DataPoint([
-                                            'target' => $measurement->target,
-                                            'cq' => $measurement->cq,
-                                            'excluded' => $measurement->excluded,
-                                        ]);
-                                    }),
-                            ]);
-                        }),
+                    'type' => $measurement->type,
                 ]);
             });
     }
 
     public function toArray(): array
     {
-        return json_decode($this->rdml->measurements->toJson(), true);
+        return json_decode($this->rdml->measurements->toJson(), true, 512, JSON_THROW_ON_ERROR);
     }
 }

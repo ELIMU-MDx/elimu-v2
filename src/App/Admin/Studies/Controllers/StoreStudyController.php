@@ -15,6 +15,6 @@ final class StoreStudyController
     {
         $createStudyAction->execute($request->user(), new CreateStudyParameter($request->validated()));
 
-        return redirect(route('results.index'));
+        return redirect(route('currentStudy.show'));
     }
 }

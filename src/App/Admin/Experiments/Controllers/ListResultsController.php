@@ -10,6 +10,6 @@ final class ListResultsController
 {
     public function __invoke(): View
     {
-        return view('admin.experiments.index');
+        return view('admin.results.index');
     }
 }

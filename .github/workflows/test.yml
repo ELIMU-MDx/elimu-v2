@@ -43,6 +43,7 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
+        DB_HOST: mysql
         DB_CONNECTION: mysql
         DB_DATABASE: elimu_test
         DB_PASSWORD: 12345

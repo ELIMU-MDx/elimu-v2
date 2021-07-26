@@ -19,7 +19,7 @@ final class ResultValidator
     {
         return ResultValidationErrorFactory::all()
             ->filter(function (ResultValidationError $validator) use ($validationParameter, $result) {
-                return $validator->appliesFor($result) && !$validator->validate($result, $validationParameter);
+                return $validator->appliesFor($result) && ! $validator->validate($result, $validationParameter);
             })->map(function (ResultValidationError $validator) {
                 return $validator::IDENTIFIER;
             });

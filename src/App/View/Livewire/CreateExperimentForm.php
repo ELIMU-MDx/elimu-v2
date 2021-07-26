@@ -65,7 +65,7 @@ final class CreateExperimentForm extends Component
                 'assayFile' => collect($exception->failures())
                     ->flatMap(function (Failure $failure, string $key) {
                         return collect($failure->errors())
-                            ->mapWithKeys(function (string $errorMessage, string|int $errorKey) use ($failure, $key) {
+                            ->mapWithKeys(function (string $errorMessage, string | int $errorKey) use ($failure, $key) {
                                 return [
                                     'assayFile.'.$key.$errorKey => sprintf(
                                         'Row %s (%s): %s',

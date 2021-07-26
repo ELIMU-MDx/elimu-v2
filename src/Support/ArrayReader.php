@@ -41,7 +41,7 @@ final class ArrayReader implements IteratorAggregate
     {
         $value = $this->find($key);
 
-        if (!is_string($value)) {
+        if (! is_string($value)) {
             return $default;
         }
 
@@ -63,7 +63,7 @@ final class ArrayReader implements IteratorAggregate
     {
         $value = $this->find($key);
 
-        if (!is_numeric($value)) {
+        if (! is_numeric($value)) {
             return $default;
         }
 
@@ -85,7 +85,7 @@ final class ArrayReader implements IteratorAggregate
     {
         $value = $this->find($key);
 
-        if (!is_numeric($value)) {
+        if (! is_numeric($value)) {
             return $default;
         }
 
@@ -107,7 +107,7 @@ final class ArrayReader implements IteratorAggregate
     {
         $value = $this->find($key);
 
-        if (!$value) {
+        if (! $value) {
             return $default;
         }
 
@@ -118,11 +118,11 @@ final class ArrayReader implements IteratorAggregate
     {
         $value = $this->find($key);
 
-        if (!is_array($value)) {
+        if (! is_array($value)) {
             return new ArrayReader([]);
         }
 
-        if (!isset($value[0])) {
+        if (! isset($value[0])) {
             return new ArrayReader([$value]);
         }
 

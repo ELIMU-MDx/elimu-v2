@@ -21,7 +21,7 @@ final class MeasurementEvaluator
      */
     public function results(Collection $measurements, Collection $parameters): Collection
     {
-        if (!($measurements instanceof MeasurementCollection)) {
+        if (! ($measurements instanceof MeasurementCollection)) {
             $measurements = MeasurementCollection::make($measurements);
         }
 
@@ -37,8 +37,8 @@ final class MeasurementEvaluator
 
                 /** @var ResultCalculationParameter $parameter */
                 $parameter = $parameters->first(function (ResultCalculationParameter $parameter) use ($target) {
-                        return strcasecmp($parameter->target, $target) === 0;
-                    }) ?? throw new BadMethodCallException("No parameter for target {$target} provided");
+                    return strcasecmp($parameter->target, $target) === 0;
+                }) ?? throw new BadMethodCallException("No parameter for target {$target} provided");
 
                 $qualification = $onlyIncludedMeasurements->qualify($parameter->cutoff);
 

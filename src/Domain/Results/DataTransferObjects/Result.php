@@ -12,7 +12,7 @@ use Support\RoundedNumber;
 
 final class Result extends DataTransferObject
 {
-    public string|int $sample;
+    public string | int $sample;
 
     public string $target;
 

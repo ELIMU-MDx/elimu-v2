@@ -15,8 +15,8 @@ final class RoleFactory
         self::initialize();
 
         return self::$roles->first(function (Role $role) use ($identifier) {
-                return $role->identifier() === $identifier;
-            }) ?? throw new RuntimeException("Could not find role for identifier '{$identifier}'");
+            return $role->identifier() === $identifier;
+        }) ?? throw new RuntimeException("Could not find role for identifier '{$identifier}'");
     }
 
     public static function all(): RoleCollection

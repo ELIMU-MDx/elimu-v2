@@ -70,7 +70,7 @@ final class ListResults extends Component
 
     public function getSamplesProperty(): LengthAwarePaginator
     {
-        if (!$this->currentAssayId) {
+        if (! $this->currentAssayId) {
             return new LengthAwarePaginator([], 0, 15);
         }
 
@@ -82,7 +82,7 @@ final class ListResults extends Component
 
     public function getTotalSamplesProperty(): int
     {
-        if (!$this->currentAssayId) {
+        if (! $this->currentAssayId) {
             return 0;
         }
 

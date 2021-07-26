@@ -34,7 +34,7 @@ final class StudyForm extends Component
     {
         $this->validate();
 
-        if (!$this->study->exists) {
+        if (! $this->study->exists) {
             $createStudyAction->execute(Auth::getUser(), new CreateStudyParameter(
                 identifier: $this->study->identifier,
                 name: $this->study->name

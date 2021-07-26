@@ -44,7 +44,7 @@ final class SampleQueryBuilder extends Builder
 
     public function searchBySampleIdentifier(string $search): SampleQueryBuilder
     {
-        if (!trim($search)) {
+        if (! trim($search)) {
             return $this;
         }
 

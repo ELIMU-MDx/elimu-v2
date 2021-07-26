@@ -31,9 +31,9 @@ final class ControlValidationError implements ResultValidationError
         return match ($validationParameter) {
             'null' => $result->averageCQ->raw() === null,
             'cutoff' => Math::qualifyCq(
-                    $result->averageCQ->raw(),
-                    $parameter->cutoff
-                ) === QualitativeResult::POSITIVE(),
+                $result->averageCQ->raw(),
+                $parameter->cutoff
+            ) === QualitativeResult::POSITIVE(),
             default => $result->averageCQ->raw() <= $validationParameter,
         };
     }
@@ -50,7 +50,7 @@ final class ControlValidationError implements ResultValidationError
     private function getValidationParameter(
         MeasurementType $type,
         ResultValidationParameter $parameter
-    ): string|float|null {
+    ): string | float | null {
         return match ($type) {
             MeasurementType::NTC_CONTROL() => $parameter->ntcControl,
             MeasurementType::POSTIVE_CONTROL() => $parameter->positiveControl,

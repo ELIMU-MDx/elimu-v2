@@ -13,7 +13,7 @@ final class EnsureHasStudy implements Middleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (!User::isMemberOfAStudy($request->user()->id)) {
+        if (! User::isMemberOfAStudy($request->user()->id)) {
             return redirect()->route('studies.create-first');
         }
 
@@ -24,7 +24,7 @@ final class EnsureHasStudy implements Middleware
 
     protected function ensureOneOfTheTeamsIsCurrent(User $user): void
     {
-        if (!is_null($user->study_id)) {
+        if (! is_null($user->study_id)) {
             return;
         }
 

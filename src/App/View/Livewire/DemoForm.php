@@ -89,7 +89,7 @@ class DemoForm extends Component
         /** @var Assay $assay */
         $assay = $this->assays->firstWhere('id', $this->selectedAssay);
 
-        if (!$assay) {
+        if (! $assay) {
             foreach ($this->targets as $target => $data) {
                 $this->targets[$target]['cutoff'] = '';
                 $this->targets[$target]['cutoff_stddev'] = '';
@@ -103,7 +103,7 @@ class DemoForm extends Component
         }
 
         foreach ($assay->parameters as $parameter) {
-            if (!isset($this->targets[$parameter->target])) {
+            if (! isset($this->targets[$parameter->target])) {
                 continue;
             }
             $this->targets[$parameter->target]['cutoff'] = $parameter->cutoff;

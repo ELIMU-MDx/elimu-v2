@@ -14,7 +14,7 @@ final class AcceptInvitationController
     {
         Auth::logout();
 
-        if (!$invitation->receiver) {
+        if (! $invitation->receiver) {
             return view('studies.invitation-registration-form');
         }
 

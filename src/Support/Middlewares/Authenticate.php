@@ -13,7 +13,7 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(\Illuminate\Http\Request $request): ?string
     {
-        if (!$request->expectsJson()) {
+        if (! $request->expectsJson()) {
             return route('login');
         }
     }

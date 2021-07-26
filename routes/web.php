@@ -23,8 +23,10 @@ use Support\Middlewares\EnsureHasStudy;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/invitation/{invitation}/accepts',
-    AcceptInvitationController::class)->middleware('signed')->name('accept-invitation');
+Route::get(
+    '/invitation/{invitation}/accepts',
+    AcceptInvitationController::class
+)->middleware('signed')->name('accept-invitation');
 Route::post('/invitation/{invitation}/accepts', RegisterWithInvitationController::class)->middleware('signed');
 Route::middleware(['auth:sanctum', 'verified'])->group(function (): void {
     Route::get('studies/create-first', CreateFirstStudyController::class)->name('studies.create-first');

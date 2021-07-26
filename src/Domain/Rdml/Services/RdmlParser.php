@@ -29,7 +29,7 @@ final class RdmlParser
         // TODO: refactor to collections
         foreach ($data->findList('sample') as $sample) {
             $sampleReader = new ArrayReader($sample);
-            if (!in_array($sampleReader->findString('type'), ['pos', 'ntc'], true)) {
+            if (! in_array($sampleReader->findString('type'), ['pos', 'ntc'], true)) {
                 continue;
             }
 

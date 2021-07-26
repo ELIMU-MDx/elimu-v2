@@ -16,11 +16,11 @@ final class ResultValidationParameter extends DataTransferObject
 
     public float $cutoff;
 
-    public string|float|null $positiveControl;
+    public string | float | null $positiveControl;
 
-    public string|float|null $negativeControl;
+    public string | float | null $negativeControl;
 
-    public string|float|null $ntcControl;
+    public string | float | null $ntcControl;
 
     public static function fromModel(Assay $assay, AssayParameter $parameter): ResultValidationParameter
     {

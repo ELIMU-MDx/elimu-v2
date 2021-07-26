@@ -19,7 +19,7 @@ final class DataPointValidationAction
     {
         return ResultValidationErrorFactory::all()
             ->filter(function (ResultValidationError $error) use ($parameter, $dataPoints) {
-                return !$error->validate($dataPoints, $parameter);
+                return ! $error->validate($dataPoints, $parameter);
             });
     }
 }

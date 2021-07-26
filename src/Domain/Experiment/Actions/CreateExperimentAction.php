@@ -41,7 +41,7 @@ final class CreateExperimentAction
 
             $sampleLookupTable = $measurements
                 ->filter(function (Measurement $measurement) use ($sampleLookupTable) {
-                    return !$sampleLookupTable->has($measurement->sample->identifier);
+                    return ! $sampleLookupTable->has($measurement->sample->identifier);
                 })
                 ->mapWithKeys(function (Measurement $measurement) use ($parameter, $experiment) {
                     $measurement->sample->study_id = $parameter->studyId;

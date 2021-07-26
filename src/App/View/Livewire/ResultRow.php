@@ -34,7 +34,7 @@ final class ResultRow extends Component
             return;
         }
 
-        $measurement->excluded = !$measurement->excluded;
+        $measurement->excluded = ! $measurement->excluded;
         $measurement->save();
 
         $measurements = $this->sample->results

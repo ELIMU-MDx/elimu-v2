@@ -73,7 +73,7 @@ final class CreateAssayForm extends Component
     {
         $this->validateOnly('targets');
 
-        if (!trim($this->targets)) {
+        if (! trim($this->targets)) {
             $this->parameters = new Collection();
 
             return;

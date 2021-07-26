@@ -6,7 +6,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-   
+
 
 jobs:
   phpinsights:
@@ -25,10 +25,10 @@ jobs:
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Fix style
-      run: php artisan insights --fix
+      run: php artisan insights -q --fix
     - name: Commit changes
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
           commit_message: Fix styling
     - name: Fix style
-      run: php artisan insights --min-quality=90 --min-complexity=90 --min-architecture=90 --min-style=90 -n --ansi --format=github-action
+      run: php artisan insights --min-quality=85 --min-complexity=85 --min-architecture=85 --min-style=85 -n --ansi --format=github-action

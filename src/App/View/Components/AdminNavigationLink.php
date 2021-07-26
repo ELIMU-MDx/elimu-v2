@@ -6,7 +6,7 @@ use Illuminate\View\Component;
 
 class AdminNavigationLink extends Component
 {
-    public function __construct(public string $icon, public bool $active = false, public string $as = 'a',)
+    public function __construct(public string $icon, public bool $active = false, public string $as = 'a')
     {
     }
 

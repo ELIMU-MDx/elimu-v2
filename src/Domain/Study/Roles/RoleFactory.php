@@ -19,6 +19,20 @@ final class RoleFactory
         }) ?? throw new RuntimeException("Could not find role for identifier '{$identifier}'");
     }
 
+    private static function initialize(): void
+    {
+        if (self::$roles) {
+            return;
+        }
+
+        self::$roles = RoleCollection::make([
+            new Owner(),
+            new LabManager(),
+            new Scientist(),
+            new Monitor(),
+        ]);
+    }
+
     public static function all(): RoleCollection
     {
         self::initialize();
@@ -37,19 +51,5 @@ final class RoleFactory
                 'title' => $role->title(),
             ];
         })->toArray();
-    }
-
-    private static function initialize(): void
-    {
-        if (self::$roles) {
-            return;
-        }
-
-        self::$roles = RoleCollection::make([
-            new Owner(),
-            new LabManager(),
-            new Scientist(),
-            new Monitor(),
-        ]);
     }
 }

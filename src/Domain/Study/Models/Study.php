@@ -19,16 +19,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
- * @property-read \Illuminate\Database\Eloquent\Collection|array<Experiment> $experiments
+ * @property-read \Illuminate\Database\Eloquent\Collection|Experiment[] $experiments
  * @property-read int|null $experiments_count
- * @property-read \Illuminate\Database\Eloquent\Collection|array<\Domain\Study\Models\Invitation> $invitations
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Domain\Study\Models\Invitation[] $invitations
  * @property-read int|null $invitations_count
- * @property-read \Illuminate\Database\Eloquent\Collection|array<Sample> $samples
+ * @property-read \Illuminate\Database\Eloquent\Collection|Sample[] $samples
  * @property-read int|null $samples_count
- * @property-read \Illuminate\Database\Eloquent\Collection|array<User> $users
+ * @property-read \Illuminate\Database\Eloquent\Collection|User[] $users
  * @property-read int|null $users_count
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Study newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Study newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Study query()
@@ -37,7 +35,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Study whereIdentifier($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Study whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Study whereUpdatedAt($value)
- *
  * @mixin \Eloquent
  */
 final class Study extends Model

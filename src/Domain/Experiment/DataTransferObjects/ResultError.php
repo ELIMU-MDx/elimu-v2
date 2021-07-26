@@ -8,4 +8,5 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 final class ResultError extends DataTransferObject
 {
+
 }

@@ -9,7 +9,7 @@ use Domain\Users\Models\User;
 
 final class RemoveTeamMemberAction
 {
-    public function execute(Study $study, int $userId, User $auth): void
+    public function execute(Study $study, int $userId, User $auth)
     {
         // check user has permission to remove a member
         // check user is not last owner

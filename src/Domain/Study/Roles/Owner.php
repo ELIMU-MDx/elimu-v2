@@ -6,6 +6,7 @@ namespace Domain\Study\Roles;
 
 final class Owner implements Role
 {
+
     public function identifier(): string
     {
         return 'owner';

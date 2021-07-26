@@ -18,7 +18,7 @@ class CustomCollection extends Collection
             return ! is_null($value);
         });
 
-        if ($items->isEmpty()) {
+        if($items->isEmpty()) {
             return 0.0;
         }
 

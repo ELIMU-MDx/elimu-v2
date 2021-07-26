@@ -17,7 +17,7 @@ final class ResultRow extends Component
     /** @var bool */
     public $even;
 
-    public function mount(bool $even, Sample $sample): void
+    public function mount(bool $even, Sample $sample)
     {
         $this->even = $even;
         $this->sample = $sample;
@@ -28,7 +28,7 @@ final class ResultRow extends Component
         return view('admin.results.list-results-row');
     }
 
-    public function toggleExcluded(Measurement $measurement, RecalculateResultsAction $recalculateResultsAction): void
+    public function toggleExcluded(Measurement $measurement, RecalculateResultsAction $recalculateResultsAction)
     {
         if ($measurement->sample_id !== $this->sample->id) {
             return;

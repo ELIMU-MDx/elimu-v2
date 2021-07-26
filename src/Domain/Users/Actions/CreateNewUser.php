@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Domain\Users\Actions;
 
 use Domain\Users\Models\User;
@@ -13,12 +11,14 @@ use Laravel\Jetstream\Jetstream;
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
+
     /**
      * Validate and create a newly registered user.
      *
      * @param  array  $input
+     * @return \Domain\Users\Models\User
      */
-    public function create(array $input): \Domain\Users\Models\User
+    public function create(array $input)
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],

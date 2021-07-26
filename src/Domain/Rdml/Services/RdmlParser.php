@@ -106,7 +106,7 @@ final class RdmlParser
 
     private function getPosition(array $pcrFormat, string $position): string
     {
-        if ($pcrFormat === []) {
+        if (empty($pcrFormat)) {
             return $position;
         }
 

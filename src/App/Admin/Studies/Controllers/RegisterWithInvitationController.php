@@ -6,7 +6,7 @@ namespace App\Admin\Studies\Controllers;
 
 use App\Admin\Studies\Requests\RegisterWithInvitationRequest;
 use Domain\Study\Actions\CreateStudyMemberAction;
-use Domain\Study\DataTransferObjects\StudyMemberParameters;
+use Domain\Study\DataTransferObject\StudyMemberParameters;
 use Domain\Study\Models\Invitation;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Symfony\Component\HttpFoundation\Response;

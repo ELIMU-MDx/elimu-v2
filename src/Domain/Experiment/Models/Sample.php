@@ -20,13 +20,12 @@ use Kirschbaum\PowerJoins\PowerJoins;
  * @property string $identifier
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
- * @property-read \Domain\Experiment\Collections\MeasurementCollection|array<\Domain\Experiment\Models\Measurement> $measurements
+ * @property-read \Domain\Experiment\Collections\MeasurementCollection|\Domain\Experiment\Models\Measurement[]
+ *     $measurements
  * @property-read int|null $measurements_count
- * @property-read \Illuminate\Database\Eloquent\Collection|array<Result> $results
+ * @property-read \Illuminate\Database\Eloquent\Collection|Result[] $results
  * @property-read int|null $results_count
  * @property-read Study $study
- *
  * @method static SampleQueryBuilder|Sample countAll(int $assayId, int $studyId)
  * @method static SampleQueryBuilder|Sample filterByResult(string $filter)
  * @method static SampleQueryBuilder|Sample hasNestedUsingJoins($relations, $operator = '>=', $count = 1, $boolean =
@@ -80,7 +79,6 @@ use Kirschbaum\PowerJoins\PowerJoins;
  * @method static SampleQueryBuilder|Sample whereIdentifier($value)
  * @method static SampleQueryBuilder|Sample whereStudyId($value)
  * @method static SampleQueryBuilder|Sample whereUpdatedAt($value)
- *
  * @mixin \Eloquent
  */
 final class Sample extends Model

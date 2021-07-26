@@ -10,11 +10,6 @@ final class RoundedNumber
     {
     }
 
-    public function __toString(): string
-    {
-        return $this->toString();
-    }
-
     public function raw(): ?float
     {
         return $this->number;
@@ -32,5 +27,10 @@ final class RoundedNumber
         }
 
         return number_format(round($this->number, $this->precision), $this->precision);
+    }
+
+    public function __toString(): string
+    {
+        return $this->toString();
     }
 }

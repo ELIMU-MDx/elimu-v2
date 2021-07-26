@@ -18,7 +18,7 @@ final class ExperimentRow extends Component
     /** @var bool */
     public $showDeleteConfirmationModal = false;
 
-    public function mount(Experiment $experiment): void
+    public function mount(Experiment $experiment)
     {
         $this->experiment = $experiment;
     }

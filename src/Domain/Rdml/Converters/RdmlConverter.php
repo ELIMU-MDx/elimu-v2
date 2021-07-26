@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace Domain\Rdml\Converters;
 
+use Domain\Evaluation\Collections\DataPointCollection;
+use Domain\Evaluation\Collections\SampleDataCollection;
+use Domain\Evaluation\Collections\TargetDataCollection;
+use Domain\Evaluation\DataTransferObjects\DataPoint;
+use Domain\Evaluation\DataTransferObjects\SampleData;
+use Domain\Evaluation\DataTransferObjects\TargetData;
 use Domain\Experiment\Models\Measurement;
 use Domain\Experiment\Models\Sample;
 use Domain\Rdml\DataTransferObjects\Measurement as MeasurementDTO;
@@ -20,6 +26,9 @@ final class RdmlConverter implements Arrayable
         $this->rdml = $rdml;
     }
 
+    /**
+     * @return Collection
+     */
     public function toMeasurements(): Collection
     {
         $sampleLookupTable = $this->rdml

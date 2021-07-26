@@ -13,4 +13,5 @@ use Spatie\Enum\Laravel\Enum;
  */
 final class InvitationStatus extends Enum
 {
+
 }

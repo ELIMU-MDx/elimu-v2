@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Domain\Users\Actions;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -14,15 +12,18 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     /**
      * Validate and update the given user's profile information.
      *
+     * @param  mixed  $user
      * @param  array  $input
+     * @return void
      */
-    public function update(mixed $user, array $input): void
+    public function update($user, array $input)
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
+
         if (isset($input['photo'])) {
             $user->updateProfilePhoto($input['photo']);
         }
@@ -41,15 +42,18 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     /**
      * Update the given verified user's profile information.
      *
+     * @param  mixed  $user
      * @param  array  $input
+     * @return void
      */
-    protected function updateVerifiedUser(mixed $user, array $input): void
+    protected function updateVerifiedUser($user, array $input)
     {
         $user->forceFill([
             'name' => $input['name'],
             'email' => $input['email'],
             'email_verified_at' => null,
         ])->save();
+
         $user->sendEmailVerificationNotification();
     }
 }

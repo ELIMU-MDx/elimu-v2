@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\View\Livewire;
 
 use Illuminate\Support\Facades\Auth;
@@ -30,8 +28,11 @@ class DeleteTeamForm extends Component
 
     /**
      * Mount the component.
+     *
+     * @param  mixed  $team
+     * @return void
      */
-    public function mount(mixed $team): void
+    public function mount($team)
     {
         $this->team = $team;
     }
@@ -39,6 +40,8 @@ class DeleteTeamForm extends Component
     /**
      * Delete the team.
      *
+     * @param  \Laravel\Jetstream\Actions\ValidateTeamDeletion  $validator
+     * @param  \Laravel\Jetstream\Contracts\DeletesTeams  $deleter
      * @return void
      */
     public function deleteTeam(ValidateTeamDeletion $validator, DeletesTeams $deleter)
@@ -52,8 +55,10 @@ class DeleteTeamForm extends Component
 
     /**
      * Render the component.
+     *
+     * @return \Illuminate\View\View
      */
-    public function render(): \Illuminate\View\View
+    public function render()
     {
         return view('teams.delete-team-form');
     }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Study\Actions;
 
-use Domain\Study\DataTransferObjects\CreateStudyParameter;
+use Domain\Study\DataTransferObject\CreateStudyParameter;
 use Domain\Study\Models\Study;
 use Domain\Study\Roles\Owner;
 use Domain\Users\Models\User;
@@ -12,6 +12,7 @@ use Illuminate\Database\Connection;
 
 final class CreateStudyAction
 {
+    /** @var \Illuminate\Database\Connection */
     private Connection $connection;
 
     public function __construct(Connection $connection)

@@ -24,16 +24,16 @@ final class SampleQueryBuilder extends Builder
     {
         return $this->with(
             [
-                'results.assay.parameters' => function ($query) use ($assayId) {
-                    return $query->where('assay_id', $assayId);
-                },
+                'results.assay.parameters' =>
+                    function ($query) use ($assayId) {
+                        return $query->where('assay_id', $assayId);
+                    },
                 'results.resultErrors',
                 'results.measurements' => function ($query) {
                     return $query->orderBy('target')
                         ->where('type', MeasurementType::SAMPLE());
                 },
-            ]
-        )
+            ])
             ->where('study_id', Auth::user()->study_id)
             ->whereHas('results.measurements', function ($query) {
                 return $query->orderBy('target')
@@ -64,12 +64,9 @@ final class SampleQueryBuilder extends Builder
             'positive' => $this->whereHas('results', function (Builder $query) {
                 return $query->where('qualification', QualitativeResult::POSITIVE());
             }),
-            'negative' => $this->whereHas(
-                'results',
-                function (Builder $query) {
-                    return $query->where('qualification', QualitativeResult::NEGATIVE());
-                }
-            ),
+            'negative' => $this->whereHas('results', function (Builder $query) {
+                return $query->where('qualification', QualitativeResult::NEGATIVE());
+            }),
             default => $this,
         };
     }

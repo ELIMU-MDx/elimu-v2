@@ -14,7 +14,7 @@ final class ParameterCollection extends Collection
     {
         return $this->first(function (AssayParameter $parameter) use ($target) {
             return strcasecmp($parameter->target, $target) === 0;
-        }, function () use ($target): void {
+        }, function () use ($target) {
             throw new BadMethodCallException('Could not find assay parameter with target '.$target);
         });
     }

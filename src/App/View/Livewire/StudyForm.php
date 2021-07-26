@@ -6,7 +6,7 @@ namespace App\View\Livewire;
 
 use Auth;
 use Domain\Study\Actions\CreateStudyAction;
-use Domain\Study\DataTransferObjects\CreateStudyParameter;
+use Domain\Study\DataTransferObject\CreateStudyParameter;
 use Domain\Study\Models\Study;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -20,7 +20,7 @@ final class StudyForm extends Component
         'study.name' => 'required|string|max:255',
     ];
 
-    public function mount(?Study $study = null): void
+    public function mount(?Study $study = null)
     {
         $this->study = $study ?? new Study();
     }

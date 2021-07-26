@@ -21,11 +21,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property InvitationStatus $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @property-read User $receiver
  * @property-read \Domain\Study\Models\Study $study
  * @property-read User|null $user
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation query()
@@ -37,7 +35,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation whereStudyId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invitation whereUserId($value)
- *
  * @mixin \Eloquent
  */
 final class Invitation extends Model

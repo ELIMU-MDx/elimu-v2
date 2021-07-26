@@ -16,14 +16,14 @@ final class RoleCaster implements CastsAttributes
     }
 
     /**
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param  string  $key
+     * @param  \Domain\Study\Roles\Role  $value
      * @param  array  $attributes
+     * @return string
      */
-    public function set(
-        \Illuminate\Database\Eloquent\Model $model,
-        string $key,
-        \Domain\Study\Roles\Role $value,
-        array $attributes
-    ): string {
+    public function set($model, string $key, $value, array $attributes): string
+    {
         return $value->identifier();
     }
 }

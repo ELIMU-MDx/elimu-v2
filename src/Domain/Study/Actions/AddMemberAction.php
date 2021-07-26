@@ -16,7 +16,7 @@ final class AddMemberAction
     {
     }
 
-    public function execute(string $email, string $role, string $inviterId, string $studyId): void
+    public function execute(string $email, string $role, string $inviterId, string $studyId)
     {
         $invitation = Invitation::create([
             'email' => $email,

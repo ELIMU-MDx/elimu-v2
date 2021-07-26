@@ -38,7 +38,7 @@ final class RecalculateResultsAction
                 'experiment.assay.parameters',
             ])
             ->groupBy('experiment.assay_id')
-            ->each(function (Collection $measurements): void {
+            ->each(function (Collection $measurements) {
                 $results = $this->measurementEvaluator
                     ->results(
                         $measurements->map(function (Measurement $measurement) {
@@ -58,10 +58,8 @@ final class RecalculateResultsAction
                         ->parameters
                         ->mapWithKeys(function (AssayParameter $parameter) use ($assay) {
                             return [
-                                strtolower($parameter->target) => ResultValidationParameter::fromModel(
-                                    $assay,
-                                    $parameter
-                                ),
+                                strtolower($parameter->target) => ResultValidationParameter::fromModel($assay,
+                                    $parameter),
                             ];
                         }),
                     $resultModels
@@ -77,17 +75,14 @@ final class RecalculateResultsAction
                 'assay_id' => $assayId,
                 'target' => $result->target,
                 'cq' => $result->averageCQ->rounded(),
-                'quantification' => $result->quantificationrounded(),
+                'quantification' => $result->quantification?->rounded(),
                 'qualification' => $result->qualification,
                 'standard_deviation' => $result->measurements->standardDeviationCq(),
             ];
         })
-            ->tap(function (BaseCollection $results): void {
-                ResultModel::upsert(
-                    $results->toArray(),
-                    ['sample_id', 'assay_id', 'target'],
-                    ['cq', 'quantification', 'qualification', 'standard_deviation']
-                );
+            ->tap(function (BaseCollection $results) {
+                ResultModel::upsert($results->toArray(), ['sample_id', 'assay_id', 'target'],
+                    ['cq', 'quantification', 'qualification', 'standard_deviation']);
             });
 
         return ResultModel::whereIn('sample_id', $resultsData->pluck('sample_id'))
@@ -120,11 +115,11 @@ final class RecalculateResultsAction
                 'target' => $result->target,
             ])->fill([
                 'cq' => $result->averageCQ->rounded(),
-                'quantification' => $result->quantificationrounded(),
+                'quantification' => $result->quantification?->rounded(),
                 'qualification' => $result->qualification,
                 'standard_deviation' => $result->measurements->standardDeviationCq(),
             ]),
-            static function (ResultModel $result) use ($measurements): void {
+            static function (ResultModel $result) use ($measurements) {
                 $result->save();
                 $result->measurements()->saveMany($measurements);
                 $result->resultErrors()->delete();
@@ -161,9 +156,10 @@ final class RecalculateResultsAction
             ->groupBy(function (Measurement $measurement) {
                 return "{$measurement->sample_id}-{$measurement->target}";
             })
-            ->each(function (Collection $measurements, string $sampleAndTarget) use ($resultModels): void {
+            ->each(function (Collection $measurements, string $sampleAndTarget) use ($resultModels) {
                 Measurement::whereIn('id', $measurements->pluck('id'))
                     ->update(['result_id' => $resultModels->get($sampleAndTarget)->id]);
             });
     }
+
 }

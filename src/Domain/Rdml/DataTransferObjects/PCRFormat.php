@@ -17,4 +17,5 @@ final class PCRFormat extends DataTransferObject implements Arrayable
     public LabelFormat $rowLabel;
 
     public LabelFormat $columnLabel;
+
 }

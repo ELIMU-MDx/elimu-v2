@@ -53,7 +53,7 @@ final class CreateExperimentAction
 
                     ];
                 })
-                ->each(function (Sample $sample): void {
+                ->each(function (Sample $sample) {
                     $sample->save();
                 })
                 ->values()

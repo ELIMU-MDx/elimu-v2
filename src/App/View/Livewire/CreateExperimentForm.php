@@ -42,7 +42,7 @@ final class CreateExperimentForm extends Component
         'eln' => null,
     ];
 
-    public function mount(): void
+    public function mount()
     {
         $this->assays = Assay::where('study_id', $this->user->study_id)
             ->pluck('name', 'id')
@@ -54,7 +54,7 @@ final class CreateExperimentForm extends Component
         return Auth::user();
     }
 
-    public function updatedAssayFile(TemporaryUploadedFile $assayFile): void
+    public function updatedAssayFile(TemporaryUploadedFile $assayFile)
     {
         $this->validate(['assayFile' => ['file', 'mimes:xlsx']]);
 
@@ -67,12 +67,8 @@ final class CreateExperimentForm extends Component
                         return collect($failure->errors())
                             ->mapWithKeys(function (string $errorMessage, string | int $errorKey) use ($failure, $key) {
                                 return [
-                                    'assayFile.'.$key.$errorKey => sprintf(
-                                        'Row %s (%s): %s',
-                                        $failure->row(),
-                                        $failure->attribute(),
-                                        $errorMessage
-                                    ),
+                                    'assayFile.'.$key.$errorKey => sprintf('Row %s (%s): %s', $failure->row(),
+                                        $failure->attribute(), $errorMessage),
                                 ];
                             })->toArray();
                     })->toArray(),

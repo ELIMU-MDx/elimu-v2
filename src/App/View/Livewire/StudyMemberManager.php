@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\View\Livewire;
 
 use Auth;
 use Domain\Study\Actions\AddMemberAction;
+use Domain\Study\Actions\RemoveStudyInvitationAction;
 use Domain\Study\Actions\RemoveTeamMemberAction;
 use Domain\Study\Models\Invitation;
 use Domain\Study\Models\Study;
@@ -87,8 +86,11 @@ class StudyMemberManager extends Component
 
     /**
      * Confirm that the given team member should be removed.
+     *
+     * @param  int  $userId
+     * @return void
      */
-    public function confirmingMemberRemoval(int $userId): void
+    public function confirmingMemberRemoval($userId): void
     {
         $this->confirmingMemberRemoval = true;
 
@@ -105,7 +107,11 @@ class StudyMemberManager extends Component
         $this->study = $this->study->fresh();
     }
 
-    public function cancelTeamInvitation(int $invitationId): void
+    /**
+     * @param  int  $invitationId
+     * @return void
+     */
+    public function cancelTeamInvitation($invitationId): void
     {
         if ($invitationId) {
             Invitation::whereKey($invitationId)->where('study_id', $this->study->id)->delete();

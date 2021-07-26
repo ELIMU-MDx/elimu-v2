@@ -67,8 +67,12 @@ final class CreateExperimentForm extends Component
                         return collect($failure->errors())
                             ->mapWithKeys(function (string $errorMessage, string | int $errorKey) use ($failure, $key) {
                                 return [
-                                    'assayFile.'.$key.$errorKey => sprintf('Row %s (%s): %s', $failure->row(),
-                                        $failure->attribute(), $errorMessage),
+                                    'assayFile.'.$key.$errorKey => sprintf(
+                                        'Row %s (%s): %s',
+                                        $failure->row(),
+                                        $failure->attribute(),
+                                        $errorMessage
+                                    ),
                                 ];
                             })->toArray();
                     })->toArray(),

@@ -16,7 +16,6 @@ use Illuminate\Support\Collection;
  */
 final class TargetCollection extends Collection
 {
-
     public function getById(string $id): Target
     {
         $target = $this->first(function (Target $target) use ($id) {

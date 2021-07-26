@@ -13,7 +13,7 @@ class ExceptionHandler extends Handler
      * @var array
      */
     protected $dontReport = [
-        //
+
     ];
 
     /**

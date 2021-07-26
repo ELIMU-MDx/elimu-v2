@@ -20,8 +20,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property float|null $intercept
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static ParameterCollection|static[] all($columns = ['*'])
- * @method static ParameterCollection|static[] get($columns = ['*'])
+ *
+ * @method static ParameterCollection|array<static > all($columns = ['*'])
+ * @method static ParameterCollection|array<static > get($columns = ['*'])
  * @method static \Illuminate\Database\Eloquent\Builder|AssayParameter newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AssayParameter newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AssayParameter query()
@@ -35,6 +36,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|AssayParameter whereStandardDeviationCutoff($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AssayParameter whereTarget($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AssayParameter whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 final class AssayParameter extends Model
@@ -48,5 +50,4 @@ final class AssayParameter extends Model
     {
         return ParameterCollection::make($models);
     }
-
 }

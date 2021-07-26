@@ -58,8 +58,10 @@ final class RecalculateResultsAction
                         ->parameters
                         ->mapWithKeys(function (AssayParameter $parameter) use ($assay) {
                             return [
-                                strtolower($parameter->target) => ResultValidationParameter::fromModel($assay,
-                                    $parameter),
+                                strtolower($parameter->target) => ResultValidationParameter::fromModel(
+                                    $assay,
+                                    $parameter
+                                ),
                             ];
                         }),
                     $resultModels
@@ -75,14 +77,17 @@ final class RecalculateResultsAction
                 'assay_id' => $assayId,
                 'target' => $result->target,
                 'cq' => $result->averageCQ->rounded(),
-                'quantification' => $result->quantification?->rounded(),
+                'quantification' => $result->quantificationrounded(),
                 'qualification' => $result->qualification,
                 'standard_deviation' => $result->measurements->standardDeviationCq(),
             ];
         })
             ->tap(function (BaseCollection $results) {
-                ResultModel::upsert($results->toArray(), ['sample_id', 'assay_id', 'target'],
-                    ['cq', 'quantification', 'qualification', 'standard_deviation']);
+                ResultModel::upsert(
+                    $results->toArray(),
+                    ['sample_id', 'assay_id', 'target'],
+                    ['cq', 'quantification', 'qualification', 'standard_deviation']
+                );
             });
 
         return ResultModel::whereIn('sample_id', $resultsData->pluck('sample_id'))
@@ -115,7 +120,7 @@ final class RecalculateResultsAction
                 'target' => $result->target,
             ])->fill([
                 'cq' => $result->averageCQ->rounded(),
-                'quantification' => $result->quantification?->rounded(),
+                'quantification' => $result->quantificationrounded(),
                 'qualification' => $result->qualification,
                 'standard_deviation' => $result->measurements->standardDeviationCq(),
             ]),
@@ -161,5 +166,4 @@ final class RecalculateResultsAction
                     ->update(['result_id' => $resultModels->get($sampleAndTarget)->id]);
             });
     }
-
 }

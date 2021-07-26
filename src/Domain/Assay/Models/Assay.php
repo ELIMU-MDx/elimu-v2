@@ -22,14 +22,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int|null $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @property-read User|null $creator
- * @property-read \Illuminate\Database\Eloquent\Collection|Experiment[] $experiments
+ * @property-read \Illuminate\Database\Eloquent\Collection|array<Experiment> $experiments
  * @property-read int|null $experiments_count
- * @property-read \Domain\Assay\Collections\ParameterCollection|\Domain\Assay\Models\AssayParameter[] $parameters
+ * @property-read \Domain\Assay\Collections\ParameterCollection|array<\Domain\Assay\Models\AssayParameter> $parameters
  * @property-read int|null $parameters_count
- * @property-read \Illuminate\Database\Eloquent\Collection|Result[] $results
+ * @property-read \Illuminate\Database\Eloquent\Collection|array<Result> $results
  * @property-read int|null $results_count
  * @property-read Study|null $study
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Assay newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Assay newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Assay query()
@@ -40,6 +42,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Assay whereStudyId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Assay whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Assay whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 final class Assay extends Model

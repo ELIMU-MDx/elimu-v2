@@ -17,7 +17,8 @@ final class ListAssaysController
             function (Builder $builder) use ($request) {
                 return $builder->where('study_id', $request->user()->study_id)
                     ->orWhereNull('study_id');
-            })
+            }
+        )
             ->orderBy('name')
             ->with(['creator:id,name', 'study:id,name'])
             ->get()

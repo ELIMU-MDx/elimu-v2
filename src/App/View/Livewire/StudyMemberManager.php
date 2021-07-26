@@ -4,7 +4,6 @@ namespace App\View\Livewire;
 
 use Auth;
 use Domain\Study\Actions\AddMemberAction;
-use Domain\Study\Actions\RemoveStudyInvitationAction;
 use Domain\Study\Actions\RemoveTeamMemberAction;
 use Domain\Study\Models\Invitation;
 use Domain\Study\Models\Study;
@@ -88,6 +87,7 @@ class StudyMemberManager extends Component
      * Confirm that the given team member should be removed.
      *
      * @param  int  $userId
+     *
      * @return void
      */
     public function confirmingMemberRemoval($userId): void
@@ -109,6 +109,7 @@ class StudyMemberManager extends Component
 
     /**
      * @param  int  $invitationId
+     *
      * @return void
      */
     public function cancelTeamInvitation($invitationId): void

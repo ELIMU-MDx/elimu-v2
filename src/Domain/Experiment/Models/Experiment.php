@@ -26,15 +26,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property mixed|null $experiment_date
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @property-read Assay $assay
- * @property-read \Domain\Experiment\Collections\MeasurementCollection|\Domain\Experiment\Models\Measurement[]
- *     $controls
+ * @property-read \Domain\Experiment\Collections\MeasurementCollection|array<\Domain\Experiment\Models\Measurement> $controls
  * @property-read int|null $controls_count
  * @property-read User $creator
- * @property-read \Domain\Experiment\Collections\MeasurementCollection|\Domain\Experiment\Models\Measurement[]
- *     $measurements
+ * @property-read \Domain\Experiment\Collections\MeasurementCollection|array<\Domain\Experiment\Models\Measurement> $measurements
  * @property-read int|null $measurements_count
  * @property-read Study $study
+ *
  * @method static ExperimentQueryBuilder|Experiment newModelQuery()
  * @method static ExperimentQueryBuilder|Experiment newQuery()
  * @method static ExperimentQueryBuilder|Experiment query()
@@ -49,6 +49,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static ExperimentQueryBuilder|Experiment whereUpdatedAt($value)
  * @method static ExperimentQueryBuilder|Experiment whereUserId($value)
  * @method static ExperimentQueryBuilder|Experiment withSamplesCount()
+ *
  * @mixin \Eloquent
  */
 final class Experiment extends Model

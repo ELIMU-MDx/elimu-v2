@@ -29,15 +29,16 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string|null $profile_photo_path
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @property-read Study|null $currentStudy
  * @property-read string $profile_photo_url
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[]
- *     $notifications
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|array<\Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|Study[] $studies
+ * @property-read \Illuminate\Database\Eloquent\Collection|array<Study> $studies
  * @property-read int|null $studies_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
+ * @property-read \Illuminate\Database\Eloquent\Collection|array<\Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
+ *
  * @method static UserQueryBuilder|User isMemberOfAStudy(int $userId)
  * @method static UserQueryBuilder|User newModelQuery()
  * @method static UserQueryBuilder|User newQuery()
@@ -54,6 +55,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static UserQueryBuilder|User whereTwoFactorRecoveryCodes($value)
  * @method static UserQueryBuilder|User whereTwoFactorSecret($value)
  * @method static UserQueryBuilder|User whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 final class User extends Authenticatable

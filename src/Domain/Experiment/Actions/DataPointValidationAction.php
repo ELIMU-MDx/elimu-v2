@@ -15,6 +15,7 @@ final class DataPointValidationAction
     /**
      * @param  MeasurementCollection  $dataPoints
      * @param  \Domain\Results\DataTransferObjects\ResultValidationParameter  $parameter
+     *
      * @return \Illuminate\Support\Collection<ResultValidationError>
      */
     public function execute(MeasurementCollection $dataPoints, ResultValidationParameter $parameter): Collection

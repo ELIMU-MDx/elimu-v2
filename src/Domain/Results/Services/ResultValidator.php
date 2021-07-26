@@ -15,6 +15,7 @@ final class ResultValidator
     /**
      * @param  \Domain\Results\DataTransferObjects\Result  $result
      * @param  \Domain\Results\DataTransferObjects\ResultValidationParameter  $validationParameter
+     *
      * @return \Illuminate\Support\Collection<\Domain\Results\ResultValidationErrors\ResultValidationError>
      */
     public function validate(Result $result, ResultValidationParameter $validationParameter): Collection

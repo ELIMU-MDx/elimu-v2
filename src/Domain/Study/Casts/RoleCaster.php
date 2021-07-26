@@ -20,6 +20,7 @@ final class RoleCaster implements CastsAttributes
      * @param  string  $key
      * @param  \Domain\Study\Roles\Role  $value
      * @param  array  $attributes
+     *
      * @return string
      */
     public function set($model, string $key, $value, array $attributes): string

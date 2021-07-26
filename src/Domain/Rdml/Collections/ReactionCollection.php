@@ -15,5 +15,4 @@ use Illuminate\Support\Collection;
  */
 final class ReactionCollection extends Collection
 {
-
 }

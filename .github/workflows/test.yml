@@ -10,6 +10,8 @@ jobs:
   laravel-tests:
 
     runs-on: ubuntu-latest
+    container:
+      image: kirschbaumdevelopment/laravel-test-runner:8.0
     services:
           # mysql-service Label used to access the service container
           mysql-service:

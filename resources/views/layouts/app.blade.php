@@ -21,7 +21,7 @@
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
     <div class="h-screen flex overflow-hidden bg-gray-100" x-data="{open: false}">
-        <div class="fixed inset-0 flex z-40 md:hidden" role="dialog" aria-modal="true" x-show="open">
+        <div class="fixed inset-0 flex z-40 md:hidden" role="dialog" aria-modal="true" x-show="open" x-cloak>
             <div class="fixed inset-0 bg-gray-600 bg-opacity-75" aria-hidden="true"
                  x-transition:enter="transition-opacity ease-linear duration-300"
                  x-transition:enter-start="opacity-0"

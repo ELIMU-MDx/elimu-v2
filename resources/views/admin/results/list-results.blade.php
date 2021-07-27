@@ -35,6 +35,16 @@
                             {{ $this->samples->count() }} / {{$this->totalSamples}} Results
                         </div>
                         <div class="ml-auto space-x-4">
+                            @if(in_array($resultFilter, ['positive', 'negative']))
+                                <x-select name="target" id="target" class="mt-1" wire:model="targetFilter">
+                                    <option value="all">All Targets</option>
+                                    @foreach($this->currentTargets as $target)
+                                        <option value="{{$target}}" checked="checked" wire:key="target-{{$target}}"
+                                        >{{$target}}</option>
+                                    @endforeach
+                                </x-select>
+                            @endif
+
                             <x-select name="assay" id="assay" class="mt-1" wire:model="resultFilter">
                                 <option value="all">All</option>
                                 <option value="valid">Valid</option>
@@ -45,7 +55,7 @@
 
                             <x-select name="assay" id="assay" class="mt-1" wire:model="currentAssayId">
                                 @foreach($assays as $assay)
-                                    <option value="{{$assay->id}}">{{$assay->name}}</option>
+                                    <option value="{{$assay->id}}" wire:key="assay-{{$assay->id}}">{{$assay->name}}</option>
                                 @endforeach
                             </x-select>
                         </div>
@@ -61,18 +71,18 @@
                                             class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Sample
                                         </th>
-                                        @foreach($this->currentAssay->parameters as $parameter)
+                                        @foreach($this->currentTargets as $target)
                                             <th scope="col"
                                                 class="px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border-l border-gray-300">
-                                                {{ $parameter->target }} Cq
+                                                {{ $target }} Cq
                                             </th>
                                             <th scope="col"
                                                 class="px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wide">
-                                                {{ $parameter->target }} Result
+                                                {{ $target }} Result
                                             </th>
                                             <th scope="col"
                                                 class="px-3 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                {{ $parameter->target }} Repetitions
+                                                {{ $target }} Repetitions
                                             </th>
                                         @endforeach
                                     </tr>

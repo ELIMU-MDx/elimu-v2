@@ -44,7 +44,7 @@ final class SampleQueryBuilder extends Builder
 
     public function searchBySampleIdentifier(string $search): SampleQueryBuilder
     {
-        if (! trim($search)) {
+        if (!trim($search)) {
             return $this;
         }
 
@@ -55,19 +55,27 @@ final class SampleQueryBuilder extends Builder
         );
     }
 
-    public function filterByResult(string $filter): SampleQueryBuilder
+    public function filterByResult(string $filter, string $target): SampleQueryBuilder
     {
         return match ($filter) {
             'all' => $this,
             'valid' => $this->whereDoesntHave('results.resultErrors'),
             'invalid' => $this->whereHas('results.resultErrors'),
-            'positive' => $this->whereHas('results', function (Builder $query) {
-                return $query->where('qualification', QualitativeResult::POSITIVE());
+            'positive' => $this->whereHas('results', function (Builder $query) use ($target) {
+                $query = $query->where('qualification', QualitativeResult::POSITIVE());
+                $query->whereDoesntHave('resultErrors');
+                if ($target !== 'all') {
+                    $query->where('target', $target);
+                }
             }),
             'negative' => $this->whereHas(
                 'results',
-                function (Builder $query) {
-                    return $query->where('qualification', QualitativeResult::NEGATIVE());
+                function (Builder $query) use ($target) {
+                    $query = $query->where('qualification', QualitativeResult::NEGATIVE());
+                    $query->whereDoesntHave('resultErrors');
+                    if ($target !== 'all') {
+                        $query->where('target', $target);
+                    }
                 }
             ),
             default => $this,

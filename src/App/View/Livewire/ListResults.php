@@ -32,12 +32,15 @@ final class ListResults extends Component
     /** @var string */
     public $resultFilter = 'all';
 
+    /** @var string */
+    public $targetFilter = 'all';
+
     /** @var array<string> */
     protected $rules = [
         'assay' => 'required|boolean',
     ];
 
-    protected $queryString = ['search' => ['except' => ''], 'resultFilter' => ['except' => 'all']];
+    protected $queryString = ['search' => ['except' => ''], 'resultFilter' => ['except' => 'all'], 'targetFilter' => ['except' => 'all']];
 
     public function mount(): void
     {
@@ -68,21 +71,30 @@ final class ListResults extends Component
         return $this->assays->firstWhere('id', $this->currentAssayId);
     }
 
+    public function getCurrentTargetsProperty(): array
+    {
+        return $this->currentAssay
+            ->parameters
+            ->pluck('target')
+            ->sort()
+            ->toArray();
+    }
+
     public function getSamplesProperty(): LengthAwarePaginator
     {
-        if (! $this->currentAssayId) {
+        if (!$this->currentAssayId) {
             return new LengthAwarePaginator([], 0, 15);
         }
 
         return Sample::listAll($this->currentAssayId, Auth::user()->study_id)
             ->searchBySampleIdentifier($this->search)
-            ->filterByResult($this->resultFilter)
+            ->filterByResult($this->resultFilter, $this->targetFilter)
             ->paginate();
     }
 
     public function getTotalSamplesProperty(): int
     {
-        if (! $this->currentAssayId) {
+        if (!$this->currentAssayId) {
             return 0;
         }
 

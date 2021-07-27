@@ -45,7 +45,7 @@
                                 </x-select>
                             @endif
 
-                            <x-select name="assay" id="assay" class="mt-1" wire:model="resultFilter" wire:key="result-selector">
+                            <x-select name="result" id="result" class="mt-1" wire:model="resultFilter">
                                 <option value="all">All</option>
                                 <option value="valid">Valid</option>
                                 <option value="invalid">Invalid</option>
@@ -53,7 +53,7 @@
                                 <option value="negative">Negative</option>
                             </x-select>
 
-                            <x-select name="assay" id="assay" class="mt-1" wire:model="currentAssayId" wire:key="assay-selector">
+                            <x-select name="assay" id="assay" class="mt-1" wire:model="currentAssayId">
                                 @foreach($assays as $assay)
                                     <option value="{{$assay->id}}" wire:key="assay-{{$assay->id}}">{{$assay->name}}</option>
                                 @endforeach

@@ -62,20 +62,20 @@ final class SampleQueryBuilder extends Builder
             'valid' => $this->whereDoesntHave('results.resultErrors'),
             'invalid' => $this->whereHas('results.resultErrors'),
             'positive' => $this->whereHas('results', function (Builder $query) use ($target) {
-                $query = $query->where('qualification', QualitativeResult::POSITIVE());
-                $query->whereDoesntHave('resultErrors');
-                if ($target !== 'all') {
-                    $query->where('target', $target);
-                }
+                return $query->where('qualification', QualitativeResult::POSITIVE())
+                    ->whereDoesntHave('resultErrors')
+                    ->when($target !== 'all', function ($query) use ($target) {
+                        return $query->where('target', $target);
+                    });
             }),
             'negative' => $this->whereHas(
                 'results',
                 function (Builder $query) use ($target) {
-                    $query = $query->where('qualification', QualitativeResult::NEGATIVE());
-                    $query->whereDoesntHave('resultErrors');
-                    if ($target !== 'all') {
-                        $query->where('target', $target);
-                    }
+                    return $query->where('qualification', QualitativeResult::NEGATIVE())
+                        ->whereDoesntHave('resultErrors')
+                        ->when($target !== 'all', function ($query) use ($target) {
+                            return $query->where('target', $target);
+                        });
                 }
             ),
             default => $this,

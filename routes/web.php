@@ -5,6 +5,7 @@ use App\Admin\Assays\Controllers\EditAssayController;
 use App\Admin\Assays\Controllers\ListAssaysController;
 use App\Admin\Experiments\Controllers\DownloadRdmlController;
 use App\Admin\Experiments\Controllers\EditExperimentController;
+use App\Admin\Experiments\Controllers\ExportResultsController;
 use App\Admin\Experiments\Controllers\ListExperimentsController;
 use App\Admin\Experiments\Controllers\ListResultsController;
 use App\Admin\Experiments\Controllers\UpdateExperimentController;
@@ -43,11 +44,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::put('current-study', SwitchStudyController::class)->name('currentStudy.switch');
 
         Route::get('results', ListResultsController::class)->name('results.index');
+        Route::get('results/{assay}/export', ExportResultsController::class)->name('results.export');
 
         Route::get('experiments', ListExperimentsController::class)->name('experiments.index');
         Route::get('experiments/{experiment}/rdml', DownloadRdmlController::class)->name('experiments.download');
 
         Route::get('experiments/{experiment}/edit', EditExperimentController::class)->name('experiments.edit');
         Route::put('experiments/{experiment}', UpdateExperimentController::class)->name('experiments.update');
+
     });
 });

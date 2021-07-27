@@ -15,7 +15,11 @@
             </div>
         </div>
     @else
-        <section>
+        <div class="flex justify-end">
+            <x-primary-button as="a" href="{{route('results.export', $currentAssayId)}}" target="_blank">Download Excel</x-primary-button>
+        </div>
+
+        <section class="mt-8">
             <div class="flex flex-col">
                 <div class="shadow sm:rounded-lg overflow-hidden">
                     <div class="bg-white flex flex-wrap items-baseline px-3 py-3">

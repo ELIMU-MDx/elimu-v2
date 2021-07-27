@@ -34,7 +34,7 @@ final class ControlValidationError implements ResultValidationError
                 $result->averageCQ->raw(),
                 $parameter->cutoff
             ) === QualitativeResult::POSITIVE(),
-            default => $result->averageCQ->raw() <= $validationParameter,
+            default => $result->averageCQ->raw() !== null && $result->averageCQ->raw() <= $validationParameter,
         };
     }
 

@@ -5,6 +5,10 @@
     @foreach($sample->results as $result)
         <td class="px-3 py-4 whitespace-nowrap text-sm text-center border-l border-gray-300">
             {{$result->cq ?? 'NaN'}}
+
+            @if($result->cq)
+                <div class="text-xs text-gray-500 mt-2">{{$result->standard_deviation}}</div>
+            @endif
         </td>
 
         <td class="px-3 py-4 whitespace-nowrap text-center">

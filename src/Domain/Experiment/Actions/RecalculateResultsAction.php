@@ -77,7 +77,7 @@ final class RecalculateResultsAction
                 'assay_id' => $assayId,
                 'target' => $result->target,
                 'cq' => $result->averageCQ->rounded(),
-                'quantification' => $result->quantificationrounded(),
+                'quantification' => $result->quantification?->rounded(),
                 'qualification' => $result->qualification,
                 'standard_deviation' => $result->measurements->standardDeviationCq(),
             ];
@@ -120,7 +120,7 @@ final class RecalculateResultsAction
                 'target' => $result->target,
             ])->fill([
                 'cq' => $result->averageCQ->rounded(),
-                'quantification' => $result->quantificationrounded(),
+                'quantification' => $result->quantification?->rounded(),
                 'qualification' => $result->qualification,
                 'standard_deviation' => $result->measurements->standardDeviationCq(),
             ]),

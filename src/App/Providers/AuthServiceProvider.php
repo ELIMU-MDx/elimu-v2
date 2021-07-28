@@ -41,26 +41,22 @@ class AuthServiceProvider extends ServiceProvider
             return false;
         });
         Gate::define('manage-study', function (User $user) {
-            return $user->study_id
-                && Membership::isRoleOfStudy($user->id, $user->study_id, new Owner());
+            return $user->study_id && $user->studies->first(fn(Study $study) => $study->membership->role->identifier() === (new Owner())->identifier());
         });
         Gate::define('switch-study', function (User $user, Study $study) {
-            return Membership::isMemberOfStudy($user->id, $study->id);
+            return $user->studies->firstWhere('id', $study->id);
         });
 
         Gate::define('import-rdml', function (User $user) {
-            return $user->study_id
-                && Membership::isRoleOfStudy($user->id, $user->study_id, [new Owner(), new Scientist()]);
+            return $user->study_id && $user->studies->first(fn(Study $study) => in_array($study->membership->role,  [new Owner(), new Scientist()], false));
         });
 
         Gate::define('edit-experiment', function (User $user, Experiment $experiment) {
-            return $user->study_id === $experiment->study_id
-                && Membership::isRoleOfStudy($user->id, $user->study_id, [new Owner(), new Scientist()]);
+            return $user->study_id === $experiment->study_id && $user->studies->first(fn(Study $study) => in_array($study->membership->role,  [new Owner(), new Scientist()], false));
         });
 
         Gate::define('delete-experiment', function (User $user, Experiment $experiment) {
-            return $user->study_id === $experiment->study_id
-                && Membership::isRoleOfStudy($user->id, $user->study_id, [new Owner(), new Scientist()]);
+            return $user->study_id === $experiment->study_id && $user->studies->first(fn(Study $study) => in_array($study->membership->role,  [new Owner(), new Scientist()], false));
         });
         Gate::define('download-rdml', function (User $user, Experiment $experiment) {
             return $user->study_id === $experiment->study_id;
@@ -70,18 +66,15 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('create-assay', function (User $user) {
-            return $user->study_id
-                && Membership::isRoleOfStudy($user->id, $user->study_id, [new Owner(), new Scientist()]);
+            return $user->study_id && $user->studies->first(fn(Study $study) => in_array($study->membership->role,  [new Owner(), new Scientist()], false));
         });
 
         Gate::define('delete-assay', function (User $user, Assay $assay) {
-            return $user->study_id === $assay->study_id
-                && Membership::isRoleOfStudy($user->id, $user->study_id, [new Owner(), new Scientist()]);
+            return $user->study_id === $assay->study_id && $user->studies->first(fn(Study $study) => in_array($study->membership->role,  [new Owner(), new Scientist()], false));
         });
 
         Gate::define('edit-assay', function (User $user, Assay $assay) {
-            return $user->study_id === $assay->study_id
-                && Membership::isRoleOfStudy($user->id, $user->study_id, [new Owner(), new Scientist()]);
+            return $user->study_id === $assay->study_id && $user->studies->first(fn(Study $study) => in_array($study->membership->role,  [new Owner(), new Scientist()], false));
         });
     }
 }

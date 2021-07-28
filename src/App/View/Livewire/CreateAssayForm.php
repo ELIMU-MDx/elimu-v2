@@ -8,6 +8,7 @@ use Auth;
 use Domain\Assay\Models\Assay;
 use Domain\Assay\Models\AssayParameter;
 use Domain\Assay\Rules\ControlParameterValidationRule;
+use Domain\Experiment\Actions\RecalculateResultsAction;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\View\View;
@@ -94,7 +95,7 @@ final class CreateAssayForm extends Component
             }));
     }
 
-    public function saveAssay()
+    public function saveAssay(RecalculateResultsAction $recalculateResultsAction)
     {
         $this->authorize('create-assay');
         $this->validate();
@@ -115,6 +116,10 @@ final class CreateAssayForm extends Component
         $this->assay->user_id = $this->assay->id ? $this->assay->user_id : Auth::user()->id;
         $this->assay->save();
         $this->assay->parameters()->saveMany($parameters);
+
+        if(!$new) {
+            $recalculateResultsAction->execute($this->assay->measurements);
+        }
 
         return redirect()->to(route('assays.index'));
     }

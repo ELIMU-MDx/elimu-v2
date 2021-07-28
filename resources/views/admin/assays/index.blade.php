@@ -39,48 +39,7 @@
             <div class="bg-white shadow overflow-hidden sm:rounded-md @can('create-assay') mt-8 @endcan">
                 <ul class="divide-y divide-gray-200">
                     @foreach($assays as $assay)
-                        <li>
-                            <a href="{{ route('assays.edit', $assay->id) }}" class="block hover:bg-gray-50">
-                                <div class="px-4 py-4 sm:px-6">
-                                    <div class="flex items-center justify-between">
-                                        <p class="text-sm font-medium text-indigo-600 truncate">
-                                            {{$assay->name}}
-                                        </p>
-                                        <div class="ml-2 flex-shrink-0 flex">
-                                            <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100">
-                                                {{$assay->created_by}}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="mt-2 sm:flex sm:justify-between">
-                                        <div class="space-y-2 sm:flex sm:space-y-0 sm:space-x-6">
-                                            @if($assay->sample_type)
-                                                <p class="flex items-center text-sm text-gray-500">
-                                                    <x-heroicon-o-beaker
-                                                            class="flex-shrink-0 mr-2 h-5 w-5 text-gray-400"/>
-                                                    {{$assay->sample_type}}
-                                                </p>
-                                            @endif
-
-                                            @if($assay->study)
-                                                <p class="flex items-center text-sm text-gray-500">
-                                                    <x-heroicon-o-academic-cap
-                                                            class="flex-shrink-0 mr-2 h-5 w-5 text-gray-400"/>
-                                                    {{$assay->study}}
-                                                </p>
-                                            @endif
-                                        </div>
-                                        <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                                            <!-- Heroicon name: solid/calendar -->
-                                            <p>
-                                                Created at
-                                                <time datetime="{{$assay->created_at->format('Y-m-d')}}">{{ $assay->created_at->format('F j, Y') }}</time>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
+                        <livewire:assay-row :assay="$assay"/>
                     @endforeach
                 </ul>
             </div>

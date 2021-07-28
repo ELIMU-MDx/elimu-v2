@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\Experiment\Actions;
 
-use Auth;
 use Domain\Experiment\Models\Experiment;
 use Domain\Experiment\Models\Measurement;
 use Domain\Experiment\Models\Sample;

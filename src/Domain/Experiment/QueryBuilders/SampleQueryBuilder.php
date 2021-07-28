@@ -44,7 +44,7 @@ final class SampleQueryBuilder extends Builder
 
     public function searchBySampleIdentifier(string $search): SampleQueryBuilder
     {
-        if (!trim($search)) {
+        if (! trim($search)) {
             return $this;
         }
 
@@ -65,8 +65,8 @@ final class SampleQueryBuilder extends Builder
                 return $query->where('qualification', QualitativeResult::POSITIVE())
                     ->whereDoesntHave('resultErrors')
                     ->when($target !== 'all', function ($query) use ($target) {
-                        return $query->where('target', $target);
-                    });
+                    return $query->where('target', $target);
+                });
             }),
             'negative' => $this->whereHas(
                 'results',
@@ -74,8 +74,8 @@ final class SampleQueryBuilder extends Builder
                     return $query->where('qualification', QualitativeResult::NEGATIVE())
                         ->whereDoesntHave('resultErrors')
                         ->when($target !== 'all', function ($query) use ($target) {
-                            return $query->where('target', $target);
-                        });
+                    return $query->where('target', $target);
+                });
                 }
             ),
             default => $this,

@@ -8,18 +8,17 @@ use Illuminate\Contracts\Validation\Rule;
 
 final class ControlParameterValidationRule implements Rule
 {
-
     public function passes($attribute, $value): bool
     {
-        if($value === 'null') {
+        if ($value === 'null') {
             return true;
         }
 
-        if(!is_numeric($value)) {
+        if (! is_numeric($value)) {
             return false;
         }
 
-        return abs((float)$value) >= 0.01 && abs((float)$value) <= 999999.99;
+        return abs((float) $value) >= 0.01 && abs((float) $value) <= 999999.99;
     }
 
     public function message(): string

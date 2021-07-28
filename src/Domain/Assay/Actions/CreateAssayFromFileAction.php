@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\Assay\Actions;
 
-use Auth;
 use Domain\Assay\Importers\AssayParameterExcelImporter;
 use Domain\Assay\Models\Assay;
 use Domain\Users\Models\User;

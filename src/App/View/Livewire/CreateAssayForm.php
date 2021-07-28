@@ -60,30 +60,6 @@ final class CreateAssayForm extends Component
         $this->visible = $this->assay->study_id ? 0 : 1;
     }
 
-    protected function rules(): array
-    {
-        return [
-            'assay.name' => ['required', 'string', 'max:255'],
-            'assay.sample_type' => ['string', 'max:255'],
-            'visible' => ['required', 'bool'],
-            'targets' => ['required', 'string'],
-            'parameters.*.target' => ['required', 'string'],
-            'parameters.*.cutoff' => ['required', 'numeric', new DecimalValidationRule(8, 2)],
-            'parameters.*.standard_deviation_cutoff' => ['required', 'numeric', new DecimalValidationRule(8, 2)],
-            'parameters.*.quantify' => ['nullable', 'boolean'],
-            'parameters.*.slope' => [
-                'required_if:parameters.*.quantify,1', 'nullable', 'numeric', new DecimalValidationRule(8, 2),
-            ],
-            'parameters.*.intercept' => [
-                'required_if:parameters.*.quantify,1', 'nullable', 'numeric', new DecimalValidationRule(8, 2),
-            ],
-            'parameters.*.positive_control' => ['nullable', new ControlParameterValidationRule()],
-            'parameters.*.negative_control' => ['nullable', new ControlParameterValidationRule()],
-            'parameters.*.ntc_control' => ['nullable', new ControlParameterValidationRule()],
-            'parameters.*.required_repetitions' => 'required|integer|min:1',
-        ];
-    }
-
     /**
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -91,7 +67,7 @@ final class CreateAssayForm extends Component
     {
         $this->validateOnly('targets');
 
-        if (!trim($this->targets)) {
+        if (! trim($this->targets)) {
             $this->parameters = new Collection();
 
             return;
@@ -146,5 +122,29 @@ final class CreateAssayForm extends Component
     public function render(): View
     {
         return view('admin.assays.create-assay-form');
+    }
+
+    protected function rules(): array
+    {
+        return [
+            'assay.name' => ['required', 'string', 'max:255'],
+            'assay.sample_type' => ['string', 'max:255'],
+            'visible' => ['required', 'bool'],
+            'targets' => ['required', 'string'],
+            'parameters.*.target' => ['required', 'string'],
+            'parameters.*.cutoff' => ['required', 'numeric', new DecimalValidationRule(8, 2)],
+            'parameters.*.standard_deviation_cutoff' => ['required', 'numeric', new DecimalValidationRule(8, 2)],
+            'parameters.*.quantify' => ['nullable', 'boolean'],
+            'parameters.*.slope' => [
+                'required_if:parameters.*.quantify,1', 'nullable', 'numeric', new DecimalValidationRule(8, 2),
+            ],
+            'parameters.*.intercept' => [
+                'required_if:parameters.*.quantify,1', 'nullable', 'numeric', new DecimalValidationRule(8, 2),
+            ],
+            'parameters.*.positive_control' => ['nullable', new ControlParameterValidationRule()],
+            'parameters.*.negative_control' => ['nullable', new ControlParameterValidationRule()],
+            'parameters.*.ntc_control' => ['nullable', new ControlParameterValidationRule()],
+            'parameters.*.required_repetitions' => 'required|integer|min:1',
+        ];
     }
 }

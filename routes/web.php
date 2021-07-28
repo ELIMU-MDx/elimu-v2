@@ -54,10 +54,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             ->name('experiments.download')
             ->middleware('can:download-rdml,experiment');
 
-        Route::get('experiments/{experiment}/edit',
-            EditExperimentController::class)->name('experiments.edit')->middleware('can:edit-experiment,experiment');
-        Route::put('experiments/{experiment}',
-            UpdateExperimentController::class)->name('experiments.update')->middleware('can:edit-experiment,experiment');
+        Route::get(
+            'experiments/{experiment}/edit',
+            EditExperimentController::class
+        )->name('experiments.edit')->middleware('can:edit-experiment,experiment');
+        Route::put(
+            'experiments/{experiment}',
+            UpdateExperimentController::class
+        )->name('experiments.update')->middleware('can:edit-experiment,experiment');
 
         Route::get('quality-control', \App\Admin\QualityControl\Controllers\ListLogController::class)->name('quality-control.index');
     });

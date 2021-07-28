@@ -15,45 +15,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-/**
- * Domain\Experiment\Models\Experiment
- *
- * @property int $id
- * @property int $study_id
- * @property int $assay_id
- * @property int|null $user_id
- * @property string $name
- * @property string|null $rdml_path
- * @property string|null $eln
- * @property mixed|null $experiment_date
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- *
- * @property-read Assay $assay
- * @property-read \Domain\Experiment\Collections\MeasurementCollection|array<\Domain\Experiment\Models\Measurement> $controls
- * @property-read int|null $controls_count
- * @property-read User $creator
- * @property-read \Domain\Experiment\Collections\MeasurementCollection|array<\Domain\Experiment\Models\Measurement> $measurements
- * @property-read int|null $measurements_count
- * @property-read Study $study
- *
- * @method static ExperimentQueryBuilder|Experiment newModelQuery()
- * @method static ExperimentQueryBuilder|Experiment newQuery()
- * @method static ExperimentQueryBuilder|Experiment query()
- * @method static ExperimentQueryBuilder|Experiment whereAssayId($value)
- * @method static ExperimentQueryBuilder|Experiment whereCreatedAt($value)
- * @method static ExperimentQueryBuilder|Experiment whereEln($value)
- * @method static ExperimentQueryBuilder|Experiment whereExperimentDate($value)
- * @method static ExperimentQueryBuilder|Experiment whereId($value)
- * @method static ExperimentQueryBuilder|Experiment whereName($value)
- * @method static ExperimentQueryBuilder|Experiment whereRdmlPath($value)
- * @method static ExperimentQueryBuilder|Experiment whereStudyId($value)
- * @method static ExperimentQueryBuilder|Experiment whereUpdatedAt($value)
- * @method static ExperimentQueryBuilder|Experiment whereUserId($value)
- * @method static ExperimentQueryBuilder|Experiment withSamplesCount()
- *
- * @mixin \Eloquent
- */
 final class Experiment extends Model
 {
     use LogsActivity;

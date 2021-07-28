@@ -16,39 +16,6 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-/**
- * Domain\Assay\Models\Assay
- *
- * @property int $id
- * @property int|null $study_id
- * @property string $name
- * @property string|null $sample_type
- * @property int|null $user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- *
- * @property-read User|null $creator
- * @property-read \Illuminate\Database\Eloquent\Collection|array<Experiment> $experiments
- * @property-read int|null $experiments_count
- * @property-read \Domain\Assay\Collections\ParameterCollection|array<\Domain\Assay\Models\AssayParameter> $parameters
- * @property-read int|null $parameters_count
- * @property-read \Illuminate\Database\Eloquent\Collection|array<Result> $results
- * @property-read int|null $results_count
- * @property-read Study|null $study
- *
- * @method static \Illuminate\Database\Eloquent\Builder|Assay newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Assay newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Assay query()
- * @method static \Illuminate\Database\Eloquent\Builder|Assay whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Assay whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Assay whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Assay whereSampleType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Assay whereStudyId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Assay whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Assay whereUserId($value)
- *
- * @mixin \Eloquent
- */
 final class Assay extends Model
 {
     use LogsActivity;

@@ -11,35 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-/**
- * Domain\Study\Models\Study
- *
- * @property int $id
- * @property string $identifier
- * @property string $name
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- *
- * @property-read \Illuminate\Database\Eloquent\Collection|array<Experiment> $experiments
- * @property-read int|null $experiments_count
- * @property-read \Illuminate\Database\Eloquent\Collection|array<\Domain\Study\Models\Invitation> $invitations
- * @property-read int|null $invitations_count
- * @property-read \Illuminate\Database\Eloquent\Collection|array<Sample> $samples
- * @property-read int|null $samples_count
- * @property-read \Illuminate\Database\Eloquent\Collection|array<User> $users
- * @property-read int|null $users_count
- *
- * @method static \Illuminate\Database\Eloquent\Builder|Study newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Study newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Study query()
- * @method static \Illuminate\Database\Eloquent\Builder|Study whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Study whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Study whereIdentifier($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Study whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Study whereUpdatedAt($value)
- *
- * @mixin \Eloquent
- */
 final class Study extends Model
 {
     public function users(): BelongsToMany

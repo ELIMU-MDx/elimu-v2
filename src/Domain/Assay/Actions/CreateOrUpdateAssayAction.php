@@ -24,7 +24,7 @@ final class CreateOrUpdateAssayAction
         $isNew = $assay->exists;
         $parameters = $parameters
             ->map(function (AssayParameter $assayParameter) {
-                if (!$assayParameter->quantify) {
+                if (! $assayParameter->quantify) {
                     $assayParameter->slope = null;
                     $assayParameter->intercept = null;
                 }
@@ -36,7 +36,7 @@ final class CreateOrUpdateAssayAction
 
         $assay->study_id = Auth::user()->study_id;
         $assay->user_id = $assay->exists ? $assay->user_id : Auth::user()->id;
-        $parametersToDelete = $assay->parameters->reject(fn(AssayParameter $parameter) => $parameters->contains($parameter));
+        $parametersToDelete = $assay->parameters->reject(fn (AssayParameter $parameter) => $parameters->contains($parameter));
 
         $this->connection->transaction(function () use ($assay, $parameters, $parametersToDelete) {
             $assay->save();
@@ -44,7 +44,7 @@ final class CreateOrUpdateAssayAction
             $assay->parameters()->saveMany($parameters);
         });
 
-        if (!$isNew && $assay->measurements->isNotEmpty()) {
+        if (! $isNew && $assay->measurements->isNotEmpty()) {
             $this->recalculateResultsAction->execute($assay->measurements);
         }
 

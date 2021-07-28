@@ -11,7 +11,6 @@ use Spatie\Activitylog\Models\Activity as BaseActivity;
 
 final class Activity extends BaseActivity
 {
-
     public function study(): BelongsTo
     {
         return $this->belongsTo(Study::class);

@@ -50,6 +50,61 @@ final class CreateAssayForm extends Component
         $this->targets = $this->parameters->pluck('target')->join(', ');
     }
 
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function updatedTargets(): void
+    {
+        $this->validateOnly('targets');
+
+        if (! trim($this->targets)) {
+            $this->parameters = new Collection();
+
+            return;
+        }
+
+        $this->parameters = new Collection(Str::of($this->targets)
+            ->explode(',')
+            ->map(fn (string $target) => trim($target))
+            ->filter()
+            ->map(function (string $target) {
+                $parameter = $this->assay
+                    ->parameters
+                    ->first(
+                        fn (AssayParameter $parameter) => strcasecmp($parameter->target, $target) === 0,
+                        new AssayParameter([
+                            'target' => $target,
+                            'cutoff' => '',
+                            'standard_deviation_cutoff' => '',
+                            'slope' => null,
+                            'intercept' => null,
+                            'required_repetitions' => 1,
+                            'positive_control' => null,
+                            'negative_control' => null,
+                            'ntc_control' => null,
+                        ])
+                    );
+                $parameter->target = $target;
+
+                return $parameter;
+            }));
+    }
+
+    public function saveAssay(CreateOrUpdateAssayAction $createOrUpdateAssayAction)
+    {
+        $this->authorize('create-assay');
+        $this->validate();
+
+        $createOrUpdateAssayAction->execute($this->assay, $this->parameters);
+
+        return redirect()->to(route('assays.index'));
+    }
+
+    public function render(): View
+    {
+        return view('admin.assays.create-assay-form');
+    }
+
     protected function rules(): array
     {
         return [
@@ -71,59 +126,5 @@ final class CreateAssayForm extends Component
             'parameters.*.ntc_control' => ['nullable', new ControlParameterValidationRule()],
             'parameters.*.required_repetitions' => 'required|integer|min:1',
         ];
-    }
-
-    /**
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function updatedTargets(): void
-    {
-        $this->validateOnly('targets');
-
-        if (!trim($this->targets)) {
-            $this->parameters = new Collection();
-
-            return;
-        }
-
-        $this->parameters = new Collection(Str::of($this->targets)
-            ->explode(',')
-            ->map(fn(string $target) => trim($target))
-            ->filter()
-            ->map(function (string $target) {
-                $parameter = $this->assay
-                    ->parameters
-                    ->first(
-                        fn(AssayParameter $parameter) => strcasecmp($parameter->target, $target) === 0,
-                        new AssayParameter([
-                            'target' => $target,
-                            'cutoff' => '',
-                            'standard_deviation_cutoff' => '',
-                            'slope' => null,
-                            'intercept' => null,
-                            'required_repetitions' => 1,
-                            'positive_control' => null,
-                            'negative_control' => null,
-                            'ntc_control' => null,
-                        ]));
-                $parameter->target = $target;
-
-                return $parameter;
-            }));
-    }
-
-    public function saveAssay(CreateOrUpdateAssayAction $createOrUpdateAssayAction)
-    {
-        $this->authorize('create-assay');
-        $this->validate();
-
-        $createOrUpdateAssayAction->execute($this->assay, $this->parameters);
-
-        return redirect()->to(route('assays.index'));
-    }
-
-    public function render(): View
-    {
-        return view('admin.assays.create-assay-form');
     }
 }

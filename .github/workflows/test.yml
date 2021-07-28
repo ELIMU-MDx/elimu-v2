@@ -21,8 +21,8 @@ jobs:
               ## Accessing to Github secrets, where you can store your configuration
               MYSQL_ROOT_PASSWORD: 12345
               MYSQL_DATABASE: elimu_test
-          ports:
-            - 3306/tcp
+            ports:
+              - 3306/tcp
             options: >-
               --health-cmd="mysqladmin ping"
               --health-interval=10s

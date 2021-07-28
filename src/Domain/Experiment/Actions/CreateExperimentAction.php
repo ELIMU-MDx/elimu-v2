@@ -17,7 +17,7 @@ final class CreateExperimentAction
     public function __construct(
         private RdmlReader $rdmlReader,
         private Connection $connection,
-        private RecalculateResultsAction $recalculateResultsAction
+        private RecalculateResultsAction $recalculateResultsAction,
     ) {
     }
 

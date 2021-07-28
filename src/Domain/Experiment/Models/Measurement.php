@@ -10,10 +10,15 @@ use Domain\Results\Models\Result;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Kirschbaum\PowerJoins\PowerJoins;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 final class Measurement extends Model
 {
     use PowerJoins;
+    use LogsActivity;
+
+    protected static array $recordEvents = ['updated'];
 
     protected $casts = [
         'type' => MeasurementType::class,
@@ -38,5 +43,12 @@ final class Measurement extends Model
     public function newCollection(array $models = []): MeasurementCollection
     {
         return MeasurementCollection::make($models);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->dontSubmitEmptyLogs()
+            ->logOnly(['excluded', 'sample.identifier', 'experiment.name', 'target', 'cq']);
     }
 }

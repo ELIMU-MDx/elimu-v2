@@ -13,8 +13,7 @@ final class Owner implements Role
 
     public function description(): string
     {
-        return 'An owner has the same rights as a lab manager but only another owner
-                            can remove him from the team';
+        return 'An owner can modify study settings, add or remove members and everything a scientist can.';
     }
 
     public function title(): string

@@ -6,12 +6,15 @@ namespace App\View\Livewire;
 
 use Domain\Experiment\Actions\DeleteExperimentAction;
 use Domain\Experiment\Models\Experiment;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\Redirector;
 
 final class ExperimentRow extends Component
 {
+    use AuthorizesRequests;
+
     /** @var Experiment */
     public $experiment;
 
@@ -25,6 +28,7 @@ final class ExperimentRow extends Component
 
     public function deleteExperiment(DeleteExperimentAction $action): Redirector
     {
+        $this->authorize('delete-experiment', $this->experiment);
         $action->execute($this->experiment);
 
         return redirect(route('experiments.index'));

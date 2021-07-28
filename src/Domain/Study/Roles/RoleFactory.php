@@ -47,7 +47,6 @@ final class RoleFactory
 
         self::$roles = RoleCollection::make([
             new Owner(),
-            new LabManager(),
             new Scientist(),
             new Monitor(),
         ]);

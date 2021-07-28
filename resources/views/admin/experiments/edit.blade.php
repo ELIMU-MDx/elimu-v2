@@ -8,11 +8,11 @@
         <x-form method="PUT" class="space-y-6" action="{{route('experiments.update', $experiment)}}">
             <x-jet-action-section submit="saveStudy">
                 <x-slot name="title">
-                    {{ __('Eln') }}
+                    {{ __('Further informations') }}
                 </x-slot>
 
                 <x-slot name="description">
-                    Link to the eln or a text
+                    Link with further information for this experiment or a text where to find it
                 </x-slot>
 
                 <x-slot name="content">

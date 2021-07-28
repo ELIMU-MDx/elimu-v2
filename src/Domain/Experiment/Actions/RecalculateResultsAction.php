@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Experiment\Actions;
 
+use Domain\Assay\Models\Assay;
 use Domain\Assay\Models\AssayParameter;
 use Domain\Experiment\DataTransferObjects\ResultCalculationParameter;
 use Domain\Experiment\Models\Measurement;
@@ -39,31 +40,14 @@ final class RecalculateResultsAction
             ])
             ->groupBy('experiment.assay_id')
             ->each(function (Collection $measurements) {
-                $results = $this->measurementEvaluator
-                    ->results(
-                        $measurements->map(function (Measurement $measurement) {
-                            return MeasurementDTO::fromModel($measurement);
-                        }),
-                        $this->getResultCalculationParameter($measurements)
-                    );
+                $results = $this->calculateResults($measurements);
                 $resultModels = $this->storeResults($results, $measurements->first()->experiment->assay_id);
                 $this->storeMeasurements($resultModels, $measurements);
 
-                /** @var \Domain\Assay\Models\Assay $assay */
-                $assay = $measurements->first()->experiment->assay;
+                $validationParameter = $this->getValidationParameter($measurements, $measurements->first()->experiment->assay);
                 $this->storeResultErrors(
                     $results,
-                    $measurements->first()->experiment
-                        ->assay
-                        ->parameters
-                        ->mapWithKeys(function (AssayParameter $parameter) use ($assay) {
-                            return [
-                                strtolower($parameter->target) => ResultValidationParameter::fromModel(
-                                    $assay,
-                                    $parameter
-                                ),
-                            ];
-                        }),
+                    $validationParameter,
                     $resultModels
                 );
             });
@@ -164,6 +148,33 @@ final class RecalculateResultsAction
             ->each(function (Collection $measurements, string $sampleAndTarget) use ($resultModels) {
                 Measurement::whereIn('id', $measurements->pluck('id'))
                     ->update(['result_id' => $resultModels->get($sampleAndTarget)->id]);
+            });
+    }
+
+    private function calculateResults(Collection $measurements): BaseCollection
+    {
+        return $this->measurementEvaluator
+            ->results(
+                $measurements->map(function (Measurement $measurement) {
+                    return MeasurementDTO::fromModel($measurement);
+                }),
+                $this->getResultCalculationParameter($measurements)
+            );
+    }
+
+    private function getValidationParameter(Collection $measurements, Assay $assay): BaseCollection
+    {
+        return $measurements->first()
+            ->experiment
+            ->assay
+            ->parameters
+            ->mapWithKeys(function (AssayParameter $parameter) use ($assay) {
+                return [
+                    strtolower($parameter->target) => ResultValidationParameter::fromModel(
+                        $assay,
+                        $parameter
+                    ),
+                ];
             });
     }
 }

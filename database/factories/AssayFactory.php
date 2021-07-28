@@ -22,6 +22,7 @@ final class AssayFactory extends Factory
             'name' => $this->faker->word,
             'sample_type' => $this->faker->word,
             'user_id' => UserFactory::new(),
+            'study_id' => StudyFactory::new(),
         ];
     }
 

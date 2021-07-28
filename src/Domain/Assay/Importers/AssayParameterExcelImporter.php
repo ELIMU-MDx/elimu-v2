@@ -8,6 +8,7 @@ use Domain\Assay\Models\AssayParameter;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Support\DecimalValidationRule;
 
 final class AssayParameterExcelImporter implements ToModel, WithValidation, WithHeadingRow
 {
@@ -31,12 +32,12 @@ final class AssayParameterExcelImporter implements ToModel, WithValidation, With
     public function rules(): array
     {
         return [
-            'target' => 'required|string|max:255',
-            'cutoff' => 'required|numeric',
-            'cutoff_standard_deviation' => 'required|numeric',
-            'slope' => 'nullable|numeric',
-            'intercept' => 'nullable|numeric',
-            'required_repetitions' => 'required|numeric|min:1',
+            'target' => ['required', 'string', 'max:255'],
+            'cutoff' => ['required', 'numeric', new DecimalValidationRule(8, 2)],
+            'cutoff_standard_deviation' => ['required', 'numeric', new DecimalValidationRule(8, 2)],
+            'slope' => ['nullable', 'numeric', new DecimalValidationRule(8, 2)],
+            'intercept' => ['nullable', 'numeric', new DecimalValidationRule(8, 2)],
+            'required_repetitions' => ['required', 'numeric', 'min:1'],
         ];
     }
 }

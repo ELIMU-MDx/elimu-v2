@@ -9,6 +9,7 @@ use Domain\Assay\Models\Assay;
 use Domain\Experiment\Actions\CreateExperimentAction;
 use Domain\Experiment\DataTransferObjects\CreateExperimentParameter;
 use Domain\Users\Models\User;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -24,7 +25,7 @@ use Maatwebsite\Excel\Validators\ValidationException as ExcelValidationException
  */
 final class CreateExperimentForm extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, AuthorizesRequests;
 
     /** @var bool */
     public $openModal = false;
@@ -56,6 +57,7 @@ final class CreateExperimentForm extends Component
 
     public function updatedAssayFile(TemporaryUploadedFile $assayFile)
     {
+        $this->authorize('import-rdml');
         $this->validate(['assayFile' => ['file', 'mimes:xlsx']]);
 
         try {
@@ -92,6 +94,7 @@ final class CreateExperimentForm extends Component
      */
     public function createExperiment(CreateExperimentAction $createExperimentAction): mixed
     {
+        $this->authorize('import-rdml');
         $this->validate([
             'form.rdml' => 'required|file|mimetypes:application/zip',
             'form.assay_id' => [

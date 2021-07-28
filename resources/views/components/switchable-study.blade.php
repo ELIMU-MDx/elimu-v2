@@ -1,11 +1,8 @@
 @props(['study', 'component' => 'jet-dropdown-link'])
 
-<form method="POST" action="{{route('currentStudy.switch')}}">
+<form method="POST" action="{{route('currentStudy.switch', $study)}}">
 @method('PUT')
 @csrf
-
-<!-- Hidden Team ID -->
-    <input type="hidden" name="study_id" value="{{ $study->id }}">
 
     <x-dynamic-component :component="$component" href="#"
                          onclick="event.preventDefault(); this.closest('form').submit();">

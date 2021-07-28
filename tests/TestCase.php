@@ -11,6 +11,13 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        activity()->disableLogging();
+    }
+
     public function signIn(?User $user = null): static
     {
         return $this->actingAs($user ?? UserFactory::new()->create());

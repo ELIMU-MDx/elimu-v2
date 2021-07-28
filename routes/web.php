@@ -23,10 +23,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get(
-    '/invitation/{invitation}/accepts',
-    AcceptInvitationController::class
-)->middleware('signed')->name('accept-invitation');
+Route::get('/invitation/{invitation}/accepts', AcceptInvitationController::class)
+    ->middleware('signed')
+    ->name('accept-invitation');
 Route::post('/invitation/{invitation}/accepts', RegisterWithInvitationController::class)->middleware('signed');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -36,21 +35,30 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::view('dashboard', 'dashboard')->name('dashboard');
 
         Route::get('assays', ListAssaysController::class)->name('assays.index');
-        Route::get('assays/create', CreateAssayController::class);
-        Route::get('assays/{assay}', EditAssayController::class)->name('assays.edit');
+        Route::get('assays/create', CreateAssayController::class)->middleware('can:create-assay');
+        Route::get('assays/{assay}', EditAssayController::class)->name('assays.edit')->middleware('can:edit-assay,assay');
 
         Route::get('studies/create', CreateStudyController::class)->name('studies.create');
-        Route::get('current-study/settings', ShowStudySettingsController::class)->name('currentStudy.show');
-        Route::put('current-study', SwitchStudyController::class)->name('currentStudy.switch');
+        Route::get('current-study/settings', ShowStudySettingsController::class)
+            ->name('currentStudy.show')
+            ->middleware('can:manage-study');
+        Route::put('current-study/{study}', SwitchStudyController::class)->name('currentStudy.switch')->middleware('can:switch-study,study');
 
         Route::get('results', ListResultsController::class)->name('results.index');
-        Route::get('results/{assay}/export', ExportResultsController::class)->name('results.export');
+        Route::get('results/{assay}/export', ExportResultsController::class)
+            ->name('results.export')
+            ->middleware('can:download-results');
 
         Route::get('experiments', ListExperimentsController::class)->name('experiments.index');
-        Route::get('experiments/{experiment}/rdml', DownloadRdmlController::class)->name('experiments.download');
+        Route::get('experiments/{experiment}/rdml', DownloadRdmlController::class)
+            ->name('experiments.download')
+            ->middleware('can:download-rdml,experiment');
 
-        Route::get('experiments/{experiment}/edit', EditExperimentController::class)->name('experiments.edit');
-        Route::put('experiments/{experiment}', UpdateExperimentController::class)->name('experiments.update');
+        Route::get('experiments/{experiment}/edit',
+            EditExperimentController::class)->name('experiments.edit')->middleware('can:edit-experiment,experiment');
+        Route::put('experiments/{experiment}',
+            UpdateExperimentController::class)->name('experiments.update')->middleware('can:edit-experiment,experiment');
 
+        Route::get('quality-control', \App\Admin\QualityControl\Controllers\ListLogController::class)->name('quality-control.index');
     });
 });

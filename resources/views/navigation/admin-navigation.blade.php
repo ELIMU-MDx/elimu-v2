@@ -28,9 +28,11 @@
                             {{ __('Manage Study') }}
                         </div>
 
-                        <x-jet-dropdown-link href="{{route('currentStudy.show')}}">
-                            {{ __('Study setting') }}
-                        </x-jet-dropdown-link>
+                        @can('manage-study', Auth::user()->currentStudy)
+                            <x-jet-dropdown-link href="{{route('currentStudy.show')}}">
+                                {{ __('Study setting') }}
+                            </x-jet-dropdown-link>
+                        @endcan
 
                         <x-jet-dropdown-link href="{{ route('studies.create') }}">
                             {{ __('Create New Study') }}

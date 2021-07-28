@@ -11,6 +11,8 @@ use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Domain\Assay\Models\Assay
@@ -47,6 +49,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 final class Assay extends Model
 {
+    use LogsActivity;
+
     public function experiments(): HasMany
     {
         return $this->hasMany(Experiment::class);
@@ -73,5 +77,10 @@ final class Assay extends Model
     public function results(): HasMany
     {
         return $this->hasMany(Result::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()->logOnly(['name']);
     }
 }

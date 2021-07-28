@@ -105,7 +105,7 @@
                 <x-slot name="content">
                     <div class="space-y-6">
                         @foreach ($study->users->sortBy('name') as $user)
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between" wire:key="user-{{$user->id}}">
                                 <div class="flex items-center">
                                     <img class="w-8 h-8 rounded-full" src="{{ $user->profile_photo_url }}"
                                          alt="{{ $user->name }}">

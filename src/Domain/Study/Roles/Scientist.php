@@ -13,7 +13,7 @@ final class Scientist implements Role
 
     public function description(): string
     {
-        return 'A scientist has full access over all experiment data';
+        return 'A scientist has full access over all result / experiment data and can modify them.';
     }
 
     public function title(): string

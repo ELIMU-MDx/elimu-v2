@@ -39,7 +39,7 @@ class AdminNavigation extends Component
                 'active' => $request->is('assays*'),
             ],
             [
-                'href' => route('dashboard'),
+                'href' => route('quality-control.index'),
                 'label' => 'Quality Control',
                 'icon' => 'heroicon-o-clipboard',
                 'active' => $request->is('quality-control/*'),

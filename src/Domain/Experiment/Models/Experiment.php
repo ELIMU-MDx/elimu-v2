@@ -12,6 +12,8 @@ use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Domain\Experiment\Models\Experiment
@@ -54,6 +56,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 final class Experiment extends Model
 {
+    use LogsActivity;
+
     protected $casts = [
         'experiment_date' => 'date:Y-m-d',
     ];
@@ -86,5 +90,11 @@ final class Experiment extends Model
     public function newEloquentBuilder($query): ExperimentQueryBuilder
     {
         return new ExperimentQueryBuilder($query);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name', 'eln', 'experiment_date']);
     }
 }

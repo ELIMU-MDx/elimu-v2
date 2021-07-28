@@ -26,7 +26,7 @@ final class ControlValidationError implements ResultValidationError
             return true;
         }
 
-        $validationParameter = is_string($validationParameter) ? strtolower($validationParameter) : $validationParameter;
+        $validationParameter = is_numeric($validationParameter) ? (float) $validationParameter : strtolower($validationParameter);
 
         return match ($validationParameter) {
             'null' => $result->averageCQ->raw() === null,

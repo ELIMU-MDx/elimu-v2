@@ -16,6 +16,9 @@ module.exports = {
 			},
 			zIndex: {
 				'-10': '-10'
+			},
+			gridTemplateColumns: {
+				'audit': '100px minmax(0, 1fr)',
 			}
 		},
 	},

@@ -8,6 +8,7 @@ use Domain\Study\Actions\RemoveTeamMemberAction;
 use Domain\Study\Models\Invitation;
 use Domain\Study\Models\Study;
 use Domain\Study\Roles\RoleFactory;
+use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
@@ -97,9 +98,9 @@ class StudyMemberManager extends Component
         $this->teamMemberIdBeingRemoved = $userId;
     }
 
-    public function removeMember(RemoveTeamMemberAction $removeTeamMemberAction): void
+    public function removeMember(RemoveTeamMemberAction $removeTeamMemberAction, StatefulGuard $guard): void
     {
-        $removeTeamMemberAction->execute($this->study, $this->teamMemberIdBeingRemoved, Auth::user());
+        $removeTeamMemberAction->execute($this->study, $this->teamMemberIdBeingRemoved, $guard->user());
 
         $this->confirmingMemberRemoval = false;
         $this->teamMemberIdBeingRemoved = null;

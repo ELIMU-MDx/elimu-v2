@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\View\Livewire;
 
+use Auth;
 use Domain\Experiment\Actions\RecalculateResultsAction;
 use Domain\Experiment\Models\Measurement;
 use Domain\Experiment\Models\Sample;
@@ -34,7 +35,7 @@ final class ResultRow extends Component
             return;
         }
 
-        $measurement->excluded = ! $measurement->excluded;
+        $measurement->excluded = !$measurement->excluded;
         $measurement->save();
 
         $measurements = $this->sample->results

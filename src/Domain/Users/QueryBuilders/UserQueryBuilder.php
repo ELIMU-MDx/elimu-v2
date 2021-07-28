@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 final class UserQueryBuilder extends Builder
 {
-    public function isMemberOfAStudy(int $userId): bool
+    public function isMemberOfAnyStudy(int $userId): bool
     {
         return $this->select(DB::raw(1))
             ->from('study_user')

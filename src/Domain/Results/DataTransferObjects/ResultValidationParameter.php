@@ -28,9 +28,9 @@ final class ResultValidationParameter extends DataTransferObject
             'requiredRepetitions' => $parameter->required_repetitions,
             'standardDeviationCutoff' => $parameter->standard_deviation_cutoff,
             'cutoff' => $parameter->cutoff,
-            'positiveControl' => $assay->positive_control,
-            'negativeControl' => $assay->negative_control,
-            'ntcControl' => $assay->ntc_control,
+            'positiveControl' => $parameter->positive_control,
+            'negativeControl' => $parameter->negative_control,
+            'ntcControl' => $parameter->ntc_control,
         ]);
     }
 }

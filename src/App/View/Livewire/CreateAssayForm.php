@@ -7,13 +7,18 @@ namespace App\View\Livewire;
 use Auth;
 use Domain\Assay\Models\Assay;
 use Domain\Assay\Models\AssayParameter;
+use Domain\Assay\Rules\ControlParameterValidationRule;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\View\View;
 use Livewire\Component;
 use Str;
+use Support\DecimalValidationRule;
 
 final class CreateAssayForm extends Component
 {
+    use AuthorizesRequests;
+
     /** @var Assay */
     public $assay;
 
@@ -26,20 +31,6 @@ final class CreateAssayForm extends Component
     /** @var Collection */
     public $parameters = [];
 
-    protected $rules = [
-        'assay.name' => 'required|string|max:255',
-        'assay.sample_type' => 'string|max:255',
-        'visible' => 'required|bool',
-        'targets' => 'required|string',
-        'parameters.*.target' => 'required|string',
-        'parameters.*.cutoff' => 'required|numeric',
-        'parameters.*.standard_deviation_cutoff' => 'required|numeric',
-        'parameters.*.quantify' => 'nullable|boolean',
-        'parameters.*.slope' => 'required_if:parameters.*.quantify,1|nullable|numeric',
-        'parameters.*.intercept' => 'required_if:parameters.*.quantify,1|nullable|numeric',
-        'parameters.*.required_repetitions' => 'required|integer|min:1',
-    ];
-
     protected $validationAttributes = [
         'assay.name' => 'name',
         'targets' => 'targets',
@@ -50,6 +41,9 @@ final class CreateAssayForm extends Component
         'parameters.*.quantify' => 'quantity',
         'parameters.*.slope' => 'slope',
         'parameters.*.intercept' => 'intercept',
+        'parameters.*.positive_control' => 'Positive Control',
+        'parameters.*.negative_control' => 'Negative control',
+        'parameters.*.ntc_control' => 'NTC control',
         'parameters.*.required_repetitions' => 'required_repetitions',
     ];
 
@@ -66,6 +60,30 @@ final class CreateAssayForm extends Component
         $this->visible = $this->assay->study_id ? 0 : 1;
     }
 
+    protected function rules(): array
+    {
+        return [
+            'assay.name' => ['required', 'string', 'max:255'],
+            'assay.sample_type' => ['string', 'max:255'],
+            'visible' => ['required', 'bool'],
+            'targets' => ['required', 'string'],
+            'parameters.*.target' => ['required', 'string'],
+            'parameters.*.cutoff' => ['required', 'numeric', new DecimalValidationRule(8, 2)],
+            'parameters.*.standard_deviation_cutoff' => ['required', 'numeric', new DecimalValidationRule(8, 2)],
+            'parameters.*.quantify' => ['nullable', 'boolean'],
+            'parameters.*.slope' => [
+                'required_if:parameters.*.quantify,1', 'nullable', 'numeric', new DecimalValidationRule(8, 2),
+            ],
+            'parameters.*.intercept' => [
+                'required_if:parameters.*.quantify,1', 'nullable', 'numeric', new DecimalValidationRule(8, 2),
+            ],
+            'parameters.*.positive_control' => ['nullable', new ControlParameterValidationRule()],
+            'parameters.*.negative_control' => ['nullable', new ControlParameterValidationRule()],
+            'parameters.*.ntc_control' => ['nullable', new ControlParameterValidationRule()],
+            'parameters.*.required_repetitions' => 'required|integer|min:1',
+        ];
+    }
+
     /**
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -73,7 +91,7 @@ final class CreateAssayForm extends Component
     {
         $this->validateOnly('targets');
 
-        if (! trim($this->targets)) {
+        if (!trim($this->targets)) {
             $this->parameters = new Collection();
 
             return;
@@ -93,13 +111,18 @@ final class CreateAssayForm extends Component
                     'slope' => null,
                     'intercept' => null,
                     'required_repetitions' => 1,
+                    'positive_control' => null,
+                    'negative_control' => null,
+                    'ntc_control' => null,
                 ]);
             }));
     }
 
     public function saveAssay()
     {
+        $this->authorize('create-assay');
         $this->validate();
+        $new = $this->assay->exists;
 
         $parameters = $this->parameters
             ->map(function (AssayParameter $assayParameter) {
@@ -112,7 +135,7 @@ final class CreateAssayForm extends Component
                 return $assayParameter;
             });
 
-        $this->assay->study_id = $this->visible ? null : Auth::user()->study_id;
+        $this->assay->study_id = Auth::user()->study_id;
         $this->assay->user_id = $this->assay->id ? $this->assay->user_id : Auth::user()->id;
         $this->assay->save();
         $this->assay->parameters()->saveMany($parameters);

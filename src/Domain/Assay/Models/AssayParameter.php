@@ -46,6 +46,13 @@ final class AssayParameter extends Model
         'intercept' => 'float',
     ];
 
+    protected $appends = ['quantify'];
+
+    public function getQuantifyAttribute(): bool
+    {
+        return $this->slope !== null && $this->intercept !== null;
+    }
+
     public function newCollection(array $models = []): ParameterCollection
     {
         return ParameterCollection::make($models);

@@ -9,7 +9,8 @@ use App\Admin\Experiments\Controllers\ExportResultsController;
 use App\Admin\Experiments\Controllers\ListExperimentsController;
 use App\Admin\Experiments\Controllers\ListResultsController;
 use App\Admin\Experiments\Controllers\UpdateExperimentController;
-use App\Admin\Studies\Controllers\AcceptInvitationController;
+use App\Admin\Studies\Controllers\AcceptInvitationAsExistingUserController;
+use App\Admin\Studies\Controllers\AcceptInvitationAsNewUserController;
 use App\Admin\Studies\Controllers\CreateFirstStudyController;
 use App\Admin\Studies\Controllers\CreateStudyController;
 use App\Admin\Studies\Controllers\RegisterWithInvitationController;
@@ -23,10 +24,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/invitation/{invitation}/accepts', AcceptInvitationController::class)
+Route::get('/invitation/{invitation}/accepts/register', AcceptInvitationAsNewUserController::class)
     ->middleware('signed')
-    ->name('accept-invitation');
-Route::post('/invitation/{invitation}/accepts', RegisterWithInvitationController::class)->middleware('signed');
+    ->name('invitations.accept.new');
+Route::post('/invitation/{invitation}/accepts/register', RegisterWithInvitationController::class)->middleware('signed');
+
+Route::get('/invitation/{invitation}/accepts/login', AcceptInvitationAsExistingUserController::class)
+    ->middleware('signed')
+    ->name('invitations.accept.existing');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('studies/create-first', CreateFirstStudyController::class)->name('studies.create-first');

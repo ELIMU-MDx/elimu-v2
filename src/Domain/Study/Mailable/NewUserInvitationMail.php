@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Study\Mailable;
 
-use Domain\Study\Models\Invitation;
+use Domain\Invitations\Models\Invitation;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use URL;
@@ -18,7 +18,10 @@ final class NewUserInvitationMail extends Mailable implements ShouldQueue
     public function __construct(Invitation $invitation)
     {
         $this->invitation = $invitation;
-        $this->acceptUrl = URL::signedRoute('accept-invitation', compact('invitation'));
+        $this->acceptUrl = URL::signedRoute(
+            $invitation->receiver ? 'invitations.accept.existing' : 'invitations.accept.new',
+            compact('invitation')
+        );
         $this->to($this->invitation->email);
     }
 

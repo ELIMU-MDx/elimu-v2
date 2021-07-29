@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Domain\Study\Models;
+namespace Domain\Invitations\Models;
 
 use Domain\Study\Casts\RoleCaster;
 use Domain\Study\Enums\InvitationStatus;
+use Domain\Study\Models\Study;
 use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

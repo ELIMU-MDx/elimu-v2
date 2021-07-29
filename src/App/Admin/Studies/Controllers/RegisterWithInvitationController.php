@@ -5,23 +5,25 @@ declare(strict_types=1);
 namespace App\Admin\Studies\Controllers;
 
 use App\Admin\Studies\Requests\RegisterWithInvitationRequest;
-use Domain\Study\Actions\CreateStudyMemberAction;
-use Domain\Study\DataTransferObject\StudyMemberParameters;
-use Domain\Study\Models\Invitation;
+use Domain\Invitations\Actions\AcceptInvitationAction;
+use Domain\Invitations\Models\Invitation;
+use Domain\Users\Actions\CreateNewUser;
 use Illuminate\Contracts\Auth\StatefulGuard;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class RegisterWithInvitationController
 {
     public function __invoke(
         Invitation $invitation,
-        RegisterWithInvitationRequest $request,
-        CreateStudyMemberAction $action,
+        Request $request,
+        CreateNewUser $createNewUserAction,
+        AcceptInvitationAction $acceptInvitationAction,
         StatefulGuard $guard
     ): Response {
-        $user = $action->execute($invitation, new StudyMemberParameters($request->validated()));
-
+        $user = $createNewUserAction->create($request->merge(['email' => $invitation->email])->all());
         $guard->login($user);
+        $acceptInvitationAction->execute($invitation);
 
         return redirect(route('dashboard'));
     }

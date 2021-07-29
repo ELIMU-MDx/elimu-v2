@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Study\Actions;
 
+use Domain\Invitations\Models\Invitation;
 use Domain\Study\DataTransferObject\StudyMemberParameters;
-use Domain\Study\Models\Invitation;
 use Domain\Users\Models\User;
 use Hash;
 use Illuminate\Database\Connection;

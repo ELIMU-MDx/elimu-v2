@@ -1,6 +1,11 @@
 <?php
 
 use App\Providers\RouteServiceProvider;
+use Domain\Invitations\Actions\AcceptInvitationFromSessionAction;
+use Laravel\Fortify\Actions\AttemptToAuthenticate;
+use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;
+use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
+use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
 use Laravel\Fortify\Features;
 
 return [
@@ -49,6 +54,16 @@ return [
     'username' => 'email',
 
     'email' => 'email',
+
+    'pipelines' => [
+        'login' => [
+            EnsureLoginIsNotThrottled::class,
+            RedirectIfTwoFactorAuthenticatable::class,
+            AttemptToAuthenticate::class,
+            PrepareAuthenticatedSession::class,
+            AcceptInvitationFromSessionAction::class,
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------

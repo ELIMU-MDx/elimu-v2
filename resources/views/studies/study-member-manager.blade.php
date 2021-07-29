@@ -52,7 +52,7 @@
         </x-jet-form-section>
     </div>
 
-    @if($study->invitations->isNotEmpty())
+    @if($study->pendingInvitations->isNotEmpty())
         <x-jet-section-border/>
         <div class="mt-10 sm:mt-0">
             <x-jet-action-section>
@@ -69,7 +69,7 @@
 
                 <x-slot name="content">
                     <div class="space-y-6">
-                        @foreach($study->invitations as $invitation)
+                        @foreach($study->pendingInvitations as $invitation)
                             <div class="flex items-center justify-between">
                                 <div class="text-gray-600">{{$invitation->email}}</div>
 
@@ -109,7 +109,7 @@
                                 <div class="flex items-center">
                                     <img class="w-8 h-8 rounded-full" src="{{ $user->profile_photo_url }}"
                                          alt="{{ $user->name }}">
-                                    <div class="ml-4">{{ $user->name }}</div>
+                                    <div class="ml-4">{{ $user->name }} <span class="text-gray-400">{{$user->email}}</span></div>
                                 </div>
 
                                 <div class="flex items-center">

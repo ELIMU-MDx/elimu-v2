@@ -6,28 +6,33 @@
 
         <x-jet-validation-errors class="mb-4"/>
 
-        <form method="POST">
+        <form method="POST" class="space-y-4">
             @csrf
 
             <div>
+                <x-jet-label for="name" value="{{ __('Email') }}"/>
+                <x-input id="name" class="block mt-1 w-full" type="text" name="email" :value="$email" disabled/>
+            </div>
+
+            <div>
                 <x-jet-label for="name" value="{{ __('Name') }}"/>
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
                              autofocus autocomplete="name"/>
             </div>
 
-            <div class="mt-4">
+            <div>
                 <x-jet-label for="password" value="{{ __('Password') }}"/>
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required
                              autocomplete="new-password"/>
             </div>
 
-            <div class="mt-4">
+            <div>
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}"/>
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password"
+                <x-input id="password_confirmation" class="block mt-1 w-full" type="password"
                              name="password_confirmation" required autocomplete="new-password"/>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end">
                 <x-jet-button>
                     {{ __('Register') }}
                 </x-jet-button>

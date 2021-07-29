@@ -3,9 +3,9 @@
 namespace App\View\Livewire;
 
 use Auth;
+use Domain\Invitations\Models\Invitation;
 use Domain\Study\Actions\AddMemberAction;
 use Domain\Study\Actions\RemoveTeamMemberAction;
-use Domain\Study\Models\Invitation;
 use Domain\Study\Models\Study;
 use Domain\Study\Roles\RoleFactory;
 use Illuminate\Contracts\Auth\StatefulGuard;

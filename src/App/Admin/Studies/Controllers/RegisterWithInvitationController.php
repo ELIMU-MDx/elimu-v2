@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Admin\Studies\Controllers;
 
-use App\Admin\Studies\Requests\RegisterWithInvitationRequest;
 use Domain\Invitations\Actions\AcceptInvitationAction;
 use Domain\Invitations\Models\Invitation;
 use Domain\Users\Actions\CreateNewUser;

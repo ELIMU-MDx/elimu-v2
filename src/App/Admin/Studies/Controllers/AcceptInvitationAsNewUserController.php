@@ -12,11 +12,11 @@ use URL;
 
 final class AcceptInvitationAsNewUserController
 {
-    public function __invoke(Invitation $invitation, StatefulGuard $guard): View|Response
+    public function __invoke(Invitation $invitation, StatefulGuard $guard): View | Response
     {
         $guard->logout();
 
-        if($invitation->receiver) {
+        if ($invitation->receiver) {
             return redirect(URL::signedRoute('invitations.accept.existing', compact('invitation')));
         }
 

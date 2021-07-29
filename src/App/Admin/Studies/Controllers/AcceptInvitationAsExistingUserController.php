@@ -14,13 +14,13 @@ use URL;
 
 final class AcceptInvitationAsExistingUserController
 {
-    public function __invoke(Invitation $invitation, StatefulGuard $guard, AcceptInvitationAction $action, Session $session): View|Response
+    public function __invoke(Invitation $invitation, StatefulGuard $guard, AcceptInvitationAction $action, Session $session): View | Response
     {
-        if(!$invitation->receiver) {
+        if (! $invitation->receiver) {
             return redirect(URL::signedRoute('invitations.accept.new', compact('invitation')));
         }
 
-        if ($guard->check() && !$guard->user()->is($invitation->receiver)) {
+        if ($guard->check() && ! $guard->user()->is($invitation->receiver)) {
             $guard->logout();
         }
 

@@ -77,7 +77,7 @@ class AuthServiceProvider extends ServiceProvider
             return $user->study_id === $assay->study_id && in_array($user->studies->firstWhere('id', $assay->study_id)->membership->role, [new Owner(), new Scientist()], false);
         });
 
-        Gate::define('edit-results', function(User $user, Sample $sample) {
+        Gate::define('edit-results', function (User $user, Sample $sample) {
             return $user->study_id === $sample->study_id && in_array($user->studies->firstWhere('id', $sample->study_id)->membership->role, [new Owner(), new Scientist()], false);
         });
     }

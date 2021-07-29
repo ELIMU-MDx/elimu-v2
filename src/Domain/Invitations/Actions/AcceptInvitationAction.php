@@ -6,7 +6,6 @@ namespace Domain\Invitations\Actions;
 
 use BadMethodCallException;
 use Domain\Invitations\Models\Invitation;
-use Domain\Study\Enums\InvitationStatus;
 use Illuminate\Database\Connection;
 
 final class AcceptInvitationAction

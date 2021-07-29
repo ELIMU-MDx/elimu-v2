@@ -11,7 +11,7 @@
                 <x-slot name="trigger">
                     <x-admin-navigation-link as="button" type="button" class="w-full"
                                              icon="heroicon-o-academic-cap">
-                        {{ Auth::user()->currentStudy->name }}
+                        {{ Auth::user()->currentStudy->identifier }}
                         <svg class="ml-auto -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"

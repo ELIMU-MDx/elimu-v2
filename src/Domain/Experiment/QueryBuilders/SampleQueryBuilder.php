@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\Experiment\QueryBuilders;
 
-use Auth;
 use Domain\Rdml\Enums\MeasurementType;
 use Domain\Results\Enums\QualitativeResult;
 use Illuminate\Database\Eloquent\Builder;

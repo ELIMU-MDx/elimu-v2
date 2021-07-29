@@ -23,14 +23,16 @@ final class AcceptInvitationAction
             throw new BadMethodCallException('There is no user for the receiver email address '.$invitation->email);
         }
 
-        $invitation->status = InvitationStatus::ACCEPTED();
-        $invitation->user_id = $invitation->receiver->id;
+        $receiver = $invitation->receiver;
 
-        $invitation->receiver->studies()->attach($invitation->study_id, ['role' => $invitation->role]);
-        $invitation->receiver->study_id = $invitation->study_id;
+        $invitation->delete();
 
-        $this->connection->transaction(function () use ($invitation) {
-            $invitation->push();
+        $receiver->studies()->attach($invitation->study_id, ['role' => $invitation->role]);
+        $receiver->study_id = $invitation->study_id;
+
+        $this->connection->transaction(function () use ($receiver, $invitation) {
+            $invitation->delete();
+            $receiver->save();
         });
     }
 }

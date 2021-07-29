@@ -51,30 +51,32 @@
         </td>
         <td class="px-3 py-4 whitespace-nowrap text-sm text-center" x-data="{show: false}">
             <p>{{$result->measurements->included()->count()}} / {{$result->measurements->count()}}</p>
-            <button class="text-indigo-600 font-semibold rounded-lg text-xs mt-1 underline"
-                    x-on:click="show = true" x-show="!show">Edit
-            </button>
-            <button class="text-indigo-600 font-semibold rounded-lg text-xs mt-1 underline"
-                    x-on:click="show = false"
-                    x-cloak
-                    x-show="show">Close
-            </button>
-            <div>
-                <ul class="flex -mx-2 divide-x divide-gray-200 grid-cols-4 justify-center items-center"
-                    x-show="show" x-cloak>
-                    @foreach($result->measurements as $measurement)
-                        <li class="px-2">
-                            <button wire:click="toggleExcluded({{$measurement->id}})"
-                                    wire:loading.class.remove="text-indigo-600"
-                                    wire:loading.class="text-gray-200 cursor-wait"
-                                    wire:loading.attr="disabled"
-                                    class="text-indigo-600 @if($measurement->excluded) line-through @else underline @endif">
-                                {{ $measurement->cq ?? 'NaN'}}
-                            </button>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
+            @can('edit-results', $sample)
+                <button class="text-indigo-600 font-semibold rounded-lg text-xs mt-1 underline"
+                        x-on:click="show = true" x-show="!show">Edit
+                </button>
+                <button class="text-indigo-600 font-semibold rounded-lg text-xs mt-1 underline"
+                        x-on:click="show = false"
+                        x-cloak
+                        x-show="show">Close
+                </button>
+                <div>
+                    <ul class="flex -mx-2 divide-x divide-gray-200 grid-cols-4 justify-center items-center"
+                        x-show="show" x-cloak>
+                        @foreach($result->measurements as $measurement)
+                            <li class="px-2">
+                                <button wire:click="toggleExcluded({{$measurement->id}})"
+                                        wire:loading.class.remove="text-indigo-600"
+                                        wire:loading.class="text-gray-200 cursor-wait"
+                                        wire:loading.attr="disabled"
+                                        class="text-indigo-600 @if($measurement->excluded) line-through @else underline @endif">
+                                    {{ $measurement->cq ?? 'NaN'}}
+                                </button>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endcan
         </td>
     @endforeach
 </tr>

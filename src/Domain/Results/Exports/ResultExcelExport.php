@@ -21,7 +21,7 @@ final class ResultExcelExport implements
     WithMapping,
     WithStrictNullComparison,
     WithProperties,
-                                         ShouldAutoSize,
+    ShouldAutoSize,
     WithHeadings
 {
     public function __construct(private Assay $assay, private User $user)

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Domain\Study\Models\Study;
 use Domain\Study\Roles\Owner;
 use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -45,10 +46,10 @@ class UserFactory extends Factory
         });
     }
 
-    public function withStudy(): UserFactory
+    public function withStudy(?Study $study = null): UserFactory
     {
         return $this->state([
-            'study_id' => StudyFactory::new(),
+            'study_id' => $study?->id ?? StudyFactory::new(),
         ])->afterCreating(function (User $user) {
             $user->studies()->attach($user->study_id, ['role' => new Owner()]);
         });

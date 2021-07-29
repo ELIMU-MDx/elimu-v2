@@ -34,7 +34,7 @@ final class SampleQueryBuilder extends Builder
                 },
             ]
         )
-            ->where('study_id', Auth::user()->study_id)
+            ->where('study_id', $studyId)
             ->whereHas('results.measurements', function ($query) {
                 return $query->orderBy('target')
                     ->where('type', MeasurementType::SAMPLE());

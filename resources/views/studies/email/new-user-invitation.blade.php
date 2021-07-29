@@ -7,9 +7,6 @@ You have been invited by **{{$invitation->user->name}}** to join the study **{{$
     {{ __('Accept Invitation') }}
 @endcomponent
 
-{{ __('If you did not expect to receive an invitation to this study, you may click the following button to not receive any further emails from elimu:') }}
+{{ __('If you did not expect to receive an invitation to this study, you may discard this email.') }}
 
-@component('mail::button', ['url' => '#', 'color' => 'red'])
-    {{ __('Disable all Invitations') }}
-@endcomponent
 @endcomponent

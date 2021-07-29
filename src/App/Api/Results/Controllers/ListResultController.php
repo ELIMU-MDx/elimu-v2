@@ -13,11 +13,18 @@ final class ListResultController
 {
     public function __invoke(Assay $assay, StatefulGuard $guard)
     {
+        /** @var \Domain\Users\Models\User $user */
+        $user = $guard->user();
+
+        if (!$user->studies()->where('studies.id', $assay->study_id)->exists()) {
+            return [];
+        }
+
         return Sample::with([
-            'results' => fn ($query) => $query->withCount('measurements'),
+            'results' => fn($query) => $query->withCount('measurements'),
             'results.resultErrors',
         ])
-            ->whereHas('results', fn ($query) => $query->where('assay_id', $assay->id))
+            ->whereHas('results', fn($query) => $query->where('assay_id', $assay->id))
             ->get()
             ->map(function (Sample $sample) {
                 return $sample->results

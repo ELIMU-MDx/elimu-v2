@@ -35,4 +35,16 @@ final class ListResultTest extends TestCase
             ])
             ->assertJsonCount(1);
     }
+
+    /** @test */
+    public function itListsEmptyResultsForAssaysThatDoNotBelongToTheUser(): void
+    {
+        $assay = AssayFactory::new()->create();
+        $result = ResultFactory::new(['assay_id' => $assay->id])->withMeasurement()->create();
+
+        $this->signIn(UserFactory::new()->withStudy()->create())
+            ->getJson(route('api.results.index', $assay))
+            ->assertOk()
+            ->assertJson([]);
+    }
 }

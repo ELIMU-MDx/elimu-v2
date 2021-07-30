@@ -9,6 +9,8 @@ use App\Admin\Experiments\Controllers\ExportResultsController;
 use App\Admin\Experiments\Controllers\ListExperimentsController;
 use App\Admin\Experiments\Controllers\ListResultsController;
 use App\Admin\Experiments\Controllers\UpdateExperimentController;
+use App\Admin\QualityControl\Controllers\ExportLogController;
+use App\Admin\QualityControl\Controllers\ListLogController;
 use App\Admin\Studies\Controllers\AcceptInvitationAsExistingUserController;
 use App\Admin\Studies\Controllers\AcceptInvitationAsNewUserController;
 use App\Admin\Studies\Controllers\CreateFirstStudyController;
@@ -66,6 +68,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             UpdateExperimentController::class
         )->name('experiments.update')->middleware('can:edit-experiment,experiment');
 
-        Route::get('quality-control', \App\Admin\QualityControl\Controllers\ListLogController::class)->name('quality-control.index');
+        Route::get('quality-control', ListLogController::class)->name('quality-control.index');
+        Route::get('quality-control/export', ExportLogController::class)->name('quality-control.export');
     });
 });

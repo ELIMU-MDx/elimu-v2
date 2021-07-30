@@ -16,7 +16,11 @@
             </div>
         @else
 
-            <div class="bg-white shadow overflow-hidden sm:rounded-md">
+            <div class="flex justify-end items-baseline space-x-4">
+                <x-primary-button as="a" href="{{route('quality-control.export')}}" target="_blank">Download Excel</x-primary-button>
+            </div>
+
+            <div class="bg-white shadow overflow-hidden sm:rounded-md mt-8">
                 <ul class="divide-y divide-gray-200">
                     @foreach($logs as $log)
                         <li>

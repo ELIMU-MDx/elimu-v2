@@ -20,10 +20,8 @@ use App\Admin\Studies\Controllers\SwitchStudyController;
 use Illuminate\Support\Facades\Route;
 use Support\Middlewares\EnsureHasStudy;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::view('/', 'welcome');
+Route::view('documentation', 'api-documentation')->name('api-documentation');
 Route::get('/invitation/{invitation}/accepts/register', AcceptInvitationAsNewUserController::class)
     ->middleware('signed')
     ->name('invitations.accept.new');

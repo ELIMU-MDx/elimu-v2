@@ -7,7 +7,7 @@ namespace Domain\Study\Mailable;
 use Domain\Invitations\Models\Invitation;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use URL;
+use Illuminate\Support\Facades\URL;
 
 final class NewUserInvitationMail extends Mailable implements ShouldQueue
 {

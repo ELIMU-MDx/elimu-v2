@@ -1,0 +1,191 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Elimu Api"
+  },
+  "servers": [
+    {
+      "url": "https://elimu.sparclex.com/api",
+      "description": "Production"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/assays/{assay}/results": {
+      "get": {
+        "parameters": [
+          {
+            "name": "assay",
+            "in": "path",
+            "description": "The id of the assay. It is the number in the front of the assay name in the assay list.",
+            "required": true,
+            "example": 12,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "summary": "Assay results",
+        "description": "Returns all results for the given assay id",
+        "operationId": "getPing",
+        "tags": [
+          "Results"
+        ],
+        "responses": {
+          "200": {
+            "description": "The success status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "sample"
+                  ],
+                  "properties": {
+                    "sample": {
+                      "type": "string",
+                      "description": "Sample id"
+                    },
+                    "replicas_target": {
+                      "type": "integer",
+                      "description": "Number of repetitions for this target"
+                    },
+                    "mean_cq_target": {
+                      "type": "number",
+                      "nullable": true,
+                      "description": "Average CQ value rounded to two decimal digits"
+                    },
+                    "standard_deviation_cq_target": {
+                      "type": "number",
+                      "nullable": true,
+                      "description": "Standard deviation of the cq values rounded to two decimal digits"
+                    },
+                    "qualitative_result_target": {
+                      "type": "string",
+                      "enum": [
+                        "POSITIVE",
+                        "NEGATIVE",
+                        "error message"
+                      ],
+                      "description": "Qualitative result or error message if the validation rules defined in the assay were not reached"
+                    },
+                    "quantitative_result_target": {
+                      "type": "number",
+                      "nullable": true,
+                      "description": "Quantitative result for positive results with defined slope and intercept in assay"
+                    }
+                  }
+                },
+                "example": [
+                  {
+                    "sample": "PIK11_2019",
+                    "replicas_pfvarts": 2,
+                    "mean_cq_pfvarts": 42.48,
+                    "standard_deviation_cq_pfvarts": 0.01,
+                    "qualitative_result_pfvarts": "POSITIVE",
+                    "quantitative_result_pfvarts": 1.36,
+                    "replicas_pspp18s": 2,
+                    "mean_cq_pspp18s": null,
+                    "standard_deviation_cq_pspp18s": null,
+                    "qualitative_result_pspp18s": "NEGATIVE",
+                    "quantitative_result_pspp18s": null
+                  },
+                  {
+                    "sample": "PIK12_2019",
+                    "replicas_pfvarts": 2,
+                    "mean_cq_pfvarts": 42.48,
+                    "standard_deviation_cq_pfvarts": 0.01,
+                    "qualitative_result_pfvarts": "POSITIVE",
+                    "quantitative_result_pfvarts": 1.36,
+                    "replicas_pspp18s": 2,
+                    "mean_cq_pspp18s": null,
+                    "standard_deviation_cq_pspp18s": null,
+                    "qualitative_result_pspp18s": "NEGATIVE",
+                    "quantitative_result_pspp18s": null
+                  }
+                ]
+              }
+            }
+          },
+          "503": {
+            "$ref": "#/components/responses/503"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "responses": {
+      "503": {
+        "description": "Service Unavailable, e.g. Maintenance.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": {
+                "message": "Service Unavailable.",
+                "details": [
+                  {
+                    "message": "Currently under maintenance."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "Error": {
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "message"
+            ],
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "The error message"
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "description": "The error details (e.g. validation errors)"
+              }
+            }
+          }
+        }
+      },
+      "ErrorDetails": {
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "The name of the invalid field"
+          },
+          "message": {
+            "type": "string",
+            "description": "The error message"
+          }
+        }
+      }
+    }
+  }
+}

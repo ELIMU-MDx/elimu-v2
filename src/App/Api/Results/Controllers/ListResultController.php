@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Api\Results\Controllers;
 
+use Auth;
 use Domain\Assay\Models\Assay;
 use Domain\Experiment\Models\Sample;
 use Domain\Results\Models\Result;
-use Illuminate\Contracts\Auth\StatefulGuard;
 
 final class ListResultController
 {
-    public function __invoke(Assay $assay, StatefulGuard $guard)
+    public function __invoke(Assay $assay)
     {
         /** @var \Domain\Users\Models\User $user */
-        $user = $guard->user();
+        $user = Auth::user();
 
         if (! $user->studies()->where('studies.id', $assay->study_id)->exists()) {
             return [];

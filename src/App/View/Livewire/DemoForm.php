@@ -2,196 +2,88 @@
 
 namespace App\View\Livewire;
 
-use Domain\Assay\Models\Assay;
-use Domain\Evaluation\Collections\SampleDataCollection;
-use Domain\Evaluation\DataTransferObjects\SampleData;
-use Domain\Evaluation\DataTransferObjects\TargetData;
-use Domain\Evaluation\Validators\SampleValidator;
-use Domain\Rdml\Converters\RdmlConverter;
-use Domain\Rdml\DataTransferObjects\Rdml;
-use Domain\Rdml\DataTransferObjects\Target;
-use Domain\Rdml\Services\RdmlFileReader;
-use Domain\Rdml\Services\RdmlParser;
-use Domain\Results\DataTransferObjects\ResultValidationParameter;
-use Domain\Results\Enums\QualitativeResult;
-use Illuminate\Database\Eloquent\Builder;
+use Domain\Assay\Importers\AssayParameterExcelImporter;
+use Domain\Assay\Models\AssayParameter;
+use Domain\Rdml\DataTransferObjects\Measurement;
+use Domain\Rdml\Enums\MeasurementType;
+use Domain\Rdml\Services\RdmlReader;
+use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
-use Support\RoundedNumber;
+use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel as ExcelFacade;
+use Throwable;
 
 class DemoForm extends Component
 {
     use WithFileUploads;
 
-    public mixed $assays = null;
+    /** @var TemporaryUploadedFile */
+    public $assay = null;
 
-    public mixed $selectedAssay = null;
+    /** @var TemporaryUploadedFile */
+    public $rdml = null;
 
-    public mixed $rdml = null;
-
-    public array $targets = [];
-
-    public ?Collection $result = null;
+    protected array $rules = [
+        'rdml' => 'required|file|mimes:rdml,zip',
+        'assay' => 'required|file|mimes:xlsx',
+    ];
 
     public function render(): View
     {
         return view('livewire.demo-form');
     }
 
-    public function getCurrentAssayProperty()
+    public function updatedRdml(TemporaryUploadedFile $rdml): void
     {
-        return $this->assays->firstWhere('id', $this->selectedAssay);
-    }
+        $this->validateOnly('rdml');
 
-    public function addTarget(string $name, string $fluor): void
-    {
-        $this->targets[strtolower($name)] = [
-            'target' => $name,
-            'fluor' => $fluor,
-            'quantify' => false,
-            'cutoff' => '',
-            'cutoff_stddev' => '',
-            'slope' => '',
-            'intercept' => '',
-            'repetitions' => '1',
-        ];
-    }
-
-    public function updatedRdml(TemporaryUploadedFile $file): void
-    {
-        $this->validate([
-            'rdml' => 'mimes:rdml,zip',
-        ]);
-
-        $rdml = $this->getRdml($file);
-
-        $this->targets = [];
-
-        $query = Assay::with('parameters')->orderBy('name');
-
-        $rdml->targets->each(function (Target $target) use ($query) {
-            $query->whereHas('parameters', function (Builder $query) use ($target) {
-                return $query->where('target', strtolower($target->id));
-            });
-            $this->addTarget($target->id, $target->dye);
-        });
-
-        $this->assays = $query->get();
-    }
-
-    public function updatedSelectedAssay(): void
-    {
-        /** @var Assay $assay */
-        $assay = $this->assays->firstWhere('id', $this->selectedAssay);
-
-        if (! $assay) {
-            foreach ($this->targets as $target => $data) {
-                $this->targets[$target]['cutoff'] = '';
-                $this->targets[$target]['cutoff_stddev'] = '';
-                $this->targets[$target]['quantify'] = false;
-                $this->targets[$target]['slope'] = '';
-                $this->targets[$target]['intercept'] = '';
-                $this->targets[$target]['repetitions'] = '1';
-            }
-
-            return;
-        }
-
-        foreach ($assay->parameters as $parameter) {
-            if (! isset($this->targets[$parameter->target])) {
-                continue;
-            }
-            $this->targets[$parameter->target]['cutoff'] = $parameter->cutoff;
-            $this->targets[$parameter->target]['cutoff_stddev'] = $parameter->standard_deviation_cutoff;
-            $this->targets[$parameter->target]['quantify'] = $parameter->slope && $parameter->intercept;
-            $this->targets[$parameter->target]['slope'] = (new RoundedNumber($parameter->slope))->toString();
-            $this->targets[$parameter->target]['intercept'] = (new RoundedNumber($parameter->intercept))->toString();
-            $this->targets[$parameter->target]['repetitions'] = $parameter->required_repetitions;
+        try {
+            app(RdmlReader::class)->read($this->rdml);
+        } catch (Exception $exception) {
+            $this->addError('rdml', 'Could not parse rdml file');
         }
     }
 
-    public function analyze(): void
+    public function updatedAssay(TemporaryUploadedFile $assay): void
     {
-        $this->validate([
-            'targets.*.cutoff' => 'required|numeric',
-            'targets.*.cutoff_stddev' => 'required|numeric',
-            'targets.*.quantify' => 'required|boolean',
-            'targets.*.slope' => 'required_with:quantify|numeric',
-            'targets.*.intercept' => 'required_with:quantify|numeric',
-            'targets.*.repetitions' => 'required|integer|min:1',
-        ], attributes: [
-            'targets.*.cutoff' => 'cutoff',
-            'targets.*.cutoff_stddev' => 'cutoff standard deviation',
-            'targets.*.quantify' => 'quantify',
-            'targets.*.slope' => 'slope',
-            'targets.*.intercept' => 'intercept',
-            'targets.*.repetitions' => 'repetitions',
-        ]);
+        $this->validateOnly('assay');
 
-        $rdml = $this->getRdml($this->rdml);
+        ExcelFacade::toCollection(new AssayParameterExcelImporter(1), $this->assay->getRealPath());
+    }
 
-        $data = (new RdmlConverter($rdml))->toSampleData();
-
-        $data = $data->map(function (SampleData $sampleData) {
-            $sampleData->targets = $sampleData->targets->map(function (TargetData $targetData) {
-                $targetData->errors = (new SampleValidator())->validate(
-                    $targetData->dataPoints,
-                    $this->getValidationParameterForTarget($targetData->id)
-                );
-
-                return $targetData;
+    public function getAssayParametersProperty(Excel $excel): Collection
+    {
+        return $excel->toCollection(
+            new AssayParameterExcelImporter(1),
+            $this->assay->getRealPath()
+        )
+            ->flatten(1)
+            ->map(function (Collection $parameter) {
+                return new AssayParameter([
+                    'target' => $parameter->get('target'),
+                    'cutoff' => $parameter->get('cutoff'),
+                    'standard_deviation_cutoff' => $parameter->get('cutoff_standard_deviation'),
+                    'required_repetitions' => $parameter->get('required_repetitions'),
+                    'slope' => $parameter->get('slope'),
+                    'intercept' => $parameter->get('intercept'),
+                ]);
             });
-
-            return $sampleData;
-        });
-
-        $this->result = $this->evaluateResults($data);
     }
 
-    private function getValidationParameterForTarget(string $target): ResultValidationParameter
+    public function getMeasurementsProperty(RdmlReader $rdmlReader,)
     {
-        $target = strtolower($target);
+        if (!$this->assay || !$this->rdml) {
+            return [];
+        }
 
-        return new ResultValidationParameter([
-            'requiredRepetitions' => (int) $this->targets[$target]['repetitions'] ?: 1,
-            'cutoff' => (float) $this->targets[$target]['cutoff'],
-            'standardDeviationCutoff' => (float) $this->targets[$target]['cutoff_stddev'],
-        ]);
-    }
-
-    private function getRdml(TemporaryUploadedFile $file): Rdml
-    {
-        return app(RdmlParser::class)->extract(app(RdmlFileReader::class)->read($file));
-    }
-
-    private function evaluateResults(SampleDataCollection $data): Collection
-    {
-        return $data->map(function (SampleData $sampleData) {
-            return (object) [
-                'id' => $sampleData->id,
-                'targets' => $sampleData->targets->map(function (TargetData $targetData) {
-                    $target = strtolower($targetData->id);
-                    $qualification = $targetData->dataPoints->qualify($this->targets[$target]['cutoff']);
-
-                    return (object) [
-                        'id' => $targetData->id,
-                        'cq' => $targetData->dataPoints->averageCq(),
-                        'quantification' => $this->targets[$target]['slope'] && $this->targets[$target]['intercept'] && $qualification === QualitativeResult::POSITIVE()
-                            ? $targetData->dataPoints->quantify(
-                                (float) $this->targets[$target]['slope'],
-                                (float) $this->targets[$target]['intercept']
-                            )
-                            : null,
-                        'qualification' => $targetData->dataPoints->qualify($this->targets[$target]['cutoff']),
-                        'standardDeviation' => $targetData->dataPoints->count() > 1 ? $targetData->dataPoints->standardDeviationCq() : null,
-                        'replications' => $targetData->dataPoints->count(),
-                        'errors' => $targetData->errors,
-                    ];
-                }),
-            ];
-        })->toBase();
+        try {
+            return $rdmlReader->read($this->rdml)->measurements->filter(fn(Measurement $measurement) => $measurement->type === MeasurementType::SAMPLE());
+        } catch (Throwable $exception) {
+            return [];
+        }
     }
 }

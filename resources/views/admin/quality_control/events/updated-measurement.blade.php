@@ -1,5 +1,5 @@
 <p class="text-sm font-medium text-indigo-600 truncate">
-    {{$log->getExtraProperty('attributes.excluded') ? 'Exclude' : 'Include'}} Measurement
+    {{$log->getExtraProperty('attributes.excluded') ? 'Excluded' : 'Included'}} Measurement
 </p>
 @include('admin.quality_control.events.attributes', ['data' =>
 [

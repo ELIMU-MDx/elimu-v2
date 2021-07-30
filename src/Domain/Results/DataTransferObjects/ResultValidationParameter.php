@@ -22,7 +22,7 @@ final class ResultValidationParameter extends DataTransferObject
 
     public string | float | null $ntcControl;
 
-    public static function fromModel(Assay $assay, AssayParameter $parameter): ResultValidationParameter
+    public static function fromModel(AssayParameter $parameter): ResultValidationParameter
     {
         return new ResultValidationParameter([
             'requiredRepetitions' => $parameter->required_repetitions,

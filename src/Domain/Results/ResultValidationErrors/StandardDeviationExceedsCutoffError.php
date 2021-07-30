@@ -14,7 +14,7 @@ final class StandardDeviationExceedsCutoffError implements ResultValidationError
 
     public function message(Result $result, ResultValidationParameter $parameter): string
     {
-        return "Standard deviation of '{$result->measurements->standardDeviationCq()->toString()}' exceeds cutoff of '{$parameter->standardDeviationCutoff}'";
+        return "Standard deviation of '{$result->measurements->included()->standardDeviationCq()->toString()}' exceeds cutoff of '{$parameter->standardDeviationCutoff}'";
     }
 
     public function validate(Result $result, ResultValidationParameter $parameter): bool

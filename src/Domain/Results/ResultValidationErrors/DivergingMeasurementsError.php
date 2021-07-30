@@ -14,7 +14,7 @@ final class DivergingMeasurementsError implements ResultValidationError
 
     public function message(Result $result, ResultValidationParameter $parameter): string
     {
-        return 'Needs repetition since not all messurements evaluate to the same result';
+        return 'Needs attention because of ambiguous measurements';
     }
 
     public function validate(Result $result, ResultValidationParameter $parameter): bool

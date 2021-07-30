@@ -170,10 +170,7 @@ final class RecalculateResultsAction
             ->parameters
             ->mapWithKeys(function (AssayParameter $parameter) use ($assay) {
                 return [
-                    strtolower($parameter->target) => ResultValidationParameter::fromModel(
-                        $assay,
-                        $parameter
-                    ),
+                    strtolower($parameter->target) => ResultValidationParameter::fromModel($parameter),
                 ];
             });
     }

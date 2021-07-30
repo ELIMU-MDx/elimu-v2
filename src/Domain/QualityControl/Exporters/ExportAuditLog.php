@@ -55,10 +55,10 @@ final class ExportAuditLog implements
             $activity->event,
             class_basename($activity->subject_type),
             collect($activity->properties->get('old', []))->map(function ($value, $key) {
-                return "{$key}:{$value}";
+                return "{$key}: {$value}";
             })->join("\n"),
             collect($activity->properties->get('attributes', []))->map(function ($value, $key) {
-                return "{$key}:{$value}";
+                return "{$key}: {$value}";
             })->join("\n"),
             $activity->causer->name,
             Date::dateTimeToExcel($activity->created_at),

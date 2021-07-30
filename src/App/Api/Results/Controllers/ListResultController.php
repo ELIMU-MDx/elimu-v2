@@ -26,7 +26,7 @@ final class ListResultController
             'results.resultErrors',
         ])
             ->whereHas('results', fn ($query) => $query->where('assay_id', $assay->id))
-            ->whereHas('results.measurements', fn($query) => $query->where('type', MeasurementType::SAMPLE()))
+            ->whereHas('results.measurements', fn ($query) => $query->where('type', MeasurementType::SAMPLE()))
             ->get()
             ->map(function (Sample $sample) {
                 return $sample->results

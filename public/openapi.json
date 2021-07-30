@@ -32,7 +32,7 @@
         ],
         "summary": "Assay results",
         "description": "Returns all results for the given assay id",
-        "operationId": "getPing",
+        "operationId": "getAssayResults",
         "tags": [
           "Results"
         ],

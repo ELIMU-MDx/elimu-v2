@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\Results\DataTransferObjects;
 
-use Domain\Assay\Models\Assay;
 use Domain\Assay\Models\AssayParameter;
 use Spatie\DataTransferObject\DataTransferObject;
 

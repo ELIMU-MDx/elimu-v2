@@ -168,7 +168,7 @@ final class RecalculateResultsAction
             ->experiment
             ->assay
             ->parameters
-            ->mapWithKeys(function (AssayParameter $parameter) use ($assay) {
+            ->mapWithKeys(function (AssayParameter $parameter) {
                 return [
                     strtolower($parameter->target) => ResultValidationParameter::fromModel($parameter),
                 ];

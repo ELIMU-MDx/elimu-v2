@@ -76,12 +76,12 @@ class DemoForm extends Component
 
     public function getMeasurementsProperty(RdmlReader $rdmlReader,)
     {
-        if (!$this->assay || !$this->rdml) {
+        if (! $this->assay || ! $this->rdml) {
             return [];
         }
 
         try {
-            return $rdmlReader->read($this->rdml)->measurements->filter(fn(Measurement $measurement) => $measurement->type === MeasurementType::SAMPLE());
+            return $rdmlReader->read($this->rdml)->measurements->filter(fn (Measurement $measurement) => $measurement->type === MeasurementType::SAMPLE());
         } catch (Throwable $exception) {
             return [];
         }

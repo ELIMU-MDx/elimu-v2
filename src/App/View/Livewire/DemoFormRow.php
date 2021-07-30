@@ -56,13 +56,13 @@ class DemoFormRow extends Component
 
     public function hydrateCalculationParameters($calculationParameters): void
     {
-        $this->calculationParameters =  $calculationParameters->map(fn(array $parameter) => new ResultCalculationParameter($parameter));
+        $this->calculationParameters = $calculationParameters->map(fn (array $parameter) => new ResultCalculationParameter($parameter));
     }
 
     public function hydrateValidationParameters($validationParameters): void
     {
         $this->validationParameters = collect($validationParameters)
-            ->map(fn(array $parameter) => new ResultValidationParameter($parameter))
+            ->map(fn (array $parameter) => new ResultValidationParameter($parameter))
             ->toArray();
     }
 
@@ -88,12 +88,12 @@ class DemoFormRow extends Component
             ->get($target)
             ?->get($measurementKey);
 
-        if (!$measurement) {
+        if (! $measurement) {
             return;
         }
 
         $key = $this->measurements->search($measurement);
-        $measurement->excluded = !$measurement->excluded;
+        $measurement->excluded = ! $measurement->excluded;
         $this->measurements->put($key, $measurement);
     }
 

@@ -10,14 +10,14 @@ final class RoundedNumber
     {
     }
 
-    public static function make(?float $number, int $precision = 2): RoundedNumber
-    {
-        return new RoundedNumber($number, $precision);
-    }
-
     public function __toString(): string
     {
         return $this->toString();
+    }
+
+    public static function make(?float $number, int $precision = 2): RoundedNumber
+    {
+        return new RoundedNumber($number, $precision);
     }
 
     public function raw(): ?float

@@ -11,6 +11,7 @@ use Database\Factories\MeasurementFactory;
 use Database\Factories\SampleFactory;
 use Domain\Experiment\Actions\RecalculateResultsAction;
 use Domain\Results\Enums\QualitativeResult;
+use Domain\Results\Models\Result;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -63,7 +64,7 @@ final class EvaluateResultsTest extends TestCase
 
         $this->assertDatabaseHas('measurements', [
             'id' => $measurements->first()->id,
-            'result_id' => 1,
+            'result_id' => Result::latest()->first()->id,
         ]);
     }
 }

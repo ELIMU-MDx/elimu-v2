@@ -20,7 +20,7 @@ final class NewUserAcceptInvitationTest extends TestCase
         $invitation = InvitationFactory::new()->create();
 
         $this->disableSignatureValidation()
-            ->get(route('accept-invitation', $invitation))
+            ->get(route('invitations.accept.new', $invitation))
             ->assertSee('Name')
             ->assertSee('Password')
             ->assertSee('Confirm Password')
@@ -34,7 +34,7 @@ final class NewUserAcceptInvitationTest extends TestCase
 
         $password = '12345678';
         $this->disableSignatureValidation()
-            ->post(route('accept-invitation', $invitation), [
+            ->post(route('invitations.accept.new', $invitation), [
                 'name' => 'John Doe',
                 'password' => $password,
                 'password_confirmation' => $password,

@@ -24,6 +24,6 @@ final class RegisterWithInvitationController
         $guard->login($user);
         $acceptInvitationAction->execute($invitation);
 
-        return redirect(route('dashboard'));
+        return redirect(route('experiments.index'));
     }
 }

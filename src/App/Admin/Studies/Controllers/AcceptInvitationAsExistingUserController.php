@@ -27,7 +27,7 @@ final class AcceptInvitationAsExistingUserController
         if ($guard->check()) {
             $action->execute($invitation);
 
-            return redirect(route('dashboard'));
+            return redirect(route('experiments.index'));
         }
 
         $session->put('invitation-id', $invitation->id);

@@ -15,12 +15,6 @@ class AdminNavigation extends Component
     {
         $this->links = [
             [
-                'href' => route('dashboard'),
-                'label' => 'Dashboard',
-                'icon' => 'heroicon-o-home',
-                'active' => $request->is('dashboard'),
-            ],
-            [
                 'href' => route('experiments.index'),
                 'label' => 'Experiments',
                 'icon' => 'heroicon-o-beaker',

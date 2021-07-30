@@ -35,7 +35,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('studies/create-first', CreateFirstStudyController::class)->name('studies.create-first');
     Route::post('studies', StoreStudyController::class)->name('studies.store');
     Route::middleware(EnsureHasStudy::class)->group(function () {
-        Route::view('dashboard', 'dashboard')->name('dashboard');
+        Route::redirect('dashboard', 'experiments');
 
         Route::get('assays', ListAssaysController::class)->name('assays.index');
         Route::get('assays/create', CreateAssayController::class)->middleware('can:create-assay');

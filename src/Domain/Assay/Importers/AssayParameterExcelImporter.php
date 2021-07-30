@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domain\Assay\Importers;
 
 use Domain\Assay\Models\AssayParameter;
+use Domain\Assay\Rules\ControlParameterValidationRule;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
@@ -26,6 +27,9 @@ final class AssayParameterExcelImporter implements ToModel, WithValidation, With
             'slope' => $row['slope'] ?: null,
             'intercept' => $row['intercept'] ?: null,
             'required_repetitions' => $row['required_repetitions'],
+            'positive_control' => $row['positive_control'],
+            'negative_control' => $row['negative_control'],
+            'ntc_control' => $row['ntc_control'],
         ]);
     }
 
@@ -38,6 +42,10 @@ final class AssayParameterExcelImporter implements ToModel, WithValidation, With
             'slope' => ['nullable', 'numeric', new DecimalValidationRule(8, 2)],
             'intercept' => ['nullable', 'numeric', new DecimalValidationRule(8, 2)],
             'required_repetitions' => ['required', 'numeric', 'min:1'],
+            'positive_control' => ['nullable', new ControlParameterValidationRule()],
+            'negative_control' => ['nullable', new ControlParameterValidationRule()],
+            'ntc_control' => ['nullable', new ControlParameterValidationRule()],
+
         ];
     }
 }

@@ -52,7 +52,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('results', ListResultsController::class)->name('results.index');
         Route::get('results/{assay}/export', ExportResultsController::class)
             ->name('results.export')
-            ->middleware('can:download-results');
+            ->middleware('can:download-results,assay');
 
         Route::get('experiments', ListExperimentsController::class)->name('experiments.index');
         Route::get('experiments/{experiment}/rdml', DownloadRdmlController::class)

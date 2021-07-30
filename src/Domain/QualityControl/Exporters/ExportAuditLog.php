@@ -15,7 +15,8 @@ use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-final class ExportAuditLog implements FromQuery,
+final class ExportAuditLog implements
+    FromQuery,
                                       WithMapping,
                                       WithHeadings,
                                       WithStyles,
@@ -45,6 +46,7 @@ final class ExportAuditLog implements FromQuery,
 
     /**
      * @param  Activity  $activity
+     *
      * @return array
      */
     public function map($activity): array

@@ -22,7 +22,7 @@
           {
             "name": "assay",
             "in": "path",
-            "description": "The id of the assay. It is the number in the front of the assay name in the assay list.",
+            "description": "The id of the assay. It is the number in brackets in the assay list.",
             "required": true,
             "example": 12,
             "schema": {

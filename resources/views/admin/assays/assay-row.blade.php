@@ -4,7 +4,7 @@
             <div class="truncate space-y-2">
                 <div class="flex text-sm">
                     <p class="font-medium text-indigo-600 truncate">
-                        {{$assay->id}} {{$assay->name}}
+                        {{$assay->name}} (ID: {{$assay->id}})
                     </p>
                 </div>
                 @if($assay->sample_type)

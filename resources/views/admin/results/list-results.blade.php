@@ -13,7 +13,7 @@
     @else
         <div class="flex justify-end items-baseline space-x-4">
             <div>
-                <a href="{{route('api-documentation')}}" class="text-indigo-600 underline text-sm">Api link</a>
+                <a href="{{route('api-documentation')}}" class="text-indigo-600 underline text-sm">Api documentation</a>
             </div>
             <x-primary-button as="a" href="{{route('results.export', $currentAssayId)}}" target="_blank">Download
                 Excel

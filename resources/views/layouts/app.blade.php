@@ -158,7 +158,7 @@
         </div>
     </div>
 </div>
-
+<x-support-bubble />
 @stack('modals')
 
 @livewireScripts

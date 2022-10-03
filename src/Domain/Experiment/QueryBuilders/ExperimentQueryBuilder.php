@@ -8,6 +8,10 @@ use Domain\Experiment\Models\Measurement;
 use Domain\Rdml\Enums\MeasurementType;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * @template TModelClass of \Illuminate\Database\Eloquent\Model
+ * @extends Builder<TModelClass>
+ */
 final class ExperimentQueryBuilder extends Builder
 {
     public function withSamplesCount(): ExperimentQueryBuilder

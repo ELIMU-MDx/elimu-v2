@@ -7,6 +7,10 @@ namespace Domain\Users\QueryBuilders;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @template TModelClass of \Illuminate\Database\Eloquent\Model
+ * @extends Builder<TModelClass>
+ */
 final class UserQueryBuilder extends Builder
 {
     public function isMemberOfAnyStudy(int $userId): bool

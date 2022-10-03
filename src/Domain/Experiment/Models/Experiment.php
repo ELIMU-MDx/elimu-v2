@@ -12,6 +12,7 @@ use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Query\Builder;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -48,6 +49,11 @@ final class Experiment extends Model
         return $this->hasMany(Measurement::class)->where('type', '<>', MeasurementType::SAMPLE());
     }
 
+    /**
+     * @param Builder $query
+     *
+     * @return ExperimentQueryBuilder<Experiment>
+     */
     public function newEloquentBuilder($query): ExperimentQueryBuilder
     {
         return new ExperimentQueryBuilder($query);

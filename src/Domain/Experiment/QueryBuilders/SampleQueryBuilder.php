@@ -9,6 +9,10 @@ use Domain\Results\Enums\QualitativeResult;
 use Illuminate\Database\Eloquent\Builder;
 use Str;
 
+/**
+ * @template TModelClass of \Illuminate\Database\Eloquent\Model
+ * @extends Builder<TModelClass>
+ */
 final class SampleQueryBuilder extends Builder
 {
     public function countAll(int $assayId, int $studyId): SampleQueryBuilder

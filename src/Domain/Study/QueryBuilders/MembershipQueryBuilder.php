@@ -8,6 +8,10 @@ use Arr;
 use Domain\Study\Roles\Role;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * @template TModelClass of \Illuminate\Database\Eloquent\Model
+ * @extends Builder<TModelClass>
+ */
 final class MembershipQueryBuilder extends Builder
 {
     public function isMemberOfStudy(int $userId, int $studyId): bool

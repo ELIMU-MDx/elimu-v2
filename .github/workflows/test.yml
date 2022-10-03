@@ -8,4 +8,4 @@ on:
 
 jobs:
   uneditable:
-    uses: elimu-mdx/.github/.github/workflows/php-test.yml@main
+    uses: ELIMU-MDx/.github/.github/workflows/php-test.yml@main

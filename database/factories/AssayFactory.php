@@ -19,8 +19,8 @@ final class AssayFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word,
-            'sample_type' => $this->faker->word,
+            'name' => $this->faker->word(),
+            'sample_type' => $this->faker->word(),
             'user_id' => UserFactory::new(),
             'study_id' => StudyFactory::new(),
         ];

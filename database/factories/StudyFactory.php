@@ -19,8 +19,8 @@ final class StudyFactory extends Factory
     public function definition(): array
     {
         return [
-            'identifier' => $this->faker->unique()->word,
-            'name' => $this->faker->word,
+            'identifier' => $this->faker->unique()->word(),
+            'name' => $this->faker->word(),
         ];
     }
 }

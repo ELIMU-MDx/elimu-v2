@@ -20,7 +20,7 @@ final class SampleFactory extends Factory
     {
         return [
             'study_id' => StudyFactory::new(),
-            'identifier' => $this->faker->unique()->word,
+            'identifier' => $this->faker->unique()->word(),
         ];
     }
 }

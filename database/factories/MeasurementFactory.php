@@ -22,10 +22,10 @@ final class MeasurementFactory extends Factory
         return [
             'experiment_id' => ExperimentFactory::new(),
             'sample_id' => SampleFactory::new(),
-            'cq' => $this->faker->boolean ? $this->faker->randomFloat(2, 0, 10) : null,
-            'target' => $this->faker->word,
-            'position' => strtoupper($this->faker->randomLetter).$this->faker->randomNumber(2),
-            'excluded' => $this->faker->boolean,
+            'cq' => $this->faker->boolean() ? $this->faker->randomFloat(2, 0, 10) : null,
+            'target' => $this->faker->word(),
+            'position' => strtoupper($this->faker->randomLetter()).$this->faker->randomNumber(2),
+            'excluded' => $this->faker->boolean(),
             'type' => MeasurementType::SAMPLE(),
         ];
     }

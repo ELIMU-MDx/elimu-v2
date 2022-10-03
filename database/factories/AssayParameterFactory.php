@@ -18,11 +18,11 @@ final class AssayParameterFactory extends Factory
 
     public function definition(): array
     {
-        $quantify = $this->faker->boolean;
+        $quantify = $this->faker->boolean();
 
         return [
             'assay_id' => AssayFactory::new(),
-            'target' => $this->faker->word,
+            'target' => $this->faker->word(),
             'required_repetitions' => $this->faker->numberBetween(1, 4),
             'cutoff' => $this->faker->randomFloat(2, 2, 40),
             'standard_deviation_cutoff' => $this->faker->randomFloat(2, 2, 40),

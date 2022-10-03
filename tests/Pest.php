@@ -12,7 +12,7 @@
 */
 
 uses(Tests\TestCase::class)
-    ->beforeEach(function() {
+    ->beforeEach(function () {
         $this->withoutVite();
     })
     ->in('Feature');

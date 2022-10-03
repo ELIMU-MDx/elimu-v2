@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 
         $study = Study::firstOrCreate([
             'name' => 'Test Study',
-            'identifier' => 'testStudy'
+            'identifier' => 'testStudy',
         ]);
         $study->users()->attach($user->id, ['role' => new Owner()]);
         // \App\Models\User::factory(10)->create();

@@ -1,0 +1,11 @@
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '**.php'
+      - 'phpstan.neon.dist'
+      - 'phpstan-baseline.neon'
+
+jobs:
+  uneditable:
+    uses: elimu-mdx/.github/.github/workflows/phpstan.yml@main

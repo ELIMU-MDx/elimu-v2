@@ -22,7 +22,7 @@ final class ExperimentFactory extends Factory
             'study_id' => StudyFactory::new(),
             'assay_id' => AssayFactory::new(),
             'user_id' => UserFactory::new(),
-            'name' => $this->faker->word,
+            'name' => $this->faker->word(),
         ];
     }
 }

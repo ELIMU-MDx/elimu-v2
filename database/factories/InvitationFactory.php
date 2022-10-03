@@ -22,7 +22,7 @@ final class InvitationFactory extends Factory
         return [
             'study_id' => StudyFactory::new(),
             'user_id' => UserFactory::new(),
-            'email' => $this->faker->email,
+            'email' => $this->faker->email(),
             'role' => $this->faker->randomElement(RoleFactory::all()->toArray()),
         ];
     }

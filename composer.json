@@ -42,6 +42,8 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.3",
         "nunomaduro/larastan": "^2.2",
+        "pestphp/pest": "^1.22",
+        "pestphp/pest-plugin-laravel": "^1.3",
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.4",
         "spatie/laravel-stubs": "^2.4"
@@ -96,7 +98,8 @@
             "php": "8.1.10"
         },
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "pestphp/pest-plugin": true
         }
     },
     "minimum-stability": "dev",

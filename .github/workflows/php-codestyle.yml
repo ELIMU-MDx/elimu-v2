@@ -1,0 +1,11 @@
+name: fix code styling
+
+on:
+  push:
+    paths:
+      - '**.php'
+      - 'pint.json'
+
+jobs:
+  uneditable:
+    uses: ELIMU-MDx/.github/.github/workflows/php-coding-standard.yml@main

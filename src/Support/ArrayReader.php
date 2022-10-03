@@ -9,6 +9,7 @@ use Carbon\CarbonImmutable;
 use Illuminate\Support\Arr;
 use IteratorAggregate;
 use OutOfBoundsException;
+use Traversable;
 
 final class ArrayReader implements IteratorAggregate
 {
@@ -139,7 +140,7 @@ final class ArrayReader implements IteratorAggregate
         return $this->data;
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->data);
     }

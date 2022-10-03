@@ -30,7 +30,7 @@
                                         @includeFirst(['admin.quality_control.events.'. $log->event . '-' .strtolower(class_basename($log->subject_type)), 'admin.quality_control.events.'. $log->event, 'admin.quality_control.events.default'])
                                     </div>
 
-                                    <div class="flex flex-col items-end justify-between flex-shrink-0">
+                                    <div class="flex flex-col items-end justify-between shrink-0">
                                         <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100">
                                             {{$log->causer->name}}
                                         </p>

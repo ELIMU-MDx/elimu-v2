@@ -10,23 +10,23 @@
                 @if($assay->sample_type)
                     <p class="flex items-center text-sm text-gray-500">
                         <x-heroicon-s-beaker
-                                class="flex-shrink-0 mr-2 h-5 w-5 text-gray-400"/>
+                                class="shrink-0 mr-2 h-5 w-5 text-gray-400"/>
                         {{$assay->sample_type}}
                     </p>
                 @endif
 
                 <ul class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
                     @foreach($assay->parameters as $assayParameter)
-                        <li class="flex-shrink-0 flex items-center text-sm text-gray-500">
+                        <li class="shrink-0 flex items-center text-sm text-gray-500">
                             @if($assayParameter->positive_control)
-                                <x-heroicon-s-plus-circle class="flex-shrink-0 h-5 w-5 mr-1.5 text-green-400"
+                                <x-heroicon-s-plus-circle class="shrink-0 h-5 w-5 mr-1.5 text-green-400"
                                                           x-data="{}"
                                                           x-tooltip="'Has a positive control parameter'"
                                 />
                                 <span class="sr-only">{{$assayParameter->target}} has a positive
                                     control parameter</span>
                             @else
-                                <x-heroicon-s-plus-circle class="flex-shrink-0 h-5 w-5 mr-1.5 text-gray-400"
+                                <x-heroicon-s-plus-circle class="shrink-0 h-5 w-5 mr-1.5 text-gray-400"
                                                           x-data="{}"
                                                           x-tooltip="'Has no positive control parameter'"
                                 />
@@ -35,7 +35,7 @@
                             @endif
                             @if($assayParameter->negative_control)
                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                     class="flex-shrink-0 h-5 w-5 mr-1.5 text-green-400"
+                                     class="shrink-0 h-5 w-5 mr-1.5 text-green-400"
                                      viewBox="0 0 20 20" fill="currentColor"
                                      x-data="{tooltip: 'Has a negative control parameter'}"
                                      x-tooltip="tooltip">
@@ -47,7 +47,7 @@
                                     control parameter</span>
                             @else
                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                     class="flex-shrink-0 h-5 w-5 mr-1.5 text-gray-400" viewBox="0 0 20 20"
+                                     class="shrink-0 h-5 w-5 mr-1.5 text-gray-400" viewBox="0 0 20 20"
                                      fill="currentColor"
                                      x-data="{tooltip: 'Has no negative control parameter'}"
                                      x-tooltip="tooltip"
@@ -61,7 +61,7 @@
                             @endif
                             @if($assayParameter->ntc_control)
                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                     class="flex-shrink-0 h-5 w-5 mr-1.5 text-green-400"
+                                     class="shrink-0 h-5 w-5 mr-1.5 text-green-400"
                                      x-data="{tooltip: 'Has a ntc control parameter'}"
                                      x-tooltip="tooltip"
                                      viewBox="0 0 20 20" fill="currentColor">
@@ -73,7 +73,7 @@
                                     control parameter</span>
                             @else
                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                     class="flex-shrink-0 h-5 w-5 mr-1.5 text-gray-400" viewBox="0 0 20 20"
+                                     class="shrink-0 h-5 w-5 mr-1.5 text-gray-400" viewBox="0 0 20 20"
                                      fill="currentColor"
                                      x-data="{tooltip: 'Has no ntc control parameter'}"
                                      x-tooltip="tooltip"
@@ -91,7 +91,7 @@
                 </ul>
             </div>
         </div>
-        <div class="flex ml-5 flex-shrink-0 space-x-2">
+        <div class="flex ml-5 shrink-0 space-x-2">
             @can('edit-assay', $assay)
                 <a href="{{route('assays.edit', $assay)}}"
                    class="text-gray-600 transition-colors hover:text-indigo-600">

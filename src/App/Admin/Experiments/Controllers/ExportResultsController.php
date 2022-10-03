@@ -18,6 +18,6 @@ final class ExportResultsController
      */
     public function __invoke(Assay $assay, StatefulGuard $guard, Excel $excel): Response
     {
-        return $excel->download(new ResultExcelExport($assay, $guard->user()), $assay->name . '-results.xlsx');
+        return $excel->download(new ResultExcelExport($assay, $guard->user()), $assay->name.'-results.xlsx');
     }
 }

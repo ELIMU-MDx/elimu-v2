@@ -20,5 +20,4 @@ class UnitTestCase extends PHPUnitTestCase
     {
         return __DIR__.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.ltrim($path, '\/\\');
     }
-
 }

@@ -15,13 +15,7 @@ use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-final class ExportAuditLog implements
-    FromQuery,
-                                      WithMapping,
-                                      WithHeadings,
-                                      WithStyles,
-                                      ShouldAutoSize,
-                                      WithColumnFormatting
+final class ExportAuditLog implements FromQuery, WithMapping, WithHeadings, WithStyles, ShouldAutoSize, WithColumnFormatting
 {
     public function __construct(private int $studyId)
     {
@@ -46,7 +40,6 @@ final class ExportAuditLog implements
 
     /**
      * @param  Activity  $activity
-     *
      * @return array
      */
     public function map($activity): array

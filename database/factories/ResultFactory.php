@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use Domain\Experiment\Models\Measurement;
 use Domain\Results\Enums\QualitativeResult;
 use Domain\Results\Models\Result;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -35,7 +34,7 @@ final class ResultFactory extends Factory
 
     public function withMeasurement(): ResultFactory
     {
-        return $this->afterCreating(function(Result $result) {
+        return $this->afterCreating(function (Result $result) {
             MeasurementFactory::new(['cq' => $result->cq, 'target' => $result->target, 'sample_id' => $result->sample_id, 'result_id' => $result->id])->create();
         });
     }

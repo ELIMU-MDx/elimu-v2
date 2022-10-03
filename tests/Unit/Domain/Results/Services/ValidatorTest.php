@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Domain\Results\Services;
 
+use function app;
+use function collect;
 use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\DataTransferObjects\Measurement;
 use Domain\Rdml\Enums\MeasurementType;
@@ -18,13 +20,11 @@ use Domain\Results\Services\ResultValidator;
 use PHPUnit\Framework\TestCase;
 use Support\RoundedNumber;
 
-use function app;
-use function collect;
-
 final class ValidatorTest extends TestCase
 {
     /**
      * @test
+     *
      * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
      */
     public function itIsAValidResult(): void
@@ -84,6 +84,7 @@ final class ValidatorTest extends TestCase
 
     /**
      * @test
+     *
      * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
      */
     public function itHasATooHighStandardDeviation(): void
@@ -104,6 +105,7 @@ final class ValidatorTest extends TestCase
 
     /**
      * @test
+     *
      * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
      */
     public function itHasDivergingResults(): void
@@ -124,6 +126,7 @@ final class ValidatorTest extends TestCase
 
     /**
      * @test
+     *
      * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
      */
     public function itHasNotEnoughRepetitions(): void
@@ -144,6 +147,7 @@ final class ValidatorTest extends TestCase
 
     /**
      * @test
+     *
      * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
      * @dataProvider controlsDataSet
      */

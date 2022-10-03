@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Domain\QualityControl\Models;
@@ -23,6 +24,7 @@ final class Activity extends BaseActivity
                 return "{$key}: {$value}";
             });
     }
+
     protected static function booted(): void
     {
         self::creating(function (Activity $activity) {

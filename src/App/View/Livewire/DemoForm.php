@@ -74,7 +74,7 @@ class DemoForm extends Component
             });
     }
 
-    public function getMeasurementsProperty(RdmlReader $rdmlReader,)
+    public function getMeasurementsProperty(RdmlReader $rdmlReader)
     {
         if (! $this->assay || ! $this->rdml) {
             return [];

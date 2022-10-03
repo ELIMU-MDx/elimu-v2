@@ -22,6 +22,7 @@ final class EvaluateResultsTest extends TestCase
 
     /**
      * @test
+     *
      * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
      */
     public function itEvaluatesResults(): void

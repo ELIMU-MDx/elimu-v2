@@ -16,13 +16,7 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithProperties;
 use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 
-final class ResultExcelExport implements
-    FromQuery,
-    WithMapping,
-    WithStrictNullComparison,
-    WithProperties,
-    ShouldAutoSize,
-    WithHeadings
+final class ResultExcelExport implements FromQuery, WithMapping, WithStrictNullComparison, WithProperties, ShouldAutoSize, WithHeadings
 {
     public function __construct(private Assay $assay, private User $user)
     {
@@ -35,7 +29,6 @@ final class ResultExcelExport implements
 
     /**
      * @param  Sample  $sample
-     *
      * @return array
      */
     public function map($sample): array

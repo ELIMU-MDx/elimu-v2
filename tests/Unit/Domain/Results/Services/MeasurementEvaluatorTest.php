@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Domain\Results\Services;
 
+use function app;
+use function collect;
 use Domain\Experiment\DataTransferObjects\ResultCalculationParameter;
 use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\DataTransferObjects\Measurement;
@@ -11,9 +13,6 @@ use Domain\Rdml\Enums\MeasurementType;
 use Domain\Results\Enums\QualitativeResult;
 use Domain\Results\Services\MeasurementEvaluator;
 use PHPUnit\Framework\TestCase;
-
-use function app;
-use function collect;
 
 final class MeasurementEvaluatorTest extends TestCase
 {

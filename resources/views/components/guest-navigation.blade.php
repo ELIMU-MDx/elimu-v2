@@ -39,7 +39,7 @@
         </nav>
     </div>
 
-    <div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+    <div class="absolute top-0 inset-x-0 p-2 transition origin-top-right md:hidden"
          x-show="open"
          x-transition:enter="duration-150 ease-out"
          x-transition:enter-start="opacity-0 scale-95"

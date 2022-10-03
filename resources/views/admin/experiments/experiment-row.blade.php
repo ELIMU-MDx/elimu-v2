@@ -11,9 +11,9 @@
                 </div>
                 <ul class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
                     @if($experiment->eln)
-                        <li class="flex-shrink-0 flex items-center text-sm text-gray-500">
+                        <li class="shrink-0 flex items-center text-sm text-gray-500">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                 class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                                 class="shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                                  viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
                                 <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
@@ -25,9 +25,9 @@
                             @endif
                         </li>
                     @endif
-                    <li class="flex-shrink-0 flex items-center text-sm text-gray-500">
+                    <li class="shrink-0 flex items-center text-sm text-gray-500">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                             class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                             class="shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                              viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
                                   d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
@@ -35,9 +35,9 @@
                         </svg>
                         <p>{{$experiment->count_samples}} samples</p>
                     </li>
-                    <li class="flex-shrink-0 flex items-center text-sm text-gray-500">
+                    <li class="shrink-0 flex items-center text-sm text-gray-500">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                             class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                             class="shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                              viewBox="0 0 20 20" fill="currentColor">
                             <path d="M13 7H7v6h6V7z"/>
                             <path fill-rule="evenodd"
@@ -47,9 +47,9 @@
                         <p>{{$experiment->assay->name}}</p>
                     </li>
                     @if($experiment->experiment_date)
-                        <li class="flex-shrink-0 flex items-center text-sm text-gray-500">
+                        <li class="shrink-0 flex items-center text-sm text-gray-500">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                 class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                                 class="shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                                  viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd"
                                       d="M7 2a1 1 0 00-.707 1.707L7 4.414v3.758a1 1 0 01-.293.707l-4 4C.817 14.769 2.156 18 4.828 18h10.343c2.673 0 4.012-3.231 2.122-5.121l-4-4A1 1 0 0113 8.172V4.414l.707-.707A1 1 0 0013 2H7zm2 6.172V4h2v4.172a3 3 0 00.879 2.12l1.027 1.028a4 4 0 00-2.171.102l-.47.156a4 4 0 01-2.53 0l-.563-.187a1.993 1.993 0 00-.114-.035l1.063-1.063A3 3 0 009 8.172z"
@@ -61,9 +61,9 @@
                             </p>
                         </li>
                     @endif
-                    <li class="flex-shrink-0 flex items-center text-sm text-gray-500">
+                    <li class="shrink-0 flex items-center text-sm text-gray-500">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                             class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                             class="shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                              viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
                                   d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
@@ -78,9 +78,9 @@
 
                 <ul class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
                     @foreach($experiment->controls->groupBy('target') as $target => $measurements)
-                        <li class="flex-shrink-0 flex items-center text-sm text-gray-500">
+                        <li class="shrink-0 flex items-center text-sm text-gray-500">
                             @if($measurements->flatMap(fn($measurement) => $measurement->result->resultErrors)->isEmpty())
-                                <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+                                <svg class="shrink-0 mr-1.5 h-5 w-5 text-green-400"
                                      x-description="Heroicon name: solid/check-circle"
                                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                      fill="currentColor"
@@ -91,7 +91,7 @@
                                 </svg>
                             @else
                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                     class="flex-shrink-0 mr-1.5 h-5 w-5 cursor-pointer text-red-600"
+                                     class="shrink-0 mr-1.5 h-5 w-5 cursor-pointer text-red-600"
                                      viewBox="0 0 20 20"
                                      fill="currentColor"
                                      x-data="{}"
@@ -117,7 +117,7 @@
                 </ul>
             </div>
         </div>
-        <div class="flex ml-5 flex-shrink-0 space-x-2">
+        <div class="flex ml-5 shrink-0 space-x-2">
             @can('edit-experiment', $experiment)
                 <a href="{{route('experiments.edit', $experiment)}}"
                    class="text-gray-600 transition-colors hover:text-indigo-600">

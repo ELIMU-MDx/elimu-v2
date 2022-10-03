@@ -1,8 +1,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors')
 
 module.exports = {
-	mode: 'jit',
-	purge: [
+	content: [
 		'./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
 		'./vendor/laravel/jetstream/**/*.blade.php',
 		'./storage/framework/views/*.php',
@@ -19,13 +19,14 @@ module.exports = {
 			},
 			gridTemplateColumns: {
 				'audit': '100px minmax(0, 1fr)',
-			}
-		},
-	},
-
-	variants: {
-		extend: {
-			opacity: ['disabled'],
+			},
+            colors: {
+                current: 'currentColor',
+                green: colors.emerald,
+                yellow: colors.amber,
+                purple: colors.violet,
+                gray: colors.neutral,
+            }
 		},
 	},
 

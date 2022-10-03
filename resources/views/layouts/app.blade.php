@@ -22,7 +22,7 @@
 <div class="min-h-screen bg-gray-100">
     <div class="h-screen flex overflow-hidden bg-gray-100" x-data="{open: false}">
         <div class="fixed inset-0 flex z-40 md:hidden" role="dialog" aria-modal="true" x-show="open" x-cloak>
-            <div class="fixed inset-0 bg-gray-600 bg-opacity-75" aria-hidden="true"
+            <div class="fixed inset-0 bg-gray-600/75" aria-hidden="true"
                  x-transition:enter="transition-opacity ease-linear duration-300"
                  x-transition:enter-start="opacity-0"
                  x-transition:enter-end="opacity-100"
@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
-                    <div class="flex-shrink-0 flex items-center px-4">
+                    <div class="shrink-0 flex items-center px-4">
                         <a href="{{config('app.url')}}" class="font-bold text-2xl text-indigo-600">
                             Elimu
                         </a>
@@ -69,8 +69,8 @@
                         <x-admin-navigation class="mt-5 px-2 space-y-1"/>
                     @endif
                 </div>
-                <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
-                    <a href="{{url('user/profile')}}" class="flex-shrink-0 group block">
+                <div class="shrink-0 flex border-t border-gray-200 p-4">
+                    <a href="{{url('user/profile')}}" class="shrink-0 group block">
                         <div class="flex items-center">
                             <div>
                                 <img class="inline-block h-10 w-10 rounded-full"
@@ -90,18 +90,18 @@
                 </div>
             </div>
 
-            <div class="flex-shrink-0 w-14">
+            <div class="shrink-0 w-14">
                 <!-- Force sidebar to shrink to fit close icon -->
             </div>
         </div>
 
         <!-- Static sidebar for desktop -->
-        <div class="hidden md:flex md:flex-shrink-0">
+        <div class="hidden md:flex md:shrink-0">
             <div class="flex flex-col w-64">
                 <!-- Sidebar component, swap this element with another sidebar if you like -->
                 <div class="flex flex-col h-0 flex-1 border-r border-gray-200 bg-white">
                     <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-                        <div class="flex items-center flex-shrink-0 px-4">
+                        <div class="flex items-center shrink-0 px-4">
                             <a href="{{config('app.url')}}" class="font-bold text-2xl text-indigo-600">
                                 Elimu
                             </a>
@@ -110,8 +110,8 @@
                             <x-admin-navigation class="mt-5 flex-1 px-2 bg-white space-y-1"/>
                         @endif
                     </div>
-                    <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
-                        <a href="{{url('/user/profile')}}" class="flex-shrink-0 w-full group block">
+                    <div class="shrink-0 flex border-t border-gray-200 p-4">
+                        <a href="{{url('/user/profile')}}" class="shrink-0 w-full group block">
                             <div class="flex items-center">
                                 <div>
                                     <img class="inline-block h-9 w-9 rounded-full"

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Http\Kernel;
+use Illuminate\Http\Middleware\HandleCors;
 
 class HttpKernel extends Kernel
 {
@@ -16,7 +17,7 @@ class HttpKernel extends Kernel
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         \Support\Middlewares\TrustProxies::class,
-        \Fruitcake\Cors\HandleCors::class,
+        HandleCors::class,
         \Support\Middlewares\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \Support\Middlewares\TrimStrings::class,

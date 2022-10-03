@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 
 class UnitTestCase extends PHPUnitTestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 

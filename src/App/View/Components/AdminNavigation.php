@@ -29,7 +29,7 @@ class AdminNavigation extends Component
             [
                 'href' => url('/assays'),
                 'label' => 'Assays',
-                'icon' => 'heroicon-o-chip',
+                'icon' => 'heroicon-o-cpu-chip',
                 'active' => $request->is('assays*'),
             ],
             [

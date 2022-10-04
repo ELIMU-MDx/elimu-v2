@@ -8,7 +8,7 @@
     <div class="py-12">
         @if(count($assays) === 0)
             <div class="text-left">
-                <x-heroicon-o-chip class="h-12 w-12 text-gray-400"/>
+                <x-heroicon-o-cpu-chip class="h-12 w-12 text-gray-400"/>
                 <h3 class="mt-2 text-sm font-medium text-gray-900">No assays</h3>
                 <p class="mt-1 text-sm text-gray-500">
                     There are no assays yet. You can create an assay by importing an rdml file or create one using the

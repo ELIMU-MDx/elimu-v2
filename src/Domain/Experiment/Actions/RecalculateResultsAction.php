@@ -8,7 +8,6 @@ use Domain\Assay\Models\Assay;
 use Domain\Assay\Models\AssayParameter;
 use Domain\Experiment\DataTransferObjects\ResultCalculationParameter;
 use Domain\Experiment\Models\Measurement;
-use Domain\Experiment\Models\QuantifyParameter;
 use Domain\Rdml\DataTransferObjects\Measurement as MeasurementDTO;
 use Domain\Results\DataTransferObjects\Result;
 use Domain\Results\DataTransferObjects\ResultValidationParameter;
@@ -96,11 +95,12 @@ final class RecalculateResultsAction
             ->experiment
             ->quantifyParameters
             ->keyBy('target');
+
         return $measurements->first()
             ->experiment
             ->assay
             ->parameters
-            ->map(fn(AssayParameter $parameter) => new ResultCalculationParameter([
+            ->map(fn (AssayParameter $parameter) => new ResultCalculationParameter([
                 'target' => $parameter->target,
                 'cutoff' => $parameter->cutoff,
                 'intercept' => $quantifyParameters[$parameter->target]->intercept ?? $parameter->intercept,

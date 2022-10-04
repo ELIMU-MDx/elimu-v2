@@ -6,8 +6,8 @@ namespace Domain\Rdml\Services;
 
 use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\DataTransferObjects\Measurement;
-use Domain\Rdml\DataTransferObjects\Rdml;
 use Domain\Rdml\DataTransferObjects\QuantifyConfiguration;
+use Domain\Rdml\DataTransferObjects\Rdml;
 use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -46,7 +46,7 @@ final class RdmlReader
             ->map(function (MeasurementCollection $measurements) {
                 $regression = linear_regression(
                     collect($measurements)
-                        ->map(fn(Measurement $measurement) => [
+                        ->map(fn (Measurement $measurement) => [
                             'x' => log10($measurement->quantity), 'y' => $measurement->cq,
                         ])
                         ->toArray()

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\Experiment\Models;
 
-use Domain\Experiment\QueryBuilders\ExperimentQueryBuilder;
 use Domain\Experiment\QueryBuilders\SampleQueryBuilder;
 use Domain\Results\Models\Result;
 use Domain\Study\Models\Study;
@@ -34,8 +33,7 @@ final class Sample extends Model
     }
 
     /**
-     * @param Builder $query
-     *
+     * @param  Builder  $query
      * @return SampleQueryBuilder<Sample>
      */
     public function newEloquentBuilder($query): SampleQueryBuilder

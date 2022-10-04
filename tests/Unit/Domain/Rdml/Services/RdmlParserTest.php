@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Domain\Rdml\Services;
 
-use Domain\Rdml\Collections\MeasurementCollection;
-use Domain\Rdml\DataTransferObjects\Measurement;
 use Domain\Rdml\DataTransferObjects\Rdml;
 use Domain\Rdml\Services\RdmlParser;
 use Spatie\Snapshots\MatchesSnapshots;

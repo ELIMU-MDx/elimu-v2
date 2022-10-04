@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('quantify_parameters', function(Blueprint $table) {
+        Schema::create('quantify_parameters', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('experiment_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();

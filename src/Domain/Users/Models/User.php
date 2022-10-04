@@ -4,7 +4,6 @@ namespace Domain\Users\Models;
 
 use Domain\Study\Models\Membership;
 use Domain\Study\Models\Study;
-use Domain\Study\QueryBuilders\MembershipQueryBuilder;
 use Domain\Users\QueryBuilders\UserQueryBuilder;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -60,7 +59,6 @@ final class User extends Authenticatable
 
     /**
      * @param  \Illuminate\Database\Query\Builder  $query
-     *
      * @return UserQueryBuilder<User>
      */
     public function newEloquentBuilder($query): Builder

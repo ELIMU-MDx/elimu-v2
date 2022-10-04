@@ -55,8 +55,7 @@ final class Experiment extends Model
     }
 
     /**
-     * @param Builder $query
-     *
+     * @param  Builder  $query
      * @return ExperimentQueryBuilder<Experiment>
      */
     public function newEloquentBuilder($query): ExperimentQueryBuilder

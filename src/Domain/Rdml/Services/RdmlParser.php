@@ -35,7 +35,7 @@ final class RdmlParser
 
             $nonSampleIds[$sampleReader->getString('@attributes.id')] = [
                 'type' => $sampleReader->getString('type'),
-                'quantity' => $sampleReader->findInt('quantity.value')
+                'quantity' => $sampleReader->findInt('quantity.value'),
             ];
         }
 

@@ -50,7 +50,7 @@ final class RdmlReader
                             'x' => log10($measurement->quantity), 'y' => $measurement->cq,
                         ])
                         ->toArray()
-                ))
+                );
 
                 new QuantifyConfiguration(
                     [

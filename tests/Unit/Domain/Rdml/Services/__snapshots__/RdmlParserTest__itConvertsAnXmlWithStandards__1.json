@@ -1,0 +1,4993 @@
+{
+    "version": "1.1",
+    "createdAt": "2022-09-26T16:28:30.031000Z",
+    "updatedAt": "2022-10-03T14:44:29.042000Z",
+    "targets": [
+        {
+            "id": "Cspp18S",
+            "type": "toi",
+            "dye": "FAM"
+        },
+        {
+            "id": "CpAF27",
+            "type": "toi",
+            "dye": "VIC"
+        },
+        {
+            "id": "PhHV1",
+            "type": "toi",
+            "dye": "Texas Red"
+        }
+    ],
+    "measurements": [
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "Cspp18S",
+            "position": "A1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "Cspp18S",
+            "position": "A2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "Cspp18S",
+            "position": "A3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "Cspp18S",
+            "position": "A4",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "Cspp18S",
+            "position": "A5",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "Cspp18S",
+            "position": "A6",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "Cspp18S",
+            "position": "A7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "Cspp18S",
+            "position": "A8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "Cspp18S",
+            "position": "A9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "Cspp18S",
+            "position": "A10",
+            "excluded": false,
+            "cq": 23.1773978804001,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "Cspp18S",
+            "position": "A11",
+            "excluded": false,
+            "cq": 23.160881017569,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "Cspp18S",
+            "position": "A12",
+            "excluded": false,
+            "cq": 23.1124498074152,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "Cspp18S",
+            "position": "B1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "Cspp18S",
+            "position": "B2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "Cspp18S",
+            "position": "B3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "Cspp18S",
+            "position": "B4",
+            "excluded": false,
+            "cq": 28.6739181110136,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "Cspp18S",
+            "position": "B5",
+            "excluded": false,
+            "cq": 29.1057830174219,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "Cspp18S",
+            "position": "B6",
+            "excluded": false,
+            "cq": 28.7439259813048,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "Cspp18S",
+            "position": "B7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "Cspp18S",
+            "position": "B8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "Cspp18S",
+            "position": "B9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "Cspp18S",
+            "position": "B10",
+            "excluded": false,
+            "cq": 26.5593318802007,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "Cspp18S",
+            "position": "B11",
+            "excluded": false,
+            "cq": 26.2751669473748,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "Cspp18S",
+            "position": "B12",
+            "excluded": false,
+            "cq": 26.0111865171463,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "Cspp18S",
+            "position": "C1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "Cspp18S",
+            "position": "C2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "Cspp18S",
+            "position": "C3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "Cspp18S",
+            "position": "C4",
+            "excluded": false,
+            "cq": 28.7077352241418,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "Cspp18S",
+            "position": "C5",
+            "excluded": false,
+            "cq": 28.3685803688037,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "Cspp18S",
+            "position": "C6",
+            "excluded": false,
+            "cq": 28.4924261208539,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "Cspp18S",
+            "position": "C7",
+            "excluded": false,
+            "cq": 40.0440343640626,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "Cspp18S",
+            "position": "C8",
+            "excluded": false,
+            "cq": 39.0737326786821,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "Cspp18S",
+            "position": "C9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 1000,
+            "sample": "std-3",
+            "target": "Cspp18S",
+            "position": "C10",
+            "excluded": false,
+            "cq": 29.8177001161118,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 1000,
+            "sample": "std-3",
+            "target": "Cspp18S",
+            "position": "C12",
+            "excluded": false,
+            "cq": 29.3366852423628,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "Cspp18S",
+            "position": "D1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "Cspp18S",
+            "position": "D2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "Cspp18S",
+            "position": "D3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "Cspp18S",
+            "position": "D4",
+            "excluded": false,
+            "cq": 31.300695194021,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "Cspp18S",
+            "position": "D5",
+            "excluded": false,
+            "cq": 30.5954752129373,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "Cspp18S",
+            "position": "D6",
+            "excluded": false,
+            "cq": 30.5391488130802,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "Cspp18S",
+            "position": "D7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "Cspp18S",
+            "position": "D8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "Cspp18S",
+            "position": "D9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "Cspp18S",
+            "position": "D10",
+            "excluded": false,
+            "cq": 33.6648586756071,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "Cspp18S",
+            "position": "D11",
+            "excluded": false,
+            "cq": 33.9677273151881,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "Cspp18S",
+            "position": "D12",
+            "excluded": false,
+            "cq": 33.5441274625322,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "Cspp18S",
+            "position": "E1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "Cspp18S",
+            "position": "E2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "Cspp18S",
+            "position": "E3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "Cspp18S",
+            "position": "E4",
+            "excluded": false,
+            "cq": 23.2814000344035,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "Cspp18S",
+            "position": "E5",
+            "excluded": false,
+            "cq": 23.4919169849903,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "Cspp18S",
+            "position": "E6",
+            "excluded": false,
+            "cq": 23.3765947527151,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "Cspp18S",
+            "position": "E7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "Cspp18S",
+            "position": "E8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "Cspp18S",
+            "position": "E9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "Cspp18S",
+            "position": "E10",
+            "excluded": false,
+            "cq": 39.0778907433477,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "Cspp18S",
+            "position": "E11",
+            "excluded": false,
+            "cq": 37.3672283997177,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "Cspp18S",
+            "position": "E12",
+            "excluded": false,
+            "cq": 37.5680491415601,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "Cspp18S",
+            "position": "F1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "Cspp18S",
+            "position": "F2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "Cspp18S",
+            "position": "F3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "Cspp18S",
+            "position": "F4",
+            "excluded": false,
+            "cq": 44.5673342340495,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "Cspp18S",
+            "position": "F5",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "Cspp18S",
+            "position": "F6",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "Cspp18S",
+            "position": "F7",
+            "excluded": false,
+            "cq": 26.4611253343226,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "Cspp18S",
+            "position": "F8",
+            "excluded": false,
+            "cq": 26.7124225314413,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "Cspp18S",
+            "position": "F9",
+            "excluded": false,
+            "cq": 26.522415319443,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "Cspp18S",
+            "position": "G1",
+            "excluded": false,
+            "cq": 34.3001090351545,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "Cspp18S",
+            "position": "G2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "Cspp18S",
+            "position": "G3",
+            "excluded": false,
+            "cq": 36.6357349104858,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "Cspp18S",
+            "position": "G4",
+            "excluded": false,
+            "cq": 27.2985432230285,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "Cspp18S",
+            "position": "G5",
+            "excluded": false,
+            "cq": 28.4664370465023,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "Cspp18S",
+            "position": "G6",
+            "excluded": false,
+            "cq": 28.1300956663528,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "Cspp18S",
+            "position": "G7",
+            "excluded": false,
+            "cq": 26.5602053360189,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "Cspp18S",
+            "position": "G8",
+            "excluded": false,
+            "cq": 27.3879737438606,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "Cspp18S",
+            "position": "G9",
+            "excluded": false,
+            "cq": 26.9704548200111,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "Cspp18S",
+            "position": "G10",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "Cspp18S",
+            "position": "G11",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "Cspp18S",
+            "position": "G12",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "Cspp18S",
+            "position": "H1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "Cspp18S",
+            "position": "H2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "Cspp18S",
+            "position": "H3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "Cspp18S",
+            "position": "H4",
+            "excluded": false,
+            "cq": 22.7661035310272,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "Cspp18S",
+            "position": "H5",
+            "excluded": false,
+            "cq": 23.4420896968122,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "Cspp18S",
+            "position": "H6",
+            "excluded": false,
+            "cq": 23.0503309250873,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "Cspp18S",
+            "position": "H7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "Cspp18S",
+            "position": "H8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "Cspp18S",
+            "position": "H9",
+            "excluded": false,
+            "cq": 41.7220521947619,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "Cspp18S",
+            "position": "H10",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "Cspp18S",
+            "position": "H11",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "Cspp18S",
+            "position": "H12",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "CpAF27",
+            "position": "A1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "CpAF27",
+            "position": "A2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "CpAF27",
+            "position": "A3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "CpAF27",
+            "position": "A4",
+            "excluded": false,
+            "cq": 41.2459716118741,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "CpAF27",
+            "position": "A5",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "CpAF27",
+            "position": "A6",
+            "excluded": false,
+            "cq": 37.6422017679859,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "CpAF27",
+            "position": "A7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "CpAF27",
+            "position": "A8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "CpAF27",
+            "position": "A9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "CpAF27",
+            "position": "A10",
+            "excluded": false,
+            "cq": 22.4387608395725,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "CpAF27",
+            "position": "A11",
+            "excluded": false,
+            "cq": 22.4096756719897,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "CpAF27",
+            "position": "A12",
+            "excluded": false,
+            "cq": 22.5573277915043,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "CpAF27",
+            "position": "B1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "CpAF27",
+            "position": "B2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "CpAF27",
+            "position": "B3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "CpAF27",
+            "position": "B4",
+            "excluded": false,
+            "cq": 30.5432925977984,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "CpAF27",
+            "position": "B5",
+            "excluded": false,
+            "cq": 30.5875278528119,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "CpAF27",
+            "position": "B6",
+            "excluded": false,
+            "cq": 30.5064065199544,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "CpAF27",
+            "position": "B7",
+            "excluded": false,
+            "cq": 39.9852187049667,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "CpAF27",
+            "position": "B8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "CpAF27",
+            "position": "B9",
+            "excluded": false,
+            "cq": 37.1305467284663,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "CpAF27",
+            "position": "B10",
+            "excluded": false,
+            "cq": 25.3597576223916,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "CpAF27",
+            "position": "B11",
+            "excluded": false,
+            "cq": 25.5319888746679,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "CpAF27",
+            "position": "B12",
+            "excluded": false,
+            "cq": 25.5784288614468,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "CpAF27",
+            "position": "C1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "CpAF27",
+            "position": "C2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "CpAF27",
+            "position": "C3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "CpAF27",
+            "position": "C4",
+            "excluded": false,
+            "cq": 29.4929271562415,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "CpAF27",
+            "position": "C5",
+            "excluded": false,
+            "cq": 29.4720059005448,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "CpAF27",
+            "position": "C6",
+            "excluded": false,
+            "cq": 29.4919814529639,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "CpAF27",
+            "position": "C7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "CpAF27",
+            "position": "C8",
+            "excluded": false,
+            "cq": 40.152624770487,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "CpAF27",
+            "position": "C9",
+            "excluded": false,
+            "cq": 37.3076578544749,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 1000,
+            "sample": "std-3",
+            "target": "CpAF27",
+            "position": "C10",
+            "excluded": false,
+            "cq": 29.198907868156,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 1000,
+            "sample": "std-3",
+            "target": "CpAF27",
+            "position": "C12",
+            "excluded": false,
+            "cq": 28.8790231964019,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "CpAF27",
+            "position": "D1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "CpAF27",
+            "position": "D2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "CpAF27",
+            "position": "D3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "CpAF27",
+            "position": "D4",
+            "excluded": false,
+            "cq": 32.7108409473852,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "CpAF27",
+            "position": "D5",
+            "excluded": false,
+            "cq": 32.2690113244068,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "CpAF27",
+            "position": "D6",
+            "excluded": false,
+            "cq": 32.2156653476857,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "CpAF27",
+            "position": "D7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "CpAF27",
+            "position": "D8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "CpAF27",
+            "position": "D9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "CpAF27",
+            "position": "D10",
+            "excluded": false,
+            "cq": 32.4585544009535,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "CpAF27",
+            "position": "D11",
+            "excluded": false,
+            "cq": 32.7271919438559,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "CpAF27",
+            "position": "D12",
+            "excluded": false,
+            "cq": 32.8680985522172,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "CpAF27",
+            "position": "E1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "CpAF27",
+            "position": "E2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "CpAF27",
+            "position": "E3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "CpAF27",
+            "position": "E4",
+            "excluded": false,
+            "cq": 25.2522906086837,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "CpAF27",
+            "position": "E5",
+            "excluded": false,
+            "cq": 25.312322221066,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "CpAF27",
+            "position": "E6",
+            "excluded": false,
+            "cq": 25.3765546903664,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "CpAF27",
+            "position": "E7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "CpAF27",
+            "position": "E8",
+            "excluded": false,
+            "cq": 38.8147392585337,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "CpAF27",
+            "position": "E9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "CpAF27",
+            "position": "E10",
+            "excluded": false,
+            "cq": 36.3489267345579,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "CpAF27",
+            "position": "E11",
+            "excluded": false,
+            "cq": 36.1283471333811,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "CpAF27",
+            "position": "E12",
+            "excluded": false,
+            "cq": 35.6216361625316,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "CpAF27",
+            "position": "F1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "CpAF27",
+            "position": "F2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "CpAF27",
+            "position": "F3",
+            "excluded": false,
+            "cq": 39.2870644624769,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "CpAF27",
+            "position": "F4",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "CpAF27",
+            "position": "F5",
+            "excluded": false,
+            "cq": 38.6708234424912,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "CpAF27",
+            "position": "F6",
+            "excluded": false,
+            "cq": 37.8190359065186,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "CpAF27",
+            "position": "F7",
+            "excluded": false,
+            "cq": 27.7699746755307,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "CpAF27",
+            "position": "F8",
+            "excluded": false,
+            "cq": 27.7821885591278,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "CpAF27",
+            "position": "F9",
+            "excluded": false,
+            "cq": 27.8727826990956,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "CpAF27",
+            "position": "G1",
+            "excluded": false,
+            "cq": 37.6639750727089,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "CpAF27",
+            "position": "G2",
+            "excluded": false,
+            "cq": 37.2679788703046,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "CpAF27",
+            "position": "G3",
+            "excluded": false,
+            "cq": 36.7498502296822,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "CpAF27",
+            "position": "G4",
+            "excluded": false,
+            "cq": 29.6910770427376,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "CpAF27",
+            "position": "G5",
+            "excluded": false,
+            "cq": 29.841127755075,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "CpAF27",
+            "position": "G6",
+            "excluded": false,
+            "cq": 29.8229135483699,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "CpAF27",
+            "position": "G7",
+            "excluded": false,
+            "cq": 28.0785986294,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "CpAF27",
+            "position": "G8",
+            "excluded": false,
+            "cq": 28.1624730452752,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "CpAF27",
+            "position": "G9",
+            "excluded": false,
+            "cq": 28.1069562930176,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "CpAF27",
+            "position": "G10",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "CpAF27",
+            "position": "G11",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "CpAF27",
+            "position": "G12",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "CpAF27",
+            "position": "H1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "CpAF27",
+            "position": "H2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "CpAF27",
+            "position": "H3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "CpAF27",
+            "position": "H4",
+            "excluded": false,
+            "cq": 24.7514716721087,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "CpAF27",
+            "position": "H5",
+            "excluded": false,
+            "cq": 25.0518313749492,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "CpAF27",
+            "position": "H6",
+            "excluded": false,
+            "cq": 24.8515518189409,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "CpAF27",
+            "position": "H7",
+            "excluded": false,
+            "cq": 37.9122975631828,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "CpAF27",
+            "position": "H8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "CpAF27",
+            "position": "H9",
+            "excluded": false,
+            "cq": 39.1329171412476,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "CpAF27",
+            "position": "H10",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "CpAF27",
+            "position": "H11",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "CpAF27",
+            "position": "H12",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "PhHV1",
+            "position": "A1",
+            "excluded": false,
+            "cq": 27.8809895266625,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "PhHV1",
+            "position": "A2",
+            "excluded": false,
+            "cq": 28.0953637677689,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "PhHV1",
+            "position": "A3",
+            "excluded": false,
+            "cq": 28.033774517952,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "PhHV1",
+            "position": "A4",
+            "excluded": false,
+            "cq": 28.300021677708,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "PhHV1",
+            "position": "A5",
+            "excluded": false,
+            "cq": 27.7222445398964,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "PhHV1",
+            "position": "A6",
+            "excluded": false,
+            "cq": 27.9261918909888,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "PhHV1",
+            "position": "A7",
+            "excluded": false,
+            "cq": 27.6720869173047,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "PhHV1",
+            "position": "A8",
+            "excluded": false,
+            "cq": 28.0063517112159,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "PhHV1",
+            "position": "A9",
+            "excluded": false,
+            "cq": 27.4019127822407,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "PhHV1",
+            "position": "A10",
+            "excluded": false,
+            "cq": 22.8355804481521,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "PhHV1",
+            "position": "A11",
+            "excluded": false,
+            "cq": 22.5882325841851,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "PhHV1",
+            "position": "A12",
+            "excluded": false,
+            "cq": 22.7586554576125,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "PhHV1",
+            "position": "B1",
+            "excluded": false,
+            "cq": 28.8325680491164,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "PhHV1",
+            "position": "B2",
+            "excluded": false,
+            "cq": 28.5488575088624,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "PhHV1",
+            "position": "B3",
+            "excluded": false,
+            "cq": 28.6075394119476,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "PhHV1",
+            "position": "B4",
+            "excluded": false,
+            "cq": 28.1554336726465,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "PhHV1",
+            "position": "B5",
+            "excluded": false,
+            "cq": 28.3656814736486,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "PhHV1",
+            "position": "B6",
+            "excluded": false,
+            "cq": 28.0951862620153,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "PhHV1",
+            "position": "B7",
+            "excluded": false,
+            "cq": 27.4698704606663,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "PhHV1",
+            "position": "B8",
+            "excluded": false,
+            "cq": 27.5105136055961,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "PhHV1",
+            "position": "B9",
+            "excluded": false,
+            "cq": 27.5719724361299,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "PhHV1",
+            "position": "B10",
+            "excluded": false,
+            "cq": 25.9196315237595,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "PhHV1",
+            "position": "B11",
+            "excluded": false,
+            "cq": 25.9137144871712,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "PhHV1",
+            "position": "B12",
+            "excluded": false,
+            "cq": 25.7790816862976,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "PhHV1",
+            "position": "C1",
+            "excluded": false,
+            "cq": 27.5590269886024,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "PhHV1",
+            "position": "C2",
+            "excluded": false,
+            "cq": 27.3344555269843,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "PhHV1",
+            "position": "C3",
+            "excluded": false,
+            "cq": 27.2203956911861,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "PhHV1",
+            "position": "C4",
+            "excluded": false,
+            "cq": 29.4486918002324,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "PhHV1",
+            "position": "C5",
+            "excluded": false,
+            "cq": 29.3304135762165,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "PhHV1",
+            "position": "C6",
+            "excluded": false,
+            "cq": 29.2781741386218,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "PhHV1",
+            "position": "C7",
+            "excluded": false,
+            "cq": 27.743193972248,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "PhHV1",
+            "position": "C8",
+            "excluded": false,
+            "cq": 27.9300233184446,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "PhHV1",
+            "position": "C9",
+            "excluded": false,
+            "cq": 27.1771409916169,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 1000,
+            "sample": "std-3",
+            "target": "PhHV1",
+            "position": "C10",
+            "excluded": false,
+            "cq": 29.5924094513772,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 1000,
+            "sample": "std-3",
+            "target": "PhHV1",
+            "position": "C12",
+            "excluded": false,
+            "cq": 28.7953338042174,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "PhHV1",
+            "position": "D1",
+            "excluded": false,
+            "cq": 28.3907307018696,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "PhHV1",
+            "position": "D2",
+            "excluded": false,
+            "cq": 28.1877903761383,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "PhHV1",
+            "position": "D3",
+            "excluded": false,
+            "cq": 28.2944021464789,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "PhHV1",
+            "position": "D4",
+            "excluded": false,
+            "cq": 27.6696290716355,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "PhHV1",
+            "position": "D5",
+            "excluded": false,
+            "cq": 27.2495261321031,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "PhHV1",
+            "position": "D6",
+            "excluded": false,
+            "cq": 27.3197854285386,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "PhHV1",
+            "position": "D7",
+            "excluded": false,
+            "cq": 27.61134462502,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "PhHV1",
+            "position": "D8",
+            "excluded": false,
+            "cq": 27.7594721460455,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "PhHV1",
+            "position": "D9",
+            "excluded": false,
+            "cq": 27.7207263442596,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "PhHV1",
+            "position": "D10",
+            "excluded": false,
+            "cq": 32.8009664583276,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "PhHV1",
+            "position": "D11",
+            "excluded": false,
+            "cq": 32.8527984671426,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "PhHV1",
+            "position": "D12",
+            "excluded": false,
+            "cq": 32.7114892099463,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "PhHV1",
+            "position": "E1",
+            "excluded": false,
+            "cq": 27.8767721283738,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "PhHV1",
+            "position": "E2",
+            "excluded": false,
+            "cq": 28.2672827253771,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "PhHV1",
+            "position": "E3",
+            "excluded": false,
+            "cq": 28.4985227291162,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "PhHV1",
+            "position": "E4",
+            "excluded": false,
+            "cq": 28.1453359894815,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "PhHV1",
+            "position": "E5",
+            "excluded": false,
+            "cq": 28.0877910838613,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "PhHV1",
+            "position": "E6",
+            "excluded": false,
+            "cq": 28.2911698960188,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "PhHV1",
+            "position": "E7",
+            "excluded": false,
+            "cq": 27.7672164097296,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "PhHV1",
+            "position": "E8",
+            "excluded": false,
+            "cq": 27.5757181193652,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "PhHV1",
+            "position": "E9",
+            "excluded": false,
+            "cq": 27.7682089129267,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "PhHV1",
+            "position": "E10",
+            "excluded": false,
+            "cq": 35.0963314511631,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "PhHV1",
+            "position": "E11",
+            "excluded": false,
+            "cq": 35.1289578544018,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "PhHV1",
+            "position": "E12",
+            "excluded": false,
+            "cq": 34.5846079368099,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "PhHV1",
+            "position": "F1",
+            "excluded": false,
+            "cq": 29.632377434029,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "PhHV1",
+            "position": "F2",
+            "excluded": false,
+            "cq": 29.3494412934378,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "PhHV1",
+            "position": "F3",
+            "excluded": false,
+            "cq": 29.494143466436,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "PhHV1",
+            "position": "F4",
+            "excluded": false,
+            "cq": 29.1555364355532,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "PhHV1",
+            "position": "F5",
+            "excluded": false,
+            "cq": 28.8856967023752,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "PhHV1",
+            "position": "F6",
+            "excluded": false,
+            "cq": 29.1451326408335,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "PhHV1",
+            "position": "F7",
+            "excluded": false,
+            "cq": 27.4800451228651,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "PhHV1",
+            "position": "F8",
+            "excluded": false,
+            "cq": 27.5117635587621,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "PhHV1",
+            "position": "F9",
+            "excluded": false,
+            "cq": 27.4502694892772,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "PhHV1",
+            "position": "G1",
+            "excluded": false,
+            "cq": 27.5166827679175,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "PhHV1",
+            "position": "G2",
+            "excluded": false,
+            "cq": 28.387897793944,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "PhHV1",
+            "position": "G3",
+            "excluded": false,
+            "cq": 28.3051579820191,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "PhHV1",
+            "position": "G4",
+            "excluded": false,
+            "cq": 27.9594745174412,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "PhHV1",
+            "position": "G5",
+            "excluded": false,
+            "cq": 28.5500615631782,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "PhHV1",
+            "position": "G6",
+            "excluded": false,
+            "cq": 28.4747136025401,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "PhHV1",
+            "position": "G7",
+            "excluded": false,
+            "cq": 27.20979011005,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "PhHV1",
+            "position": "G8",
+            "excluded": false,
+            "cq": 27.5520486452047,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "PhHV1",
+            "position": "G9",
+            "excluded": false,
+            "cq": 27.4339765211669,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "PhHV1",
+            "position": "G10",
+            "excluded": false,
+            "cq": 28.9261055783325,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "PhHV1",
+            "position": "G11",
+            "excluded": false,
+            "cq": 28.8333604066282,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "PhHV1",
+            "position": "G12",
+            "excluded": false,
+            "cq": 28.582761356541,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "PhHV1",
+            "position": "H1",
+            "excluded": false,
+            "cq": 29.1721122725969,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "PhHV1",
+            "position": "H2",
+            "excluded": false,
+            "cq": 28.9473994095492,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "PhHV1",
+            "position": "H3",
+            "excluded": false,
+            "cq": 28.992618237449,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "PhHV1",
+            "position": "H4",
+            "excluded": false,
+            "cq": 27.3288232825026,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "PhHV1",
+            "position": "H5",
+            "excluded": false,
+            "cq": 28.0802509676744,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "PhHV1",
+            "position": "H6",
+            "excluded": false,
+            "cq": 27.5190916956402,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "PhHV1",
+            "position": "H7",
+            "excluded": false,
+            "cq": 28.8944216697858,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "PhHV1",
+            "position": "H8",
+            "excluded": false,
+            "cq": 29.1184239309672,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "PhHV1",
+            "position": "H9",
+            "excluded": false,
+            "cq": 28.9031621804235,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "PhHV1",
+            "position": "H10",
+            "excluded": false,
+            "cq": 35.4909364090069,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "PhHV1",
+            "position": "H11",
+            "excluded": false,
+            "cq": 35.559110395385,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "PhHV1",
+            "position": "H12",
+            "excluded": false,
+            "cq": 34.8991226730243,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "Cspp18S",
+            "position": "A1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "Cspp18S",
+            "position": "A2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "Cspp18S",
+            "position": "A3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "Cspp18S",
+            "position": "A4",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "Cspp18S",
+            "position": "A5",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "Cspp18S",
+            "position": "A6",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "Cspp18S",
+            "position": "A7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "Cspp18S",
+            "position": "A8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "Cspp18S",
+            "position": "A9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "Cspp18S",
+            "position": "A10",
+            "excluded": false,
+            "cq": 23.1773978804001,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "Cspp18S",
+            "position": "A11",
+            "excluded": false,
+            "cq": 23.160881017569,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "Cspp18S",
+            "position": "A12",
+            "excluded": false,
+            "cq": 23.1124498074152,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "Cspp18S",
+            "position": "B1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "Cspp18S",
+            "position": "B2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "Cspp18S",
+            "position": "B3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "Cspp18S",
+            "position": "B4",
+            "excluded": false,
+            "cq": 28.6739181110136,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "Cspp18S",
+            "position": "B5",
+            "excluded": false,
+            "cq": 29.1057830174219,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "Cspp18S",
+            "position": "B6",
+            "excluded": false,
+            "cq": 28.7439259813048,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "Cspp18S",
+            "position": "B7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "Cspp18S",
+            "position": "B8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "Cspp18S",
+            "position": "B9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "Cspp18S",
+            "position": "B10",
+            "excluded": false,
+            "cq": 26.5593318802007,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "Cspp18S",
+            "position": "B11",
+            "excluded": false,
+            "cq": 26.2751669473748,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "Cspp18S",
+            "position": "B12",
+            "excluded": false,
+            "cq": 26.0111865171463,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "Cspp18S",
+            "position": "C1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "Cspp18S",
+            "position": "C2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "Cspp18S",
+            "position": "C3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "Cspp18S",
+            "position": "C4",
+            "excluded": false,
+            "cq": 28.7077352241418,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "Cspp18S",
+            "position": "C5",
+            "excluded": false,
+            "cq": 28.3685803688037,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "Cspp18S",
+            "position": "C6",
+            "excluded": false,
+            "cq": 28.4924261208539,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "Cspp18S",
+            "position": "C7",
+            "excluded": false,
+            "cq": 40.0440343640626,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "Cspp18S",
+            "position": "C8",
+            "excluded": false,
+            "cq": 39.0737326786821,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "Cspp18S",
+            "position": "C9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 1000,
+            "sample": "std-3",
+            "target": "Cspp18S",
+            "position": "C10",
+            "excluded": false,
+            "cq": 29.8177001161118,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 1000,
+            "sample": "std-3",
+            "target": "Cspp18S",
+            "position": "C12",
+            "excluded": false,
+            "cq": 29.3366852423628,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "Cspp18S",
+            "position": "D1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "Cspp18S",
+            "position": "D2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "Cspp18S",
+            "position": "D3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "Cspp18S",
+            "position": "D4",
+            "excluded": false,
+            "cq": 31.300695194021,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "Cspp18S",
+            "position": "D5",
+            "excluded": false,
+            "cq": 30.5954752129373,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "Cspp18S",
+            "position": "D6",
+            "excluded": false,
+            "cq": 30.5391488130802,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "Cspp18S",
+            "position": "D7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "Cspp18S",
+            "position": "D8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "Cspp18S",
+            "position": "D9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "Cspp18S",
+            "position": "D10",
+            "excluded": false,
+            "cq": 33.6648586756071,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "Cspp18S",
+            "position": "D11",
+            "excluded": false,
+            "cq": 33.9677273151881,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "Cspp18S",
+            "position": "D12",
+            "excluded": false,
+            "cq": 33.5441274625322,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "Cspp18S",
+            "position": "E1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "Cspp18S",
+            "position": "E2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "Cspp18S",
+            "position": "E3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "Cspp18S",
+            "position": "E4",
+            "excluded": false,
+            "cq": 23.2814000344035,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "Cspp18S",
+            "position": "E5",
+            "excluded": false,
+            "cq": 23.4919169849903,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "Cspp18S",
+            "position": "E6",
+            "excluded": false,
+            "cq": 23.3765947527151,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "Cspp18S",
+            "position": "E7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "Cspp18S",
+            "position": "E8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "Cspp18S",
+            "position": "E9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "Cspp18S",
+            "position": "E10",
+            "excluded": false,
+            "cq": 39.0778907433477,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "Cspp18S",
+            "position": "E11",
+            "excluded": false,
+            "cq": 37.3672283997177,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "Cspp18S",
+            "position": "E12",
+            "excluded": false,
+            "cq": 37.5680491415601,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "Cspp18S",
+            "position": "F1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "Cspp18S",
+            "position": "F2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "Cspp18S",
+            "position": "F3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "Cspp18S",
+            "position": "F4",
+            "excluded": false,
+            "cq": 44.5673342340495,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "Cspp18S",
+            "position": "F5",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "Cspp18S",
+            "position": "F6",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "Cspp18S",
+            "position": "F7",
+            "excluded": false,
+            "cq": 26.4611253343226,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "Cspp18S",
+            "position": "F8",
+            "excluded": false,
+            "cq": 26.7124225314413,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "Cspp18S",
+            "position": "F9",
+            "excluded": false,
+            "cq": 26.522415319443,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "Cspp18S",
+            "position": "G1",
+            "excluded": false,
+            "cq": 34.3001090351545,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "Cspp18S",
+            "position": "G2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "Cspp18S",
+            "position": "G3",
+            "excluded": false,
+            "cq": 36.6357349104858,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "Cspp18S",
+            "position": "G4",
+            "excluded": false,
+            "cq": 27.2985432230285,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "Cspp18S",
+            "position": "G5",
+            "excluded": false,
+            "cq": 28.4664370465023,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "Cspp18S",
+            "position": "G6",
+            "excluded": false,
+            "cq": 28.1300956663528,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "Cspp18S",
+            "position": "G7",
+            "excluded": false,
+            "cq": 26.5602053360189,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "Cspp18S",
+            "position": "G8",
+            "excluded": false,
+            "cq": 27.3879737438606,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "Cspp18S",
+            "position": "G9",
+            "excluded": false,
+            "cq": 26.9704548200111,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "Cspp18S",
+            "position": "G10",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "Cspp18S",
+            "position": "G11",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "Cspp18S",
+            "position": "G12",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "Cspp18S",
+            "position": "H1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "Cspp18S",
+            "position": "H2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "Cspp18S",
+            "position": "H3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "Cspp18S",
+            "position": "H4",
+            "excluded": false,
+            "cq": 22.7661035310272,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "Cspp18S",
+            "position": "H5",
+            "excluded": false,
+            "cq": 23.4420896968122,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "Cspp18S",
+            "position": "H6",
+            "excluded": false,
+            "cq": 23.0503309250873,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "Cspp18S",
+            "position": "H7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "Cspp18S",
+            "position": "H8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "Cspp18S",
+            "position": "H9",
+            "excluded": false,
+            "cq": 41.7220521947619,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "Cspp18S",
+            "position": "H10",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "Cspp18S",
+            "position": "H11",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "Cspp18S",
+            "position": "H12",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "CpAF27",
+            "position": "A1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "CpAF27",
+            "position": "A2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "CpAF27",
+            "position": "A3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "CpAF27",
+            "position": "A4",
+            "excluded": false,
+            "cq": 41.2459716118741,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "CpAF27",
+            "position": "A5",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "CpAF27",
+            "position": "A6",
+            "excluded": false,
+            "cq": 37.6422017679859,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "CpAF27",
+            "position": "A7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "CpAF27",
+            "position": "A8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "CpAF27",
+            "position": "A9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "CpAF27",
+            "position": "A10",
+            "excluded": false,
+            "cq": 22.4387608395725,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "CpAF27",
+            "position": "A11",
+            "excluded": false,
+            "cq": 22.4096756719897,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "CpAF27",
+            "position": "A12",
+            "excluded": false,
+            "cq": 22.5573277915043,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "CpAF27",
+            "position": "B1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "CpAF27",
+            "position": "B2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "CpAF27",
+            "position": "B3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "CpAF27",
+            "position": "B4",
+            "excluded": false,
+            "cq": 30.5432925977984,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "CpAF27",
+            "position": "B5",
+            "excluded": false,
+            "cq": 30.5875278528119,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "CpAF27",
+            "position": "B6",
+            "excluded": false,
+            "cq": 30.5064065199544,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "CpAF27",
+            "position": "B7",
+            "excluded": false,
+            "cq": 39.9852187049667,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "CpAF27",
+            "position": "B8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "CpAF27",
+            "position": "B9",
+            "excluded": false,
+            "cq": 37.1305467284663,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "CpAF27",
+            "position": "B10",
+            "excluded": false,
+            "cq": 25.3597576223916,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "CpAF27",
+            "position": "B11",
+            "excluded": false,
+            "cq": 25.5319888746679,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "CpAF27",
+            "position": "B12",
+            "excluded": false,
+            "cq": 25.5784288614468,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "CpAF27",
+            "position": "C1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "CpAF27",
+            "position": "C2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "CpAF27",
+            "position": "C3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "CpAF27",
+            "position": "C4",
+            "excluded": false,
+            "cq": 29.4929271562415,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "CpAF27",
+            "position": "C5",
+            "excluded": false,
+            "cq": 29.4720059005448,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "CpAF27",
+            "position": "C6",
+            "excluded": false,
+            "cq": 29.4919814529639,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "CpAF27",
+            "position": "C7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "CpAF27",
+            "position": "C8",
+            "excluded": false,
+            "cq": 40.152624770487,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "CpAF27",
+            "position": "C9",
+            "excluded": false,
+            "cq": 37.3076578544749,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 1000,
+            "sample": "std-3",
+            "target": "CpAF27",
+            "position": "C10",
+            "excluded": false,
+            "cq": 29.198907868156,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 1000,
+            "sample": "std-3",
+            "target": "CpAF27",
+            "position": "C12",
+            "excluded": false,
+            "cq": 28.8790231964019,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "CpAF27",
+            "position": "D1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "CpAF27",
+            "position": "D2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "CpAF27",
+            "position": "D3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "CpAF27",
+            "position": "D4",
+            "excluded": false,
+            "cq": 32.7108409473852,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "CpAF27",
+            "position": "D5",
+            "excluded": false,
+            "cq": 32.2690113244068,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "CpAF27",
+            "position": "D6",
+            "excluded": false,
+            "cq": 32.2156653476857,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "CpAF27",
+            "position": "D7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "CpAF27",
+            "position": "D8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "CpAF27",
+            "position": "D9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "CpAF27",
+            "position": "D10",
+            "excluded": false,
+            "cq": 32.4585544009535,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "CpAF27",
+            "position": "D11",
+            "excluded": false,
+            "cq": 32.7271919438559,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "CpAF27",
+            "position": "D12",
+            "excluded": false,
+            "cq": 32.8680985522172,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "CpAF27",
+            "position": "E1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "CpAF27",
+            "position": "E2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "CpAF27",
+            "position": "E3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "CpAF27",
+            "position": "E4",
+            "excluded": false,
+            "cq": 25.2522906086837,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "CpAF27",
+            "position": "E5",
+            "excluded": false,
+            "cq": 25.312322221066,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "CpAF27",
+            "position": "E6",
+            "excluded": false,
+            "cq": 25.3765546903664,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "CpAF27",
+            "position": "E7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "CpAF27",
+            "position": "E8",
+            "excluded": false,
+            "cq": 38.8147392585337,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "CpAF27",
+            "position": "E9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "CpAF27",
+            "position": "E10",
+            "excluded": false,
+            "cq": 36.3489267345579,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "CpAF27",
+            "position": "E11",
+            "excluded": false,
+            "cq": 36.1283471333811,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "CpAF27",
+            "position": "E12",
+            "excluded": false,
+            "cq": 35.6216361625316,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "CpAF27",
+            "position": "F1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "CpAF27",
+            "position": "F2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "CpAF27",
+            "position": "F3",
+            "excluded": false,
+            "cq": 39.2870644624769,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "CpAF27",
+            "position": "F4",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "CpAF27",
+            "position": "F5",
+            "excluded": false,
+            "cq": 38.6708234424912,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "CpAF27",
+            "position": "F6",
+            "excluded": false,
+            "cq": 37.8190359065186,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "CpAF27",
+            "position": "F7",
+            "excluded": false,
+            "cq": 27.7699746755307,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "CpAF27",
+            "position": "F8",
+            "excluded": false,
+            "cq": 27.7821885591278,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "CpAF27",
+            "position": "F9",
+            "excluded": false,
+            "cq": 27.8727826990956,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "CpAF27",
+            "position": "G1",
+            "excluded": false,
+            "cq": 37.6639750727089,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "CpAF27",
+            "position": "G2",
+            "excluded": false,
+            "cq": 37.2679788703046,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "CpAF27",
+            "position": "G3",
+            "excluded": false,
+            "cq": 36.7498502296822,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "CpAF27",
+            "position": "G4",
+            "excluded": false,
+            "cq": 29.6910770427376,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "CpAF27",
+            "position": "G5",
+            "excluded": false,
+            "cq": 29.841127755075,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "CpAF27",
+            "position": "G6",
+            "excluded": false,
+            "cq": 29.8229135483699,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "CpAF27",
+            "position": "G7",
+            "excluded": false,
+            "cq": 28.0785986294,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "CpAF27",
+            "position": "G8",
+            "excluded": false,
+            "cq": 28.1624730452752,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "CpAF27",
+            "position": "G9",
+            "excluded": false,
+            "cq": 28.1069562930176,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "CpAF27",
+            "position": "G10",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "CpAF27",
+            "position": "G11",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "CpAF27",
+            "position": "G12",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "CpAF27",
+            "position": "H1",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "CpAF27",
+            "position": "H2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "CpAF27",
+            "position": "H3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "CpAF27",
+            "position": "H4",
+            "excluded": false,
+            "cq": 24.7514716721087,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "CpAF27",
+            "position": "H5",
+            "excluded": false,
+            "cq": 25.0518313749492,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "CpAF27",
+            "position": "H6",
+            "excluded": false,
+            "cq": 24.8515518189409,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "CpAF27",
+            "position": "H7",
+            "excluded": false,
+            "cq": 37.9122975631828,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "CpAF27",
+            "position": "H8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "CpAF27",
+            "position": "H9",
+            "excluded": false,
+            "cq": 39.1329171412476,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "CpAF27",
+            "position": "H10",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "CpAF27",
+            "position": "H11",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "CpAF27",
+            "position": "H12",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "PhHV1",
+            "position": "A1",
+            "excluded": false,
+            "cq": 27.8809895266625,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "PhHV1",
+            "position": "A2",
+            "excluded": false,
+            "cq": 28.0953637677689,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0405",
+            "target": "PhHV1",
+            "position": "A3",
+            "excluded": false,
+            "cq": 28.033774517952,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "PhHV1",
+            "position": "A4",
+            "excluded": false,
+            "cq": 28.300021677708,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "PhHV1",
+            "position": "A5",
+            "excluded": false,
+            "cq": 27.7222445398964,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0413",
+            "target": "PhHV1",
+            "position": "A6",
+            "excluded": false,
+            "cq": 27.9261918909888,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "PhHV1",
+            "position": "A7",
+            "excluded": false,
+            "cq": 27.6720869173047,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "PhHV1",
+            "position": "A8",
+            "excluded": false,
+            "cq": 28.0063517112159,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0421",
+            "target": "PhHV1",
+            "position": "A9",
+            "excluded": false,
+            "cq": 27.4019127822407,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "PhHV1",
+            "position": "A10",
+            "excluded": false,
+            "cq": 22.8355804481521,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "PhHV1",
+            "position": "A11",
+            "excluded": false,
+            "cq": 22.5882325841851,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100000,
+            "sample": "std-1",
+            "target": "PhHV1",
+            "position": "A12",
+            "excluded": false,
+            "cq": 22.7586554576125,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "PhHV1",
+            "position": "B1",
+            "excluded": false,
+            "cq": 28.8325680491164,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "PhHV1",
+            "position": "B2",
+            "excluded": false,
+            "cq": 28.5488575088624,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0406",
+            "target": "PhHV1",
+            "position": "B3",
+            "excluded": false,
+            "cq": 28.6075394119476,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "PhHV1",
+            "position": "B4",
+            "excluded": false,
+            "cq": 28.1554336726465,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "PhHV1",
+            "position": "B5",
+            "excluded": false,
+            "cq": 28.3656814736486,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0414",
+            "target": "PhHV1",
+            "position": "B6",
+            "excluded": false,
+            "cq": 28.0951862620153,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "PhHV1",
+            "position": "B7",
+            "excluded": false,
+            "cq": 27.4698704606663,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "PhHV1",
+            "position": "B8",
+            "excluded": false,
+            "cq": 27.5105136055961,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0422",
+            "target": "PhHV1",
+            "position": "B9",
+            "excluded": false,
+            "cq": 27.5719724361299,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "PhHV1",
+            "position": "B10",
+            "excluded": false,
+            "cq": 25.9196315237595,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "PhHV1",
+            "position": "B11",
+            "excluded": false,
+            "cq": 25.9137144871712,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10000,
+            "sample": "std-2",
+            "target": "PhHV1",
+            "position": "B12",
+            "excluded": false,
+            "cq": 25.7790816862976,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "PhHV1",
+            "position": "C1",
+            "excluded": false,
+            "cq": 27.5590269886024,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "PhHV1",
+            "position": "C2",
+            "excluded": false,
+            "cq": 27.3344555269843,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0407",
+            "target": "PhHV1",
+            "position": "C3",
+            "excluded": false,
+            "cq": 27.2203956911861,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "PhHV1",
+            "position": "C4",
+            "excluded": false,
+            "cq": 29.4486918002324,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "PhHV1",
+            "position": "C5",
+            "excluded": false,
+            "cq": 29.3304135762165,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0415",
+            "target": "PhHV1",
+            "position": "C6",
+            "excluded": false,
+            "cq": 29.2781741386218,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "PhHV1",
+            "position": "C7",
+            "excluded": false,
+            "cq": 27.743193972248,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "PhHV1",
+            "position": "C8",
+            "excluded": false,
+            "cq": 27.9300233184446,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0423",
+            "target": "PhHV1",
+            "position": "C9",
+            "excluded": false,
+            "cq": 27.1771409916169,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 1000,
+            "sample": "std-3",
+            "target": "PhHV1",
+            "position": "C10",
+            "excluded": false,
+            "cq": 29.5924094513772,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 1000,
+            "sample": "std-3",
+            "target": "PhHV1",
+            "position": "C12",
+            "excluded": false,
+            "cq": 28.7953338042174,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "PhHV1",
+            "position": "D1",
+            "excluded": false,
+            "cq": 28.3907307018696,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "PhHV1",
+            "position": "D2",
+            "excluded": false,
+            "cq": 28.1877903761383,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0408",
+            "target": "PhHV1",
+            "position": "D3",
+            "excluded": false,
+            "cq": 28.2944021464789,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "PhHV1",
+            "position": "D4",
+            "excluded": false,
+            "cq": 27.6696290716355,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "PhHV1",
+            "position": "D5",
+            "excluded": false,
+            "cq": 27.2495261321031,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0416",
+            "target": "PhHV1",
+            "position": "D6",
+            "excluded": false,
+            "cq": 27.3197854285386,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "PhHV1",
+            "position": "D7",
+            "excluded": false,
+            "cq": 27.61134462502,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "PhHV1",
+            "position": "D8",
+            "excluded": false,
+            "cq": 27.7594721460455,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0424",
+            "target": "PhHV1",
+            "position": "D9",
+            "excluded": false,
+            "cq": 27.7207263442596,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "PhHV1",
+            "position": "D10",
+            "excluded": false,
+            "cq": 32.8009664583276,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "PhHV1",
+            "position": "D11",
+            "excluded": false,
+            "cq": 32.8527984671426,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 100,
+            "sample": "std-4",
+            "target": "PhHV1",
+            "position": "D12",
+            "excluded": false,
+            "cq": 32.7114892099463,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "PhHV1",
+            "position": "E1",
+            "excluded": false,
+            "cq": 27.8767721283738,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "PhHV1",
+            "position": "E2",
+            "excluded": false,
+            "cq": 28.2672827253771,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0409",
+            "target": "PhHV1",
+            "position": "E3",
+            "excluded": false,
+            "cq": 28.4985227291162,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "PhHV1",
+            "position": "E4",
+            "excluded": false,
+            "cq": 28.1453359894815,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "PhHV1",
+            "position": "E5",
+            "excluded": false,
+            "cq": 28.0877910838613,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0417",
+            "target": "PhHV1",
+            "position": "E6",
+            "excluded": false,
+            "cq": 28.2911698960188,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "PhHV1",
+            "position": "E7",
+            "excluded": false,
+            "cq": 27.7672164097296,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "PhHV1",
+            "position": "E8",
+            "excluded": false,
+            "cq": 27.5757181193652,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0425",
+            "target": "PhHV1",
+            "position": "E9",
+            "excluded": false,
+            "cq": 27.7682089129267,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "PhHV1",
+            "position": "E10",
+            "excluded": false,
+            "cq": 35.0963314511631,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "PhHV1",
+            "position": "E11",
+            "excluded": false,
+            "cq": 35.1289578544018,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": 10,
+            "sample": "std-5",
+            "target": "PhHV1",
+            "position": "E12",
+            "excluded": false,
+            "cq": 34.5846079368099,
+            "type": "STANDARD"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "PhHV1",
+            "position": "F1",
+            "excluded": false,
+            "cq": 29.632377434029,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "PhHV1",
+            "position": "F2",
+            "excluded": false,
+            "cq": 29.3494412934378,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0410",
+            "target": "PhHV1",
+            "position": "F3",
+            "excluded": false,
+            "cq": 29.494143466436,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "PhHV1",
+            "position": "F4",
+            "excluded": false,
+            "cq": 29.1555364355532,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "PhHV1",
+            "position": "F5",
+            "excluded": false,
+            "cq": 28.8856967023752,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0418",
+            "target": "PhHV1",
+            "position": "F6",
+            "excluded": false,
+            "cq": 29.1451326408335,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "PhHV1",
+            "position": "F7",
+            "excluded": false,
+            "cq": 27.4800451228651,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "PhHV1",
+            "position": "F8",
+            "excluded": false,
+            "cq": 27.5117635587621,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0426",
+            "target": "PhHV1",
+            "position": "F9",
+            "excluded": false,
+            "cq": 27.4502694892772,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "PhHV1",
+            "position": "G1",
+            "excluded": false,
+            "cq": 27.5166827679175,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "PhHV1",
+            "position": "G2",
+            "excluded": false,
+            "cq": 28.387897793944,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0411",
+            "target": "PhHV1",
+            "position": "G3",
+            "excluded": false,
+            "cq": 28.3051579820191,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "PhHV1",
+            "position": "G4",
+            "excluded": false,
+            "cq": 27.9594745174412,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "PhHV1",
+            "position": "G5",
+            "excluded": false,
+            "cq": 28.5500615631782,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0419",
+            "target": "PhHV1",
+            "position": "G6",
+            "excluded": false,
+            "cq": 28.4747136025401,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "PhHV1",
+            "position": "G7",
+            "excluded": false,
+            "cq": 27.20979011005,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "PhHV1",
+            "position": "G8",
+            "excluded": false,
+            "cq": 27.5520486452047,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0427",
+            "target": "PhHV1",
+            "position": "G9",
+            "excluded": false,
+            "cq": 27.4339765211669,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "PhHV1",
+            "position": "G10",
+            "excluded": false,
+            "cq": 28.9261055783325,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "PhHV1",
+            "position": "G11",
+            "excluded": false,
+            "cq": 28.8333604066282,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "neg",
+            "target": "PhHV1",
+            "position": "G12",
+            "excluded": false,
+            "cq": 28.582761356541,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "PhHV1",
+            "position": "H1",
+            "excluded": false,
+            "cq": 29.1721122725969,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "PhHV1",
+            "position": "H2",
+            "excluded": false,
+            "cq": 28.9473994095492,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0412",
+            "target": "PhHV1",
+            "position": "H3",
+            "excluded": false,
+            "cq": 28.992618237449,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "PhHV1",
+            "position": "H4",
+            "excluded": false,
+            "cq": 27.3288232825026,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "PhHV1",
+            "position": "H5",
+            "excluded": false,
+            "cq": 28.0802509676744,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0420",
+            "target": "PhHV1",
+            "position": "H6",
+            "excluded": false,
+            "cq": 27.5190916956402,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "PhHV1",
+            "position": "H7",
+            "excluded": false,
+            "cq": 28.8944216697858,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "PhHV1",
+            "position": "H8",
+            "excluded": false,
+            "cq": 29.1184239309672,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "cr0428",
+            "target": "PhHV1",
+            "position": "H9",
+            "excluded": false,
+            "cq": 28.9031621804235,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "PhHV1",
+            "position": "H10",
+            "excluded": false,
+            "cq": 35.4909364090069,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "PhHV1",
+            "position": "H11",
+            "excluded": false,
+            "cq": 35.559110395385,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "ntc",
+            "target": "PhHV1",
+            "position": "H12",
+            "excluded": false,
+            "cq": 34.8991226730243,
+            "type": "NTC_CONTROL"
+        }
+    ],
+    "quantifyConfigurations": []
+}

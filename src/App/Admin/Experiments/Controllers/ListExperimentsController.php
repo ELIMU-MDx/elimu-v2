@@ -14,7 +14,7 @@ final class ListExperimentsController
     {
         $experiments = Experiment::where('study_id', $guard->user()->study_id)
             ->withSamplesCount()
-            ->with('controls.result.resultErrors')
+            ->with('controls.result.resultErrors', 'quantifyParameters', 'assay.parameters')
             ->orderByDesc('created_at')
             ->get();
 

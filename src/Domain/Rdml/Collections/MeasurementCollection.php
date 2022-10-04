@@ -60,7 +60,9 @@ final class MeasurementCollection extends CustomCollection
     public function controls(): MeasurementCollection
     {
         return $this->filter(function (Measurement $measurement) {
-            return $measurement->type !== MeasurementType::SAMPLE();
+            return in_array($measurement->type, [
+                MeasurementType::NEGATIVE_CONTROL(), MeasurementType::POSTIVE_CONTROL(), MeasurementType::NTC_CONTROL(),
+            ], true);
         });
     }
 
@@ -69,5 +71,10 @@ final class MeasurementCollection extends CustomCollection
         return $this->reject(function (Measurement $measurement) {
             return $measurement->excluded;
         });
+    }
+
+    public function standards(): MeasurementCollection
+    {
+        return $this->filter(fn (Measurement $measurement) => $measurement->type === MeasurementType::STANDARD());
     }
 }

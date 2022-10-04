@@ -9,6 +9,7 @@ use Domain\Experiment\Models\Experiment;
 use Domain\Experiment\Models\Measurement;
 use Domain\Experiment\Models\Sample;
 use Domain\Rdml\Converters\RdmlConverter;
+use Domain\Rdml\DataTransferObjects\QuantifyConfiguration;
 use Domain\Rdml\Services\RdmlReader;
 use Illuminate\Database\Connection;
 
@@ -32,6 +33,14 @@ final class CreateExperimentAction
             $experiment = $parameter->getExperiment();
             $experiment->experiment_date = $rdml->updatedAt;
             $experiment->save();
+            if ($rdml->quantifyConfigurations->isNotEmpty()) {
+                $experiment
+                    ->quantifyParameters()
+                    ->createMany($rdml
+                        ->quantifyConfigurations
+                        ->map(fn(QuantifyConfiguration $configuration) => $configuration->toArray())
+                    );
+            }
 
             $measurements = (new RdmlConverter($rdml))->toMeasurements();
 
@@ -41,7 +50,7 @@ final class CreateExperimentAction
 
             $sampleLookupTable = $measurements
                 ->filter(function (Measurement $measurement) use ($sampleLookupTable) {
-                    return ! $sampleLookupTable->has($measurement->sample->identifier);
+                    return !$sampleLookupTable->has($measurement->sample->identifier);
                 })
                 ->mapWithKeys(function (Measurement $measurement) use ($parameter, $experiment) {
                     $measurement->sample->study_id = $parameter->studyId;

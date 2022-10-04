@@ -46,7 +46,12 @@ final class Experiment extends Model
 
     public function controls(): HasMany
     {
-        return $this->hasMany(Measurement::class)->where('type', '<>', MeasurementType::SAMPLE());
+        return $this->hasMany(Measurement::class)->whereIn('type', MeasurementType::controls());
+    }
+
+    public function quantifyParameters(): HasMany
+    {
+        return $this->hasMany(QuantifyParameter::class);
     }
 
     /**

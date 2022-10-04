@@ -8,6 +8,7 @@ use Domain\Assay\Models\Assay;
 use Domain\Assay\Models\AssayParameter;
 use Domain\Experiment\DataTransferObjects\ResultCalculationParameter;
 use Domain\Experiment\Models\Measurement;
+use Domain\Experiment\Models\QuantifyParameter;
 use Domain\Rdml\DataTransferObjects\Measurement as MeasurementDTO;
 use Domain\Results\DataTransferObjects\Result;
 use Domain\Results\DataTransferObjects\ResultValidationParameter;
@@ -37,6 +38,7 @@ final class RecalculateResultsAction
             ->load([
                 'sample:id,identifier',
                 'experiment.assay.parameters',
+                'experiment.quantifyParameters',
             ])
             ->groupBy('experiment.assay_id')
             ->each(function (Collection $measurements) {
@@ -44,7 +46,8 @@ final class RecalculateResultsAction
                 $resultModels = $this->storeResults($results, $measurements->first()->experiment->assay_id);
                 $this->storeMeasurements($resultModels, $measurements);
 
-                $validationParameter = $this->getValidationParameter($measurements, $measurements->first()->experiment->assay);
+                $validationParameter = $this->getValidationParameter($measurements,
+                    $measurements->first()->experiment->assay);
                 $this->storeResultErrors(
                     $results,
                     $validationParameter,
@@ -83,15 +86,26 @@ final class RecalculateResultsAction
             });
     }
 
+    /**
+     * @param  Collection<Measurement>  $measurements
+     * @return BaseCollection
+     */
     private function getResultCalculationParameter(Collection $measurements): BaseCollection
     {
+        $quantifyParameters = $measurements->first()
+            ->experiment
+            ->quantifyParameters
+            ->keyBy('target');
         return $measurements->first()
             ->experiment
             ->assay
             ->parameters
-            ->map(function (AssayParameter $parameter) {
-                return ResultCalculationParameter::fromModel($parameter);
-            })
+            ->map(fn(AssayParameter $parameter) => new ResultCalculationParameter([
+                'target' => $parameter->target,
+                'cutoff' => $parameter->cutoff,
+                'intercept' => $quantifyParameters[$parameter->target]->intercept ?? $parameter->intercept,
+                'slope' => $quantifyParameters[$parameter->target]->slope ?? $parameter->slope,
+            ]))
             ->toBase();
     }
 

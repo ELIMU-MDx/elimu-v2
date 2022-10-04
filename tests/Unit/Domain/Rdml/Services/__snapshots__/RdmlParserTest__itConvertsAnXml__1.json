@@ -1,0 +1,673 @@
+{
+    "version": "1.1",
+    "createdAt": "2021-06-24T12:27:29.845000Z",
+    "updatedAt": "2021-06-24T13:25:09.862000Z",
+    "targets": [
+        {
+            "id": "Pspp18S",
+            "type": "toi",
+            "dye": "Cy5"
+        },
+        {
+            "id": "PfvarATS",
+            "type": "toi",
+            "dye": "FAM"
+        },
+        {
+            "id": "HsRNaseP",
+            "type": "toi",
+            "dye": "VIC"
+        }
+    ],
+    "measurements": [
+        {
+            "quantity": null,
+            "sample": "NF54 1",
+            "target": "Pspp18S",
+            "position": "B2",
+            "excluded": false,
+            "cq": 10.131589457346,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 1",
+            "target": "Pspp18S",
+            "position": "B3",
+            "excluded": false,
+            "cq": 9.67214661638156,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 2",
+            "target": "Pspp18S",
+            "position": "B4",
+            "excluded": false,
+            "cq": 10.0582113753089,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 2",
+            "target": "Pspp18S",
+            "position": "B5",
+            "excluded": false,
+            "cq": 9.09145621764585,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 1",
+            "target": "Pspp18S",
+            "position": "B6",
+            "excluded": false,
+            "cq": 11.3757547139425,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 1",
+            "target": "Pspp18S",
+            "position": "B7",
+            "excluded": false,
+            "cq": 10.1978626634143,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 2",
+            "target": "Pspp18S",
+            "position": "B8",
+            "excluded": false,
+            "cq": 10.6781403421212,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 2",
+            "target": "Pspp18S",
+            "position": "B9",
+            "excluded": false,
+            "cq": 11.012892107599,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "Cambodia",
+            "target": "Pspp18S",
+            "position": "D2",
+            "excluded": false,
+            "cq": 8.5736328073992,
+            "type": "POSTIVE_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "Cambodia",
+            "target": "Pspp18S",
+            "position": "D3",
+            "excluded": false,
+            "cq": 9.28857863597113,
+            "type": "POSTIVE_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NTC",
+            "target": "Pspp18S",
+            "position": "D4",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NTC",
+            "target": "Pspp18S",
+            "position": "D5",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 1",
+            "target": "PfvarATS",
+            "position": "B2",
+            "excluded": false,
+            "cq": 32.5739930015785,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 1",
+            "target": "PfvarATS",
+            "position": "B3",
+            "excluded": false,
+            "cq": 21.6756493757758,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 2",
+            "target": "PfvarATS",
+            "position": "B4",
+            "excluded": false,
+            "cq": 25.6765825097369,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 2",
+            "target": "PfvarATS",
+            "position": "B5",
+            "excluded": false,
+            "cq": 21.8736850072798,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 1",
+            "target": "PfvarATS",
+            "position": "B6",
+            "excluded": false,
+            "cq": 20.399687016453,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 1",
+            "target": "PfvarATS",
+            "position": "B7",
+            "excluded": false,
+            "cq": 19.2179137252734,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 2",
+            "target": "PfvarATS",
+            "position": "B8",
+            "excluded": false,
+            "cq": 18.7356896373189,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 2",
+            "target": "PfvarATS",
+            "position": "B9",
+            "excluded": false,
+            "cq": 19.170169011471,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "Cambodia",
+            "target": "PfvarATS",
+            "position": "D2",
+            "excluded": false,
+            "cq": 16.1724446759374,
+            "type": "POSTIVE_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "Cambodia",
+            "target": "PfvarATS",
+            "position": "D3",
+            "excluded": false,
+            "cq": 17.5972794565963,
+            "type": "POSTIVE_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NTC",
+            "target": "PfvarATS",
+            "position": "D4",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NTC",
+            "target": "PfvarATS",
+            "position": "D5",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 1",
+            "target": "HsRNaseP",
+            "position": "B2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 1",
+            "target": "HsRNaseP",
+            "position": "B3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 2",
+            "target": "HsRNaseP",
+            "position": "B4",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 2",
+            "target": "HsRNaseP",
+            "position": "B5",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 1",
+            "target": "HsRNaseP",
+            "position": "B6",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 1",
+            "target": "HsRNaseP",
+            "position": "B7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 2",
+            "target": "HsRNaseP",
+            "position": "B8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 2",
+            "target": "HsRNaseP",
+            "position": "B9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "Cambodia",
+            "target": "HsRNaseP",
+            "position": "D2",
+            "excluded": false,
+            "cq": 41.2326502953479,
+            "type": "POSTIVE_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "Cambodia",
+            "target": "HsRNaseP",
+            "position": "D3",
+            "excluded": false,
+            "cq": 42.6525266820419,
+            "type": "POSTIVE_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NTC",
+            "target": "HsRNaseP",
+            "position": "D4",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NTC",
+            "target": "HsRNaseP",
+            "position": "D5",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 1",
+            "target": "Pspp18S",
+            "position": "B2",
+            "excluded": false,
+            "cq": 10.131589457346,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 1",
+            "target": "Pspp18S",
+            "position": "B3",
+            "excluded": false,
+            "cq": 9.67214661638156,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 2",
+            "target": "Pspp18S",
+            "position": "B4",
+            "excluded": false,
+            "cq": 10.0582113753089,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 2",
+            "target": "Pspp18S",
+            "position": "B5",
+            "excluded": false,
+            "cq": 9.09145621764585,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 1",
+            "target": "Pspp18S",
+            "position": "B6",
+            "excluded": false,
+            "cq": 11.3757547139425,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 1",
+            "target": "Pspp18S",
+            "position": "B7",
+            "excluded": false,
+            "cq": 10.1978626634143,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 2",
+            "target": "Pspp18S",
+            "position": "B8",
+            "excluded": false,
+            "cq": 10.6781403421212,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 2",
+            "target": "Pspp18S",
+            "position": "B9",
+            "excluded": false,
+            "cq": 11.012892107599,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "Cambodia",
+            "target": "Pspp18S",
+            "position": "D2",
+            "excluded": false,
+            "cq": 8.5736328073992,
+            "type": "POSTIVE_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "Cambodia",
+            "target": "Pspp18S",
+            "position": "D3",
+            "excluded": false,
+            "cq": 9.28857863597113,
+            "type": "POSTIVE_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NTC",
+            "target": "Pspp18S",
+            "position": "D4",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NTC",
+            "target": "Pspp18S",
+            "position": "D5",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 1",
+            "target": "PfvarATS",
+            "position": "B2",
+            "excluded": false,
+            "cq": 32.5739930015785,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 1",
+            "target": "PfvarATS",
+            "position": "B3",
+            "excluded": false,
+            "cq": 21.6756493757758,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 2",
+            "target": "PfvarATS",
+            "position": "B4",
+            "excluded": false,
+            "cq": 25.6765825097369,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 2",
+            "target": "PfvarATS",
+            "position": "B5",
+            "excluded": false,
+            "cq": 21.8736850072798,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 1",
+            "target": "PfvarATS",
+            "position": "B6",
+            "excluded": false,
+            "cq": 20.399687016453,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 1",
+            "target": "PfvarATS",
+            "position": "B7",
+            "excluded": false,
+            "cq": 19.2179137252734,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 2",
+            "target": "PfvarATS",
+            "position": "B8",
+            "excluded": false,
+            "cq": 18.7356896373189,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 2",
+            "target": "PfvarATS",
+            "position": "B9",
+            "excluded": false,
+            "cq": 19.170169011471,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "Cambodia",
+            "target": "PfvarATS",
+            "position": "D2",
+            "excluded": false,
+            "cq": 16.1724446759374,
+            "type": "POSTIVE_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "Cambodia",
+            "target": "PfvarATS",
+            "position": "D3",
+            "excluded": false,
+            "cq": 17.5972794565963,
+            "type": "POSTIVE_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NTC",
+            "target": "PfvarATS",
+            "position": "D4",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NTC",
+            "target": "PfvarATS",
+            "position": "D5",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 1",
+            "target": "HsRNaseP",
+            "position": "B2",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 1",
+            "target": "HsRNaseP",
+            "position": "B3",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 2",
+            "target": "HsRNaseP",
+            "position": "B4",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "NF54 2",
+            "target": "HsRNaseP",
+            "position": "B5",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 1",
+            "target": "HsRNaseP",
+            "position": "B6",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 1",
+            "target": "HsRNaseP",
+            "position": "B7",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 2",
+            "target": "HsRNaseP",
+            "position": "B8",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "DD2 2",
+            "target": "HsRNaseP",
+            "position": "B9",
+            "excluded": false,
+            "cq": null,
+            "type": "SAMPLE"
+        },
+        {
+            "quantity": null,
+            "sample": "Cambodia",
+            "target": "HsRNaseP",
+            "position": "D2",
+            "excluded": false,
+            "cq": 41.2326502953479,
+            "type": "POSTIVE_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "Cambodia",
+            "target": "HsRNaseP",
+            "position": "D3",
+            "excluded": false,
+            "cq": 42.6525266820419,
+            "type": "POSTIVE_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NTC",
+            "target": "HsRNaseP",
+            "position": "D4",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        },
+        {
+            "quantity": null,
+            "sample": "NTC",
+            "target": "HsRNaseP",
+            "position": "D5",
+            "excluded": false,
+            "cq": null,
+            "type": "NTC_CONTROL"
+        }
+    ],
+    "quantifyConfigurations": []
+}

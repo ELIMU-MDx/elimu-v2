@@ -15,8 +15,10 @@
                             <svg xmlns="http://www.w3.org/2000/svg"
                                  class="shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                                  viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
-                                <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+                                <path
+                                    d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                                <path
+                                    d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
                             </svg>
                             @if(is_url($experiment->eln))
                                 <a href="{{$experiment->eln}}" target="_blank" class="underline">Link to ELN</a>
@@ -57,7 +59,8 @@
                             </svg>
                             <p>
                                 Run on
-                                <time datetime="{{$experiment->experiment_date->format('Y-m-d')}}">{{ $experiment->experiment_date->format('F j, Y') }}</time>
+                                <time
+                                    datetime="{{$experiment->experiment_date->format('Y-m-d')}}">{{ $experiment->experiment_date->format('F j, Y') }}</time>
                             </p>
                         </li>
                     @endif
@@ -71,7 +74,8 @@
                         </svg>
                         <p>
                             Uploaded on
-                            <time datetime="{{$experiment->created_at->format('Y-m-d')}}">{{ $experiment->created_at->format('F j, Y') }}</time>
+                            <time
+                                datetime="{{$experiment->created_at->format('Y-m-d')}}">{{ $experiment->created_at->format('F j, Y') }}</time>
                         </p>
                     </li>
                 </ul>
@@ -115,6 +119,27 @@
                         </li>
                     @endforeach
                 </ul>
+                @if($experiment->quantifyParameters->isNotEmpty() || $experiment->assay->parameters->firstWhere('intercept', '<>', null))
+                    <ul class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
+                        @if($experiment->quantifyParameters->isNotEmpty())
+                            @foreach($experiment->quantifyParameters as $parameter)
+                                <li class="shrink-0 flex items-center text-sm text-gray-500">
+                                    <span class="bg-gray-700 font-bold text-white mr-2 inline-block px-2 py-1">y
+                                        = {{$parameter->slope}}x
+                                        + {{$parameter->intercept}}</span> {{$parameter->target}}
+                                </li>
+                            @endforeach
+                        @else
+                            @foreach($experiment->assay->parameters->filter(fn($parameter) => $parameter->intercept) as $parameter)
+                                <li class="shrink-0 flex items-center text-sm text-gray-500">
+                                    <span class="bg-gray-700 font-bold text-white mr-2 inline-block px-2 py-1">y
+                                        = {{$parameter->slope}}x
+                                        + {{$parameter->intercept}}</span> {{$parameter->target}}
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
+                @endif
             </div>
         </div>
         <div class="flex ml-5 shrink-0 space-x-2">

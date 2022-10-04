@@ -11,6 +11,7 @@ use Spatie\Enum\Laravel\Enum;
  * @method static self POSTIVE_CONTROL()
  * @method static self NEGATIVE_CONTROL()
  * @method static self NTC_CONTROL()
+ * @method static self STANDARD()
  */
 final class MeasurementType extends Enum
 {
@@ -20,8 +21,18 @@ final class MeasurementType extends Enum
             'pos' => self::POSTIVE_CONTROL(),
             'ntc' => self::NTC_CONTROL(),
             'neg' => self::NEGATIVE_CONTROL(),
+            'std' => self::STANDARD(),
             default => self::SAMPLE()
         };
+    }
+
+    public static function controls(): array
+    {
+        return [
+            self::POSTIVE_CONTROL(),
+            self::NTC_CONTROL(),
+            self::NEGATIVE_CONTROL(),
+        ];
     }
 
     protected static function labels()
@@ -31,6 +42,7 @@ final class MeasurementType extends Enum
             'POSTIVE_CONTROL' => 'positive control',
             'NEGATIVE_CONTROL' => 'negative control',
             'NTC_CONTROL' => 'ntc control',
+            'STANDARD' => 'standard',
         ];
     }
 }

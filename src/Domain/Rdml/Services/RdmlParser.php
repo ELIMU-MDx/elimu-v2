@@ -24,16 +24,19 @@ final class RdmlParser
     {
         $data = $this->xmlToArray($xml);
         $measurements = [];
-        $controlIds = [];
+        $nonSampleIds = [];
 
         // TODO: refactor to collections
         foreach ($data->findList('sample') as $sample) {
             $sampleReader = new ArrayReader($sample);
-            if (! in_array($sampleReader->findString('type'), ['pos', 'ntc'], true)) {
+            if (! in_array($sampleReader->findString('type'), ['pos', 'ntc', 'std'], true)) {
                 continue;
             }
 
-            $controlIds[$sampleReader->getString('@attributes.id')] = $sampleReader->getString('type');
+            $nonSampleIds[$sampleReader->getString('@attributes.id')] = [
+                'type' => $sampleReader->getString('type'),
+                'quantity' => $sampleReader->findInt('quantity.value')
+            ];
         }
 
         foreach ($data->findList('experiment') as $experiment) {
@@ -61,7 +64,8 @@ final class RdmlParser
                         'type' => MeasurementType::SAMPLE(),
                     ]);
 
-                    $measurement->type = MeasurementType::byString($controlIds[$measurement->sample] ?? 'unkn');
+                    $measurement->quantity = $nonSampleIds[$measurement->sample]['quantity'] ?? null;
+                    $measurement->type = MeasurementType::byString($nonSampleIds[$measurement->sample]['type'] ?? 'unkn');
                     $measurements[] = $measurement;
                 }
             }
@@ -83,6 +87,7 @@ final class RdmlParser
             updatedAt: $data->getDateTime('dateUpdated'),
             targets: $targets,
             measurements: MeasurementCollection::make($measurements),
+            quantifyConfigurations: collect()
         );
     }
 

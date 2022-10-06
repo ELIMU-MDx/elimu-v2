@@ -46,6 +46,7 @@ final class RdmlReader
             ->standards()
             ->groupBy('target')
             ->map(fn (StandardsCollection $standards) => $standards->quantifyConfiguration())
+            ->values()
             ->toBase();
     }
 }

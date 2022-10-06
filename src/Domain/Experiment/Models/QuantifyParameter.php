@@ -11,4 +11,9 @@ final class QuantifyParameter extends Model
     {
         return $this->belongsTo(Experiment::class);
     }
+
+    public function calculateE(): float
+    {
+        return round(1- (10 ** (-1 / $this->slope)), 2);
+    }
 }

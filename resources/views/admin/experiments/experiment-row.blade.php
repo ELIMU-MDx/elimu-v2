@@ -120,13 +120,16 @@
                     @endforeach
                 </ul>
                 @if($experiment->quantifyParameters->isNotEmpty() || $experiment->assay->parameters->firstWhere('intercept', '<>', null))
-                    <ul class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
+                    <ul class="flex flex-col space-y-2 md:flex-row md:flex-wrap md:space-y-0 md:space-x-4">
                         @if($experiment->quantifyParameters->isNotEmpty())
                             @foreach($experiment->quantifyParameters as $parameter)
                                 <li class="shrink-0 flex items-center text-sm text-gray-500 border-2 border-gray-200 pr-2">
-                                    <span class="bg-gray-200 text-gray-600 font-bold mr-2 inline-block px-2 py-1">y
-                                        = {{$parameter->slope}}x
-                                        + {{$parameter->intercept}}</span> {{$parameter->target}}
+                                    <div class="bg-gray-200 text-gray-600 font-bold mr-2 inline-block px-2 py-1">
+                                        <p>y = {{$parameter->slope}}x + {{$parameter->intercept}}</p>
+                                        <p>R<sup>2</sup> = {{$parameter->correlation_coefficient}}</p>
+                                        <p>E = {{$parameter->calculateE()}}</p>
+                                    </div>
+                                    {{$parameter->target}}
                                 </li>
                             @endforeach
                         @else

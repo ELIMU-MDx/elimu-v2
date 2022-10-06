@@ -38,7 +38,12 @@ final class CreateExperimentAction
                     ->quantifyParameters()
                     ->createMany($rdml
                         ->quantifyConfigurations
-                        ->map(fn (QuantifyConfiguration $configuration) => $configuration->toArray())
+                        ->map(fn(QuantifyConfiguration $configuration) => [
+                            'target' => $configuration->target,
+                            'slope' => $configuration->slope,
+                            'intercept' => $configuration->intercept,
+                            'correlation_coefficient' => $configuration->correlationCoefficient,
+                        ])
                     );
             }
 
@@ -50,7 +55,7 @@ final class CreateExperimentAction
 
             $sampleLookupTable = $measurements
                 ->filter(function (Measurement $measurement) use ($sampleLookupTable) {
-                    return ! $sampleLookupTable->has($measurement->sample->identifier);
+                    return !$sampleLookupTable->has($measurement->sample->identifier);
                 })
                 ->mapWithKeys(function (Measurement $measurement) use ($parameter, $experiment) {
                     $measurement->sample->study_id = $parameter->studyId;

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\Rdml\Services;
 
+use Correlation\Correlation;
 use Domain\Rdml\Collections\MeasurementCollection;
+use Domain\Rdml\Collections\StandardsCollection;
 use Domain\Rdml\DataTransferObjects\Measurement;
 use Domain\Rdml\DataTransferObjects\QuantifyConfiguration;
 use Domain\Rdml\DataTransferObjects\Rdml;
@@ -43,23 +45,7 @@ final class RdmlReader
         return $rdml->measurements
             ->standards()
             ->groupBy('target')
-            ->map(function (MeasurementCollection $measurements) {
-                $regression = linear_regression(
-                    collect($measurements)
-                        ->map(fn (Measurement $measurement) => [
-                            'x' => log10($measurement->quantity), 'y' => $measurement->cq,
-                        ])
-                        ->toArray()
-                );
-
-                new QuantifyConfiguration(
-                    [
-                        'target' => $measurements->first()->target,
-                        'slope' => round($regression['slope'], 2),
-                        'intercept' => round($regression['intercept'], 2),
-                    ],
-                );
-            })
+            ->map(fn (StandardsCollection $standards) => $standards->quantifyConfiguration())
             ->toBase();
     }
 }

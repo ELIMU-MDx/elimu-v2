@@ -10,7 +10,7 @@ function is_url(string $string): bool
 
 /**
  * @param  array{x: float|int, y: float|int}  $points
- * @return float[]|int[]
+ * @return array{slope: float|int, intercept: float|int}
  */
 function linear_regression(array $points)
 {

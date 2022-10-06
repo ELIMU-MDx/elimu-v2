@@ -11,4 +11,6 @@ final class QuantifyConfiguration extends DataTransferObject
     public float $slope;
 
     public float $intercept;
+
+    public float $correlationCoefficient;
 }

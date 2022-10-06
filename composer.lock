@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "022c72d4275990bdbd5711cd7c590709",
+    "content-hash": "523217b9f8277bf8d402b23fe4fc0104",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2232,6 +2232,53 @@
                 "source": "https://github.com/justinrainbow/json-schema/tree/5.2.12"
             },
             "time": "2022-04-13T08:02:27+00:00"
+        },
+        {
+            "name": "kaydansky/correlation-coefficient",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kaydansky/correlation-coefficient.git",
+                "reference": "13968165f425cb6e2bbb931992c923d1488148c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kaydansky/correlation-coefficient/zipball/13968165f425cb6e2bbb931992c923d1488148c7",
+                "reference": "13968165f425cb6e2bbb931992c923d1488148c7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Correlation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Kaydansky",
+                    "email": "kaydansky@gmail.com"
+                }
+            ],
+            "description": "A numerical measure of some type of correlation, meaning a statistical relationship between two variables.",
+            "homepage": "https://github.com/kaydansky/correlation-coefficient",
+            "keywords": [
+                "Pearson",
+                "Spearman",
+                "coefficient",
+                "correlation"
+            ],
+            "support": {
+                "issues": "https://github.com/kaydansky/correlation-coefficient/issues",
+                "source": "https://github.com/kaydansky/correlation-coefficient/tree/master"
+            },
+            "time": "2020-01-20T18:09:42+00:00"
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",

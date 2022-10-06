@@ -76,7 +76,7 @@ final class MeasurementCollection extends CustomCollection
     public function standards(): StandardsCollection
     {
         return new StandardsCollection(
-            $this->filter(fn(Measurement $measurement) => $measurement->type === MeasurementType::STANDARD())
+            $this->filter(fn (Measurement $measurement) => $measurement->type === MeasurementType::STANDARD())
         );
     }
 }

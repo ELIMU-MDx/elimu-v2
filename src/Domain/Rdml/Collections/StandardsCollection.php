@@ -11,7 +11,7 @@ final class StandardsCollection extends Collection
 {
     public function dataPoints(): Collection
     {
-        return $this->map(fn(Measurement $measurement) => [
+        return $this->map(fn (Measurement $measurement) => [
             'x' => log10($measurement->quantity), 'y' => $measurement->cq,
         ])
             ->toBase();

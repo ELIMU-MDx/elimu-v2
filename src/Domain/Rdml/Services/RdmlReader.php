@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Rdml\Services;
 
-use Correlation\Correlation;
-use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\Collections\StandardsCollection;
-use Domain\Rdml\DataTransferObjects\Measurement;
 use Domain\Rdml\DataTransferObjects\QuantifyConfiguration;
 use Domain\Rdml\DataTransferObjects\Rdml;
 use Illuminate\Support\Collection;

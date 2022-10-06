@@ -6,6 +6,7 @@ namespace Domain\Rdml\DataTransferObjects;
 
 use Domain\Experiment\Models\Measurement as MeasurementModel;
 use Domain\Rdml\Enums\MeasurementType;
+use Illuminate\Support\Collection;
 use Spatie\DataTransferObject\DataTransferObject;
 
 final class Measurement extends DataTransferObject

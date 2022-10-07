@@ -16,6 +16,7 @@
         "blade-ui-kit/blade-icons": "^1.2",
         "blade-ui-kit/blade-ui-kit": "^0.3",
         "guzzlehttp/guzzle": "^7.2",
+        "hammerstone/airdrop": "^0.2.3",
         "kaydansky/correlation-coefficient": "^1.0",
         "kirschbaum-development/eloquent-power-joins": "^2.6",
         "laravel/framework": "^9.33",

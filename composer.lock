@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "02c24a64782a40d7f6f55d209d4f9bef",
+    "content-hash": "1f1c82dfcf2a3871e73ef81acdf9c883",
     "packages": [
         {
             "name": "asantibanez/livewire-charts",
@@ -2015,6 +2015,61 @@
                 }
             ],
             "time": "2022-08-28T14:45:39+00:00"
+        },
+        {
+            "name": "hammerstone/airdrop",
+            "version": "v0.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hammerstonedev/airdrop.git",
+                "reference": "a8b5178b0a2c33f9cf818a796540f951702e4fc7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hammerstonedev/airdrop/zipball/a8b5178b0a2c33f9cf818a796540f951702e4fc7",
+                "reference": "a8b5178b0a2c33f9cf818a796540f951702e4fc7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^7.0|^8.0|^9.0",
+                "illuminate/filesystem": "^7.0|^8.0|^9.0",
+                "illuminate/support": "^7.0|^8.0|^9.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3.3",
+                "orchestra/testbench": "^5.0|^6.0|^7.0",
+                "phpunit/phpunit": "^8.4|^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Hammerstone\\Airdrop\\AirdropServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hammerstone\\Airdrop\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Francis",
+                    "email": "aaron@hammerstone.dev"
+                }
+            ],
+            "description": "A Laravel package to deploy your application faster by skipping asset compilation when possible.",
+            "support": {
+                "issues": "https://github.com/hammerstonedev/airdrop/issues",
+                "source": "https://github.com/hammerstonedev/airdrop/tree/v0.2.3"
+            },
+            "time": "2022-02-15T23:25:24+00:00"
         },
         {
             "name": "http-interop/http-factory-guzzle",

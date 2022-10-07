@@ -41,7 +41,7 @@ return [
             // The skip file is an empty file that will be created to
             // indicate that asset building can be skipped.
             'skip_file' => env('AIRDROP_SKIP_FILE', base_path('.airdrop_skip')),
-        ]
+        ],
     ],
 
     /*
@@ -58,7 +58,7 @@ return [
         ConfigTrigger::class => [
             // This will keep your dev, test, and prod assets distinct
             // since they are usually built with different settings.
-            'env' => env('APP_ENV')
+            'env' => env('APP_ENV'),
         ],
 
         /*
@@ -104,9 +104,9 @@ return [
              * regardless of what directory they are found in.
              */
             'exclude_names' => [
-                '.DS_Store'
-            ]
-        ]
+                '.DS_Store',
+            ],
+        ],
     ],
 
     /*
@@ -142,7 +142,7 @@ return [
          * regardless of what directory they are found in.
          */
         'exclude_names' => [
-            '.DS_Store'
-        ]
+            '.DS_Store',
+        ],
     ],
 ];

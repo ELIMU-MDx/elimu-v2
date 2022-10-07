@@ -6,6 +6,7 @@ namespace Domain\Rdml\Services;
 
 use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\Collections\TargetCollection;
+use Domain\Rdml\DataTransferObjects\AmplificationDataPoint;
 use Domain\Rdml\DataTransferObjects\Measurement;
 use Domain\Rdml\DataTransferObjects\Rdml;
 use Domain\Rdml\DataTransferObjects\Target;
@@ -61,6 +62,12 @@ final class RdmlParser
                         'cq' => $reactionReader->has('data.cq')
                             ? $reactionReader->findFloat('data.cq')
                             : $this->calculateCq($reactionReader->find('data.adp.*.fluor', [])),
+                        'amplificationDataPoints' => collect($reactionReader->find('data.adp', []))
+                            ->map(fn (array $adp) => new AmplificationDataPoint([
+                                'cycle' => $adp['cyc'],
+                                'temperature' => $adp['tmp'] ?? null,
+                                'fluor' => $adp['fluor'] ?? null,
+                            ])),
                         'type' => MeasurementType::SAMPLE(),
                     ]);
 

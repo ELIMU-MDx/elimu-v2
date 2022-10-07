@@ -8,6 +8,9 @@
                        class="font-medium text-indigo-600 truncate">
                         {{$experiment->name}}
                     </a>
+                    @if($experiment->import_status === \Domain\Experiment\Enums\ImportStatus::PENDING)
+                        <span class="text-gray-600 ml-4 animate-pulse">importing adps...</span>
+                    @endif
                 </div>
                 <ul class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
                     @if($experiment->eln)

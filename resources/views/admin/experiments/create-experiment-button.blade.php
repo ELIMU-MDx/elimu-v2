@@ -63,7 +63,7 @@
                         {{ __('Cancel') }}
                     </x-jet-secondary-button>
 
-                    <x-jet-button class="ml-2" type="submit">
+                    <x-jet-button wire:loading.attr="disabled" class="ml-2" type="submit">
                         {{ __('Create experiment') }}
                     </x-jet-button>
                 </x-slot>

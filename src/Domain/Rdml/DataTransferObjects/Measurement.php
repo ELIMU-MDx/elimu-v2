@@ -6,6 +6,7 @@ namespace Domain\Rdml\DataTransferObjects;
 
 use Domain\Experiment\Models\Measurement as MeasurementModel;
 use Domain\Rdml\Enums\MeasurementType;
+use Illuminate\Support\Collection;
 use Spatie\DataTransferObject\DataTransferObject;
 
 final class Measurement extends DataTransferObject
@@ -24,6 +25,9 @@ final class Measurement extends DataTransferObject
 
     public MeasurementType $type;
 
+    /** @var Collection<AmplificationDataPoint> */
+    public Collection $amplificationDataPoints;
+
     public static function fromModel(MeasurementModel $measurement): Measurement
     {
         return new Measurement([
@@ -33,6 +37,17 @@ final class Measurement extends DataTransferObject
             'excluded' => $measurement->excluded,
             'cq' => $measurement->cq,
             'type' => $measurement->type,
+            'amplificationDataPoints' => collect(),
         ]);
+    }
+
+    public function is(MeasurementModel $measurement): bool
+    {
+        return $measurement->sample->identifier === $this->sample
+            && $measurement->target === $this->target
+            && $measurement->position === $this->position
+            && $measurement->excluded === $this->excluded
+            && $measurement->cq === $this->cq
+            && $measurement->type === $this->type;
     }
 }

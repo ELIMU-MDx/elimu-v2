@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domain\Experiment\Models;
 
 use Domain\Assay\Models\Assay;
+use Domain\Experiment\Enums\ImportStatus;
 use Domain\Experiment\QueryBuilders\ExperimentQueryBuilder;
 use Domain\Rdml\Enums\MeasurementType;
 use Domain\Study\Models\Study;
@@ -22,6 +23,7 @@ final class Experiment extends Model
 
     protected $casts = [
         'experiment_date' => 'date:Y-m-d',
+        'import_status' => ImportStatus::class,
     ];
 
     public function study(): BelongsTo

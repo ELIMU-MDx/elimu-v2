@@ -9,6 +9,7 @@ use Domain\Rdml\Enums\MeasurementType;
 use Domain\Results\Models\Result;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Kirschbaum\PowerJoins\PowerJoins;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -38,6 +39,11 @@ final class Measurement extends Model
     public function result(): BelongsTo
     {
         return $this->belongsTo(Result::class);
+    }
+
+    public function dataPoints(): HasMany
+    {
+        return $this->hasMany(DataPoint::class);
     }
 
     public function newCollection(array $models = []): MeasurementCollection

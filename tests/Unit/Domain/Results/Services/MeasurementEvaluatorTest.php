@@ -44,6 +44,7 @@ final class MeasurementEvaluatorTest extends TestCase
                 'position' => 'x',
                 'excluded' => false,
                 'type' => MeasurementType::SAMPLE(),
+                'amplificationDataPoints' => collect(),
             ], $parameter));
         }
 

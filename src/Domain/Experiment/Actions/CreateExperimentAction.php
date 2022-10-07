@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domain\Experiment\Actions;
 
 use Domain\Experiment\DataTransferObjects\CreateExperimentParameter;
+use Domain\Experiment\Jobs\ImportDataPointJob;
 use Domain\Experiment\Models\Experiment;
 use Domain\Experiment\Models\Measurement;
 use Domain\Experiment\Models\Sample;
@@ -75,17 +76,15 @@ final class CreateExperimentAction
                 ->merge($sampleLookupTable);
 
             $measurements = $measurements
-                ->map(function (Measurement $measurement) use ($experiment, $sampleLookupTable) {
+                ->each(function (Measurement $measurement) use ($experiment, $sampleLookupTable) {
                     $measurement->experiment_id = $experiment->id;
                     $measurement->created_at = $experiment->created_at;
                     $measurement->updated_at = $experiment->updated_at;
                     $measurement->sample_id = $sampleLookupTable->get($measurement->sample->identifier);
                     unset($measurement->sample);
 
-                    return $measurement;
-                })
-                ->each
-                ->save();
+                    $measurement->save();
+                });
 
             $this->recalculateResultsAction->execute(
                 Measurement::whereHas('experiment', function ($join) use ($parameter) {
@@ -97,6 +96,8 @@ final class CreateExperimentAction
                     ->whereIn('target', $measurements->pluck('target'))
                     ->get()
             );
+
+            dispatch(new ImportDataPointJob($experiment));
 
             return $experiment;
         });

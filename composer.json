@@ -19,6 +19,7 @@
         "kaydansky/correlation-coefficient": "^1.0",
         "kirschbaum-development/eloquent-power-joins": "^2.6",
         "laravel/framework": "^9.33",
+        "laravel/horizon": "^5.10",
         "laravel/jetstream": "^2.6",
         "laravel/sanctum": "dev-develop",
         "laravel/tinker": "^2.7",

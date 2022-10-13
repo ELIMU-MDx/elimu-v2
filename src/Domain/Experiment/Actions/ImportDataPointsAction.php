@@ -56,7 +56,6 @@ final class ImportDataPointsAction
                 ]);
         })->collapse());
 
-
         $this->connection->transaction(function () use ($experiment, $dataPoints) {
             DataPoint::insert($dataPoints->toArray());
             $experiment->save();

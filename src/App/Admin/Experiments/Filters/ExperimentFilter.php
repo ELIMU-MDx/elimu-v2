@@ -11,12 +11,11 @@ final class ExperimentFilter implements MeasurementFilter
      */
     public function __construct(private array $experiments)
     {
-
     }
 
     public function matches(Measurement $measurement): bool
     {
-        if(empty($this->experiments)) {
+        if (empty($this->experiments)) {
             return true;
         }
 

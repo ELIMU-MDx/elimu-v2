@@ -14,7 +14,7 @@ final class MeasurementFilterFactory
 
     public function get(string $name, array $arguments = []): MeasurementFilter
     {
-        if(!array_key_exists($name, $this->filters)) {
+        if (! array_key_exists($name, $this->filters)) {
             return new AlwaysTrueFilter();
         }
 

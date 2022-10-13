@@ -31,25 +31,25 @@ class ShowSample extends Component
     {
         $factory = app(MeasurementFilterFactory::class);
         $filters = collect($this->filters)
-            ->map(fn($arguments, $filterName) => $factory->get($filterName, [$arguments]));
+            ->map(fn ($arguments, $filterName) => $factory->get($filterName, [$arguments]));
 
         return $this->sample
             ->measurements
-            ->reject(fn(Measurement $measurement) => $filters
-                    ->first(fn(MeasurementFilter $filter) => !$filter->matches($measurement)) !== null
+            ->reject(fn (Measurement $measurement) => $filters
+                    ->first(fn (MeasurementFilter $filter) => ! $filter->matches($measurement)) !== null
             );
     }
 
     public function getSeriesProperty(): array
     {
-        ray($this->getFilteredMeasurements()->map(fn($measurement) => $measurement->dataPoints)->collapse()->count());
+        ray($this->getFilteredMeasurements()->map(fn ($measurement) => $measurement->dataPoints)->collapse()->count());
 
         return $this->getFilteredMeasurements()
-            ->map(fn(Measurement $measurement) => [
+            ->map(fn (Measurement $measurement) => [
                 'name' => "$measurement->position $measurement->target",
                 'data' => $measurement
                     ->dataPoints
-                    ->map(fn(DataPoint $dataPoint) => $dataPoint->fluor)
+                    ->map(fn (DataPoint $dataPoint) => $dataPoint->fluor)
                     ->toArray(),
             ])
             ->sortBy('name')
@@ -61,8 +61,8 @@ class ShowSample extends Component
     {
         $options = [
             'chart' => [
-                'type' => "line",
-                "zoom" => [
+                'type' => 'line',
+                'zoom' => [
                     'enabled' => false,
                 ],
                 'animations' => [
@@ -74,28 +74,28 @@ class ShowSample extends Component
             ],
             'series' => $this->getSeriesProperty(),
             'stroke' => [
-                "curve" => 'straight',
+                'curve' => 'straight',
             ],
             'yaxis' => [
-                "title" => [
-                    "text" => 'fluor',
-                    "style" => [
-                        "cssClass" => "font-sans text-sm font-bold text-lg",
+                'title' => [
+                    'text' => 'fluor',
+                    'style' => [
+                        'cssClass' => 'font-sans text-sm font-bold text-lg',
                     ],
                 ],
             ],
             'xaxis' => [
-                "title" => [
-                    "text" => 'cycle',
-                    "style" => [
-                        "cssClass" => "font-sans text-sm font-bold text-lg",
+                'title' => [
+                    'text' => 'cycle',
+                    'style' => [
+                        'cssClass' => 'font-sans text-sm font-bold text-lg',
                     ],
                 ],
             ],
-            "grid" => [
-                "row" => [
-                    "colors" => ['#f3f3f3', 'transparent'],
-                    "opacity" => 0.5,
+            'grid' => [
+                'row' => [
+                    'colors' => ['#f3f3f3', 'transparent'],
+                    'opacity' => 0.5,
                 ],
             ],
         ];
@@ -104,5 +104,4 @@ class ShowSample extends Component
 
         return view('livewire.show-sample', ['options' => $options]);
     }
-
 }

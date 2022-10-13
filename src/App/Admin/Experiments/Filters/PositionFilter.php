@@ -11,12 +11,11 @@ final class PositionFilter implements MeasurementFilter
      */
     public function __construct(private array $positions)
     {
-
     }
 
     public function matches(Measurement $measurement): bool
     {
-        if(empty($this->positions)) {
+        if (empty($this->positions)) {
             return true;
         }
 

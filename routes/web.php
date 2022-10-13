@@ -8,6 +8,7 @@ use App\Admin\Experiments\Controllers\EditExperimentController;
 use App\Admin\Experiments\Controllers\ExportResultsController;
 use App\Admin\Experiments\Controllers\ListExperimentsController;
 use App\Admin\Experiments\Controllers\ListResultsController;
+use App\Admin\Experiments\Controllers\ShowSampleController;
 use App\Admin\Experiments\Controllers\UpdateExperimentController;
 use App\Admin\QualityControl\Controllers\ExportLogController;
 use App\Admin\QualityControl\Controllers\ListLogController;
@@ -53,6 +54,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('results/{assay}/export', ExportResultsController::class)
             ->name('results.export')
             ->middleware('can:download-results,assay');
+
+        Route::get('samples/{sample}', ShowSampleController::class);
 
         Route::get('experiments', ListExperimentsController::class)->name('experiments.index');
         Route::get('experiments/{experiment}/rdml', DownloadRdmlController::class)

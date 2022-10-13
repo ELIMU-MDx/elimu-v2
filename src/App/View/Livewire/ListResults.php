@@ -40,7 +40,7 @@ final class ListResults extends Component
         'assay' => 'required|boolean',
     ];
 
-    protected $queryString = ['search' => ['except' => ''], 'resultFilter' => ['except' => 'all'], 'targetFilter' => ['except' => 'all']];
+    protected $queryString = ['search' => ['except' => ''], 'currentAssayId' => ['except' => ''], 'resultFilter' => ['except' => 'all'], 'targetFilter' => ['except' => 'all']];
 
     public function mount(): void
     {

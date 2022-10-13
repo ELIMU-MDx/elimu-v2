@@ -31,8 +31,7 @@ final class ImportDataPointsAction
         $experiment->import_status = ImportStatus::COMPLETED;
         DataPoint::whereHas('measurement', fn (Builder $builder) => $builder->where('experiment_id', $experiment->id))->delete();
 
-        $rdml = $this->rdmlReader->read(new File($this->filesystemManager->disk()->path($experiment->rdml_path),
-            false));
+        $rdml = $this->rdmlReader->read(new File($this->filesystemManager->disk()->path($experiment->rdml_path), false));
 
         $createdAt = now();
         $updatedAt = now();
@@ -56,6 +55,7 @@ final class ImportDataPointsAction
                     'updated_at' => $updatedAt,
                 ]);
         })->collapse());
+
 
         $this->connection->transaction(function () use ($experiment, $dataPoints) {
             DataPoint::insert($dataPoints->toArray());

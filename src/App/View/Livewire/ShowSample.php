@@ -42,8 +42,6 @@ class ShowSample extends Component
 
     public function getSeriesProperty(): array
     {
-        ray($this->getFilteredMeasurements()->map(fn ($measurement) => $measurement->dataPoints)->collapse()->count());
-
         return $this->getFilteredMeasurements()
             ->map(fn (Measurement $measurement) => [
                 'name' => "$measurement->position $measurement->target",

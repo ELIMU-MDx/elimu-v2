@@ -49,8 +49,8 @@ it('has a too high standard deviation', function () {
 
     $errors = $validator->validate($result, $parameter);
 
-    $this->assertCount(1, $errors);
-    $this->assertContains(StandardDeviationExceedsCutoffError::IDENTIFIER, $errors);
+    expect($errors)->toHaveCount(1);
+    expect($errors)->toContain(StandardDeviationExceedsCutoffError::IDENTIFIER);
 });
 
 /**
@@ -68,8 +68,8 @@ it('has diverging results', function () {
 
     $errors = $validator->validate($result, $parameter);
 
-    $this->assertCount(1, $errors);
-    $this->assertContains(DivergingMeasurementsError::IDENTIFIER, $errors);
+    expect($errors)->toHaveCount(1);
+    expect($errors)->toContain(DivergingMeasurementsError::IDENTIFIER);
 });
 
 /**
@@ -87,7 +87,7 @@ it('has not enough repetitions', function () {
 
     $errors = $validator->validate($result, $parameter);
 
-    $this->assertCount(1, $errors);
+    expect($errors)->toHaveCount(1);
     $this->assertContains(NotEnoughRepetitionsError::IDENTIFIER, $errors, 'Found errors: '.$errors->join(', '));
 });
 
@@ -115,10 +115,10 @@ it('validates controls', function (
     $errors = $validator->validate($result, $parameter);
 
     if ($resultsInError) {
-        $this->assertCount(1, $errors);
-        $this->assertContains(ControlValidationError::IDENTIFIER, $errors);
+        expect($errors)->toHaveCount(1);
+        expect($errors)->toContain(ControlValidationError::IDENTIFIER);
     } else {
-        $this->assertEmpty($errors);
+        expect($errors)->toBeEmpty();
     }
 })->with('controlsDataSet');
 

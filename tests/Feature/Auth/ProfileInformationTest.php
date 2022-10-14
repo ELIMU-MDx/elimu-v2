@@ -6,8 +6,6 @@ use Laravel\Jetstream\Http\Livewire\UpdateProfileInformationForm;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-uses(TestCase::class);
-uses(RefreshDatabase::class);
 
 test('current profile information is available', function () {
     $this->actingAs($user = UserFactory::new()->create());

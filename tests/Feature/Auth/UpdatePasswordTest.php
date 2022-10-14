@@ -7,8 +7,6 @@ use Laravel\Jetstream\Http\Livewire\UpdatePasswordForm;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-uses(TestCase::class);
-uses(RefreshDatabase::class);
 
 test('password can be updated', function () {
     $this->actingAs($user = UserFactory::new()->create());

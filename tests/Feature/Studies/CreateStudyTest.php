@@ -7,8 +7,6 @@ use Domain\Study\Models\Study;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-uses(TestCase::class);
-uses(RefreshDatabase::class);
 
 it('creates a study', function () {
     $user = UserFactory::new()->create();

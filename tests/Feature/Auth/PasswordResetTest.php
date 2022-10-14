@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\Notification;
 use Laravel\Fortify\Features;
 use Tests\TestCase;
 
-uses(TestCase::class);
-uses(RefreshDatabase::class);
 
 test('reset password link screen can be rendered', function () {
     if (! Features::enabled(Features::updatePasswords())) {

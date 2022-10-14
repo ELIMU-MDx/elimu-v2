@@ -8,8 +8,6 @@ use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-uses(TestCase::class);
-uses(RefreshDatabase::class);
 
 it('list results', function () {
     $assay = AssayFactory::new()->create();

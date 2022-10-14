@@ -6,8 +6,6 @@ use Laravel\Fortify\Features;
 use Laravel\Jetstream\Jetstream;
 use Tests\TestCase;
 
-uses(TestCase::class);
-uses(RefreshDatabase::class);
 
 test('registration screen can be rendered', function () {
     if (! Features::enabled(Features::registration())) {

@@ -5,9 +5,6 @@ declare(strict_types=1);
 use Database\Factories\AssayFactory;
 use Database\Factories\ResultFactory;
 use Database\Factories\UserFactory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-
 
 it('list results', function () {
     $assay = AssayFactory::new()->create();

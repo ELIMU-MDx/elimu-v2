@@ -3,9 +3,7 @@
 declare(strict_types=1);
 
 use Database\Factories\InvitationFactory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
 
 uses(WithFaker::class);
 

@@ -9,7 +9,6 @@ use Domain\Rdml\Enums\MeasurementType;
 use Domain\Results\Enums\QualitativeResult;
 use Domain\Results\Services\MeasurementEvaluator;
 
-
 it('evaluates to positive', function () {
     $evaluator = app(MeasurementEvaluator::class);
     $measurements = measurements([['cq' => 2], ['cq' => 3]]);

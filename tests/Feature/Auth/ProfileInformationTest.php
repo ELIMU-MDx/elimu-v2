@@ -1,11 +1,8 @@
 <?php
 
 use Database\Factories\UserFactory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Jetstream\Http\Livewire\UpdateProfileInformationForm;
 use Livewire\Livewire;
-use Tests\TestCase;
-
 
 test('current profile information is available', function () {
     $this->actingAs($user = UserFactory::new()->create());

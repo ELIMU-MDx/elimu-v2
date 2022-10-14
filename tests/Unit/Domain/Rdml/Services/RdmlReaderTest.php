@@ -4,7 +4,6 @@ use Domain\Rdml\Services\RdmlFileReader;
 use Illuminate\Http\File;
 use JetBrains\PhpStorm\Pure;
 use Tests\UnitTestCase;
-use ZipArchive;
 
 uses(UnitTestCase::class);
 

@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use function app;
-use function collect;
 use Domain\Experiment\DataTransferObjects\ResultCalculationParameter;
 use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\DataTransferObjects\Measurement;

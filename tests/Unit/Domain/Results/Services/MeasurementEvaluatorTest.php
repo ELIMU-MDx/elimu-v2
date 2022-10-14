@@ -21,9 +21,9 @@ it('evaluates to positive', function () {
         ]),
     ]));
 
-    $this->assertCount(1, $results);
-    $this->assertEquals(2.5, $results->first()->averageCQ->rounded());
-    $this->assertEquals(QualitativeResult::POSITIVE(), $results->first()->qualification);
+    expect($results)->toHaveCount(1);
+    expect($results->first()->averageCQ->rounded())->toEqual(2.5);
+    expect($results->first()->qualification)->toEqual(QualitativeResult::POSITIVE());
 });
 
 it('evaluates to negative', function (float $cutoff, array $cqs, ?float $averageCq) {
@@ -37,9 +37,9 @@ it('evaluates to negative', function (float $cutoff, array $cqs, ?float $average
         ]),
     ]));
 
-    $this->assertCount(1, $results);
-    $this->assertEquals($averageCq, $results->first()->averageCQ->rounded());
-    $this->assertEquals(QualitativeResult::NEGATIVE(), $results->first()->qualification);
+    expect($results)->toHaveCount(1);
+    expect($results->first()->averageCQ->rounded())->toEqual($averageCq);
+    expect($results->first()->qualification)->toEqual(QualitativeResult::NEGATIVE());
 })->with('negativeDataSet');
 
 // Datasets

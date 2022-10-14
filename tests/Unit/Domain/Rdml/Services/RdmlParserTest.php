@@ -17,7 +17,7 @@ it('converts a xml to dto', function () {
 
     $rdml = $parser->extract($xml);
 
-    $this->assertInstanceOf(Rdml::class, $rdml);
+    expect($rdml)->toBeInstanceOf(Rdml::class);
 });
 
 it('converts an xml', function () {

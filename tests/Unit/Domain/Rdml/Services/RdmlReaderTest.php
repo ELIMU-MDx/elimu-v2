@@ -2,7 +2,6 @@
 
 use Domain\Rdml\Services\RdmlFileReader;
 use Illuminate\Http\File;
-use JetBrains\PhpStorm\Pure;
 use Tests\UnitTestCase;
 
 uses(UnitTestCase::class);
@@ -15,10 +14,7 @@ it('converts an rdml file to xml', function () {
         getReader()->read($file)
     );
 });
-
-// Helpers
-function getReader#[Pure]
-    private function getReader(): RdmlFileReader
-    {
-        return new RdmlFileReader(new ZipArchive());
-    }
+function getReader(): RdmlFileReader
+{
+    return new RdmlFileReader(new ZipArchive());
+}

@@ -13,7 +13,6 @@ use Domain\Results\Models\Result;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 
 /**
- *
  * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
  */
 it('evaluates results', function () {

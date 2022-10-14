@@ -13,11 +13,9 @@ use Domain\Results\ResultValidationErrors\DivergingMeasurementsError;
 use Domain\Results\ResultValidationErrors\NotEnoughRepetitionsError;
 use Domain\Results\ResultValidationErrors\StandardDeviationExceedsCutoffError;
 use Domain\Results\Services\ResultValidator;
-
 use Support\RoundedNumber;
 
 /**
- *
  * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
  */
 it('is a valid result', function () {
@@ -35,7 +33,6 @@ it('is a valid result', function () {
 });
 
 /**
- *
  * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
  */
 it('has a too high standard deviation', function () {
@@ -54,7 +51,6 @@ it('has a too high standard deviation', function () {
 });
 
 /**
- *
  * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
  */
 it('has diverging results', function () {
@@ -73,7 +69,6 @@ it('has diverging results', function () {
 });
 
 /**
- *
  * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
  */
 it('has not enough repetitions', function () {
@@ -92,7 +87,6 @@ it('has not enough repetitions', function () {
 });
 
 /**
- *
  * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
  */
 it('validates controls', function (
@@ -227,8 +221,8 @@ dataset('controlsDataSet', [
 
 // Helpers
 /**
-     * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
-     */
+ * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
+ */
 function result(array $parameters): Result
 {
     $cqs = collect($parameters['cq'] ?? [12, 12]);

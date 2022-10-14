@@ -2,52 +2,42 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Domain\Rdml\Services;
-
 use Domain\Rdml\DataTransferObjects\Rdml;
 use Domain\Rdml\Services\RdmlParser;
 use Spatie\Snapshots\MatchesSnapshots;
 use Tests\UnitTestCase;
 
-final class RdmlParserTest extends UnitTestCase
-{
-    use MatchesSnapshots;
+uses(UnitTestCase::class);
+uses(MatchesSnapshots::class);
 
-    /** @test */
-    public function itConvertsAXmlToDto(): void
-    {
-        $xml = file_get_contents($this->resourcePath('example.xml'));
+it('converts a xml to dto', function () {
+    $xml = file_get_contents($this->resourcePath('example.xml'));
 
-        $parser = new RdmlParser();
+    $parser = new RdmlParser();
 
-        $rdml = $parser->extract($xml);
+    $rdml = $parser->extract($xml);
 
-        $this->assertInstanceOf(Rdml::class, $rdml);
-    }
+    $this->assertInstanceOf(Rdml::class, $rdml);
+});
 
-    /** @test */
-    public function itConvertsAnXml(): void
-    {
-        $xml = file_get_contents($this->resourcePath('example.xml'));
+it('converts an xml', function () {
+    $xml = file_get_contents($this->resourcePath('example.xml'));
 
-        $parser = new RdmlParser();
+    $parser = new RdmlParser();
 
-        $rdml = $parser->extract($xml);
+    $rdml = $parser->extract($xml);
 
-        $this->assertMatchesJsonSnapshot(json_encode($rdml->toArray(), JSON_THROW_ON_ERROR));
-    }
+    $this->assertMatchesJsonSnapshot(json_encode($rdml->toArray(), JSON_THROW_ON_ERROR));
+});
 
-    /** @test */
-    public function itConvertsAnXmlWithStandards(): void
-    {
-        $xml = file_get_contents($this->resourcePath('example-with-std.xml'));
+it('converts an xml with standards', function () {
+    $xml = file_get_contents($this->resourcePath('example-with-std.xml'));
 
-        $parser = new RdmlParser();
+    $parser = new RdmlParser();
 
-        $rdml = $parser->extract($xml);
+    $rdml = $parser->extract($xml);
 
-        $this->assertNotEmpty($rdml->measurements->standards());
+    $this->assertNotEmpty($rdml->measurements->standards());
 
-        $this->assertMatchesJsonSnapshot(json_encode($rdml->toArray(), JSON_THROW_ON_ERROR));
-    }
-}
+    $this->assertMatchesJsonSnapshot(json_encode($rdml->toArray(), JSON_THROW_ON_ERROR));
+});

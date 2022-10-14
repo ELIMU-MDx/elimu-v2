@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Studies;
-
 use App\View\Livewire\StudyMemberManager;
 use Database\Factories\UserFactory;
 use Domain\Study\Mailable\NewUserInvitationMail;
@@ -13,30 +11,26 @@ use Illuminate\Support\Facades\Mail;
 use Livewire;
 use Tests\TestCase;
 
-final class InviteNewUserTest extends TestCase
-{
-    use RefreshDatabase;
+uses(TestCase::class);
+uses(RefreshDatabase::class);
 
-    /** @test */
-    public function itInvitesAUser(): void
-    {
-        $user = UserFactory::new()->withStudy()->create();
-        Mail::fake();
+it('invites a user', function () {
+    $user = UserFactory::new()->withStudy()->create();
+    Mail::fake();
 
-        Livewire::actingAs($user)
-            ->test(StudyMemberManager::class, ['study' => $user->currentStudy])
-            ->set('addMemberForm.email', 'foo@bar.ch')
-            ->set('addMemberForm.role', (new Scientist())->identifier())
-            ->call('addMember');
+    Livewire::actingAs($user)
+        ->test(StudyMemberManager::class, ['study' => $user->currentStudy])
+        ->set('addMemberForm.email', 'foo@bar.ch')
+        ->set('addMemberForm.role', (new Scientist())->identifier())
+        ->call('addMember');
 
-        $this->assertDatabaseHas('invitations', [
-            'study_id' => $user->study_id,
-            'user_id' => $user->id,
-            'email' => 'foo@bar.ch',
-            'role' => (new Scientist())->identifier(),
-        ]);
-        Mail::assertQueued(function (NewUserInvitationMail $mail) {
-            return $mail->hasTo('foo@bar.ch');
-        });
-    }
-}
+    $this->assertDatabaseHas('invitations', [
+        'study_id' => $user->study_id,
+        'user_id' => $user->id,
+        'email' => 'foo@bar.ch',
+        'role' => (new Scientist())->identifier(),
+    ]);
+    Mail::assertQueued(function (NewUserInvitationMail $mail) {
+        return $mail->hasTo('foo@bar.ch');
+    });
+});

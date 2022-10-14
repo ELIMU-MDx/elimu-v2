@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use function app;
-use function collect;
 use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\DataTransferObjects\Measurement;
 use Domain\Rdml\Enums\MeasurementType;

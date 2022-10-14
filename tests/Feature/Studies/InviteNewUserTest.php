@@ -8,7 +8,6 @@ use Domain\Study\Mailable\NewUserInvitationMail;
 use Domain\Study\Roles\Scientist;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
-use Livewire;
 use Tests\TestCase;
 
 uses(TestCase::class);

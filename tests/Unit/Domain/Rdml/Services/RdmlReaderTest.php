@@ -2,15 +2,13 @@
 
 use Domain\Rdml\Services\RdmlFileReader;
 use Illuminate\Http\File;
-use Tests\UnitTestCase;
-
-uses(UnitTestCase::class);
+use function PHPUnit\Framework\assertXmlStringEqualsXmlString;
 
 it('converts an rdml file to xml', function () {
-    $file = new File($this->resourcePath('example.rdml'));
+    $file = new File(resourcePath('example.rdml'));
 
-    $this->assertXmlStringEqualsXmlString(
-        file_get_contents($this->resourcePath('example.xml')),
+    assertXmlStringEqualsXmlString(
+        file_get_contents(resourcePath('example.xml')),
         getReader()->read($file)
     );
 });

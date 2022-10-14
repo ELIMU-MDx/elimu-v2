@@ -1,7 +1,9 @@
 <?php
 
-uses(\Tests\TestCase::class)->in('Feature');
-uses(\Illuminate\Foundation\Testing\RefreshDatabase::class)->in('Feature');
+use Domain\Rdml\Collections\MeasurementCollection;
+use Domain\Rdml\DataTransferObjects\Measurement;
+use Domain\Rdml\Enums\MeasurementType;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,7 @@ uses(\Illuminate\Foundation\Testing\RefreshDatabase::class)->in('Feature');
 |
 */
 
-uses(Tests\TestCase::class)
+uses(Tests\TestCase::class, LazilyRefreshDatabase::class)
     ->beforeEach(function () {
         $this->withoutVite();
     })
@@ -35,18 +37,23 @@ expect()->extend('toBeOne', function () {
     return $this->toBe(1);
 });
 
-/*
-|--------------------------------------------------------------------------
-| Functions
-|--------------------------------------------------------------------------
-|
-| While Pest is very powerful out-of-the-box, you may have some testing code specific to your
-| project that you don't want to repeat in every file. Here you can also expose helpers as
-| global functions to help you to reduce the number of lines of code in your test files.
-|
-*/
-
-function something()
+function measurements(array $parameters): MeasurementCollection
 {
-    // ..
+    $measurements = [];
+    foreach ($parameters as $parameter) {
+        $measurements[] = new Measurement(array_merge([
+            'sample' => 'xy',
+            'target' => 'ab',
+            'position' => 'x',
+            'excluded' => false,
+            'type' => MeasurementType::SAMPLE(),
+            'amplificationDataPoints' => collect(),
+        ], $parameter));
+    }
+
+    return MeasurementCollection::make($measurements);
+}
+function resourcePath(string $path): string
+{
+    return __DIR__.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.ltrim($path, '\/\\');
 }

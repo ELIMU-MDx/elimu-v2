@@ -10,8 +10,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
-uses(TestCase::class);
-uses(RefreshDatabase::class);
 
 it('invites a user', function () {
     $user = UserFactory::new()->withStudy()->create();

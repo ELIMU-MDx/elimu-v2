@@ -5,8 +5,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Jetstream\Features;
 use Tests\TestCase;
 
-uses(TestCase::class);
-uses(RefreshDatabase::class);
 
 test('confirm password screen can be rendered', function () {
     $user = Features::hasTeamFeatures()

@@ -1,47 +1,40 @@
 <?php
 
-namespace Tests\Feature\Auth;
-
 use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Jetstream\Features;
 use Tests\TestCase;
 
-class PasswordConfirmationTest extends TestCase
-{
-    use RefreshDatabase;
+uses(TestCase::class);
+uses(RefreshDatabase::class);
 
-    public function test_confirm_password_screen_can_be_rendered()
-    {
-        $user = Features::hasTeamFeatures()
-            ? UserFactory::new()->withPersonalTeam()->create()
-            : UserFactory::new()->create();
+test('confirm password screen can be rendered', function () {
+    $user = Features::hasTeamFeatures()
+        ? UserFactory::new()->withPersonalTeam()->create()
+        : UserFactory::new()->create();
 
-        $response = $this->actingAs($user)->get('/user/confirm-password');
+    $response = $this->actingAs($user)->get('/user/confirm-password');
 
-        $response->assertStatus(200);
-    }
+    $response->assertStatus(200);
+});
 
-    public function test_password_can_be_confirmed()
-    {
-        $user = UserFactory::new()->create();
+test('password can be confirmed', function () {
+    $user = UserFactory::new()->create();
 
-        $response = $this->actingAs($user)->post('/user/confirm-password', [
-            'password' => 'password',
-        ]);
+    $response = $this->actingAs($user)->post('/user/confirm-password', [
+        'password' => 'password',
+    ]);
 
-        $response->assertRedirect();
-        $response->assertSessionHasNoErrors();
-    }
+    $response->assertRedirect();
+    $response->assertSessionHasNoErrors();
+});
 
-    public function test_password_is_not_confirmed_with_invalid_password()
-    {
-        $user = UserFactory::new()->create();
+test('password is not confirmed with invalid password', function () {
+    $user = UserFactory::new()->create();
 
-        $response = $this->actingAs($user)->post('/user/confirm-password', [
-            'password' => 'wrong-password',
-        ]);
+    $response = $this->actingAs($user)->post('/user/confirm-password', [
+        'password' => 'wrong-password',
+    ]);
 
-        $response->assertSessionHasErrors();
-    }
-}
+    $response->assertSessionHasErrors();
+});

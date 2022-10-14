@@ -1,11 +1,8 @@
 <?php
 
 use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Fortify\Features;
 use Laravel\Jetstream\Jetstream;
-use Tests\TestCase;
-
 
 test('registration screen can be rendered', function () {
     if (! Features::enabled(Features::registration())) {

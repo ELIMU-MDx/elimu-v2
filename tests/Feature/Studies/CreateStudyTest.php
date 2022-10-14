@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 use Database\Factories\UserFactory;
 use Domain\Study\Models\Study;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-
 
 it('creates a study', function () {
     $user = UserFactory::new()->create();

@@ -11,9 +11,6 @@ use Domain\Experiment\Actions\RecalculateResultsAction;
 use Domain\Results\Enums\QualitativeResult;
 use Domain\Results\Models\Result;
 use Illuminate\Database\Eloquent\Factories\Sequence;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-
 
 /**
  *

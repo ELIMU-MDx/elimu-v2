@@ -2,9 +2,6 @@
 
 use App\Providers\RouteServiceProvider;
 use Database\Factories\UserFactory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
-
 
 test('login screen can be rendered', function () {
     $response = $this->get('/login');

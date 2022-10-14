@@ -6,10 +6,7 @@ use App\View\Livewire\StudyMemberManager;
 use Database\Factories\UserFactory;
 use Domain\Study\Mailable\NewUserInvitationMail;
 use Domain\Study\Roles\Scientist;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
-use Tests\TestCase;
-
 
 it('invites a user', function () {
     $user = UserFactory::new()->withStudy()->create();

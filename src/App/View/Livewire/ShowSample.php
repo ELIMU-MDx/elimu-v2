@@ -47,7 +47,7 @@ class ShowSample extends Component
     {
         return $this->getFilteredMeasurements()
             ->map(fn (Measurement $measurement) => [
-                'name' => "$measurement->position $measurement->target",
+                'name' => "$measurement->target $measurement->position",
                 'color' => $this->graphColor($measurement->position, $measurement->target),
                 'data' => $measurement
                     ->dataPoints
@@ -72,9 +72,9 @@ class ShowSample extends Component
             3 => ['#c084fc', '#9333ea', '#581c87'],
         ];
 
-        $category = $colors[$this->sample->measurements->pluck('position')->unique()->sort()->values()->search($position) % 4];
+        $category = $colors[$this->sample->measurements->pluck('target')->unique()->sort()->values()->search($target) % 4];
 
-        return $category[$this->sample->measurements->pluck('target')->sort()->unique()->values()->search($target) % 3];
+        return $category[$this->sample->measurements->pluck('position')->sort()->unique()->values()->search($position) % 3];
     }
 
     public function render()

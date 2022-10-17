@@ -29,9 +29,11 @@ final class ImportDataPointsAction
         activity()->disableLogging();
         $experiment->load('measurements');
         $experiment->import_status = ImportStatus::COMPLETED;
-        DataPoint::whereHas('measurement', fn (Builder $builder) => $builder->where('experiment_id', $experiment->id))->delete();
+        DataPoint::whereHas('measurement',
+            fn(Builder $builder) => $builder->where('experiment_id', $experiment->id))->delete();
 
-        $rdml = $this->rdmlReader->read(new File($this->filesystemManager->disk()->path($experiment->rdml_path), false));
+        $rdml = $this->rdmlReader->read(new File($this->filesystemManager->disk()->path($experiment->rdml_path),
+            false));
 
         $createdAt = now();
         $updatedAt = now();
@@ -42,11 +44,11 @@ final class ImportDataPointsAction
             $rdml
         ) {
             $data = $rdml->measurements
-                ->first(fn (MeasurementDTO $measurementDto
+                ->first(fn(MeasurementDTO $measurementDto
                 ) => $measurementDto->is($measurement))?->amplificationDataPoints ?? collect();
 
             return
-                $data->map(fn (AmplificationDataPoint $dataPoint) => [
+                $data->map(fn(AmplificationDataPoint $dataPoint) => [
                     'cycle' => $dataPoint->cycle,
                     'temperature' => round($dataPoint->temperature, 2),
                     'fluor' => round($dataPoint->fluor, 2),
@@ -57,9 +59,13 @@ final class ImportDataPointsAction
         })->collapse());
 
         $this->connection->transaction(function () use ($experiment, $dataPoints) {
-            DataPoint::insert($dataPoints->toArray());
-            $experiment->save();
+            $dataPoints->chunk(500)->each(function (\Illuminate\Support\Collection $chunk) use ($experiment) {
+                DataPoint::insert($chunk->toArray());
+                $experiment->save();
+            });
         });
+
+
         activity()->enableLogging();
     }
 }

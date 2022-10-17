@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Domain\Rdml\DataTransferObjects\Measurement;
 use Domain\Rdml\DataTransferObjects\Rdml;
 use Domain\Rdml\Services\RdmlParser;
 use function Spatie\Snapshots\assertMatchesJsonSnapshot;
@@ -24,7 +25,7 @@ it('converts an xml', function () {
     $rdml = $parser->extract($xml);
 
     $this->assertMatchesJsonSnapshot(json_encode($rdml->toArray(), JSON_THROW_ON_ERROR));
-})->skip();
+});
 
 it('converts an xml with standards', function () {
     $xml = file_get_contents(resourcePath('example-with-std.xml'));
@@ -36,4 +37,18 @@ it('converts an xml with standards', function () {
     $this->assertNotEmpty($rdml->measurements->standards());
 
     assertMatchesJsonSnapshot(json_encode($rdml->toArray(), JSON_THROW_ON_ERROR));
-})->skip();
+});
+
+it('ignores duplicated measurements', function() {
+    $xml = file_get_contents(resourcePath('example.xml'));
+
+    $parser = new RdmlParser();
+
+    $rdml = $parser->extract($xml);
+
+    $uniqueMeasurements = $rdml->measurements->sortBy('sample')
+        ->unique(fn(Measurement $measurement) => $measurement->target . $measurement->sample . $measurement->position . $measurement->cq);
+
+    $this->assertEquals($rdml->measurements->count(), $uniqueMeasurements->count());
+
+});

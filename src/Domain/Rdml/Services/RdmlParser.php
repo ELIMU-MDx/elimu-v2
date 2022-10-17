@@ -12,6 +12,7 @@ use Domain\Rdml\DataTransferObjects\Rdml;
 use Domain\Rdml\DataTransferObjects\Target;
 use Domain\Rdml\Enums\MeasurementType;
 use Domain\Rdml\LabelFormats\LabelFormatFactory;
+use Illuminate\Support\Arr;
 use RuntimeException;
 use Support\ArrayReader;
 
@@ -30,7 +31,7 @@ final class RdmlParser
         // TODO: refactor to collections
         foreach ($data->findList('sample') as $sample) {
             $sampleReader = new ArrayReader($sample);
-            if (! in_array($sampleReader->findString('type'), ['pos', 'ntc', 'std'], true)) {
+            if (!in_array($sampleReader->findString('type'), ['pos', 'ntc', 'std'], true)) {
                 continue;
             }
 
@@ -63,13 +64,17 @@ final class RdmlParser
                             ? $reactionReader->findFloat('data.cq')
                             : $this->calculateCq($reactionReader->find('data.adp.*.fluor', [])),
                         'amplificationDataPoints' => collect($reactionReader->find('data.adp', []))
-                            ->map(fn (array $adp) => new AmplificationDataPoint([
+                            ->map(fn(array $adp) => new AmplificationDataPoint([
                                 'cycle' => $adp['cyc'],
                                 'temperature' => $adp['tmp'] ?? null,
                                 'fluor' => $adp['fluor'] ?? null,
                             ])),
                         'type' => MeasurementType::SAMPLE(),
                     ]);
+
+                    if ($this->alreadyExists($measurements, $measurement)) {
+                        continue;
+                    }
 
                     $measurement->quantity = $nonSampleIds[$measurement->sample]['quantity'] ?? null;
                     $measurement->type = MeasurementType::byString($nonSampleIds[$measurement->sample]['type'] ?? 'unkn');
@@ -142,5 +147,31 @@ final class RdmlParser
         $row = (($position - $column) / $columns) + 1;
 
         return $rowFormat->getPosition($row).$columnFormat->getPosition($column);
+    }
+
+    /**
+     * @param  Measurement[]  $measurements
+     * @param  Measurement  $measurement
+     * @return bool
+     */
+    private function alreadyExists(array $measurements, Measurement $measurement): bool
+    {
+        $existingMeasurement = Arr::first(
+            $measurements,
+            fn(Measurement $current) => $current->cq === $measurement->cq
+                && $current->target === $measurement->target
+                && $current->position === $measurement->position
+                && $current->sample === $measurement->sample
+        );
+
+        if (!$existingMeasurement) {
+            return false;
+        }
+
+        if ($existingMeasurement->amplificationDataPoints->isEmpty()) {
+            $existingMeasurement->amplificationDataPoints = $measurement->amplificationDataPoints;
+        }
+
+        return true;
     }
 }

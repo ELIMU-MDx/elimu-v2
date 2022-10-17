@@ -30,14 +30,8 @@ class ShowSample extends Component
         $this->filters['experiment'] = $this->sample->measurements->pluck('experiment.name')->unique()->values()->toArray();
     }
 
-    public function dehydrateFilters($value)
-    {
-        ray($value);
-    }
-
     private function getFilteredMeasurements()
     {
-        ray($this->filters);
         $factory = app(MeasurementFilterFactory::class);
         $filters = collect($this->filters)
             ->map(fn ($arguments, $filterName) => $factory->get($filterName, [$arguments]));

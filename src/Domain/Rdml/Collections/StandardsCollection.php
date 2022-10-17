@@ -38,8 +38,8 @@ final class StandardsCollection extends Collection
         return new QuantifyConfiguration(
             [
                 'target' => $this->first()->target,
-                'slope' => round($regression['slope'], 2),
-                'intercept' => round($regression['intercept'], 2),
+                'slope' => round($regression['slope'], 4),
+                'intercept' => round($regression['intercept'], 4),
                 'correlationCoefficient' => round($this->correlationCoefficient(), 4),
             ],
         );

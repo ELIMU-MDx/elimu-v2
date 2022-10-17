@@ -15,10 +15,6 @@ final class TargetFilter implements MeasurementFilter
 
     public function matches(Measurement $measurement): bool
     {
-        if (empty($this->targets)) {
-            return true;
-        }
-
         return in_array($measurement->target, $this->targets, true);
     }
 }

@@ -25,6 +25,9 @@ class ShowSample extends Component
         $this->sample = $sample;
 
         $this->sample->load(['measurements.dataPoints', 'measurements.experiment']);
+        $this->filters['position'] = $this->sample->measurements->pluck('position')->unique()->toArray();
+        $this->filters['target'] = $this->sample->measurements->pluck('target')->unique()->toArray();
+        $this->filters['experiment'] = $this->sample->measurements->pluck('experiment.name')->unique()->toArray();
     }
 
     private function getFilteredMeasurements()

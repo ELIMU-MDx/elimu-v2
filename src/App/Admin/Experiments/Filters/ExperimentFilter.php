@@ -15,10 +15,6 @@ final class ExperimentFilter implements MeasurementFilter
 
     public function matches(Measurement $measurement): bool
     {
-        if (empty($this->experiments)) {
-            return true;
-        }
-
         return in_array($measurement->experiment->name, $this->experiments, true);
     }
 }

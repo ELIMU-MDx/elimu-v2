@@ -15,10 +15,6 @@ final class PositionFilter implements MeasurementFilter
 
     public function matches(Measurement $measurement): bool
     {
-        if (empty($this->positions)) {
-            return true;
-        }
-
         return in_array($measurement->position, $this->positions, true);
     }
 }

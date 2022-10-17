@@ -50,5 +50,16 @@ it('ignores duplicated measurements', function() {
         ->unique(fn(Measurement $measurement) => $measurement->target . $measurement->sample . $measurement->position . $measurement->cq);
 
     $this->assertEquals($rdml->measurements->count(), $uniqueMeasurements->count());
+});
 
+it('has data points for measurements without cq values', function() {
+    $xml = file_get_contents(resourcePath('example.xml'));
+
+    $parser = new RdmlParser();
+
+    $rdml = $parser->extract($xml);
+
+    $measurement = $rdml->measurements->first(fn(Measurement $measurement) => $measurement->cq !== null);
+
+    $this->assertNotEmpty($measurement->amplificationDataPoints);
 });

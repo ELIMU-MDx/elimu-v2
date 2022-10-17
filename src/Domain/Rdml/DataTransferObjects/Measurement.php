@@ -47,7 +47,6 @@ final class Measurement extends DataTransferObject
             && $measurement->target === $this->target
             && $measurement->position === $this->position
             && $measurement->excluded === $this->excluded
-            && $measurement->cq === $this->cq
             && $measurement->type === $this->type;
     }
 }

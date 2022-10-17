@@ -39,7 +39,7 @@ it('converts an xml with standards', function () {
     assertMatchesJsonSnapshot(json_encode($rdml->toArray(), JSON_THROW_ON_ERROR));
 });
 
-it('ignores duplicated measurements', function() {
+it('ignores duplicated measurements', function () {
     $xml = file_get_contents(resourcePath('example.xml'));
 
     $parser = new RdmlParser();
@@ -47,19 +47,19 @@ it('ignores duplicated measurements', function() {
     $rdml = $parser->extract($xml);
 
     $uniqueMeasurements = $rdml->measurements->sortBy('sample')
-        ->unique(fn(Measurement $measurement) => $measurement->target . $measurement->sample . $measurement->position . $measurement->cq);
+        ->unique(fn (Measurement $measurement) => $measurement->target.$measurement->sample.$measurement->position.$measurement->cq);
 
     $this->assertEquals($rdml->measurements->count(), $uniqueMeasurements->count());
 });
 
-it('has data points for measurements without cq values', function() {
+it('has data points for measurements without cq values', function () {
     $xml = file_get_contents(resourcePath('example.xml'));
 
     $parser = new RdmlParser();
 
     $rdml = $parser->extract($xml);
 
-    $measurement = $rdml->measurements->first(fn(Measurement $measurement) => $measurement->cq !== null);
+    $measurement = $rdml->measurements->first(fn (Measurement $measurement) => $measurement->cq !== null);
 
     $this->assertNotEmpty($measurement->amplificationDataPoints);
 });

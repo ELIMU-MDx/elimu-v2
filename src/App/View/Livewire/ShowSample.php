@@ -40,24 +40,24 @@ class ShowSample extends Component
         ray($this->filters);
         $factory = app(MeasurementFilterFactory::class);
         $filters = collect($this->filters)
-            ->map(fn($arguments, $filterName) => $factory->get($filterName, [$arguments]));
+            ->map(fn ($arguments, $filterName) => $factory->get($filterName, [$arguments]));
 
         return $this->sample
             ->measurements
-            ->reject(fn(Measurement $measurement) => $filters
-                    ->first(fn(MeasurementFilter $filter) => !$filter->matches($measurement)) !== null
+            ->reject(fn (Measurement $measurement) => $filters
+                    ->first(fn (MeasurementFilter $filter) => ! $filter->matches($measurement)) !== null
             );
     }
 
     public function getSeriesProperty(): array
     {
         return $this->getFilteredMeasurements()
-            ->map(fn(Measurement $measurement) => [
+            ->map(fn (Measurement $measurement) => [
                 'name' => "$measurement->position $measurement->target",
                 'color' => $this->graphColor($measurement->position, $measurement->target),
                 'data' => $measurement
                     ->dataPoints
-                    ->map(fn(DataPoint $dataPoint) => $dataPoint->fluor)
+                    ->map(fn (DataPoint $dataPoint) => $dataPoint->fluor)
                     ->toArray(),
             ])
             ->sortBy('name')
@@ -79,6 +79,7 @@ class ShowSample extends Component
         ];
 
         $category = $colors[$this->sample->measurements->pluck('position')->unique()->sort()->values()->search($position) % 4];
+
         return $category[$this->sample->measurements->pluck('target')->sort()->unique()->values()->search($target) % 3];
     }
 

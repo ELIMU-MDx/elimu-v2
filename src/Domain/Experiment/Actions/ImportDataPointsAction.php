@@ -30,7 +30,7 @@ final class ImportDataPointsAction
         $experiment->load('measurements');
         $experiment->import_status = ImportStatus::COMPLETED;
         DataPoint::whereHas('measurement',
-            fn(Builder $builder) => $builder->where('experiment_id', $experiment->id))->delete();
+            fn (Builder $builder) => $builder->where('experiment_id', $experiment->id))->delete();
 
         $rdml = $this->rdmlReader->read(new File($this->filesystemManager->disk()->path($experiment->rdml_path),
             false));
@@ -44,11 +44,11 @@ final class ImportDataPointsAction
             $rdml
         ) {
             $data = $rdml->measurements
-                ->first(fn(MeasurementDTO $measurementDto
+                ->first(fn (MeasurementDTO $measurementDto
                 ) => $measurementDto->is($measurement))?->amplificationDataPoints ?? collect();
 
             return
-                $data->map(fn(AmplificationDataPoint $dataPoint) => [
+                $data->map(fn (AmplificationDataPoint $dataPoint) => [
                     'cycle' => $dataPoint->cycle,
                     'temperature' => round($dataPoint->temperature, 2),
                     'fluor' => round($dataPoint->fluor, 2),
@@ -64,7 +64,6 @@ final class ImportDataPointsAction
                 $experiment->save();
             });
         });
-
 
         activity()->enableLogging();
     }

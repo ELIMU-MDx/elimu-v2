@@ -129,7 +129,7 @@
                                 <li class="shrink-0 flex items-center text-sm text-gray-500 border-2 border-gray-200 pr-2">
                                     <div class="bg-gray-200 text-gray-600 font-bold mr-2 inline-block px-2 py-1">
                                         <p>y = {{$parameter->slope}}x + {{$parameter->intercept}}</p>
-                                        <p>R<sup>2</sup> = {{$parameter->correlation_coefficient * $parameter->correlation_coefficient}}</p>
+                                        <p>R<sup>2</sup> = {{round($parameter->correlation_coefficient * $parameter->correlation_coefficient, 4)}}</p>
                                         <p>E = {{$parameter->calculateE()}}</p>
                                     </div>
                                     {{$parameter->target}}

@@ -40,7 +40,7 @@ final class MeasurementCollection extends CustomCollection
 
     public function quantify(float $slope, float $intercept): RoundedNumber
     {
-        return new RoundedNumber(10 ** ($slope * $this->averageCq()->raw() + $intercept));
+        return new RoundedNumber(10 ** (($this->averageCq()->raw() - $intercept) / $slope));
     }
 
     public function positives(float $cutoff): MeasurementCollection

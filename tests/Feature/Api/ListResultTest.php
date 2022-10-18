@@ -3,12 +3,15 @@
 declare(strict_types=1);
 
 use Database\Factories\AssayFactory;
+use Database\Factories\MeasurementFactory;
 use Database\Factories\ResultFactory;
 use Database\Factories\UserFactory;
 
 it('list results', function () {
     $assay = AssayFactory::new()->create();
-    $result = ResultFactory::new(['assay_id' => $assay->id])->withMeasurement()->create();
+    $result = ResultFactory::new(['assay_id' => $assay->id])
+        ->withMeasurement(MeasurementFactory::new()->sample())
+        ->create();
 
     $this->signIn(UserFactory::new()->withStudy($assay->study)->create())
         ->getJson(route('api.results.index', $assay))
@@ -34,4 +37,17 @@ it('lists empty results for assays that do not belong to the user', function () 
         ->getJson(route('api.results.index', $assay))
         ->assertOk()
         ->assertJson([]);
+});
+
+it('lists only samples', function () {
+    $assay = AssayFactory::new()->create();
+    $result = ResultFactory::new(['assay_id' => $assay->id])
+        ->withMeasurement(MeasurementFactory::new()->ntc())
+        ->create();
+
+    $this->signIn(UserFactory::new()->withStudy($assay->study)->create())
+        ->getJson(route('api.results.index', $assay))
+        ->assertOk()
+        ->assertExactJson([])
+        ->assertJsonCount(0);
 });

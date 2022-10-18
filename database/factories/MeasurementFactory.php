@@ -30,6 +30,21 @@ final class MeasurementFactory extends Factory
         ];
     }
 
+    public function sample(): static
+    {
+        return $this->state(['type' => MeasurementType::SAMPLE()]);
+    }
+
+    public function ntc(): static
+    {
+        return $this->state(['type' => MeasurementType::NTC_CONTROL()]);
+    }
+
+    public function standard(): static
+    {
+        return $this->state(['type' => MeasurementType::STANDARD()]);
+    }
+
     public function included(): MeasurementFactory
     {
         return $this->state(['excluded' => false]);

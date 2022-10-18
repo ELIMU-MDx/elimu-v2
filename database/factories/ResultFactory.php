@@ -26,16 +26,22 @@ final class ResultFactory extends Factory
             'assay_id' => AssayFactory::new(),
             'target' => $this->faker->word(),
             'cq' => $this->faker->boolean() ? $this->faker->randomFloat(nbMaxDecimals: 2, max: 9999) : null,
-            'quantification' => $qualification === QualitativeResult::POSITIVE() ? $this->faker->randomFloat(nbMaxDecimals: 2, max: 9999) : null,
+            'quantification' => $qualification === QualitativeResult::POSITIVE() ? $this->faker->randomFloat(nbMaxDecimals: 2,
+                max: 9999) : null,
             'qualification' => $qualification,
             'standard_deviation' => $this->faker->randomFloat(nbMaxDecimals: 2, max: 9999),
         ];
     }
 
-    public function withMeasurement(): ResultFactory
+    public function withMeasurement(?MeasurementFactory $measurement = null): ResultFactory
     {
-        return $this->afterCreating(function (Result $result) {
-            MeasurementFactory::new(['cq' => $result->cq, 'target' => $result->target, 'sample_id' => $result->sample_id, 'result_id' => $result->id])->create();
+        $measurement ??= MeasurementFactory::new();
+
+        return $this->afterCreating(function (Result $result) use ($measurement) {
+            $measurement->state([
+                'cq' => $result->cq, 'target' => $result->target, 'sample_id' => $result->sample_id,
+                'result_id' => $result->id,
+            ])->create();
         });
     }
 }

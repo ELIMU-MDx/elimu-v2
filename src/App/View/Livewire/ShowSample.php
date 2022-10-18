@@ -34,24 +34,24 @@ class ShowSample extends Component
     {
         $factory = app(MeasurementFilterFactory::class);
         $filters = collect($this->filters)
-            ->map(fn ($arguments, $filterName) => $factory->get($filterName, [$arguments]));
+            ->map(fn($arguments, $filterName) => $factory->get($filterName, [$arguments]));
 
         return $this->sample
             ->measurements
-            ->reject(fn (Measurement $measurement) => $filters
-                    ->first(fn (MeasurementFilter $filter) => ! $filter->matches($measurement)) !== null
+            ->reject(fn(Measurement $measurement) => $filters
+                    ->first(fn(MeasurementFilter $filter) => !$filter->matches($measurement)) !== null
             );
     }
 
     public function getSeriesProperty(): array
     {
         return $this->getFilteredMeasurements()
-            ->map(fn (Measurement $measurement) => [
+            ->map(fn(Measurement $measurement) => [
                 'name' => "$measurement->target $measurement->position",
                 'color' => $this->graphColor($measurement->position, $measurement->target),
                 'data' => $measurement
                     ->dataPoints
-                    ->map(fn (DataPoint $dataPoint) => $dataPoint->fluor)
+                    ->map(fn(DataPoint $dataPoint) => $dataPoint->fluor)
                     ->toArray(),
             ])
             ->sortBy('name')
@@ -84,7 +84,20 @@ class ShowSample extends Component
             'chart' => [
                 'type' => 'line',
                 'zoom' => [
-                    'enabled' => false,
+                    'enabled' => true,
+                    'type' => 'x',
+                    'autoScaleYaxis' => false,
+                    'zoomedArea' => [
+                        'fill' => [
+                            'color' => '#90CAF9',
+                            'opacity' => 0.4,
+                        ],
+                        'stroke' => [
+                            'color' => '#0D47A1',
+                            'opacity' => 0.4,
+                            'width' => 1,
+                        ],
+                    ],
                 ],
                 'animations' => [
                     'speed' => 800,

@@ -14,6 +14,6 @@ final class QuantifyParameter extends Model
 
     public function calculateE(): float
     {
-        return round(1 - (10 ** (-1 / $this->slope)), 2);
+        return round(1 - (10 ** (-1 / $this->slope)), 4) * -100;
     }
 }

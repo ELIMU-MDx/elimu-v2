@@ -31,12 +31,18 @@ final class RdmlParser
         // TODO: refactor to collections
         foreach ($data->findList('sample') as $sample) {
             $sampleReader = new ArrayReader($sample);
-            if (! in_array($sampleReader->findString('type'), ['pos', 'ntc', 'std'], true)) {
+            $type = $sampleReader->findString('type');
+            // fix since neg control does not seem to work with type
+            if($sampleReader->findString('@attributes.id') === 'neg' && $type === 'unkn') {
+                $type = 'neg';
+            }
+
+            if (! in_array($sampleReader->findString('type'), ['pos', 'ntc', 'std', 'neg'], true) && $sampleReader->findString('')) {
                 continue;
             }
 
             $nonSampleIds[$sampleReader->getString('@attributes.id')] = [
-                'type' => $sampleReader->getString('type'),
+                'type' => $type,
                 'quantity' => $sampleReader->findInt('quantity.value'),
             ];
         }

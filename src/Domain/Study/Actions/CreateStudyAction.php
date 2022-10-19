@@ -12,12 +12,8 @@ use Illuminate\Database\Connection;
 
 final class CreateStudyAction
 {
-    /** @var \Illuminate\Database\Connection */
-    private Connection $connection;
-
-    public function __construct(Connection $connection)
+    public function __construct(private Connection $connection)
     {
-        $this->connection = $connection;
     }
 
     public function execute(User $user, CreateStudyParameter $parameter): Study

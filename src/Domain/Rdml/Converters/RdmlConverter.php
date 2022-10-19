@@ -13,11 +13,8 @@ use Illuminate\Support\Collection;
 
 final class RdmlConverter implements Arrayable
 {
-    private Rdml $rdml;
-
-    public function __construct(Rdml $rdml)
+    public function __construct(private Rdml $rdml)
     {
-        $this->rdml = $rdml;
     }
 
     /**

@@ -20,7 +20,6 @@ final class CoefficientOfVariationExceedsCutoffError implements ResultValidation
 
     public function validate(Result $result, ResultValidationParameter $parameter): bool
     {
-        ray(['result' => $result, 'parameter' => $parameter]);
         if ($parameter->coefficientOfVariationCutoff === null) {
             return true;
         }

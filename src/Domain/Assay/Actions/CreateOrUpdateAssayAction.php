@@ -24,7 +24,6 @@ final class CreateOrUpdateAssayAction
         $isNew = $assay->exists;
         $parameters = $parameters
             ->map(function (AssayParameter $assayParameter) {
-                ray($assayParameter->toArray());
                 if (! $assayParameter->quantify) {
                     $assayParameter->slope = null;
                     $assayParameter->intercept = null;
@@ -39,8 +38,6 @@ final class CreateOrUpdateAssayAction
                 }
 
                 unset($assayParameter->quantify);
-
-                ray($assayParameter->toArray());
 
                 return $assayParameter;
             });

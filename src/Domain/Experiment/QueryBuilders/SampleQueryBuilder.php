@@ -7,7 +7,7 @@ namespace Domain\Experiment\QueryBuilders;
 use Domain\Rdml\Enums\MeasurementType;
 use Domain\Results\Enums\QualitativeResult;
 use Illuminate\Database\Eloquent\Builder;
-use Str;
+use Illuminate\Support\Str;
 
 /**
  * @template TModelClass of \Illuminate\Database\Eloquent\Model

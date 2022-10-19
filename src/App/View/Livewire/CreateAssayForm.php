@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\View\View;
 use Livewire\Component;
-use Str;
+use Illuminate\Support\Str;
 use Support\DecimalValidationRule;
 
 final class CreateAssayForm extends Component

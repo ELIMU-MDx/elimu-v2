@@ -10,7 +10,7 @@ use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
-use URL;
+use Illuminate\Support\Facades\URL;
 
 final class AcceptInvitationAsExistingUserController
 {

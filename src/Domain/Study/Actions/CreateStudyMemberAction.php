@@ -7,7 +7,7 @@ namespace Domain\Study\Actions;
 use Domain\Invitations\Models\Invitation;
 use Domain\Study\DataTransferObject\StudyMemberParameters;
 use Domain\Users\Models\User;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Connection;
 
 final class CreateStudyMemberAction

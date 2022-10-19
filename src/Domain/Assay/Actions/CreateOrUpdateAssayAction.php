@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Assay\Actions;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Domain\Assay\Models\Assay;
 use Domain\Assay\Models\AssayParameter;
 use Domain\Experiment\Actions\RecalculateResultsAction;

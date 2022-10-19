@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Study\QueryBuilders;
 
-use Arr;
+use Illuminate\Support\Arr;
 use Domain\Study\Roles\Role;
 use Illuminate\Database\Eloquent\Builder;
 

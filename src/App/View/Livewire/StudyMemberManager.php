@@ -2,7 +2,7 @@
 
 namespace App\View\Livewire;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Domain\Invitations\Models\Invitation;
 use Domain\Study\Actions\AddMemberAction;
 use Domain\Study\Actions\RemoveTeamMemberAction;

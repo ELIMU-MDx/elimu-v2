@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Admin\Experiments\Controllers;
 
 use Domain\Experiment\Models\Experiment;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
 final class DownloadRdmlController

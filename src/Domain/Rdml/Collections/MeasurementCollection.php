@@ -38,6 +38,11 @@ final class MeasurementCollection extends CustomCollection
         }));
     }
 
+    public function coefficientOfVariation(): RoundedNumber
+    {
+        return new RoundedNumber($this->standardDeviationCq()->raw() / $this->averageCq()->raw());
+    }
+
     public function quantify(float $slope, float $intercept): RoundedNumber
     {
         return new RoundedNumber(10 ** (($this->averageCq()->raw() - $intercept) / $slope));

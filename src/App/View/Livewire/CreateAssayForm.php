@@ -34,6 +34,7 @@ final class CreateAssayForm extends Component
         'parameters.*.target' => 'target',
         'parameters.*.cutoff' => 'cutoff',
         'parameters.*.standard_deviation_cutoff' => 'cutoff standard deviation',
+        'parameters.*.coefficient_of_variation_cutoff' => 'cutoff coefficient of variation',
         'parameters.*.quantify' => 'quantity',
         'parameters.*.slope' => 'slope',
         'parameters.*.intercept' => 'intercept',
@@ -75,7 +76,8 @@ final class CreateAssayForm extends Component
                         new AssayParameter([
                             'target' => $target,
                             'cutoff' => '',
-                            'standard_deviation_cutoff' => '',
+                            'standard_deviation_cutoff' => null,
+                            'coefficient_of_variation' => null,
                             'slope' => null,
                             'intercept' => null,
                             'required_repetitions' => 1,
@@ -113,7 +115,8 @@ final class CreateAssayForm extends Component
             'targets' => ['required', 'string'],
             'parameters.*.target' => ['required', 'string'],
             'parameters.*.cutoff' => ['required', 'numeric', new DecimalValidationRule(8, 2)],
-            'parameters.*.standard_deviation_cutoff' => ['required', 'numeric', new DecimalValidationRule(8, 2)],
+            'parameters.*.standard_deviation_cutoff' => ['required_without:parameters.*.coefficient_of_variation_cutoff', 'nullable', 'numeric', new DecimalValidationRule(8, 2)],
+            'parameters.*.coefficient_of_variation_cutoff' => ['required_without:parameters.*.standard_deviation_cutoff', 'nullable', 'numeric', new DecimalValidationRule(8, 3)],
             'parameters.*.quantify' => ['nullable', 'boolean'],
             'parameters.*.slope' => [
                 'required_if:parameters.*.quantify,1', 'nullable', 'numeric', new DecimalValidationRule(8, 2),

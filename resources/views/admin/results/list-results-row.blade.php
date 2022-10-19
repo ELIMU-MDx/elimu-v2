@@ -6,8 +6,11 @@
         <td class="px-3 py-4 whitespace-nowrap text-sm text-center border-l border-gray-300">
             {{$result->cq ?? 'NaN'}}
 
-            @if($result->cq)
-                <div class="text-xs text-gray-500 mt-2">{{$result->standard_deviation}}</div>
+            @if($result->cq && $validationTypes[$result->target] === 'standard_deviation')
+                <div class="text-xs text-gray-500 mt-2">Stddev {{$result->standard_deviation}}</div>
+            @endif
+            @if($result->cq && $validationTypes[$result->target] === 'coefficient_of_variation')
+                <div class="text-xs text-gray-500 mt-2">CV {{new \Support\RoundedNumber($result->standard_deviation / $result->cq * 100)}}%</div>
             @endif
         </td>
 

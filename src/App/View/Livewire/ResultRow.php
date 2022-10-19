@@ -17,10 +17,14 @@ final class ResultRow extends Component
     /** @var bool */
     public $even;
 
-    public function mount(bool $even, Sample $sample)
+    /** @var array<string, string> */
+    public $validationTypes;
+
+    public function mount(bool $even, Sample $sample, array $validationTypes)
     {
         $this->even = $even;
         $this->sample = $sample;
+        $this->validationTypes = $validationTypes;
     }
 
     public function render()

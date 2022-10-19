@@ -99,6 +99,7 @@
                                             <livewire:result-row :even="$loop->even"
                                                                  :sample="$sample"
                                                                  :wire:key="$sample->id"
+                                                                 :validationTypes="$this->currentAssay->parameters->mapWithKeys(fn($parameter) => [$parameter->target => $parameter->coefficient_of_variation_cutoff ? 'coefficient_of_variation' : 'standard_deviation'])->toArray()"
                                             />
                                         @endforeach
                                     @else

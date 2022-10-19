@@ -24,12 +24,23 @@ final class CreateOrUpdateAssayAction
         $isNew = $assay->exists;
         $parameters = $parameters
             ->map(function (AssayParameter $assayParameter) {
+                ray($assayParameter->toArray());
                 if (! $assayParameter->quantify) {
                     $assayParameter->slope = null;
                     $assayParameter->intercept = null;
                 }
 
+                if($assayParameter->coefficient_of_variation_cutoff) {
+                    $assayParameter->standard_deviation_cutoff = null;
+                }
+
+                if($assayParameter->standard_deviation_cutoff) {
+                    $assayParameter->coefficient_of_variation_cutoff = null;
+                }
+
                 unset($assayParameter->quantify);
+
+                ray($assayParameter->toArray());
 
                 return $assayParameter;
             });

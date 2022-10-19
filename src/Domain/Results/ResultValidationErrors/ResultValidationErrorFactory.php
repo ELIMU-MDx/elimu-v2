@@ -16,13 +16,14 @@ final class ResultValidationErrorFactory
             NotEnoughRepetitionsError::IDENTIFIER => new NotEnoughRepetitionsError(),
             DivergingMeasurementsError::IDENTIFIER => new DivergingMeasurementsError(),
             StandardDeviationExceedsCutoffError::IDENTIFIER => new StandardDeviationExceedsCutoffError(),
+            CoefficientOfVariationExceedsCutoffError::IDENTIFIER => new CoefficientOfVariationExceedsCutoffError(),
             ControlValidationError::IDENTIFIER => new ControlValidationError(),
             default => throw new BadMethodCallException('No error class found for '.$identifier),
         };
     }
 
     /**
-     * @return \Illuminate\Support\Collection<\Domain\Results\ResultValidationErrors\ResultValidationError>
+     * @return Collection<ResultValidationError>
      */
     public static function all(): Collection
     {
@@ -31,6 +32,7 @@ final class ResultValidationErrorFactory
             new DivergingMeasurementsError(),
             new StandardDeviationExceedsCutoffError(),
             new ControlValidationError(),
+            new CoefficientOfVariationExceedsCutoffError(),
         ]);
     }
 }

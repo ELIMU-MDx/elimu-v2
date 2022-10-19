@@ -19,7 +19,15 @@ final class StandardDeviationExceedsCutoffError implements ResultValidationError
 
     public function validate(Result $result, ResultValidationParameter $parameter): bool
     {
-        return $result->repetitions <= 1 || $result->measurements->included()->standardDeviationCq()->raw() <= $parameter->standardDeviationCutoff;
+        if($parameter->standardDeviationCutoff === null) {
+            return true;
+        }
+
+        if($result->repetitions <= 1) {
+            return true;
+        }
+
+        return $result->measurements->included()->standardDeviationCq()->raw() <= $parameter->standardDeviationCutoff;
     }
 
     public function appliesFor(Result $result): bool

@@ -38,4 +38,13 @@ final class RoundedNumber
 
         return number_format(round($this->number, $this->precision), $this->precision);
     }
+
+    public function toPercentage(): string
+    {
+        if ($this->number === null) {
+            return '';
+        }
+
+        return number_format(round($this->number * 100, $this->precision), $this->precision) . '%';
+    }
 }

@@ -7,8 +7,8 @@ namespace App\Admin\Studies\Controllers;
 use Domain\Invitations\Models\Invitation;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\View\View;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\URL;
+use Symfony\Component\HttpFoundation\Response;
 
 final class AcceptInvitationAsNewUserController
 {

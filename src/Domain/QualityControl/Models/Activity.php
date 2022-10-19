@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Domain\QualityControl\Models;
 
-use Illuminate\Support\Facades\Auth;
 use Domain\Study\Models\Study;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Activitylog\Models\Activity as BaseActivity;
 
 final class Activity extends BaseActivity

@@ -8,9 +8,9 @@ use Domain\Invitations\Actions\AcceptInvitationAction;
 use Domain\Invitations\Models\Invitation;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\URL;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\URL;
 
 final class AcceptInvitationAsExistingUserController
 {

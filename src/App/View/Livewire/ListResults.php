@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\View\Livewire;
 
-use Illuminate\Support\Facades\Auth;
 use Domain\Assay\Models\Assay;
 use Domain\Experiment\Models\Sample;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\WithPagination;

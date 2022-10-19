@@ -45,6 +45,6 @@ final class RoundedNumber
             return '';
         }
 
-        return number_format(round($this->number * 100, $this->precision), $this->precision) . '%';
+        return number_format(round($this->number * 100, $this->precision), $this->precision).'%';
     }
 }

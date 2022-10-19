@@ -19,11 +19,11 @@ final class StandardDeviationExceedsCutoffError implements ResultValidationError
 
     public function validate(Result $result, ResultValidationParameter $parameter): bool
     {
-        if($parameter->standardDeviationCutoff === null) {
+        if ($parameter->standardDeviationCutoff === null) {
             return true;
         }
 
-        if($result->repetitions <= 1) {
+        if ($result->repetitions <= 1) {
             return true;
         }
 

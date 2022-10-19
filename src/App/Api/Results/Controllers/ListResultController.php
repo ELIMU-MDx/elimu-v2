@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Api\Results\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use Domain\Assay\Models\Assay;
 use Domain\Experiment\Models\Sample;
 use Domain\Rdml\Enums\MeasurementType;
 use Domain\Results\Models\Result;
+use Illuminate\Support\Facades\Auth;
 
 final class ListResultController
 {

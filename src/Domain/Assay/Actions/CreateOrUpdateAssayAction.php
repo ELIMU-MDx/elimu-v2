@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Domain\Assay\Actions;
 
-use Illuminate\Support\Facades\Auth;
 use Domain\Assay\Models\Assay;
 use Domain\Assay\Models\AssayParameter;
 use Domain\Experiment\Actions\RecalculateResultsAction;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 
 final class CreateOrUpdateAssayAction
 {
@@ -30,11 +30,11 @@ final class CreateOrUpdateAssayAction
                     $assayParameter->intercept = null;
                 }
 
-                if($assayParameter->coefficient_of_variation_cutoff) {
+                if ($assayParameter->coefficient_of_variation_cutoff) {
                     $assayParameter->standard_deviation_cutoff = null;
                 }
 
-                if($assayParameter->standard_deviation_cutoff) {
+                if ($assayParameter->standard_deviation_cutoff) {
                     $assayParameter->coefficient_of_variation_cutoff = null;
                 }
 

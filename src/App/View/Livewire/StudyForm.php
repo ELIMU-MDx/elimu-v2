@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\View\Livewire;
 
-use Illuminate\Support\Facades\Auth;
 use Domain\Study\Actions\CreateStudyAction;
 use Domain\Study\DataTransferObject\CreateStudyParameter;
 use Domain\Study\Models\Study;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Livewire\Component;
 

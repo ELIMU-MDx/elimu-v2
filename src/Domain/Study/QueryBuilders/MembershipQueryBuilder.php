@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\Study\QueryBuilders;
 
-use Illuminate\Support\Arr;
 use Domain\Study\Roles\Role;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 
 /**
  * @template TModelClass of \Illuminate\Database\Eloquent\Model

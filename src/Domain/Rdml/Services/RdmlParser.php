@@ -39,8 +39,8 @@ final class RdmlParser
                 $type = 'neg';
             }
 
-            if (!in_array($sampleReader->findString('type'), ['pos', 'ntc', 'std', 'neg'],
-                    true) && $sampleReader->findString('')) {
+            if (! in_array($sampleReader->findString('type'), ['pos', 'ntc', 'std', 'neg'],
+                true) && $sampleReader->findString('')) {
                 continue;
             }
 
@@ -62,7 +62,7 @@ final class RdmlParser
                 foreach ($runReader->findList('react') as $reaction) {
                     $reactionReader = new ArrayReader($reaction);
                     // ignore samples which have no defined type
-                    if (!in_array($reactionReader->getString('sample.@attributes.id'), $definedSampleIds, true)) {
+                    if (! in_array($reactionReader->getString('sample.@attributes.id'), $definedSampleIds, true)) {
                         continue;
                     }
                     $reactionId = $reactionReader->getString('@attributes.id');
@@ -77,7 +77,7 @@ final class RdmlParser
                             ? $reactionReader->findFloat('data.cq')
                             : $this->calculateCq($reactionReader->find('data.adp.*.fluor', [])),
                         'amplificationDataPoints' => collect($reactionReader->find('data.adp', []))
-                            ->map(fn(array $adp) => new AmplificationDataPoint([
+                            ->map(fn (array $adp) => new AmplificationDataPoint([
                                 'cycle' => $adp['cyc'],
                                 'temperature' => $adp['tmp'] ?? null,
                                 'fluor' => $adp['fluor'] ?? null,
@@ -171,13 +171,13 @@ final class RdmlParser
     {
         $existingMeasurement = Arr::first(
             $measurements,
-            fn(Measurement $current) => $current->cq === $measurement->cq
+            fn (Measurement $current) => $current->cq === $measurement->cq
                 && $current->target === $measurement->target
                 && $current->position === $measurement->position
                 && $current->sample === $measurement->sample
         );
 
-        if (!$existingMeasurement) {
+        if (! $existingMeasurement) {
             return false;
         }
 

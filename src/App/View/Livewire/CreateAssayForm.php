@@ -10,9 +10,9 @@ use Domain\Assay\Models\AssayParameter;
 use Domain\Assay\Rules\ControlParameterValidationRule;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Livewire\Component;
-use Illuminate\Support\Str;
 use Support\DecimalValidationRule;
 
 final class CreateAssayForm extends Component

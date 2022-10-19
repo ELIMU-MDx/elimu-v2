@@ -18199,7 +18199,7 @@
             "position": "G10",
             "excluded": false,
             "cq": null,
-            "type": "SAMPLE",
+            "type": "NEGATIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,
@@ -18435,7 +18435,7 @@
             "position": "G11",
             "excluded": false,
             "cq": null,
-            "type": "SAMPLE",
+            "type": "NEGATIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,
@@ -18671,7 +18671,7 @@
             "position": "G12",
             "excluded": false,
             "cq": null,
-            "type": "SAMPLE",
+            "type": "NEGATIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,
@@ -39911,7 +39911,7 @@
             "position": "G10",
             "excluded": false,
             "cq": null,
-            "type": "SAMPLE",
+            "type": "NEGATIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,
@@ -40147,7 +40147,7 @@
             "position": "G11",
             "excluded": false,
             "cq": null,
-            "type": "SAMPLE",
+            "type": "NEGATIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,
@@ -40383,7 +40383,7 @@
             "position": "G12",
             "excluded": false,
             "cq": null,
-            "type": "SAMPLE",
+            "type": "NEGATIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,
@@ -61623,7 +61623,7 @@
             "position": "G10",
             "excluded": false,
             "cq": 28.9261055783325,
-            "type": "SAMPLE",
+            "type": "NEGATIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,
@@ -61859,7 +61859,7 @@
             "position": "G11",
             "excluded": false,
             "cq": 28.8333604066282,
-            "type": "SAMPLE",
+            "type": "NEGATIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,
@@ -62095,7 +62095,7 @@
             "position": "G12",
             "excluded": false,
             "cq": 28.582761356541,
-            "type": "SAMPLE",
+            "type": "NEGATIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,

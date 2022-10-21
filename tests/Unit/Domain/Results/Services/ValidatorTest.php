@@ -6,7 +6,6 @@ use Domain\Rdml\Enums\MeasurementType;
 use Domain\Results\DataTransferObjects\Result;
 use Domain\Results\DataTransferObjects\ResultValidationParameter;
 use Domain\Results\Enums\QualitativeResult;
-use Domain\Results\ResultValidationErrors\ControlValidationError;
 use Domain\Results\ResultValidationErrors\DivergingMeasurementsError;
 use Domain\Results\ResultValidationErrors\NotEnoughRepetitionsError;
 use Domain\Results\ResultValidationErrors\StandardDeviationExceedsCutoffError;

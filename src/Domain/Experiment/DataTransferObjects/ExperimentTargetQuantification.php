@@ -12,8 +12,6 @@ final class ExperimentTargetQuantification extends Data
         readonly public string $formula,
         readonly public Percentage $e,
         readonly public ?RoundedNumber $squareCorrelationCoefficient = null,
-    )
-    {
-
+    ) {
     }
 }

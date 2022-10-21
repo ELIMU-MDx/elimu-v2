@@ -12,6 +12,6 @@ final class Percentage extends Data
 
     public function __toString(): string
     {
-        return round($this->value * 100, $this->precision) . '%';
+        return round($this->value * 100, $this->precision).'%';
     }
 }

@@ -3,7 +3,6 @@
 namespace Domain\Experiment\DataTransferObjects;
 
 use Carbon\CarbonImmutable;
-use Illuminate\Contracts\Routing\UrlRoutable;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\DataCollection;
 use Support\Data;
@@ -22,8 +21,6 @@ final class ExperimentListItem extends Data
         #[DataCollectionOf(ExperimentTarget::class)]
         readonly public DataCollection $targets,
         readonly public ?string $eln = null,
-    )
-    {
-
+    ) {
     }
 }

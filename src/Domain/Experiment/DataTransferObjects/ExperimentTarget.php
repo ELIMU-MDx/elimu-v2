@@ -8,7 +8,7 @@ final class ExperimentTarget extends Data
 {
     public function __construct(
         readonly public string $name,
-        /** @var string[] $statusMessage */
+        /** @var string[] */
         readonly public array $errors = [],
         readonly ?ExperimentTargetQuantification $quantification = null
     ) {

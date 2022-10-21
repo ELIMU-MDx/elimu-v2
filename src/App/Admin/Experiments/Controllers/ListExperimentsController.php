@@ -48,7 +48,7 @@ final class ListExperimentsController
                 runDate: $experiment->experiment_date->toImmutable(),
                 uploadedDate: $experiment->created_at->toImmutable(),
                 targets: new DataCollection(ExperimentTarget::class,
-                    $experiment->assay->parameters->map(fn(AssayParameter $parameter) => new ExperimentTarget(
+                    $experiment->assay->parameters->map(fn (AssayParameter $parameter) => new ExperimentTarget(
                         name: $parameter->target,
                         errors: $this->getControlErrors($parameter,
                             $experiment->controls->where('target', $parameter->target))->toArray(),
@@ -75,7 +75,7 @@ final class ListExperimentsController
             );
         }
 
-        if (!$parameter->slope) {
+        if (! $parameter->slope) {
             return null;
         }
 
@@ -94,6 +94,7 @@ final class ListExperimentsController
      * @param  AssayParameter  $parameter
      * @param  Collection  $controls
      * @return Collection<string> error messages
+     *
      * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
      */
     private function getControlErrors(AssayParameter $parameter, Collection $controls): Collection
@@ -101,20 +102,20 @@ final class ListExperimentsController
         $validator = app(ControlValidationError::class);
         $errors = [];
 
-        if ($parameter->ntc_control !== null && !$controls->firstWhere('type', MeasurementType::NTC_CONTROL())) {
+        if ($parameter->ntc_control !== null && ! $controls->firstWhere('type', MeasurementType::NTC_CONTROL())) {
             $errors[] = 'No ntc control found';
         }
-        if ($parameter->negative_control !== null && !$controls->firstWhere('type',
-                MeasurementType::NEGATIVE_CONTROL())) {
+        if ($parameter->negative_control !== null && ! $controls->firstWhere('type',
+            MeasurementType::NEGATIVE_CONTROL())) {
             $errors[] = 'No negative control found';
         }
-        if ($parameter->positive_control !== null && !$controls->firstWhere('type',
-                MeasurementType::POSTIVE_CONTROL())) {
+        if ($parameter->positive_control !== null && ! $controls->firstWhere('type',
+            MeasurementType::POSTIVE_CONTROL())) {
             $errors[] = 'No positive control found';
         }
 
         return $controls
-            ->map(fn(MeasurementModel $measurement) => Measurement::fromModel($measurement))
+            ->map(fn (MeasurementModel $measurement) => Measurement::fromModel($measurement))
             ->pipeInto(MeasurementCollection::class)
             ->groupBy('type')
             ->map(function (MeasurementCollection $measurements) use ($parameter, $validator) {
@@ -129,7 +130,7 @@ final class ListExperimentsController
                 ]);
                 $resultParameter = ResultValidationParameter::fromModel($parameter);
 
-                if (!$validator->validate($result, $resultParameter)) {
+                if (! $validator->validate($result, $resultParameter)) {
                     return $validator->message($result, $resultParameter);
                 }
 
@@ -141,4 +142,3 @@ final class ListExperimentsController
             ->values();
     }
 }
-

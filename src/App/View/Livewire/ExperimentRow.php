@@ -6,7 +6,6 @@ namespace App\View\Livewire;
 
 use Domain\Experiment\Actions\DeleteExperimentAction;
 use Domain\Experiment\DataTransferObjects\ExperimentListItem;
-use Domain\Experiment\Models\Experiment;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\View\View;
 use Livewire\Component;

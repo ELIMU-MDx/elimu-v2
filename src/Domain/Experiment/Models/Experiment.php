@@ -31,7 +31,6 @@ final class Experiment extends Model
         return $this->belongsTo(Study::class);
     }
 
-
     public function measurements(): HasMany
     {
         return $this->hasMany(Measurement::class);

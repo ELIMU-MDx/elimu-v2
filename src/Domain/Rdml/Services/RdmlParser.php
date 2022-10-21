@@ -117,11 +117,11 @@ final class RdmlParser
         );
     }
 
-    private function findInstrument(ArrayReader $data): ?string {
+    private function findInstrument(ArrayReader $data): ?string
+    {
         $instrument = $data->find('experiment.run.0.instrument', '');
 
-
-        if(!preg_match('/SN: (\w+)/', $instrument, $matches)) {
+        if (! preg_match('/SN: (\w+)/', $instrument, $matches)) {
             return null;
         }
 

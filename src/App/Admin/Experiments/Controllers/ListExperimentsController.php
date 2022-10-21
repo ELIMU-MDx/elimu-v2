@@ -102,14 +102,14 @@ final class ListExperimentsController
         $validator = app(ControlValidationError::class);
         $errors = [];
 
-        if ($parameter->ntc_control !== null && ! $controls->firstWhere('type', MeasurementType::NTC_CONTROL())) {
+        if (!blank($parameter->ntc_control) && ! $controls->firstWhere('type', MeasurementType::NTC_CONTROL())) {
             $errors[] = 'No ntc control found';
         }
-        if ($parameter->negative_control !== null && ! $controls->firstWhere('type',
+        if (!blank($parameter->negative_control) && ! $controls->firstWhere('type',
             MeasurementType::NEGATIVE_CONTROL())) {
             $errors[] = 'No negative control found';
         }
-        if ($parameter->positive_control !== null && ! $controls->firstWhere('type',
+        if (!blank($parameter->positive_control) && ! $controls->firstWhere('type',
             MeasurementType::POSTIVE_CONTROL())) {
             $errors[] = 'No positive control found';
         }

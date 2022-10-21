@@ -15,6 +15,8 @@ final class Rdml extends DataTransferObject implements Arrayable
 {
     public string $version;
 
+    public ?string $instrument;
+
     public ?CarbonImmutable $createdAt;
 
     public ?CarbonImmutable $updatedAt;

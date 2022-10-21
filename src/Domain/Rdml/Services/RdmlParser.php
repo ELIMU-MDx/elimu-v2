@@ -108,12 +108,24 @@ final class RdmlParser
 
         return new Rdml(
             version: $data->getString('@attributes.version', '1.1'),
+            instrument: $this->findInstrument($data),
             createdAt: $data->getDateTime('dateMade'),
             updatedAt: $data->getDateTime('dateUpdated'),
             targets: $targets,
             measurements: MeasurementCollection::make($measurements),
             quantifyConfigurations: collect()
         );
+    }
+
+    private function findInstrument(ArrayReader $data): ?string {
+        $instrument = $data->find('experiment.run.0.instrument', '');
+
+
+        if(!preg_match('/SN: (\w+)/', $instrument, $matches)) {
+            return null;
+        }
+
+        return $matches[1];
     }
 
     /**

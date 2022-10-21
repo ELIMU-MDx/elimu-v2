@@ -33,6 +33,7 @@ final class CreateExperimentAction
             $rdml = $this->rdmlReader->read($parameter->rdml);
             $experiment = $parameter->getExperiment();
             $experiment->experiment_date = $rdml->updatedAt;
+            $experiment->instrument = $rdml->instrument;
             $experiment->save();
             if ($rdml->quantifyConfigurations->isNotEmpty()) {
                 $experiment

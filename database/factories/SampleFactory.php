@@ -23,4 +23,9 @@ final class SampleFactory extends Factory
             'identifier' => $this->faker->unique()->word(),
         ];
     }
+
+    public function withAllData(): static
+    {
+        return $this->has(MeasurementFactory::new()->has(DataPointFactory::new()));
+    }
 }

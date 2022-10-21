@@ -10,6 +10,8 @@ use App\Admin\Experiments\Controllers\ExportResultsController;
 use App\Admin\Experiments\Controllers\ListExperimentsController;
 use App\Admin\Experiments\Controllers\ListResultsController;
 use App\Admin\Experiments\Controllers\ShowSampleController;
+use App\Admin\Experiments\Controllers\ShowSampleReportController;
+use App\Admin\Experiments\Controllers\ShowSampleReportPdfController;
 use App\Admin\Experiments\Controllers\UpdateExperimentController;
 use App\Admin\QualityControl\Controllers\ExportLogController;
 use App\Admin\QualityControl\Controllers\ListLogController;
@@ -35,6 +37,10 @@ Route::get('/invitation/{invitation}/accepts/login', AcceptInvitationAsExistingU
     ->middleware('signed')
     ->name('invitations.accept.existing');
 
+Route::get('samples/{sample}/report', ShowSampleReportController::class)
+  //  ->middleware('signed')
+    ->name('samples.report');
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('studies/create-first', CreateFirstStudyController::class)->name('studies.create-first');
     Route::post('studies', StoreStudyController::class)->name('studies.store');
@@ -58,6 +64,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             ->middleware('can:download-results,assay');
 
         Route::get('samples/{sample}', ShowSampleController::class);
+        Route::get('samples/{sample}/report/pdf', ShowSampleReportPdfController::class);
 
         Route::get('experiments', ListExperimentsController::class)->name('experiments.index');
         Route::get('experiments/{experiment}/rdml', DownloadRdmlController::class)

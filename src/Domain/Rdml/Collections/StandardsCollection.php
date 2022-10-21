@@ -12,8 +12,8 @@ final class StandardsCollection extends Collection
     public function nonNullDataPoints(): Collection
     {
         return $this
-            ->filter(fn(Measurement $measurement) => $measurement->cq)
-            ->map(fn(Measurement $measurement) => [
+            ->filter(fn (Measurement $measurement) => $measurement->cq)
+            ->map(fn (Measurement $measurement) => [
                 'x' => log10($measurement->quantity), 'y' => $measurement->cq,
             ])
             ->values()

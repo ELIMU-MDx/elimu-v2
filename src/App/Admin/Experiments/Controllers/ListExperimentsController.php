@@ -56,7 +56,8 @@ final class ListExperimentsController
                             $quantificationParameters->get($parameter->target))
                     )
                     )),
-                eln: $experiment->eln
+                eln: $experiment->eln,
+                instrument: $experiment->instrument
             );
         })->toBase();
 

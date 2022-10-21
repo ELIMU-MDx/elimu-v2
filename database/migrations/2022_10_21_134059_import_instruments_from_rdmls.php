@@ -15,7 +15,6 @@ return new class extends Migration
         Experiment::all()
             ->lazy()
             ->each(function(Experiment $experiment) use ($fileSystem) {
-
                 $rdml = app(RdmlReader::class)
                     ->read(new File($fileSystem->disk()->path($experiment->rdml_path)));
 

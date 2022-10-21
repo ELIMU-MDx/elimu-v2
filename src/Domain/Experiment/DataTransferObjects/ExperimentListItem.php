@@ -21,6 +21,7 @@ final class ExperimentListItem extends Data
         #[DataCollectionOf(ExperimentTarget::class)]
         readonly public DataCollection $targets,
         readonly public ?string $eln = null,
+        readonly public ?string $instrument = null,
     ) {
     }
 }

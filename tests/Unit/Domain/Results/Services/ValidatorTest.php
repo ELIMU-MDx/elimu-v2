@@ -11,7 +11,7 @@ use Domain\Results\ResultValidationErrors\DivergingMeasurementsError;
 use Domain\Results\ResultValidationErrors\NotEnoughRepetitionsError;
 use Domain\Results\ResultValidationErrors\StandardDeviationExceedsCutoffError;
 use Domain\Results\Services\ResultValidator;
-use Support\RoundedNumber;
+use Support\ValueObjects\RoundedNumber;
 
 /**
  * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
@@ -83,36 +83,6 @@ it('has not enough repetitions', function () {
     expect($errors)->toHaveCount(1);
     $this->assertContains(NotEnoughRepetitionsError::IDENTIFIER, $errors, 'Found errors: '.$errors->join(', '));
 });
-
-/**
- * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
- */
-it('validates controls', function (
-    string|float $validationOption,
-    ?float $cq,
-    MeasurementType $type,
-    bool $resultsInError = false
-) {
-    $validator = app(ResultValidator::class);
-    $result = result(['cq' => [$cq], 'type' => $type]);
-    $parameter = new ResultValidationParameter([
-        'requiredRepetitions' => 2,
-        'standardDeviationCutoff' => 10,
-        'cutoff' => 50,
-        'positiveControl' => $validationOption,
-        'negativeControl' => $validationOption,
-        'ntcControl' => $validationOption,
-    ]);
-
-    $errors = $validator->validate($result, $parameter);
-
-    if ($resultsInError) {
-        expect($errors)->toHaveCount(1);
-        expect($errors)->toContain(ControlValidationError::IDENTIFIER);
-    } else {
-        expect($errors)->toBeEmpty();
-    }
-})->with('controlsDataSet');
 
 // Datasets
 dataset('controlsDataSet', [

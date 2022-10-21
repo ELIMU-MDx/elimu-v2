@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\View\Livewire;
 
 use Domain\Experiment\Actions\DeleteExperimentAction;
+use Domain\Experiment\DataTransferObjects\ExperimentListItem;
 use Domain\Experiment\Models\Experiment;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\View\View;
@@ -15,13 +16,13 @@ final class ExperimentRow extends Component
 {
     use AuthorizesRequests;
 
-    /** @var Experiment */
+    /** @var ExperimentListItem */
     public $experiment;
 
     /** @var bool */
     public $showDeleteConfirmationModal = false;
 
-    public function mount(Experiment $experiment)
+    public function mount(ExperimentListItem $experiment)
     {
         $this->experiment = $experiment;
     }
@@ -29,7 +30,7 @@ final class ExperimentRow extends Component
     public function deleteExperiment(DeleteExperimentAction $action): Redirector
     {
         $this->authorize('delete-experiment', $this->experiment);
-        $action->execute($this->experiment);
+        $action->execute($this->experiment->experimentId);
 
         return redirect(route('experiments.index'));
     }

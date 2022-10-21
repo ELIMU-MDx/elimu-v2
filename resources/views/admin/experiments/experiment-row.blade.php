@@ -3,12 +3,12 @@
         <div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
             <div class="truncate space-y-2">
                 <div class="flex text-sm">
-                    <a href="{{route('experiments.download', $experiment)}}"
+                    <a href="{{route('experiments.download', $experiment->experimentId)}}"
                        target="_blank"
                        class="font-medium text-indigo-600 truncate">
                         {{$experiment->name}}
                     </a>
-                    @if($experiment->import_status === \Domain\Experiment\Enums\ImportStatus::PENDING)
+                    @if($experiment->importPending)
                         <span class="text-gray-600 ml-4 animate-pulse">importing adps...</span>
                     @endif
                 </div>
@@ -38,7 +38,7 @@
                                   d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
                                   clip-rule="evenodd"/>
                         </svg>
-                        <p>{{$experiment->count_samples}} samples</p>
+                        <p>{{$experiment->numberOfSamples}} samples</p>
                     </li>
                     <li class="shrink-0 flex items-center text-sm text-gray-500">
                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -49,9 +49,9 @@
                                   d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z"
                                   clip-rule="evenodd"/>
                         </svg>
-                        <p>{{$experiment->assay->name}}</p>
+                        <p>{{$experiment->assay}}</p>
                     </li>
-                    @if($experiment->experiment_date)
+                    @if($experiment->runDate)
                         <li class="shrink-0 flex items-center text-sm text-gray-500">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                  class="shrink-0 mr-1.5 h-5 w-5 text-gray-400"
@@ -63,7 +63,7 @@
                             <p>
                                 Run on
                                 <time
-                                    datetime="{{$experiment->experiment_date->format('Y-m-d')}}">{{ $experiment->experiment_date->format('F j, Y') }}</time>
+                                    datetime="{{$experiment->runDate->format('Y-m-d')}}">{{ $experiment->runDate->format('F j, Y') }}</time>
                             </p>
                         </li>
                     @endif
@@ -78,15 +78,15 @@
                         <p>
                             Uploaded on
                             <time
-                                datetime="{{$experiment->created_at->format('Y-m-d')}}">{{ $experiment->created_at->format('F j, Y') }}</time>
+                                datetime="{{$experiment->uploadedDate->format('Y-m-d')}}">{{ $experiment->uploadedDate->format('F j, Y') }}</time>
                         </p>
                     </li>
                 </ul>
 
                 <ul class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
-                    @foreach($experiment->controls->groupBy('target') as $target => $measurements)
+                    @foreach($experiment->targets as $target)
                         <li class="shrink-0 flex items-center text-sm text-gray-500">
-                            @if($measurements->flatMap(fn($measurement) => $measurement->result->resultErrors)->isEmpty())
+                            @empty($target->errors)
                                 <svg class="shrink-0 mr-1.5 h-5 w-5 text-green-400"
                                      x-description="Heroicon name: solid/check-circle"
                                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -103,8 +103,8 @@
                                      fill="currentColor"
                                      x-data="{}"
                                      x-tooltip.html="`<ul class=\'list-disc\'>
-                                                        @foreach($measurements->flatMap(fn($measurement) => $measurement->result->resultErrors)->unique() as $resultError)
-                                             <li>{{$resultError->error}}</li>
+                                                        @foreach($target->errors as $error)
+                                             <li>{{$error}}</li>
                                                          @endforeach
                                              </ul>`"
                                 >
@@ -113,44 +113,39 @@
                                           clip-rule="evenodd"></path>
                                 </svg>
                                 <ul class="sr-only">
-                                    @foreach($measurements->flatMap(fn($measurement) => $measurement->result->resultErrors)->unique() as $resultError)
-                                        <li>{{$resultError->error}}</li>
+                                    @foreach($target->errors as $error)
+                                        <li>{{$error}}</li>
                                     @endforeach
                                 </ul>
                             @endif
-                            {{$target}}
+                            {{$target->name}}
                         </li>
                     @endforeach
                 </ul>
-                @if($experiment->quantifyParameters->isNotEmpty() || $experiment->assay->parameters->firstWhere('intercept', '<>', null))
+
+
+                @if(!empty($experiment->targets->filter(fn($target) => $target->quantification)))
                     <ul class="flex flex-col space-y-2 md:flex-row md:flex-wrap md:space-y-0 md:space-x-4">
-                        @if($experiment->quantifyParameters->isNotEmpty())
-                            @foreach($experiment->quantifyParameters as $parameter)
-                                <li class="shrink-0 flex items-center text-sm text-gray-500 border-2 border-gray-200 pr-2">
-                                    <div class="bg-gray-200 text-gray-600 font-bold mr-2 inline-block px-2 py-1">
-                                        <p>y = {{$parameter->slope}}x + {{$parameter->intercept}}</p>
-                                        <p>R<sup>2</sup> = {{round($parameter->correlation_coefficient * $parameter->correlation_coefficient, 4)}}</p>
-                                        <p>E = {{$parameter->calculateE()}}%</p>
-                                    </div>
-                                    {{$parameter->target}}
-                                </li>
-                            @endforeach
-                        @else
-                            @foreach($experiment->assay->parameters->filter(fn($parameter) => $parameter->intercept) as $parameter)
-                                <li class="shrink-0 flex items-center text-sm text-gray-500 border-2 border-gray-200 pr-2">
-                                    <span class="bg-gray-200 text-gray-600 font-bold mr-2 inline-block px-2 py-1">y
-                                        = {{$parameter->slope}}x
-                                        + {{$parameter->intercept}}</span> {{$parameter->target}}
-                                </li>
-                            @endforeach
-                        @endif
+                        @foreach($experiment->targets->filter(fn($target) => $target->quantification) as $target)
+                            <li class="shrink-0 flex items-center text-sm text-gray-500 border-2 border-gray-200 pr-2">
+                                <div class="bg-gray-200 text-gray-600 font-bold mr-2 inline-block px-2 py-1">
+                                    <p>{{$target->quantification->formula}}</p>
+                                    @if($target->quantification->squareCorrelationCoefficient)
+                                        <p>R<sup>2</sup> = {{$target->quantification->squareCorrelationCoefficient}}</p>
+                                    @endif
+                                    <p>E = {{$target->quantification->e}}</p>
+                                </div>
+
+                                {{$target->name}}
+                            </li>
+                        @endforeach
                     </ul>
                 @endif
             </div>
         </div>
         <div class="flex ml-5 shrink-0 space-x-2">
             @can('edit-experiment', $experiment)
-                <a href="{{route('experiments.edit', $experiment)}}"
+                <a href="{{route('experiments.edit', $experiment->experimentId)}}"
                    class="text-gray-600 transition-colors hover:text-indigo-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 " viewBox="0 0 20 20"
                          fill="currentColor">

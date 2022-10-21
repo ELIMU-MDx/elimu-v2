@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Support;
+namespace Support\ValueObjects;
 
-final class RoundedNumber
+use Support\Data;
+
+final class RoundedNumber extends Data
 {
-    public function __construct(private ?float $number, private int $precision = 2)
+    public function __construct(public readonly ?float $number, public readonly int $precision = 2)
     {
     }
 

@@ -8,7 +8,7 @@ use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\Enums\MeasurementType;
 use Domain\Results\Enums\QualitativeResult;
 use Spatie\DataTransferObject\DataTransferObject;
-use Support\RoundedNumber;
+use Support\ValueObjects\RoundedNumber;
 
 final class Result extends DataTransferObject
 {

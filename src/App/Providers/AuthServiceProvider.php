@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Domain\Assay\Models\Assay;
+use Domain\Experiment\DataTransferObjects\ExperimentListItem;
 use Domain\Experiment\Models\Experiment;
 use Domain\Experiment\Models\Sample;
 use Domain\Study\Models\Study;
@@ -51,12 +52,14 @@ class AuthServiceProvider extends ServiceProvider
             return $user->study_id && $user->studies->first(fn (Study $study) => in_array($study->membership->role, [new Owner(), new Scientist()], false));
         });
 
-        Gate::define('edit-experiment', function (User $user, Experiment $experiment) {
-            return $user->study_id === $experiment->study_id && in_array($user->studies->firstWhere('id', $experiment->study_id)->membership->role, [new Owner(), new Scientist()], false);
+        Gate::define('edit-experiment', function (User $user, Experiment|ExperimentListItem $experiment) {
+            $studyId = $experiment instanceof Experiment ? $experiment->study_id : $experiment->studyId;
+
+            return $user->study_id === $studyId && in_array($user->studies->firstWhere('id', $studyId)->membership->role, [new Owner(), new Scientist()], false);
         });
 
-        Gate::define('delete-experiment', function (User $user, Experiment $experiment) {
-            return $user->study_id === $experiment->study_id && in_array($user->studies->firstWhere('id', $experiment->study_id)->membership->role, [new Owner(), new Scientist()], false);
+        Gate::define('delete-experiment', function (User $user, ExperimentListItem $experiment) {
+            return $user->study_id === $experiment->studyId && in_array($user->studies->firstWhere('id', $experiment->studyId)->membership->role, [new Owner(), new Scientist()], false);
         });
         Gate::define('download-rdml', function (User $user, Experiment $experiment) {
             return $user->study_id === $experiment->study_id;

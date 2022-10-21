@@ -15,8 +15,9 @@ final class DeleteExperimentAction
     {
     }
 
-    public function execute(Experiment $experiment): void
+    public function execute(int $experimentId): void
     {
+        $experiment = Experiment::find($experimentId);
         $experiment->delete();
         Result::whereDoesntHave('measurements')->delete();
         Sample::whereDoesntHave('results')->delete();

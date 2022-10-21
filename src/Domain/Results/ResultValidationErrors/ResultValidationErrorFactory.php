@@ -17,7 +17,6 @@ final class ResultValidationErrorFactory
             DivergingMeasurementsError::IDENTIFIER => new DivergingMeasurementsError(),
             StandardDeviationExceedsCutoffError::IDENTIFIER => new StandardDeviationExceedsCutoffError(),
             CoefficientOfVariationExceedsCutoffError::IDENTIFIER => new CoefficientOfVariationExceedsCutoffError(),
-            ControlValidationError::IDENTIFIER => new ControlValidationError(),
             default => throw new BadMethodCallException('No error class found for '.$identifier),
         };
     }
@@ -31,7 +30,6 @@ final class ResultValidationErrorFactory
             new NotEnoughRepetitionsError(),
             new DivergingMeasurementsError(),
             new StandardDeviationExceedsCutoffError(),
-            new ControlValidationError(),
             new CoefficientOfVariationExceedsCutoffError(),
         ]);
     }

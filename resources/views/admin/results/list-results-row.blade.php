@@ -1,6 +1,7 @@
 <tr class="{{$even ? 'bg-gray-100' : 'bg-white'}} relative z-0">
     <td class="px-3 py-4 whitespace-nowrap text-sm text-left font-semibold">
-        <a href="{{action(\App\Admin\Experiments\Controllers\ShowSampleController::class, $sample)}}" class="text-indigo-600 font-semibold rounded-lg text-xs mt-1 underline">{{$sample->identifier}}</a>
+        <a href="{{action(\App\Admin\Experiments\Controllers\ShowSampleController::class, $sample)}}"
+           class="text-indigo-600 font-semibold rounded-lg text-xs mt-1 underline">{{$sample->identifier}}</a>
     </td>
     @foreach($sample->results as $result)
         <td class="px-3 py-4 whitespace-nowrap text-sm text-center border-l border-gray-300">
@@ -10,7 +11,9 @@
                 <div class="text-xs text-gray-500 mt-2">Stddev {{$result->standard_deviation}}</div>
             @endif
             @if($result->cq && $validationTypes[$result->target] === 'coefficient_of_variation')
-                <div class="text-xs text-gray-500 mt-2">CV {{new \Support\RoundedNumber($result->standard_deviation / $result->cq * 100)}}%</div>
+                <div class="text-xs text-gray-500 mt-2">
+                    CV {{new \Support\ValueObjects\RoundedNumber($result->standard_deviation / $result->cq * 100)}}%
+                </div>
             @endif
         </td>
 
@@ -38,11 +41,13 @@
             @else
                 <div class="text-sm text-gray-900">
                     @if($result->qualification === 'POSITIVE')
-                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                        <span
+                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                             Positive
                         </span>
                     @else
-                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                        <span
+                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                             Negative
                         </span>
                     @endif

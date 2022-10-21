@@ -5,7 +5,7 @@ namespace Domain\Results\ResultValidationErrors;
 use Domain\Rdml\Enums\MeasurementType;
 use Domain\Results\DataTransferObjects\Result;
 use Domain\Results\DataTransferObjects\ResultValidationParameter;
-use Support\RoundedNumber;
+use Support\ValueObjects\RoundedNumber;
 
 final class CoefficientOfVariationExceedsCutoffError implements ResultValidationError
 {

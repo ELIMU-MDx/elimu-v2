@@ -9,7 +9,7 @@ use Domain\Rdml\Enums\MeasurementType;
 use Domain\Results\Enums\QualitativeResult;
 use Support\CustomCollection;
 use Support\Math;
-use Support\RoundedNumber;
+use Support\ValueObjects\RoundedNumber;
 
 /**
  * @method Measurement offsetGet($key)

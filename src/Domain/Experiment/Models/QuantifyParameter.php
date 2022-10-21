@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class QuantifyParameter extends Model
 {
+    protected $casts = [
+        'slope' => 'float',
+        'intercept' => 'float',
+    ];
+
     public function experiment(): BelongsTo
     {
         return $this->belongsTo(Experiment::class);

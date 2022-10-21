@@ -63,7 +63,7 @@
                             <p>
                                 Run on
                                 <time
-                                    datetime="{{$experiment->runDate->format('Y-m-d')}}">{{ $experiment->runDate->format('F j, Y') }}</time>
+                                    datetime="{{$experiment->runDate->format('Y-m-d H:i')}}">{{ $experiment->runDate->format('F j, Y H:i') }}</time>
                             </p>
                         </li>
                     @endif
@@ -78,7 +78,7 @@
                         <p>
                             Uploaded on
                             <time
-                                datetime="{{$experiment->uploadedDate->format('Y-m-d')}}">{{ $experiment->uploadedDate->format('F j, Y') }}</time>
+                                datetime="{{$experiment->uploadedDate->format('Y-m-d H:i')}}">{{ $experiment->uploadedDate->format('F j, Y H:i') }}</time>
                         </p>
                     </li>
                 </ul>

@@ -14,6 +14,6 @@ class Data extends LaravelData implements Wireable
 
     public static function fromLivewire($value): static
     {
-        return static::from($value);
+        return static::withoutMagicalCreationFrom($value);
     }
 }

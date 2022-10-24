@@ -15,16 +15,10 @@ final class ExperimentRow extends Component
 {
     use AuthorizesRequests;
 
-    /** @var ExperimentListItem */
-    public $experiment;
+    public ExperimentListItem $experiment;
 
     /** @var bool */
     public $showDeleteConfirmationModal = false;
-
-    public function mount(ExperimentListItem $experiment)
-    {
-        $this->experiment = $experiment;
-    }
 
     public function deleteExperiment(DeleteExperimentAction $action): Redirector
     {

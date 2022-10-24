@@ -42,7 +42,7 @@ final class RdmlReader
         return $rdml->measurements
             ->standards()
             ->groupBy('target')
-            ->filter(fn(StandardsCollection $standards) => $standards->nonNullDataPoints()->isNotEmpty())
+            ->filter(fn (StandardsCollection $standards) => $standards->nonNullDataPoints()->isNotEmpty())
             ->map(fn (StandardsCollection $standards) => $standards->quantifyConfiguration())
             ->values()
             ->toBase();

@@ -117,7 +117,7 @@ final class CreateExperimentForm extends Component
         $this->reset('form', 'openModal');
         $this->resetErrorBag();
 
-        return redirect()->to(route('results.index'));
+        return redirect()->to(route('experiments.index'));
     }
 
     public function render(): View

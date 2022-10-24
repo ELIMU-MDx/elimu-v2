@@ -48,6 +48,8 @@ final class CreateExperimentForm extends Component
         $this->assays = Assay::where('study_id', $this->user->study_id)
             ->pluck('name', 'id')
             ->toArray();
+
+        $this->form['assay_id'] = array_key_first($this->assays);
     }
 
     public function getUserProperty(): User

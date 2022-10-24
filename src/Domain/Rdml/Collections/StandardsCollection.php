@@ -13,8 +13,8 @@ final class StandardsCollection extends Collection
     public function nonNullDataPoints(): Collection
     {
         return $this
-            ->filter(fn(Measurement $measurement) => $measurement->cq)
-            ->map(fn(Measurement $measurement) => $measurement->quantity !== 0.0 ? [
+            ->filter(fn (Measurement $measurement) => $measurement->cq)
+            ->map(fn (Measurement $measurement) => $measurement->quantity !== 0.0 ? [
                 'x' => log10($measurement->quantity), 'y' => $measurement->cq,
             ] : InvalidQuantityException::forStandard($measurement))
             ->values()

@@ -22,7 +22,7 @@ final class RdmlReader
     {
         $rdml = $this->rdmlParser->extract($this->fileReader->read($file));
 
-        if ($rdml->measurements->standards()->isEmpty()) {
+        if ($rdml->measurements->standards()->nonNullDataPoints()->isEmpty()) {
             $rdml->quantifyConfigurations = collect();
 
             return $rdml;
@@ -42,6 +42,7 @@ final class RdmlReader
         return $rdml->measurements
             ->standards()
             ->groupBy('target')
+            ->filter(fn(StandardsCollection $standards) => $standards->nonNullDataPoints()->isNotEmpty())
             ->map(fn (StandardsCollection $standards) => $standards->quantifyConfiguration())
             ->values()
             ->toBase();

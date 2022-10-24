@@ -5,6 +5,7 @@ namespace Domain\Rdml\Collections;
 use Correlation\Correlation;
 use Domain\Rdml\DataTransferObjects\Measurement;
 use Domain\Rdml\DataTransferObjects\QuantifyConfiguration;
+use Domain\Rdml\Exceptions\InvalidQuantityException;
 use Illuminate\Support\Collection;
 
 final class StandardsCollection extends Collection
@@ -12,10 +13,10 @@ final class StandardsCollection extends Collection
     public function nonNullDataPoints(): Collection
     {
         return $this
-            ->filter(fn (Measurement $measurement) => $measurement->cq)
-            ->map(fn (Measurement $measurement) => [
+            ->filter(fn(Measurement $measurement) => $measurement->cq)
+            ->map(fn(Measurement $measurement) => $measurement->quantity !== 0.0 ? [
                 'x' => log10($measurement->quantity), 'y' => $measurement->cq,
-            ])
+            ] : InvalidQuantityException::forStandard($measurement))
             ->values()
             ->toBase();
     }

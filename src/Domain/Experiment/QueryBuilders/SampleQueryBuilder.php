@@ -39,15 +39,15 @@ final class SampleQueryBuilder extends Builder
         )
             ->where('study_id', $studyId)
             ->whereHas('results.measurements', function ($query) {
-                return $query->orderBy('target')
-                    ->where('type', MeasurementType::SAMPLE());
+                return $query->where('type', MeasurementType::SAMPLE());
             })
+            ->whereHas('results', fn ($query) => $query->where('assay_id', $assayId))
             ->orderBy('identifier');
     }
 
     public function searchBySampleIdentifier(string $search): SampleQueryBuilder
     {
-        if (! trim($search)) {
+        if (!trim($search)) {
             return $this;
         }
 

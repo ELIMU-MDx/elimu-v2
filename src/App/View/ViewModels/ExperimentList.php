@@ -56,7 +56,6 @@ final class ExperimentList
         })->toBase();
     }
 
-
     private function getTargetQuantification(
         AssayParameter $parameter,
         ?QuantifyParameter $quantifyParameter
@@ -100,11 +99,11 @@ final class ExperimentList
             $errors[] = 'No ntc control found';
         }
         if (! blank($parameter->negative_control) && ! $controls->firstWhere('type',
-                MeasurementType::NEGATIVE_CONTROL())) {
+            MeasurementType::NEGATIVE_CONTROL())) {
             $errors[] = 'No negative control found';
         }
         if (! blank($parameter->positive_control) && ! $controls->firstWhere('type',
-                MeasurementType::POSTIVE_CONTROL())) {
+            MeasurementType::POSTIVE_CONTROL())) {
             $errors[] = 'No positive control found';
         }
 

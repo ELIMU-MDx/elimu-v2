@@ -10,5 +10,4 @@ final class ListExperimentsController
     {
         return view('admin.experiments.index');
     }
-
 }

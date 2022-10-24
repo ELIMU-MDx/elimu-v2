@@ -91,6 +91,11 @@ final class RdmlParser
 
                     $measurement->quantity = $nonSampleIds[$measurement->sample]['quantity'] ?? null;
                     $measurement->type = MeasurementType::byString($nonSampleIds[$measurement->sample]['type'] ?? 'unkn');
+
+                    if(MeasurementType::isControl($measurement->type) && $measurement->cq !== null && $measurement->cq < 5) {
+                        // ignore controls with a smaller than 5 cq
+                        continue;
+                    }
                     $measurements[] = $measurement;
                 }
             }

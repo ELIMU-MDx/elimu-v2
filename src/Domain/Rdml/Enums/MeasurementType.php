@@ -35,6 +35,11 @@ final class MeasurementType extends Enum
         ];
     }
 
+    public static function isControl(MeasurementType $type): bool
+    {
+        return in_array($type, static::controls(), true);
+    }
+
     protected static function labels()
     {
         return [

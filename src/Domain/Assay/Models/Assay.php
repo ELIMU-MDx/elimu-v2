@@ -55,6 +55,6 @@ final class Assay extends Model
 
     public function getActivitylogOptions(): LogOptions
     {
-        return LogOptions::defaults()->logOnly(['name']);
+        return LogOptions::defaults()->logAll();
     }
 }

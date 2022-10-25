@@ -18,14 +18,15 @@ class CustomCollection extends Collection
             return ! is_null($value);
         });
 
-        if ($items->isEmpty()) {
+        if ($items->count() <= 1) {
             return 0.0;
         }
 
         $average = (float) $items->avg();
 
+
         $variance = $items->reduce(function (float $variance, float | int $value) use ($average) {
-            return ($value - $average) ** 2;
+            return $variance + (($value - $average) ** 2);
         }, 0.0);
 
         return sqrt($variance / $items->count());

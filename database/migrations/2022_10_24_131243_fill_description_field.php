@@ -13,7 +13,7 @@ return new class extends Migration
         AssayParameter::query()
             ->update(['description' => DB::raw('target')]);
 
-        Schema::table('assay_parameters', function(Blueprint $table) {
+        Schema::table('assay_parameters', function (Blueprint $table) {
             $table->string('description')->change();
         });
     }

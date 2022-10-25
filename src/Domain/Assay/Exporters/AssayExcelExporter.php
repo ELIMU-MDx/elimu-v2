@@ -37,7 +37,7 @@ final class AssayExcelExporter implements WithHeadings, FromQuery, WithMapping
     }
 
     /**
-     * @param AssayParameter $row
+     * @param  AssayParameter  $row
      * @return array
      */
     public function map($row): array

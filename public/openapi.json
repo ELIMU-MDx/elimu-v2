@@ -52,7 +52,11 @@
                     },
                     "replicas_target": {
                       "type": "integer",
-                      "description": "Number of repetitions for this target"
+                      "description": "Number of included repetitions for this target"
+                    },
+                    "replicas_target_total": {
+                      "type": "integer",
+                      "description": "Number of total repetitions for this target"
                     },
                     "mean_cq_target": {
                       "type": "number",
@@ -84,11 +88,13 @@
                   {
                     "sample": "PIK11_2019",
                     "replicas_pfvarts": 2,
+                    "replicas_pfvarts_total": 2,
                     "mean_cq_pfvarts": 42.48,
                     "standard_deviation_cq_pfvarts": 0.01,
                     "qualitative_result_pfvarts": "POSITIVE",
                     "quantitative_result_pfvarts": 1.36,
                     "replicas_pspp18s": 2,
+                    "replicas_pspp18s_total": 2,
                     "mean_cq_pspp18s": null,
                     "standard_deviation_cq_pspp18s": null,
                     "qualitative_result_pspp18s": "NEGATIVE",
@@ -97,11 +103,13 @@
                   {
                     "sample": "PIK12_2019",
                     "replicas_pfvarts": 2,
+                    "replicas_pfvarts_total": 2,
                     "mean_cq_pfvarts": 42.48,
                     "standard_deviation_cq_pfvarts": 0.01,
                     "qualitative_result_pfvarts": "POSITIVE",
                     "quantitative_result_pfvarts": 1.36,
                     "replicas_pspp18s": 2,
+                    "replicas_pspp18s_total": 2,
                     "mean_cq_pspp18s": null,
                     "standard_deviation_cq_pspp18s": null,
                     "qualitative_result_pspp18s": "NEGATIVE",

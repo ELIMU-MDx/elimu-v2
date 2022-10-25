@@ -22,6 +22,8 @@ final class AssayParameterExcelImporter implements ToModel, WithValidation, With
         return new AssayParameter([
             'assay_id' => $this->assayId,
             'target' => $row['target'],
+            'description' => $row['description'] ?? $row['target'],
+            'is_control' => (bool) ($row['is_control'] ?? false),
             'cutoff' => $row['cutoff'],
             'standard_deviation_cutoff' => $row['cutoff_standard_deviation'] ?: null,
             'coefficient_of_variation_cutoff' => $row['coefficient_of_variation_cutoff'] ?: null,
@@ -38,6 +40,8 @@ final class AssayParameterExcelImporter implements ToModel, WithValidation, With
     {
         return [
             'target' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'is_control' => ['nullable'],
             'cutoff' => ['required', 'numeric', new DecimalValidationRule(8, 2)],
             'cutoff_standard_deviation' => ['required_without:coefficient_of_variation_cutoff', 'nullable', 'numeric', new DecimalValidationRule(8, 2)],
             'coefficient_of_variation_cutoff' => ['required_without:cutoff_standard_deviation', 'nullable', 'numeric', new DecimalValidationRule(8, 2)],

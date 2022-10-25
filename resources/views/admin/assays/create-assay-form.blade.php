@@ -52,6 +52,23 @@
                             <x-slot name="content">
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-4">
+                                        <x-jet-label for="description-{{$key}}"
+                                                     value="{{ __('Description') }}"/>
+                                        <x-input name="description-{{$key}}" class="mt-1 block w-full"
+                                                 wire:model.defer="parameters.{{$key}}.description"/>
+                                        <x-jet-input-error for="parameters.{{$key}}.description" class="mt-2"/>
+                                        <x-input-help>Is used in the report</x-input-help>
+                                    </div>
+                                    <div class="col-span-6 sm:col-span-4">
+                                        <x-jet-label for="is-control-{{$key}}" value="{{ __('Is control target') }}"/>
+                                        <label class="flex items-center mt-1">
+                                            <x-checkbox name="is-control-{{$key}}"
+                                                        wire:model.defer="parameters.{{$key}}.is_control"/>
+                                            <span class="ml-4">Yes</span>
+                                        </label>
+                                        <x-jet-input-error for="parameters.{{$key}}.is_control" class="mt-2"/>
+                                    </div>
+                                    <div class="col-span-6 sm:col-span-4">
                                         <x-jet-label for="positive-control-{{$key}}"
                                                      value="{{ __('Positive control') }}"/>
                                         <x-input name="positive-control-{{$key}}" class="mt-1 block w-full"

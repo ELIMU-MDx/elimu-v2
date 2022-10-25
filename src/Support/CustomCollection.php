@@ -24,7 +24,6 @@ class CustomCollection extends Collection
 
         $average = (float) $items->avg();
 
-
         $variance = $items->reduce(function (float $variance, float | int $value) use ($average) {
             return $variance + (($value - $average) ** 2);
         }, 0.0);

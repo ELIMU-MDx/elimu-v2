@@ -17,14 +17,13 @@ it('calculates the standard deviation', function () {
 
 it('calculates the standard deviation with callable', function () {
     $collection = new \Support\CustomCollection([
-        new class {
+        new class
+        {
             public float $cq = 25.51;
         },
     ]);
 
-    $standardDeviation = $collection->standardDeviation(fn($element) => $element->cq);
+    $standardDeviation = $collection->standardDeviation(fn ($element) => $element->cq);
 
     $this->assertEquals(0, $standardDeviation);
 });
-
-

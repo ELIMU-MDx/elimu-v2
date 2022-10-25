@@ -1,6 +1,7 @@
 <?php
 
 use App\Admin\Assays\Controllers\CreateAssayController;
+use App\Admin\Assays\Controllers\DownloadAssayController;
 use App\Admin\Assays\Controllers\EditAssayController;
 use App\Admin\Assays\Controllers\ListAssaysController;
 use App\Admin\Experiments\Controllers\DownloadRdmlController;
@@ -43,6 +44,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('assays', ListAssaysController::class)->name('assays.index');
         Route::get('assays/create', CreateAssayController::class)->middleware('can:create-assay');
         Route::get('assays/{assay}', EditAssayController::class)->name('assays.edit')->middleware('can:edit-assay,assay');
+        Route::get('assays/{assay}/download', DownloadAssayController::class)->name('assays.download');
 
         Route::get('studies/create', CreateStudyController::class)->name('studies.create');
         Route::get('current-study/settings', ShowStudySettingsController::class)

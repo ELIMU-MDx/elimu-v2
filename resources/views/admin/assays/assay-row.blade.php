@@ -92,6 +92,12 @@
             </div>
         </div>
         <div class="flex ml-5 shrink-0 space-x-2">
+            <a href="{{route('assays.download', $assay)}}"
+               target="_blank"
+               class="text-gray-600 transition-colors hover:text-indigo-600">
+                <x-heroicon-s-folder-arrow-down class="h-5 w-5" />
+                <span class="sr-only">Download assay</span>
+            </a>
             @can('edit-assay', $assay)
                 <a href="{{route('assays.edit', $assay)}}"
                    class="text-gray-600 transition-colors hover:text-indigo-600">

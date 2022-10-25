@@ -14,8 +14,10 @@
     @if($attributes->wire('model'))
         <span wire:loading wire:target="{{$attributes->wire('model')->value()}}">Uploading...</span>
         <span wire:loading.remove wire:target="{{$attributes->wire('model')->value()}}">
-            @if($file)
-                {{Str::limit($file->getClientOriginalName(), $limit)}} ({{round($file->getSize() / 1024, 2)}} KB)
+            @if(is_array($file) && count($file) === 1)
+                {{Str::limit($file[0]->getClientOriginalName(), $limit)}} ({{round($file[0]->getSize() / 1024, 2)}} KB)
+            @elseif($file)
+                {{count($file)}} Rdml Files
             @else
                 <span class="uppercase tracking-widest">{{$slot}}</span>
             @endif

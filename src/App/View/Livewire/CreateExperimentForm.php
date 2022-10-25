@@ -38,7 +38,7 @@ final class CreateExperimentForm extends Component
 
     /** @var array */
     public $form = [
-        'rdml' => null,
+        'rdml' => [],
         'assay_id' => null,
         'eln' => null,
     ];
@@ -69,7 +69,7 @@ final class CreateExperimentForm extends Component
                 'assayFile' => collect($exception->failures())
                     ->flatMap(function (Failure $failure, string $key) {
                         return collect($failure->errors())
-                            ->mapWithKeys(function (string $errorMessage, string | int $errorKey) use ($failure, $key) {
+                            ->mapWithKeys(function (string $errorMessage, string|int $errorKey) use ($failure, $key) {
                                 return [
                                     'assayFile.'.$key.$errorKey => sprintf(
                                         'Row %s (%s): %s',
@@ -98,7 +98,7 @@ final class CreateExperimentForm extends Component
     {
         $this->authorize('import-rdml');
         $this->validate([
-            'form.rdml' => 'required|file|mimetypes:application/zip',
+            'form.rdml.*' => 'required|file|mimetypes:application/zip',
             'form.assay_id' => [
                 'required', Rule::exists('assays', 'id')->where('study_id', $this->user->study_id),
             ],
@@ -109,13 +109,14 @@ final class CreateExperimentForm extends Component
             'form.rdml' => 'rdml file',
         ]);
 
-        $createExperimentAction->execute(new CreateExperimentParameter(
-            rdml: $this->form['rdml'],
+        collect($this->form['rdml'])->each(fn ($file) => $createExperimentAction->execute(new CreateExperimentParameter(
+            rdml: $file,
             assayId: $this->form['assay_id'],
             studyId: $this->user->study_id,
             creatorId: $this->user->id,
             eln: $this->form['eln']
-        ));
+        )));
+
         $this->reset('form', 'openModal');
         $this->resetErrorBag();
 

@@ -15,6 +15,7 @@
                                            wire:model.defer="form.rdml"
                                            accept=".rdml"
                                            class="mt-1"
+                                           multiple
                                            :file="$form['rdml']">
                                 Choose rdml file
                             </x-file-button>

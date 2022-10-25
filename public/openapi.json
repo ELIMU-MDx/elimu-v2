@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "https://elimu.sparclex.com/api",
+      "url": "https://elimu.ch/api",
       "description": "Production"
     }
   ],

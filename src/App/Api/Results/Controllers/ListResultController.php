@@ -32,7 +32,8 @@ final class ListResultController
                 return $sample->results
                     ->flatMap(function (Result $result) {
                         return [
-                            'replicas_'.strtolower($result->target) => $result->measurements_count,
+                            'replicas_'.strtolower($result->target) => $result->measurements->included()->count(),
+                            'replicas_'.strtolower($result->target).'_total' => $result->measurements->count(),
                             'mean_cq_'.strtolower($result->target) => $result->cq,
                             'standard_deviation_cq_'.strtolower($result->target) => $result->standard_deviation,
                             'qualitative_result_'.strtolower($result->target) => $result->resultErrors->isEmpty()

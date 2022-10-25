@@ -29,7 +29,7 @@ final class ControlValidationError implements ResultValidationError
         $validationParameter = is_numeric($validationParameter) ? (float) $validationParameter : strtolower($validationParameter);
 
         return match ($validationParameter) {
-            'null' => $result->averageCQ->raw() === null,
+            'null' => $result->averageCQ->raw() === null || $result->averageCQ->raw() >= $parameter->cutoff,
             'cutoff' => Math::qualifyCq(
                 $result->averageCQ->raw(),
                 $parameter->cutoff

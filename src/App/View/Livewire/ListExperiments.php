@@ -34,6 +34,10 @@ final class ListExperiments extends Component
     public function getExperimentsProperty(): Collection
     {
         $sort = [
+            'run_at' => [
+                'field' => 'experiment_date',
+                'direction' => 'desc',
+            ],
             'name' => [
                 'field' => 'name',
                 'direction' => 'asc',

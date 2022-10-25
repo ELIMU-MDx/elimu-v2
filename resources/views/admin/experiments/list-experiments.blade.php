@@ -51,17 +51,18 @@
                         class="absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
                         role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                         <div class="py-1" role="none">
-                            <!--
-                              Active: "bg-gray-100", Not Active: ""
-
-                              Selected: "font-medium text-gray-900", Not Selected: "text-gray-500"
-                            -->
                             <a href="#"
                                @click="open=false"
                                wire:click.prevent="updateSort('created_at')"
                                :class="sort === 'created_at' ? 'font-medium text-gray-900' : 'text-gray-500'"
                                class="hover:bg-gray-100 block px-4 py-2 text-sm" role="menuitem"
                                tabindex="-1" id="menu-item-0">Uploaded date</a>
+                            <a href="#"
+                               @click="open=false"
+                               wire:click.prevent="updateSort('run_at')"
+                               :class="sort === 'run_at' ? 'font-medium text-gray-900' : 'text-gray-500'"
+                               class="hover:bg-gray-100 block px-4 py-2 text-sm" role="menuitem"
+                               tabindex="-1" id="menu-item-0">Run date</a>
 
                             <a
                                 :class="sort === 'name' ? 'font-medium text-gray-900' : 'text-gray-500'"

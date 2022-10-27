@@ -11,7 +11,7 @@ final class SampleReportTarget extends Data
         readonly public string $name,
         readonly public ?float $cq,
         readonly public ?float $quantification,
-        readonly QualitativeResult $qualification,
+        readonly public QualitativeResult $qualification,
     )
     {
 

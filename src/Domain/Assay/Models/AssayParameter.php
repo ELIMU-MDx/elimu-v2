@@ -13,6 +13,7 @@ final class AssayParameter extends Model
         'slope' => 'float',
         'intercept' => 'float',
         'cutoff' => 'float',
+        'is_control' => 'bool',
     ];
 
     protected $appends = ['quantify'];

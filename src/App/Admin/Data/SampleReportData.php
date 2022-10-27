@@ -12,6 +12,7 @@ final class SampleReportData extends Data
     public function __construct(
         readonly public string $sampleId,
         readonly public string $assayName,
+        readonly public bool $hasQuantification,
         readonly public QualitativeResult $result,
         #[DataCollectionOf(SampleReportTarget::class)]
         readonly public DataCollection $targets,

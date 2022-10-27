@@ -8,10 +8,10 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('measurements', function(Blueprint $table) {
+        Schema::table('measurements', function (Blueprint $table) {
             $table->decimal('cq', 18, 15)->nullable()->change();
         });
-        Schema::table('quantify_parameters', function(Blueprint $table) {
+        Schema::table('quantify_parameters', function (Blueprint $table) {
             $table->decimal('slope', 10, 8)->change();
             $table->decimal('intercept', 10, 8)->change();
         });

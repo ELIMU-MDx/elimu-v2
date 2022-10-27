@@ -1,6 +1,6 @@
 <div>
 
-    <div class="flex items-baseline justify-end">
+    <div class="flex items-baseline justify-end space-x-2">
         @if($sample->results->pluck('assay')->unique()->count() === 1)
             <x-primary-button as="a"
                               target="_blank"

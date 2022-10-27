@@ -1,5 +1,24 @@
 <div>
-    <div class="grid grid-cols-4 gap-4" x-data="chart()">
+
+    <div class="flex items-baseline justify-end">
+        @if($sample->results->pluck('assay')->unique()->count() === 1)
+            <x-primary-button as="a"
+                              target="_blank"
+                              :href="route('samples.report.pdf', ['sample' => $sample, 'assay' => $sample->results->pluck('assay')->first()->id])">
+                Download report
+            </x-primary-button>
+        @else
+            @foreach($sample->results->pluck('assay')->unique() as $assay)
+                <x-primary-button as="a"
+                                  :href="route('samples.report.pdf', ['sample' => $sample, 'assay' => $assay])">
+                    Download report for {{$assay->name}}
+                </x-primary-button>
+            @endforeach
+        @endif
+
+    </div>
+    <div class="grid grid-cols-4 gap-4 mt-6" x-data="chart()">
+
         <div class="shadow sm:rounded-lg bg-white p-4">
             <h2 class="px-4 uppercase text-sm text-gray-500 tracking-wider font-bold">Filters</h2>
             <form class="divide-y divide-gray-200">

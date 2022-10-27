@@ -24,7 +24,7 @@ class ShowSample extends Component
     {
         $this->sample = $sample;
 
-        $this->sample->load(['measurements.dataPoints', 'measurements.experiment']);
+        $this->sample->load(['measurements.dataPoints', 'measurements.experiment', 'results.assay']);
         $this->filters['position'] = $this->sample->measurements->pluck('position')->unique()->values()->toArray();
         $this->filters['target'] = $this->sample->measurements->pluck('target')->unique()->values()->toArray();
         $this->filters['experiment'] = $this->sample->measurements->pluck('experiment.name')->unique()->values()->toArray();

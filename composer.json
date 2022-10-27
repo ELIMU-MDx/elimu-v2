@@ -30,7 +30,7 @@
         "masbug/flysystem-google-drive-ext": "^2.2",
         "nunomaduro/phpinsights": "^2.0",
         "predis/predis": "^2.0",
-        "sentry/sentry-laravel": "^2.14",
+        "sentry/sentry-laravel": "^3.0",
         "spatie/data-transfer-object": "^3.3",
         "spatie/laravel-activitylog": "^4.4",
         "spatie/laravel-backup": "^8.1",

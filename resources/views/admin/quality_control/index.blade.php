@@ -36,7 +36,7 @@
                                         </p>
                                         <div class="mt-2 text-sm text-gray-500">
                                             <p>
-                                                <time datetime="{{$log->created_at->format('Y-m-d')}}">{{ $log->created_at->format('F j, Y') }}</time>
+                                                <time datetime="{{$log->created_at->format('Y-m-d H:i')}}">{{ $log->created_at->format('F j, Y H:i') }}</time>
                                             </p>
                                         </div>
                                     </div>

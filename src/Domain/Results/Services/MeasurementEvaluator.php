@@ -48,7 +48,7 @@ final class MeasurementEvaluator
                     'averageCQ' => $onlyIncludedMeasurements->averageCq(),
                     'repetitions' => $onlyIncludedMeasurements->count(),
                     'qualification' => $qualification,
-                    'quantification' => $parameter->shouldQuantify() && $qualification === QualitativeResult::POSITIVE()
+                    'quantification' => $parameter->shouldQuantify()
                         ? $onlyIncludedMeasurements->quantify($parameter->slope, $parameter->intercept)
                         : null,
                     'measurements' => $measurements,

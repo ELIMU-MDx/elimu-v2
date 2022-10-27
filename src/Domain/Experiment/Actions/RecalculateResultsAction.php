@@ -8,9 +8,11 @@ use Domain\Assay\Models\Assay;
 use Domain\Assay\Models\AssayParameter;
 use Domain\Experiment\DataTransferObjects\ResultCalculationParameter;
 use Domain\Experiment\Models\Measurement;
+use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\DataTransferObjects\Measurement as MeasurementDTO;
 use Domain\Results\DataTransferObjects\Result;
 use Domain\Results\DataTransferObjects\ResultValidationParameter;
+use Domain\Results\Enums\QualitativeResult;
 use Domain\Results\Models\Result as ResultModel;
 use Domain\Results\Models\ResultError;
 use Domain\Results\ResultValidationErrors\ResultValidationErrorFactory;
@@ -18,6 +20,8 @@ use Domain\Results\Services\MeasurementEvaluator;
 use Domain\Results\Services\ResultValidator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Collection as BaseCollection;
+use Support\Math;
+use Support\ValueObjects\RoundedNumber;
 
 final class RecalculateResultsAction
 {
@@ -41,7 +45,7 @@ final class RecalculateResultsAction
             ])
             ->groupBy('experiment.assay_id')
             ->each(function (Collection $measurements) {
-                $results = $this->calculateResults($measurements);
+                $results = $this->calculateResults($measurements, $measurements->first()->experiment->assay->parameters);
                 $resultModels = $this->storeResults($results, $measurements->first()->experiment->assay_id);
                 $this->storeMeasurements($resultModels, $measurements);
 
@@ -100,7 +104,7 @@ final class RecalculateResultsAction
             ->experiment
             ->assay
             ->parameters
-            ->map(fn (AssayParameter $parameter) => new ResultCalculationParameter([
+            ->map(fn(AssayParameter $parameter) => new ResultCalculationParameter([
                 'target' => $parameter->target,
                 'cutoff' => $parameter->cutoff,
                 'intercept' => $quantifyParameters[$parameter->target]->intercept ?? $parameter->intercept,
@@ -165,15 +169,42 @@ final class RecalculateResultsAction
             });
     }
 
-    private function calculateResults(Collection $measurements): BaseCollection
+    /**
+     * @param  Collection<Measurement>  $measurements
+     * @param  Collection<AssayParameter>  $parameter
+     * @return BaseCollection<Result>
+     */
+    private function calculateResults(Collection $measurements, Collection $parameters): BaseCollection
     {
-        return $this->measurementEvaluator
-            ->results(
-                $measurements->map(function (Measurement $measurement) {
-                    return MeasurementDTO::fromModel($measurement);
-                }),
-                $this->getResultCalculationParameter($measurements)
-            );
+        return $measurements
+            ->groupBy('experiment_id')
+            ->map(fn(Collection $groupedMeasurements) => $this->measurementEvaluator
+                ->results(
+                    $groupedMeasurements->map(function (Measurement $measurement) {
+                        return MeasurementDTO::fromModel($measurement);
+                    }),
+                    $this->getResultCalculationParameter($groupedMeasurements)
+                )
+            )
+            ->flatten(1)
+            ->groupBy(fn(Result $result) => "$result->sample-$result->target")
+            ->map(fn(BaseCollection $results) => new Result([
+                'sample' => $results->first()->sample,
+                'target' => $results->first()->target,
+                'averageCQ' => new RoundedNumber($results->avg(fn(Result $result) => $result->averageCQ->raw())),
+                'repetitions' => $results->sum(fn(Result $result) => $result->repetitions),
+                'qualification' => Math::qualifyCq($results->avg(fn(Result $result) => $result->averageCQ->raw()),
+                    $parameters->firstWhere('target', $results->first()->target)->cutoff),
+                'quantification' => $results->first() !== null ? new RoundedNumber($results->avg(fn(Result $result
+                ) => $result->quantification->raw())) : null,
+                'measurements' => new MeasurementCollection($results->map(fn(Result $result) => $result->measurements)->flatten(1)->values()),
+                'type' => $results->first()->type,
+            ])
+            )->each(function(Result $result) {
+                if($result->qualification !== QualitativeResult::POSITIVE()) {
+                    $result->quantification = null;
+                }
+            });
     }
 
     private function getValidationParameter(Collection $measurements, Assay $assay): BaseCollection

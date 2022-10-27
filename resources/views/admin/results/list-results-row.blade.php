@@ -78,7 +78,7 @@
                                         wire:loading.class="text-gray-200 cursor-wait"
                                         wire:loading.attr="disabled"
                                         class="text-indigo-600 @if($measurement->excluded) line-through @else underline @endif">
-                                    {{ $measurement->cq ?? 'NaN'}}
+                                    {{ $measurement->cq ? new \Support\ValueObjects\RoundedNumber($measurement->cq, 1) : 'NaN'}}
                                 </button>
                             </li>
                         @endforeach

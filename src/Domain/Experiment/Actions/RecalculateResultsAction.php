@@ -195,8 +195,7 @@ final class RecalculateResultsAction
                 'repetitions' => $results->sum(fn (Result $result) => $result->repetitions),
                 'qualification' => Math::qualifyCq($results->avg(fn (Result $result) => $result->averageCQ->raw()),
                     $parameters->firstWhere('target', $results->first()->target)->cutoff),
-                'quantification' => $results->first() !== null ? new RoundedNumber($results->avg(fn (Result $result
-                ) => $result->quantification->raw())) : null,
+                'quantification' => new RoundedNumber($results->avg(fn (Result $result) => $result->quantification?->raw())) ?: null,
                 'measurements' => new MeasurementCollection($results->map(fn (Result $result) => $result->measurements)->flatten(1)->values()),
                 'type' => $results->first()->type,
             ])

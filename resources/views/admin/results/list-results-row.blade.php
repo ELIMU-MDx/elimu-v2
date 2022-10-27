@@ -5,7 +5,7 @@
     </td>
     @foreach($sample->results as $result)
         <td class="px-3 py-4 whitespace-nowrap text-sm text-center border-l border-gray-300">
-            {{$result->cq ?? 'NaN'}}
+            {{$result->cq ? round($result->cq, 2) : 'NaN'}}
 
             @if($result->cq && $validationTypes[$result->target] === 'standard_deviation')
                 <div class="text-xs text-gray-500 mt-2">Stddev {{$result->standard_deviation}}</div>

@@ -62,10 +62,10 @@ final class RecalculateResultsAction
                 'sample_id' => $result->sample,
                 'assay_id' => $assayId,
                 'target' => $result->target,
-                'cq' => $result->averageCQ->rounded(),
-                'quantification' => $result->quantification?->rounded(),
+                'cq' => $result->averageCQ->rounded(15),
+                'quantification' => $result->quantification?->rounded(2),
                 'qualification' => $result->qualification,
-                'standard_deviation' => $result->measurements->included()->standardDeviationCq(),
+                'standard_deviation' => $result->measurements->included()->standardDeviationCq()->rounded(2),
             ];
         })
             ->tap(function (BaseCollection $results) {

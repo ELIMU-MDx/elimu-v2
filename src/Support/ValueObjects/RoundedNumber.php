@@ -27,9 +27,9 @@ final class RoundedNumber extends Data
         return $this->number;
     }
 
-    public function rounded(): ?float
+    public function rounded(?int $precision = null): ?float
     {
-        return $this->number === null ? null : round($this->number, $this->precision);
+        return $this->number === null ? null : round($this->number, $precision ?? $this->precision);
     }
 
     public function toString(): string

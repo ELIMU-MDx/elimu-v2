@@ -15,6 +15,9 @@
             <div>
                 <a href="{{route('api-documentation')}}" class="text-indigo-600 underline text-sm">Api documentation</a>
             </div>
+            <x-primary-button as="a" href="{{route('assays.reports', $currentAssayId)}}" target="_blank">Download
+                Reports
+            </x-primary-button>
             <x-primary-button as="a" href="{{route('results.export', $currentAssayId)}}" target="_blank">Download
                 Excel
             </x-primary-button>

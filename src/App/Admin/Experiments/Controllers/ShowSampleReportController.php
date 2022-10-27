@@ -16,11 +16,11 @@ final class ShowSampleReportController
     public function __invoke(Assay $assay, Sample $sample)
     {
         $targets = new DataCollection(SampleReportTarget::class, $assay->parameters
-            ->reject(fn(AssayParameter $parameter) => $parameter->is_control)
+            ->reject(fn (AssayParameter $parameter) => $parameter->is_control)
             ->map(function (AssayParameter $parameter) use ($assay, $sample) {
                 /** @var Result $result */
                 $result = $sample->results
-                    ->first(fn(Result $result
+                    ->first(fn (Result $result
                     ) => $result->assay_id === $assay->id && strcasecmp($result->target, $parameter->target) === 0);
 
                 return new SampleReportTarget(
@@ -33,17 +33,17 @@ final class ShowSampleReportController
         $report = new SampleReportData(
             sampleId: $sample->identifier,
             assayName: $assay->name,
-            hasQuantification: (bool) $targets->first(fn(SampleReportTarget $target
+            hasQuantification: (bool) $targets->first(fn (SampleReportTarget $target
             ) => $target->quantification !== null),
-            result: $targets->first(fn(SampleReportTarget $target
+            result: $targets->first(fn (SampleReportTarget $target
             ) => $target->qualification === QualitativeResult::POSITIVE()) ? QualitativeResult::POSITIVE() : QualitativeResult::NEGATIVE(),
             targets: $targets,
             controlTargets: new DataCollection(SampleReportTarget::class, $assay->parameters
-                ->filter(fn(AssayParameter $parameter) => $parameter->is_control)
+                ->filter(fn (AssayParameter $parameter) => $parameter->is_control)
                 ->map(function (AssayParameter $parameter) use ($assay, $sample) {
                     /** @var Result $result */
                     $result = $sample->results
-                        ->first(fn(Result $result
+                        ->first(fn (Result $result
                         ) => $result->assay_id === $assay->id && $result->target === $parameter->target);
 
                     return new SampleReportTarget(

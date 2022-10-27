@@ -38,7 +38,7 @@ final class RoundedNumber extends Data
             return '';
         }
 
-        return number_format(round($this->number, $this->precision), $this->precision, ".", "'");
+        return number_format(round($this->number, $this->precision), $this->precision, '.', "'");
     }
 
     public function toPercentage(): string

@@ -18,8 +18,6 @@ final class SampleReportData extends Data
         readonly public DataCollection $targets,
         #[DataCollectionOf(SampleReportTarget::class)]
         readonly public DataCollection $controlTargets,
-    )
-    {
-
+    ) {
     }
 }

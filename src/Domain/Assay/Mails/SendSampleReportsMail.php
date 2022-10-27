@@ -2,15 +2,12 @@
 
 namespace Domain\Assay\Mails;
 
-use Domain\Assay\Models\Assay;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use ZipArchive;
 
 class SendSampleReportsMail extends Mailable
 {
@@ -58,7 +55,7 @@ class SendSampleReportsMail extends Mailable
     public function attachments()
     {
         return [
-            Attachment::fromData(fn() => file_get_contents($this->archive), 'Reports.zip')
+            Attachment::fromData(fn () => file_get_contents($this->archive), 'Reports.zip')
                 ->withMime('application/zip'),
         ];
     }

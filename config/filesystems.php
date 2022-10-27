@@ -56,6 +56,15 @@ return [
             'throw' => false,
         ],
 
+        'google' => [
+            'driver' => 'google',
+            'clientId' => env('GOOGLE_CLIENT_ID'),
+            'secret' => env('GOOGLE_CLIENT_SECRET'),
+            'refreshToken' => env('GOOGLE_REFRESH_TOKEN'),
+            'name' => env('GOOGLE_APPLICATION_NAME'),
+            'root' => env('GOOGLE_ROOT_PATH', env('GOOGLE_APPLICATION_NAME'))
+        ],
+
     ],
 
     /*

@@ -104,7 +104,7 @@ final class RecalculateResultsAction
             ->experiment
             ->assay
             ->parameters
-            ->map(fn(AssayParameter $parameter) => new ResultCalculationParameter([
+            ->map(fn (AssayParameter $parameter) => new ResultCalculationParameter([
                 'target' => $parameter->target,
                 'cutoff' => $parameter->cutoff,
                 'intercept' => $quantifyParameters[$parameter->target]->intercept ?? $parameter->intercept,
@@ -178,7 +178,7 @@ final class RecalculateResultsAction
     {
         return $measurements
             ->groupBy('experiment_id')
-            ->map(fn(Collection $groupedMeasurements) => $this->measurementEvaluator
+            ->map(fn (Collection $groupedMeasurements) => $this->measurementEvaluator
                 ->results(
                     $groupedMeasurements->map(function (Measurement $measurement) {
                         return MeasurementDTO::fromModel($measurement);
@@ -187,21 +187,21 @@ final class RecalculateResultsAction
                 )
             )
             ->flatten(1)
-            ->groupBy(fn(Result $result) => "$result->sample-$result->target")
-            ->map(fn(BaseCollection $results) => new Result([
+            ->groupBy(fn (Result $result) => "$result->sample-$result->target")
+            ->map(fn (BaseCollection $results) => new Result([
                 'sample' => $results->first()->sample,
                 'target' => $results->first()->target,
-                'averageCQ' => new RoundedNumber($results->avg(fn(Result $result) => $result->averageCQ->raw())),
-                'repetitions' => $results->sum(fn(Result $result) => $result->repetitions),
-                'qualification' => Math::qualifyCq($results->avg(fn(Result $result) => $result->averageCQ->raw()),
+                'averageCQ' => new RoundedNumber($results->avg(fn (Result $result) => $result->averageCQ->raw())),
+                'repetitions' => $results->sum(fn (Result $result) => $result->repetitions),
+                'qualification' => Math::qualifyCq($results->avg(fn (Result $result) => $result->averageCQ->raw()),
                     $parameters->firstWhere('target', $results->first()->target)->cutoff),
-                'quantification' => $results->first() !== null ? new RoundedNumber($results->avg(fn(Result $result
+                'quantification' => $results->first() !== null ? new RoundedNumber($results->avg(fn (Result $result
                 ) => $result->quantification->raw())) : null,
-                'measurements' => new MeasurementCollection($results->map(fn(Result $result) => $result->measurements)->flatten(1)->values()),
+                'measurements' => new MeasurementCollection($results->map(fn (Result $result) => $result->measurements)->flatten(1)->values()),
                 'type' => $results->first()->type,
             ])
-            )->each(function(Result $result) {
-                if($result->qualification !== QualitativeResult::POSITIVE()) {
+            )->each(function (Result $result) {
+                if ($result->qualification !== QualitativeResult::POSITIVE()) {
                     $result->quantification = null;
                 }
             });

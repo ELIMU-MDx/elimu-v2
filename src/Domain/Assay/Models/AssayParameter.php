@@ -12,7 +12,7 @@ final class AssayParameter extends Model
     protected $casts = [
         'slope' => 'float',
         'intercept' => 'float',
-        'cutoff' => 'float'
+        'cutoff' => 'float',
     ];
 
     protected $appends = ['quantify'];

@@ -9,7 +9,6 @@ use Domain\Experiment\DataTransferObjects\ResultCalculationParameter;
 use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\DataTransferObjects\Measurement;
 use Domain\Results\DataTransferObjects\Result;
-use Domain\Results\Enums\QualitativeResult;
 use Illuminate\Support\Collection;
 
 final class MeasurementEvaluator

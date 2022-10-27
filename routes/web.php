@@ -4,6 +4,7 @@ use App\Admin\Assays\Controllers\CreateAssayController;
 use App\Admin\Assays\Controllers\DownloadAssayController;
 use App\Admin\Assays\Controllers\EditAssayController;
 use App\Admin\Assays\Controllers\ListAssaysController;
+use App\Admin\Experiments\Controllers\DownloadAssayReportsController;
 use App\Admin\Experiments\Controllers\DownloadRdmlController;
 use App\Admin\Experiments\Controllers\EditExperimentController;
 use App\Admin\Experiments\Controllers\ExportResultsController;
@@ -65,6 +66,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
         Route::get('samples/{sample}', ShowSampleController::class);
         Route::get('/assays/{assay}/samples/{sample}/report/pdf', ShowSampleReportPdfController::class);
+        Route::get('/assays/{assay}/reports', DownloadAssayReportsController::class)->name('assays.reports');
 
         Route::get('experiments', ListExperimentsController::class)->name('experiments.index');
         Route::get('experiments/{experiment}/rdml', DownloadRdmlController::class)

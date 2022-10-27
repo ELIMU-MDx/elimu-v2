@@ -122,7 +122,6 @@
 
         <footer class="flex border-t-2 border-gray-900 mt-8 justify-between">
             <p class="font-bold">Elimu - MDx</p>
-            <p>Version {{date('d.m.Y')}}</p>
         </footer>
     </div>
 </x-pdf-layout>

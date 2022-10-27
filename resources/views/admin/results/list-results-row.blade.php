@@ -8,11 +8,11 @@
             {{$result->cq ? round($result->cq, 2) : 'NaN'}}
 
             @if($result->cq && $validationTypes[$result->target] === 'standard_deviation')
-                <div class="text-xs text-gray-500 mt-2">Stddev {{$result->standard_deviation}}</div>
+                <div class="text-xs text-gray-500 mt-2">Stddev {{new \Support\ValueObjects\RoundedNumber($result->standard_deviation, 2)}}</div>
             @endif
             @if($result->cq && $validationTypes[$result->target] === 'coefficient_of_variation')
                 <div class="text-xs text-gray-500 mt-2">
-                    CV {{new \Support\ValueObjects\RoundedNumber($result->standard_deviation / $result->cq * 100)}}%
+                    CV {{new \Support\ValueObjects\RoundedNumber($result->standard_deviation / $result->cq * 100, 2)}}%
                 </div>
             @endif
         </td>

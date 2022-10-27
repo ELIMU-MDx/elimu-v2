@@ -69,7 +69,7 @@ final class RecalculateResultsAction
                 'cq' => $result->averageCQ->rounded(15),
                 'quantification' => $result->quantification?->rounded(2),
                 'qualification' => $result->qualification,
-                'standard_deviation' => $result->measurements->included()->standardDeviationCq()->rounded(2),
+                'standard_deviation' => $result->measurements->included()->standardDeviationCq()->rounded(15),
             ];
         })
             ->tap(function (BaseCollection $results) {

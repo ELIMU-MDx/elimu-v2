@@ -29,7 +29,7 @@ final class ShowSampleReportController
                     name: $parameter->description ?? $parameter->target,
                     cq: $result->cq,
                     quantification: $result->quantification,
-                    qualification: $result->result_errors_count > 0 ? 'Invalid' : $result->qualification
+                    qualification: $result->result_errors_count > 0 ? 'Invalid' : ucfirst(strtolower($result->qualification))
                 );
             }));
         $report = new SampleReportData(
@@ -54,7 +54,7 @@ final class ShowSampleReportController
                         name: $parameter->description ?? $parameter->target,
                         cq: $result->cq,
                         quantification: $result->quantification,
-                        qualification: $result->result_errors_count > 0 ? 'Invalid' : $result->qualification
+                        qualification: $result->result_errors_count > 0 ? 'Invalid' : ucfirst(strtolower($result->qualification))
                     );
                 }))
         );

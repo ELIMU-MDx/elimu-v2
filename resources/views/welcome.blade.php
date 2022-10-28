@@ -182,7 +182,7 @@
             </div>
             <div class="mt-8 md:mt-0 md:order-1">
                 <p class="text-center text-base text-gray-400">
-                    &copy; 2021 Tobias Schindler &amp; Silvan Krähenbühl. All rights reserved.
+                    &copy; 2021 - {{date('Y')}} Tobias Schindler &amp; Silvan Krähenbühl. All rights reserved.
                 </p>
             </div>
         </div>

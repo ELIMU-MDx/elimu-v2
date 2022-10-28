@@ -16,7 +16,7 @@ final class ShowSampleReportController
 {
     public function __invoke(Assay $assay, Sample $sample)
     {
-        $sample->load(['results' => fn($query) => $query->withCount('resultErrors')]);
+        $sample->load(['results' => fn ($query) => $query->withCount('resultErrors')]);
         $targets = new DataCollection(SampleReportTarget::class, $assay->parameters
             ->reject(fn (AssayParameter $parameter) => $parameter->is_control)
             ->map(function (AssayParameter $parameter) use ($assay, $sample) {

@@ -10,6 +10,8 @@ use Spatie\LaravelData\DataCollection;
 final class SampleReportData extends Data
 {
     public function __construct(
+        readonly public string $study,
+        readonly public string $qrCode,
         readonly public string $sampleId,
         readonly public string $assayName,
         readonly public bool $hasQuantification,

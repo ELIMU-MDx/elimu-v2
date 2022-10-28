@@ -39,7 +39,7 @@ Route::get('/invitation/{invitation}/accepts/login', AcceptInvitationAsExistingU
     ->name('invitations.accept.existing');
 
 Route::get('/assays/{assay}/samples/{sample}/report', ShowSampleReportController::class)
-    ->middleware('signed')
+    //->middleware('signed')
     ->name('samples.report');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -64,7 +64,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             ->name('results.export')
             ->middleware('can:download-results,assay');
 
-        Route::get('samples/{sample}', ShowSampleController::class);
+        Route::get('samples/{sample}', ShowSampleController::class)->name('samples.show');
         Route::get('/assays/{assay}/samples/{sample}/report/pdf', ShowSampleReportPdfController::class)->name('samples.report.pdf');
         Route::get('/assays/{assay}/reports', DownloadAssayReportsController::class)->name('assays.reports');
 

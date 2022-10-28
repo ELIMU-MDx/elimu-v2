@@ -4,6 +4,7 @@ namespace App\Admin\Experiments\Controllers;
 
 use App\Admin\Data\SampleReportData;
 use App\Admin\Data\SampleReportTarget;
+use chillerlan\QRCode\QRCode;
 use Domain\Assay\Models\Assay;
 use Domain\Assay\Models\AssayParameter;
 use Domain\Experiment\Models\Sample;
@@ -15,6 +16,7 @@ final class ShowSampleReportController
 {
     public function __invoke(Assay $assay, Sample $sample)
     {
+        $sample->load(['results' => fn($query) => $query->withCount('resultErrors')]);
         $targets = new DataCollection(SampleReportTarget::class, $assay->parameters
             ->reject(fn (AssayParameter $parameter) => $parameter->is_control)
             ->map(function (AssayParameter $parameter) use ($assay, $sample) {
@@ -27,10 +29,12 @@ final class ShowSampleReportController
                     name: $parameter->description ?? $parameter->target,
                     cq: $result->cq,
                     quantification: $result->quantification,
-                    qualification: QualitativeResult::tryFrom($result->qualification)
+                    qualification: $result->result_errors_count > 0 ? 'Invalid' : $result->qualification
                 );
             }));
         $report = new SampleReportData(
+            study: $assay->study->name,
+            qrCode: (new QRCode())->render(route('samples.show', $sample)),
             sampleId: $sample->identifier,
             assayName: $assay->name,
             hasQuantification: (bool) $targets->first(fn (SampleReportTarget $target
@@ -50,7 +54,7 @@ final class ShowSampleReportController
                         name: $parameter->description ?? $parameter->target,
                         cq: $result->cq,
                         quantification: $result->quantification,
-                        qualification: QualitativeResult::tryFrom($result->qualification),
+                        qualification: $result->result_errors_count > 0 ? 'Invalid' : $result->qualification
                     );
                 }))
         );

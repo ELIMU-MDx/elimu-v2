@@ -1,9 +1,7 @@
 <x-pdf-layout>
     <div class="max-w-screen-md min-h-screen mx-auto p-10 flex flex-col">
         <header class="border-b-2 border-gray-900 pb-2">
-            <img alt="Organisation logo"
-                 src="https://www.swisstph.ch/typo3temp/assets/_processed_/e/8/csm_Logo_SwissTPH_print_e17aa7820d.png"
-                 class="max-w-[200px]"/>
+            <p class="font-bold">{{$report->study}}</p>
         </header>
         <div class="py-10 flex-grow flex flex-col">
             <h1 class="text-2xl text-center">Laboratory Result Form for {{$report->assayName}} RT-qPCR</h1>
@@ -30,17 +28,12 @@
                                 Internal Control ({{$target->name}})
                             </td>
 
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-700">@if($target->qualification === \Domain\Results\Enums\QualitativeResult::POSITIVE())
-                                    <span
-                                        class="font-bold">
-                                        Passed
-                                    </span>
-                                @else
-                                    <span
-                                        class="font-bold">
-                                        Failed
-                                    </span>
-                                @endif</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-700">
+                                <span
+                                    class="font-bold">
+                                    {{$target->qualification}}
+                                </span>
+                            </td>
 
                         </tr>
                     @endforeach
@@ -60,13 +53,12 @@
                                     {{$report->assayName}} analyte
                                 </th>
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                    CV value
+                                    Cq value
                                 </th>
                                 @if($report->hasQuantification)
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                         <p>Quantification</p>
-                                        <p>(eggs / g stool)</p>
                                     </th>
                                 @endif
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
@@ -104,24 +96,19 @@
                 </div>
             </div>
 
-            <p class="mt-12">
-                Sample tested <strong
-                    class="font-bold">{{$report->result === \Domain\Results\Enums\QualitativeResult::POSITIVE() ? 'Positive' : 'Negative'}}</strong>
-                for {{$report->assayName}} by RT-qPCR
-            </p>
-
+            <img src="{{$report->qrCode}}" alt="QR Code" class="w-64 block mx-auto"/>
             <div class="grid grid-cols-2 grid-rows-2 gap-6 mt-auto pt-4">
                 <p class="row-start-1">Report released</p>
 
                 <p class="row-start-2">{{date('d.m.Y')}}</p>
 
-                    <p class="row-start-1">Signature</p>
-                    <div class="mt-6 h-px bg-gray-900 w-full row-start-2"></div>
+                <p class="row-start-1">Signature</p>
+                <div class="mt-6 h-px bg-gray-900 w-full row-start-2"></div>
             </div>
         </div>
 
-        <footer class="flex border-t-2 border-gray-900 mt-8 justify-between">
-            <p class="font-bold">Elimu - MDx</p>
+        <footer class="flex border-t-2 border-gray-900 mt-8 justify-between pt-2">
+            <p class="font-bold">ELIMU-MDx</p>
         </footer>
     </div>
 </x-pdf-layout>

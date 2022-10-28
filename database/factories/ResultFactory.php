@@ -25,11 +25,11 @@ final class ResultFactory extends Factory
             'sample_id' => SampleFactory::new(),
             'assay_id' => AssayFactory::new(),
             'target' => $this->faker->word(),
-            'cq' => $this->faker->boolean() ? $this->faker->randomFloat(nbMaxDecimals: 2, max: 9999) : null,
+            'cq' => $this->faker->boolean() ? $this->faker->randomFloat(nbMaxDecimals: 14, max: 99) : null,
             'quantification' => $qualification === QualitativeResult::POSITIVE() ? $this->faker->randomFloat(nbMaxDecimals: 2,
                 max: 9999) : null,
             'qualification' => $qualification,
-            'standard_deviation' => $this->faker->randomFloat(nbMaxDecimals: 2, max: 9999),
+            'standard_deviation' => $this->faker->randomFloat(nbMaxDecimals: 2, max: 99),
         ];
     }
 

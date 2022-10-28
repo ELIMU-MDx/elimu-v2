@@ -76,17 +76,12 @@
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-700">{{new \Support\ValueObjects\RoundedNumber($target->quantification)}}</td>
                                     @endif
 
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-700">@if($target->qualification === \Domain\Results\Enums\QualitativeResult::POSITIVE())
-                                            <span
-                                                class="font-bold">
-                                                Positive
-                                            </span>
-                                        @else
-                                            <span
-                                                class="font-bold">
-                                                Negative
-                                            </span>
-                                        @endif</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-700">
+                                        <span
+                                            class="font-bold">
+                                            {{$target->qualification}}
+                                        </span>
+                                    </td>
 
                                 </tr>
                             @endforeach

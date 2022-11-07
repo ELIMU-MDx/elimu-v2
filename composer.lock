@@ -206,16 +206,16 @@
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
-            "version": "2.0.4",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/blade-ui-kit/blade-heroicons.git",
-                "reference": "b1c5f43971554dfe6a80e2b1937a0aba560a51ca"
+                "reference": "36bbf7386d600706f96e83ec4ca75d3817c46f3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/blade-ui-kit/blade-heroicons/zipball/b1c5f43971554dfe6a80e2b1937a0aba560a51ca",
-                "reference": "b1c5f43971554dfe6a80e2b1937a0aba560a51ca",
+                "url": "https://api.github.com/repos/blade-ui-kit/blade-heroicons/zipball/36bbf7386d600706f96e83ec4ca75d3817c46f3d",
+                "reference": "36bbf7386d600706f96e83ec4ca75d3817c46f3d",
                 "shasum": ""
             },
             "require": {
@@ -259,7 +259,7 @@
             ],
             "support": {
                 "issues": "https://github.com/blade-ui-kit/blade-heroicons/issues",
-                "source": "https://github.com/blade-ui-kit/blade-heroicons/tree/2.0.4"
+                "source": "https://github.com/blade-ui-kit/blade-heroicons/tree/2.0.5"
             },
             "funding": [
                 {
@@ -271,7 +271,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-10-06T09:48:47+00:00"
+            "time": "2022-11-02T12:52:36+00:00"
         },
         {
             "name": "blade-ui-kit/blade-icons",

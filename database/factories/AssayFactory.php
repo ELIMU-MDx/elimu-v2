@@ -26,8 +26,8 @@ final class AssayFactory extends Factory
         ];
     }
 
-    public function hasParameters(AssayParameterFactory $factory): static
+    public function hasParameters(AssayParameterFactory $factory = null): static
     {
-        return $this->has($factory, 'parameters');
+        return $this->has($factory ?? AssayParameterFactory::new(), 'parameters');
     }
 }

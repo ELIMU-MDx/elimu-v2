@@ -11,10 +11,11 @@ use Livewire\Livewire;
 
 it('lists samples', function () {
     $study = StudyFactory::new()->create();
-    $assay = AssayFactory::new()->recycle($study)->create();
+    $assay = AssayFactory::new()->recycle($study)->hasParameters()->create();
     $result = ResultFactory::new(['assay_id' => $assay->id])
         ->recycle($study)
-        ->withMeasurement(MeasurementFactory::new()->sample())
+        ->recycle($assay)
+        ->withMeasurement(MeasurementFactory::new()->forParameter($assay->parameters[0])->sample())
         ->create();
 
     $this->signIn(UserFactory::new()->withStudy($study)->create());

@@ -23,7 +23,7 @@ it('list results', function () {
             'sample' => $result->sample->identifier,
             'replicas_'.strtolower($result->target) => 1,
             'replicas_'.strtolower($result->target).'_total' => 1,
-            'mean_cq_'.strtolower($result->target) => $result->cq,
+            'mean_cq_'.strtolower($result->target) => $result->cq !== null ? round($result->cq, 12) : null,
             'qualitative_result_'.strtolower($result->target) => $result->qualification->label,
             'quantitative_result_'.strtolower($result->target) => $result->quantification,
             'standard_deviation_cq_'.strtolower($result->target) => $result->standard_deviation,

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use Domain\Assay\Models\AssayParameter;
 use Domain\Experiment\Models\Measurement;
 use Domain\Rdml\Enums\MeasurementType;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -28,6 +29,13 @@ final class MeasurementFactory extends Factory
             'excluded' => $this->faker->boolean(),
             'type' => MeasurementType::SAMPLE(),
         ];
+    }
+
+    public function forParameter(AssayParameter $parameter)
+    {
+        return $this->state([
+            'target' => $parameter->target,
+        ]);
     }
 
     public function sample(): static

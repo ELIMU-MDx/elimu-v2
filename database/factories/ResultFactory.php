@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use Domain\Assay\Models\AssayParameter;
 use Domain\Results\Enums\QualitativeResult;
 use Domain\Results\Models\Result;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -31,6 +32,13 @@ final class ResultFactory extends Factory
             'qualification' => $qualification,
             'standard_deviation' => $this->faker->randomFloat(nbMaxDecimals: 2, max: 99),
         ];
+    }
+
+    public function forParameter(AssayParameter $parameter)
+    {
+        return $this->state([
+            'target' => $parameter->target,
+        ]);
     }
 
     public function withMeasurement(?MeasurementFactory $measurement = null): ResultFactory

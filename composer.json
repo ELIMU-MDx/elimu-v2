@@ -22,7 +22,7 @@
         "kirschbaum-development/eloquent-power-joins": "^2.6",
         "laravel/framework": "^9.33",
         "laravel/horizon": "^5.10",
-        "laravel/jetstream": "^2.6",
+        "laravel/jetstream": "^3.0",
         "laravel/sanctum": "dev-develop",
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.0",

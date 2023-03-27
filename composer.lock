@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c812c935df6ac7b9227a0ae993e2cdec",
+    "content-hash": "cde68191ea517294824cf47967c31020",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -3341,22 +3341,22 @@
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",
-            "version": "2.7.2",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirschbaum-development/eloquent-power-joins.git",
-                "reference": "9db3de5c4be225d9fd19676c4219ec39c4d0e003"
+                "reference": "b9aa4c2364e2776e5aacca49160d4b519ae82768"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirschbaum-development/eloquent-power-joins/zipball/9db3de5c4be225d9fd19676c4219ec39c4d0e003",
-                "reference": "9db3de5c4be225d9fd19676c4219ec39c4d0e003",
+                "url": "https://api.github.com/repos/kirschbaum-development/eloquent-power-joins/zipball/b9aa4c2364e2776e5aacca49160d4b519ae82768",
+                "reference": "b9aa4c2364e2776e5aacca49160d4b519ae82768",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "^6.0|^7.0|^8.0|^9.0|^10.0",
-                "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0",
-                "php": "^7.1|^8.0"
+                "illuminate/database": "^8.0|^9.0|^10.0",
+                "illuminate/support": "^8.0|^9.0|^10.0",
+                "php": "^8.0"
             },
             "require-dev": {
                 "laravel/legacy-factories": "^1.0@dev",
@@ -3397,9 +3397,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirschbaum-development/eloquent-power-joins/issues",
-                "source": "https://github.com/kirschbaum-development/eloquent-power-joins/tree/2.7.2"
+                "source": "https://github.com/kirschbaum-development/eloquent-power-joins/tree/3.0.2"
             },
-            "time": "2023-02-08T10:57:50+00:00"
+            "time": "2023-03-16T14:41:20+00:00"
         },
         {
             "name": "laravel/fortify",

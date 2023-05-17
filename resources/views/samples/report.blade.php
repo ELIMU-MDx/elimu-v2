@@ -58,7 +58,7 @@
                                 @if($report->hasQuantification)
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        <p>Quantification</p>
+                                        <p>Parasite density (no./ul)</p>
                                     </th>
                                 @endif
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
@@ -91,18 +91,48 @@
                 </div>
             </div>
 
-            <img src="{{$report->qrCode}}" alt="QR Code" class="w-64 block mx-auto"/>
-            <div class="grid grid-cols-2 grid-rows-2 gap-6 mt-auto pt-4">
-                <p class="row-start-1">Report released</p>
+            <div class="mt-12">
+                <h3 class="font-bold">Report released</h3>
+                <div class="grid grid-cols-3 grid-rows-2 gap-6 items-end mt-2">
+                    <p class="row-start-1">Date and Time</p>
 
-                <p class="row-start-2">{{date('d.m.Y')}}</p>
+                    <div class="row-start-2 relative">
+                        {{date('d.m.Y H:i')}}
+                        <div class="absolute w-full h-px bg-gray-900 bottom-0"></div>
+                    </div>
 
-                <p class="row-start-1">Signature</p>
-                <div class="mt-6 h-px bg-gray-900 w-full row-start-2"></div>
+                    <p class="row-start-1">Name</p>
+                    <div class="h-px bg-gray-900 w-full row-start-2"></div>
+
+                    <p class="row-start-1">Signature</p>
+                    <div class="h-px bg-gray-900 w-full row-start-2"></div>
+                </div>
+
+
+                <h3 class="mt-8 font-bold">Report reviewed</h3>
+                <div class="grid grid-cols-3 grid-rows-2 gap-6 mt-2">
+                    <p class="row-start-1">Date and Time</p>
+
+                    <div class="h-px bg-gray-900 w-full row-start-2"></div>
+
+                    <p class="row-start-1">Name</p>
+                    <div class="h-px bg-gray-900 w-full row-start-2"></div>
+
+                    <p class="row-start-1">Signature</p>
+                    <div class="h-px bg-gray-900 w-full row-start-2"></div>
+                </div>
+
+
+                <h3 class="mt-6 font-bold">Comments</h3>
+                <div class="space-y-8 mt-6">
+                    <div class="h-px bg-gray-900 w-full"></div>
+                    <div class="h-px bg-gray-900 w-full"></div>
+                    <div class="h-px bg-gray-900 w-full"></div>
+                </div>
             </div>
         </div>
 
-        <footer class="flex border-t-2 border-gray-900 mt-8 justify-between pt-2">
+        <footer class="flex border-t-2 border-gray-900 mt-4 justify-between pt-2">
             <p class="font-bold">ELIMU-MDx</p>
         </footer>
     </div>

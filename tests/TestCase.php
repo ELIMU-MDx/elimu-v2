@@ -2,8 +2,8 @@
 
 namespace Tests;
 
+use App\Models\User;
 use Database\Factories\UserFactory;
-use Domain\Users\Models\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Routing\Middleware\ValidateSignature;
 

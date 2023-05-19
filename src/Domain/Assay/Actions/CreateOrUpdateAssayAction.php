@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Assay\Actions;
 
-use Domain\Assay\Models\Assay;
-use Domain\Assay\Models\AssayParameter;
+use App\Models\Assay;
+use App\Models\AssayParameter;
 use Domain\Experiment\Actions\RecalculateResultsAction;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Collection;

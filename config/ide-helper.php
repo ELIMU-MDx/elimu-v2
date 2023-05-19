@@ -186,7 +186,7 @@ return [
     */
 
     'interfaces' => [
-        \Illuminate\Contracts\Auth\Authenticatable::class => \Domain\Users\Models\User::class,
+        \Illuminate\Contracts\Auth\Authenticatable::class => \App\Models\User::class,
     ],
 
     /*

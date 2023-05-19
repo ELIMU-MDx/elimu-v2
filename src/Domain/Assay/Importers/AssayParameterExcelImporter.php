@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Assay\Importers;
 
-use Domain\Assay\Models\AssayParameter;
+use App\Models\AssayParameter;
 use Domain\Assay\Rules\ControlParameterValidationRule;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;

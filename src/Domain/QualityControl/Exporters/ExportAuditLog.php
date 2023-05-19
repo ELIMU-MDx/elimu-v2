@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\QualityControl\Exporters;
 
-use Domain\QualityControl\Models\Activity;
+use App\Models\Activity;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;

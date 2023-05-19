@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Models\Result;
 use Database\Factories\AssayFactory;
 use Database\Factories\AssayParameterFactory;
 use Database\Factories\ExperimentFactory;
@@ -9,7 +10,6 @@ use Database\Factories\MeasurementFactory;
 use Database\Factories\SampleFactory;
 use Domain\Experiment\Actions\RecalculateResultsAction;
 use Domain\Results\Enums\QualitativeResult;
-use Domain\Results\Models\Result;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 
 /**

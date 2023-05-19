@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Invitations\Actions;
 
-use Domain\Invitations\Models\Invitation;
+use App\Models\Invitation;
 use Illuminate\Http\Request;
 
 final class AcceptInvitationFromSessionAction

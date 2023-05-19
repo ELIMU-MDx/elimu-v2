@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Study\Actions;
 
-use Domain\Study\Models\Study;
-use Domain\Users\Models\User;
+use App\Models\Study;
+use App\Models\User;
 
 final class RemoveTeamMemberAction
 {

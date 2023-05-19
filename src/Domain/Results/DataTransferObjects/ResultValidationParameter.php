@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Results\DataTransferObjects;
 
-use Domain\Assay\Models\AssayParameter;
+use App\Models\AssayParameter;
 use Spatie\DataTransferObject\DataTransferObject;
 
 final class ResultValidationParameter extends DataTransferObject

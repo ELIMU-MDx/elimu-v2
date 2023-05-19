@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use Domain\Assay\Models\AssayParameter;
+use App\Models\AssayParameter;
+use App\Models\Result;
 use Domain\Results\Enums\QualitativeResult;
-use Domain\Results\Models\Result;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 

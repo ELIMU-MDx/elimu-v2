@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Rdml\DataTransferObjects;
 
-use Domain\Experiment\Models\Measurement as MeasurementModel;
+use App\Models\Measurement as MeasurementModel;
 use Domain\Rdml\Enums\MeasurementType;
 use Illuminate\Support\Collection;
 use Spatie\DataTransferObject\DataTransferObject;

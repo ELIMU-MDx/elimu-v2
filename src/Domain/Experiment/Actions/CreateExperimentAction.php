@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Domain\Experiment\Actions;
 
+use App\Models\Experiment;
+use App\Models\Measurement;
+use App\Models\Sample;
 use Domain\Experiment\DataTransferObjects\CreateExperimentParameter;
 use Domain\Experiment\Jobs\ImportDataPointJob;
-use Domain\Experiment\Models\Experiment;
-use Domain\Experiment\Models\Measurement;
-use Domain\Experiment\Models\Sample;
 use Domain\Rdml\Converters\RdmlConverter;
 use Domain\Rdml\DataTransferObjects\QuantifyConfiguration;
-use Domain\Rdml\Services\RdmlReader;
+use Domain\Rdml\RdmlReader;
 use Illuminate\Database\Connection;
 
 final class CreateExperimentAction

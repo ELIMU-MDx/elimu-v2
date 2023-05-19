@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Domain\Experiment\Actions;
 
-use Domain\Experiment\Models\Experiment;
-use Domain\Experiment\Models\Measurement;
-use Domain\Experiment\Models\Sample;
-use Domain\Results\Models\Result;
+use App\Models\Experiment;
+use App\Models\Measurement;
+use App\Models\Result;
+use App\Models\Sample;
 
 final class DeleteExperimentAction
 {

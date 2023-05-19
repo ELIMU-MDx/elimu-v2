@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use Domain\Assay\Models\AssayParameter;
-use Domain\Experiment\Models\Measurement;
+use App\Models\AssayParameter;
+use App\Models\Measurement;
 use Domain\Rdml\Enums\MeasurementType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\Assay\Actions;
 
+use App\Models\Assay;
+use App\Models\User;
 use Domain\Assay\Importers\AssayParameterExcelImporter;
-use Domain\Assay\Models\Assay;
-use Domain\Users\Models\User;
 use Illuminate\Database\Connection;
 use Illuminate\Http\UploadedFile;
 use Maatwebsite\Excel\Excel;

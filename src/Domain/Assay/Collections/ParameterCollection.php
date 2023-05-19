@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Assay\Collections;
 
+use App\Models\AssayParameter;
 use BadMethodCallException;
-use Domain\Assay\Models\AssayParameter;
 use Illuminate\Database\Eloquent\Collection;
 
 final class ParameterCollection extends Collection

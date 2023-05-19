@@ -1,6 +1,6 @@
 <tr class="{{$even ? 'bg-gray-100' : 'bg-white'}} relative z-0">
     <td class="px-3 py-4 whitespace-nowrap text-sm text-left font-semibold">
-        <a href="{{action(\App\Admin\Experiments\Controllers\ShowSampleController::class, ['sample' => $sample])}}"
+        <a href="{{action(\App\Http\Controllers\ShowSampleController::class, ['sample' => $sample])}}"
            class="text-indigo-600 font-semibold rounded-lg text-xs mt-1 underline">{{$sample->identifier}}</a>
     </td>
     @foreach($sample->results as $result)
@@ -8,7 +8,8 @@
             {{$result->cq ? round($result->cq, 2) : 'NaN'}}
 
             @if($result->cq && $validationTypes[$result->target] === 'standard_deviation')
-                <div class="text-xs text-gray-500 mt-2">Stddev {{new \Support\ValueObjects\RoundedNumber($result->standard_deviation, 2)}}</div>
+                <div class="text-xs text-gray-500 mt-2">
+                    Stddev {{new \Support\ValueObjects\RoundedNumber($result->standard_deviation, 2)}}</div>
             @endif
             @if($result->cq && $validationTypes[$result->target] === 'coefficient_of_variation')
                 <div class="text-xs text-gray-500 mt-2">

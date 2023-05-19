@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Study\Actions;
 
-use Domain\Invitations\Models\Invitation;
+use App\Models\Invitation;
 use Domain\Study\Enums\InvitationStatus;
 use Domain\Study\Mailable\NewUserInvitationMail;
 use Domain\Study\Roles\RoleFactory;

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Validator;
+
 function is_url(string $string): bool
 {
     return Validator::make(

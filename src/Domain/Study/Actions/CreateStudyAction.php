@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Domain\Study\Actions;
 
+use App\Models\Study;
+use App\Models\User;
 use Domain\Study\DataTransferObject\CreateStudyParameter;
-use Domain\Study\Models\Study;
 use Domain\Study\Roles\Owner;
-use Domain\Users\Models\User;
 use Illuminate\Database\Connection;
 
 final class CreateStudyAction

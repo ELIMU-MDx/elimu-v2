@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Models\Study;
 use Database\Factories\UserFactory;
-use Domain\Study\Models\Study;
 
 it('creates a study', function () {
     $user = UserFactory::new()->create();

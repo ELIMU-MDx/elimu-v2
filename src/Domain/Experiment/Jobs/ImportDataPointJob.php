@@ -2,8 +2,8 @@
 
 namespace Domain\Experiment\Jobs;
 
+use App\Models\Experiment;
 use Domain\Experiment\Actions\ImportDataPointsAction;
-use Domain\Experiment\Models\Experiment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

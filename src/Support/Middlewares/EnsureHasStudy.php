@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Support\Middlewares;
 
+use App\Models\User;
 use Closure;
-use Domain\Users\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 

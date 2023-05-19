@@ -11,9 +11,9 @@
 |
 */
 
-$app = (new Illuminate\Foundation\Application(
+$app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
-))->useAppPath(base_path('src/App'));
+);
 
 /*
 |--------------------------------------------------------------------------
@@ -28,17 +28,17 @@ $app = (new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    App\HttpKernel::class
+    App\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    App\ConsoleKernel::class
+    App\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\ExceptionHandler::class
+    App\Exceptions\Handler::class
 );
 
 /*

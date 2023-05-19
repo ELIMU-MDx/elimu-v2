@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Invitations\Actions;
 
+use App\Models\Invitation;
 use BadMethodCallException;
-use Domain\Invitations\Models\Invitation;
 use Illuminate\Database\Connection;
 
 final class AcceptInvitationAction

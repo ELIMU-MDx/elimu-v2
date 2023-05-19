@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Experiment\QueryBuilders;
 
-use Domain\Experiment\Models\Measurement;
+use App\Models\Measurement;
 use Domain\Rdml\Enums\MeasurementType;
 use Illuminate\Database\Eloquent\Builder;
 

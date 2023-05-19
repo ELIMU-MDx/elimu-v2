@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Domain\Results\Exports;
 
-use Domain\Assay\Models\Assay;
-use Domain\Assay\Models\AssayParameter;
-use Domain\Experiment\Models\Sample;
-use Domain\Results\Models\Result;
-use Domain\Users\Models\User;
+use App\Models\Assay;
+use App\Models\AssayParameter;
+use App\Models\Result;
+use App\Models\Sample;
+use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;

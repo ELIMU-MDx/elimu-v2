@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Experiment\DataTransferObjects;
 
-use Domain\Experiment\Models\Experiment;
+use App\Models\Experiment;
 use Illuminate\Http\UploadedFile;
 use Spatie\DataTransferObject\DataTransferObject;
 

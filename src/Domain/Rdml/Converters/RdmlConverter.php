@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Rdml\Converters;
 
-use Domain\Experiment\Models\Measurement;
-use Domain\Experiment\Models\Sample;
+use App\Models\Measurement;
+use App\Models\Sample;
 use Domain\Rdml\DataTransferObjects\Measurement as MeasurementDTO;
 use Domain\Rdml\DataTransferObjects\Rdml;
 use Illuminate\Contracts\Support\Arrayable;

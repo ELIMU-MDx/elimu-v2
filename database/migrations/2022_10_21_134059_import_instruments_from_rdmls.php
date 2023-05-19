@@ -1,7 +1,7 @@
 <?php
 
-use Domain\Experiment\Models\Experiment;
-use Domain\Rdml\Services\RdmlReader;
+use App\Models\Experiment;
+use Domain\Rdml\RdmlReader;
 use Illuminate\Database\Migrations\Migration;
 use Symfony\Component\HttpFoundation\File\File;
 

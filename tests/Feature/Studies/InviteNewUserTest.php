@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\View\Livewire\StudyMemberManager;
+use App\Http\Livewire\StudyMemberManager;
 use Database\Factories\UserFactory;
 use Domain\Study\Mailable\NewUserInvitationMail;
 use Domain\Study\Roles\Scientist;

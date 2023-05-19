@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use Domain\Study\Models\Study;
+use App\Models\Study;
+use App\Models\User;
 use Domain\Study\Roles\Owner;
-use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;

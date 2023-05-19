@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Domain\Experiment\DataTransferObjects\ResultCalculationParameter;
 use Domain\Results\Enums\QualitativeResult;
-use Domain\Results\Services\MeasurementEvaluator;
+use Domain\Results\MeasurementEvaluator;
 
 it('evaluates to positive', function () {
     $evaluator = app(MeasurementEvaluator::class);

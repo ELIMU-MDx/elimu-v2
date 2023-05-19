@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use Domain\Experiment\Models\DataPoint;
+use App\Models\DataPoint;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DataPointFactory extends Factory

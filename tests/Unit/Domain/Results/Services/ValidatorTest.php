@@ -9,7 +9,7 @@ use Domain\Results\Enums\QualitativeResult;
 use Domain\Results\ResultValidationErrors\DivergingMeasurementsError;
 use Domain\Results\ResultValidationErrors\NotEnoughRepetitionsError;
 use Domain\Results\ResultValidationErrors\StandardDeviationExceedsCutoffError;
-use Domain\Results\Services\ResultValidator;
+use Domain\Results\ResultValidator;
 use Support\ValueObjects\RoundedNumber;
 
 /**

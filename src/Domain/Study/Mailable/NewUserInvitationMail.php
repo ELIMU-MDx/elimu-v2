@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Study\Mailable;
 
-use Domain\Invitations\Models\Invitation;
+use App\Models\Invitation;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\URL;

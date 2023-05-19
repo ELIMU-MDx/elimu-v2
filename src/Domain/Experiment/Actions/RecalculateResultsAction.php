@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Domain\Experiment\Actions;
 
-use Domain\Assay\Models\Assay;
-use Domain\Assay\Models\AssayParameter;
+use App\Models\Assay;
+use App\Models\AssayParameter;
+use App\Models\Measurement;
+use App\Models\Result as ResultModel;
+use App\Models\ResultError;
 use Domain\Experiment\DataTransferObjects\ResultCalculationParameter;
-use Domain\Experiment\Models\Measurement;
 use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\DataTransferObjects\Measurement as MeasurementDTO;
 use Domain\Results\DataTransferObjects\Result;
 use Domain\Results\DataTransferObjects\ResultValidationParameter;
 use Domain\Results\Enums\QualitativeResult;
-use Domain\Results\Models\Result as ResultModel;
-use Domain\Results\Models\ResultError;
+use Domain\Results\MeasurementEvaluator;
 use Domain\Results\ResultValidationErrors\ResultValidationErrorFactory;
-use Domain\Results\Services\MeasurementEvaluator;
-use Domain\Results\Services\ResultValidator;
+use Domain\Results\ResultValidator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Collection as BaseCollection;
 use Support\Math;

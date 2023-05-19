@@ -2,13 +2,13 @@
 
 namespace Domain\Experiment\Actions;
 
+use App\Models\DataPoint;
+use App\Models\Experiment;
+use App\Models\Measurement;
 use Domain\Experiment\Enums\ImportStatus;
-use Domain\Experiment\Models\DataPoint;
-use Domain\Experiment\Models\Experiment;
-use Domain\Experiment\Models\Measurement;
 use Domain\Rdml\DataTransferObjects\AmplificationDataPoint;
 use Domain\Rdml\DataTransferObjects\Measurement as MeasurementDTO;
-use Domain\Rdml\Services\RdmlReader;
+use Domain\Rdml\RdmlReader;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Collection;

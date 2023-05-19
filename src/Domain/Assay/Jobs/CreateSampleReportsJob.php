@@ -2,9 +2,9 @@
 
 namespace Domain\Assay\Jobs;
 
+use App\Models\Assay;
+use App\Models\Result;
 use Domain\Assay\Mails\SendSampleReportsMail;
-use Domain\Assay\Models\Assay;
-use Domain\Results\Models\Result;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;

@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Domain\Study\Models\Study;
+use App\Models\Study;
+use App\Models\User;
 use Domain\Study\Roles\Owner;
-use Domain\Users\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 

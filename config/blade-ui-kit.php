@@ -23,7 +23,6 @@ use BladeUIKit\Components\Layouts\SocialMeta;
 use BladeUIKit\Components\Maps\Mapbox;
 use BladeUIKit\Components\Markdown\Markdown;
 use BladeUIKit\Components\Markdown\ToC;
-use BladeUIKit\Components\Navigation\Dropdown;
 use BladeUIKit\Components\Support\Avatar;
 use BladeUIKit\Components\Support\Cron;
 use BladeUIKit\Components\Support\Unsplash;
@@ -49,7 +48,6 @@ return [
         'color-picker' => ColorPicker::class,
         'countdown' => Countdown::class,
         'cron' => Cron::class,
-        'dropdown' => Dropdown::class,
         'easy-mde' => EasyMDE::class,
         'email' => Email::class,
         'error' => Error::class,

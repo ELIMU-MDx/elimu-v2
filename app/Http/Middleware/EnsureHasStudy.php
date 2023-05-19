@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Support\Middlewares;
+namespace App\Http\Middleware;
 
 use App\Models\User;
 use Closure;

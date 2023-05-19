@@ -36,7 +36,7 @@
                                           clip-rule="evenodd"/>
                                 </svg>
                             </div>
-                            <x-jet-input type="search" name="search" id="search" class="pl-9" wire:model="search"
+                            <x-input type="search" name="search" id="search" class="pl-9" wire:model="search"
                                          placeholder="Search by sample"/>
                         </div>
                         <div class="text-gray-500 text-sm mx-2">

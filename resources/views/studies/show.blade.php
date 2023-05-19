@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <livewire:study-form :study="$study"/>
-        <x-jet-section-border/>
+        <x-section-border/>
         <livewire:study-member-manager :study="$study"/>
     </div>
 </x-app-layout>

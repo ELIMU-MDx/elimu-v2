@@ -16,6 +16,9 @@ final class StudyFactory extends Factory
     /** @var string */
     protected $model = Study::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [

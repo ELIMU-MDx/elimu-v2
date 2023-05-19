@@ -34,14 +34,14 @@ final class ResultFactory extends Factory
         ];
     }
 
-    public function forParameter(AssayParameter $parameter)
+    public function forParameter(AssayParameter $parameter): static
     {
         return $this->state([
             'target' => $parameter->target,
         ]);
     }
 
-    public function withMeasurement(?MeasurementFactory $measurement = null): ResultFactory
+    public function withMeasurement(?MeasurementFactory $measurement = null): static
     {
         $measurement ??= MeasurementFactory::new();
 

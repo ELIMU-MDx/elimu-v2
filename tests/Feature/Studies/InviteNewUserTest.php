@@ -7,6 +7,7 @@ use Database\Factories\UserFactory;
 use Domain\Study\Mailable\NewUserInvitationMail;
 use Domain\Study\Roles\Scientist;
 use Illuminate\Support\Facades\Mail;
+use Livewire\Livewire;
 
 it('invites a user', function () {
     $user = UserFactory::new()->withStudy()->create();

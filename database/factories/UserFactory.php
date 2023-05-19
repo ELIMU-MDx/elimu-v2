@@ -21,6 +21,9 @@ class UserFactory extends Factory
      */
     protected $model = User::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [
@@ -32,12 +35,7 @@ class UserFactory extends Factory
         ];
     }
 
-    /**
-     * Indicate that the model's email address should be unverified.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function unverified()
+    public function unverified(): static
     {
         return $this->state(function (array $attributes) {
             return [
@@ -46,7 +44,7 @@ class UserFactory extends Factory
         });
     }
 
-    public function withStudy(?Study $study = null): UserFactory
+    public function withStudy(?Study $study = null): static
     {
         return $this->state([
             'study_id' => $study?->id ?? StudyFactory::new(),

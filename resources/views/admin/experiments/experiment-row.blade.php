@@ -184,7 +184,7 @@
         </div>
     </div>
 
-    <x-jet-confirmation-modal wire:model="showDeleteConfirmationModal">
+    <x-confirmation-modal wire:model="showDeleteConfirmationModal">
         <x-slot name="title">
             {{ __('Delete Experiment') }}
         </x-slot>
@@ -194,13 +194,13 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('showDeleteConfirmationModal')" wire:loading.attr="disabled">
+            <x-secondary-button wire:click="$toggle('showDeleteConfirmationModal')" wire:loading.attr="disabled">
                 {{ __('Cancel') }}
-            </x-jet-secondary-button>
+            </x-secondary-button>
 
-            <x-jet-danger-button class="ml-2" wire:click="deleteExperiment" wire:loading.attr="disabled">
+            <x-danger-button class="ml-2" wire:click="deleteExperiment" wire:loading.attr="disabled">
                 {{ __('Delete Experiment') }}
-            </x-jet-danger-button>
+            </x-danger-button>
         </x-slot>
-    </x-jet-confirmation-modal>
+    </x-confirmation-modal>
 </li>

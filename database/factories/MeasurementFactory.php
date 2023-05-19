@@ -18,6 +18,9 @@ final class MeasurementFactory extends Factory
     /** @var string */
     protected $model = Measurement::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [
@@ -31,7 +34,7 @@ final class MeasurementFactory extends Factory
         ];
     }
 
-    public function forParameter(AssayParameter $parameter)
+    public function forParameter(AssayParameter $parameter): static
     {
         return $this->state([
             'target' => $parameter->target,
@@ -53,7 +56,7 @@ final class MeasurementFactory extends Factory
         return $this->state(['type' => MeasurementType::STANDARD()]);
     }
 
-    public function included(): MeasurementFactory
+    public function included(): static
     {
         return $this->state(['excluded' => false]);
     }

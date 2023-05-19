@@ -16,6 +16,9 @@ final class ExperimentFactory extends Factory
     /** @var string */
     protected $model = Experiment::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [

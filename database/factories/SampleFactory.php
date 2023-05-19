@@ -16,6 +16,9 @@ final class SampleFactory extends Factory
     /** @var string */
     protected $model = Sample::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [

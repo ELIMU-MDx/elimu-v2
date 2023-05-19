@@ -16,6 +16,9 @@ final class AssayFactory extends Factory
     /** @var string */
     protected $model = Assay::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [

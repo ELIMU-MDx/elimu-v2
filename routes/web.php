@@ -25,7 +25,7 @@ use App\Http\Controllers\StoreStudyController;
 use App\Http\Controllers\SwitchStudyController;
 use App\Http\Controllers\UpdateExperimentController;
 use Illuminate\Support\Facades\Route;
-use Support\Middlewares\EnsureHasStudy;
+use App\Http\Middleware\EnsureHasStudy;
 
 Route::view('/', 'welcome');
 Route::view('documentation', 'api-documentation')->name('api-documentation');

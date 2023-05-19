@@ -145,7 +145,7 @@
                 </button>
             </div>
             <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none">
-                <x-jet-banner/>
+                <x-banner/>
                 <div class="py-6">
                     @if (isset($header))
                         {{ $header }}

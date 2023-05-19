@@ -7,7 +7,7 @@
 
             <div class="border-b border-gray"></div>
         @else
-            <x-jet-dropdown align="right" width="60">
+            <x-dropdown align="right" width="60">
                 <x-slot name="trigger">
                     <x-admin-navigation-link as="button" type="button" class="w-full"
                                              icon="heroicon-o-academic-cap">
@@ -29,14 +29,14 @@
                         </div>
 
                         @can('manage-study', Auth::user()->currentStudy)
-                            <x-jet-dropdown-link href="{{route('currentStudy.show')}}">
+                            <x-dropdown-link href="{{route('currentStudy.show')}}">
                                 {{ __('Study setting') }}
-                            </x-jet-dropdown-link>
+                            </x-dropdown-link>
                         @endcan
 
-                        <x-jet-dropdown-link href="{{ route('studies.create') }}">
+                        <x-dropdown-link href="{{ route('studies.create') }}">
                             {{ __('Create New Study') }}
-                        </x-jet-dropdown-link>
+                        </x-dropdown-link>
 
                         <div class="border-t border-gray-100"></div>
 
@@ -49,7 +49,7 @@
                         @endforeach
                     </div>
                 </x-slot>
-            </x-jet-dropdown>
+            </x-dropdown>
         @endif
     </div>
 

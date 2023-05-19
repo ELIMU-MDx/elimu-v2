@@ -9,7 +9,10 @@ class DataPointFactory extends Factory
 {
     protected $model = DataPoint::class;
 
-    public function definition()
+    /**
+     * @return array<string, mixed>
+     */
+    public function definition(): array
     {
         return [
             'cycle' => $this->faker->numberBetween(1, 1000),

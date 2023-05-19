@@ -5,7 +5,7 @@ namespace App\View\Components;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
-class SecondaryButton extends Component
+class CustomSecondaryButton extends Component
 {
     public function __construct(public string $as = 'button')
     {
@@ -13,6 +13,6 @@ class SecondaryButton extends Component
 
     public function render(): View
     {
-        return view('components.secondary-button');
+        return view('components.custom-secondary-button');
     }
 }

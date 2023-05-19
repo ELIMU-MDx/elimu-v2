@@ -16,6 +16,9 @@ final class AssayParameterFactory extends Factory
     /** @var string */
     protected $model = AssayParameter::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         $quantify = $this->faker->boolean();

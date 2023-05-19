@@ -1,6 +1,6 @@
 <div>
     <div class="mt-10 sm:mt-0" x-data="{role: @entangle('addMemberForm.role').defer }">
-        <x-jet-form-section submit="addMember">
+        <x-form-section submit="addMember">
             <x-slot name="title">
                 {{ __('Add Team Member') }}
             </x-slot>
@@ -18,16 +18,16 @@
 
                 <!-- Member Email -->
                 <div class="col-span-6 sm:col-span-4">
-                    <x-jet-label for="email" value="{{ __('Email') }}"/>
-                    <x-jet-input id="email" type="email" class="mt-1 block w-full"
+                    <x-label for="email" value="{{ __('Email') }}"/>
+                    <x-input name="email" id="email" type="email" class="mt-1 block w-full"
                                  wire:model.defer="addMemberForm.email"/>
-                    <x-jet-input-error for="addMemberForm.email" class="mt-2"/>
+                    <x-input-error for="addMemberForm.email" class="mt-2"/>
                 </div>
 
                 <!-- Role -->
                 <div class="col-span-6 lg:col-span-4">
-                    <x-jet-label for="role" value="{{ __('Role') }}"/>
-                    <x-jet-input-error for="addMemberForm.role" class="mt-2"/>
+                    <x-label for="role" value="{{ __('Role') }}"/>
+                    <x-input-error for="addMemberForm.role" class="mt-2"/>
 
                     <div class="mt-1">
                         @foreach($roles as $key => $role)
@@ -42,20 +42,20 @@
             </x-slot>
 
             <x-slot name="actions">
-                <x-jet-action-message class="mr-3" on="saved">
+                <x-action-message class="mr-3" on="saved">
                     {{ __('Added.') }}
-                </x-jet-action-message>
-                <x-jet-button>
+                </x-action-message>
+                <x-button>
                     {{ __('Add') }}
-                </x-jet-button>
+                </x-button>
             </x-slot>
-        </x-jet-form-section>
+        </x-form-section>
     </div>
 
     @if($study->pendingInvitations->isNotEmpty())
-        <x-jet-section-border/>
+        <x-section-border/>
         <div class="mt-10 sm:mt-0">
-            <x-jet-action-section>
+            <x-action-section>
                 <x-slot name="title">
                     {{ __('Pending Team Invitations') }}
                 </x-slot>
@@ -84,15 +84,15 @@
                         @endforeach
                     </div>
                 </x-slot>
-            </x-jet-action-section>
+            </x-action-section>
         </div>
     @endif
     @if ($study->users->isNotEmpty())
-        <x-jet-section-border/>
+        <x-section-border/>
 
         <!-- Manage Team Members -->
         <div class="mt-10 sm:mt-0">
-            <x-jet-action-section>
+            <x-action-section>
                 <x-slot name="title">
                     {{ __('Team Members') }}
                 </x-slot>
@@ -137,12 +137,12 @@
                         @endforeach
                     </div>
                 </x-slot>
-            </x-jet-action-section>
+            </x-action-section>
         </div>
 @endif
 
 <!-- Remove Team Member Confirmation Modal -->
-    <x-jet-confirmation-modal wire:model="confirmingMemberRemoval">
+    <x-confirmation-modal wire:model="confirmingMemberRemoval">
         <x-slot name="title">
             {{ __('Remove Team Member') }}
         </x-slot>
@@ -152,13 +152,13 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('confirmingMemberRemoval')" wire:loading.attr="disabled">
+            <x-secondary-button wire:click="$toggle('confirmingMemberRemoval')" wire:loading.attr="disabled">
                 {{ __('Cancel') }}
-            </x-jet-secondary-button>
+            </x-secondary-button>
 
-            <x-jet-danger-button class="ml-2" wire:click="removeMember" wire:loading.attr="disabled">
+            <x-danger-button class="ml-2" wire:click="removeMember" wire:loading.attr="disabled">
                 {{ __('Remove') }}
-            </x-jet-danger-button>
+            </x-danger-button>
         </x-slot>
-    </x-jet-confirmation-modal>
+    </x-confirmation-modal>
 </div>

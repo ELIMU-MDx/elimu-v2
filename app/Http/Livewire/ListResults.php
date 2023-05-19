@@ -47,7 +47,7 @@ final class ListResults extends Component
         $this->assays = Assay::whereHas('results')
             ->where('study_id', Auth::user()->study_id)
             ->with([
-                'parameters' => fn($query) => $query->orderBy('target'),
+                'parameters' => fn ($query) => $query->orderBy('target'),
             ])
             ->get();
 

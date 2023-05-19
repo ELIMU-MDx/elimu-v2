@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 use Laravel\Jetstream\Contracts\UpdatesTeamNames;
 use Livewire\Component;
 

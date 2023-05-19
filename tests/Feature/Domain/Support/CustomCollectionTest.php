@@ -1,6 +1,7 @@
 <?php
 
 use Support\CustomCollection;
+
 it('calculates the standard deviation', function () {
     $collection = new CustomCollection([
         25.51,

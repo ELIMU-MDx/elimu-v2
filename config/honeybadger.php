@@ -1,22 +1,22 @@
 <?php
 
-use Honeybadger\HoneybadgerLaravel\Breadcrumbs\DatabaseQueryExecuted;
-use Honeybadger\HoneybadgerLaravel\Breadcrumbs\DatabaseTransactionStarted;
-use Honeybadger\HoneybadgerLaravel\Breadcrumbs\DatabaseTransactionCommitted;
-use Honeybadger\HoneybadgerLaravel\Breadcrumbs\DatabaseTransactionRolledBack;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs;
 use Honeybadger\HoneybadgerLaravel\Breadcrumbs\CacheHit;
 use Honeybadger\HoneybadgerLaravel\Breadcrumbs\CacheMiss;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\DatabaseQueryExecuted;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\DatabaseTransactionCommitted;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\DatabaseTransactionRolledBack;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\DatabaseTransactionStarted;
 use Honeybadger\HoneybadgerLaravel\Breadcrumbs\JobQueued;
 use Honeybadger\HoneybadgerLaravel\Breadcrumbs\MailSending;
 use Honeybadger\HoneybadgerLaravel\Breadcrumbs\MailSent;
 use Honeybadger\HoneybadgerLaravel\Breadcrumbs\MessageLogged;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\NotificationFailed;
 use Honeybadger\HoneybadgerLaravel\Breadcrumbs\NotificationSending;
 use Honeybadger\HoneybadgerLaravel\Breadcrumbs\NotificationSent;
-use Honeybadger\HoneybadgerLaravel\Breadcrumbs\NotificationFailed;
 use Honeybadger\HoneybadgerLaravel\Breadcrumbs\RedisCommandExecuted;
 use Honeybadger\HoneybadgerLaravel\Breadcrumbs\RouteMatched;
 use Honeybadger\HoneybadgerLaravel\Breadcrumbs\ViewRendered;
-use Honeybadger\HoneybadgerLaravel\Breadcrumbs;
 
 return [
     /**

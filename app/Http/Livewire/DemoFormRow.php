@@ -44,8 +44,8 @@ class DemoFormRow extends Component
         $this->even = $even;
         $this->sample = $sample;
         $this->measurements = $measurements;
-        $this->calculationParameters = $assayParameters->map(fn(AssayParameter $parameter) => ResultCalculationParameter::fromModel($parameter));
-        $this->validationParameters = $assayParameters->mapWithKeys(fn(AssayParameter $parameter) => [
+        $this->calculationParameters = $assayParameters->map(fn (AssayParameter $parameter) => ResultCalculationParameter::fromModel($parameter));
+        $this->validationParameters = $assayParameters->mapWithKeys(fn (AssayParameter $parameter) => [
             $parameter->target => ResultValidationParameter::fromModel($parameter),
         ])->toArray();
     }
@@ -104,7 +104,7 @@ class DemoFormRow extends Component
                     $result,
                     $this->validationParameters[strtolower($result->target)]
                 )
-                    ->map(fn(string $errorIdentifier) => ResultValidationErrorFactory::get($errorIdentifier)->message(
+                    ->map(fn (string $errorIdentifier) => ResultValidationErrorFactory::get($errorIdentifier)->message(
                         $result,
                         $this->validationParameters[strtolower($result->target)]
                     ));

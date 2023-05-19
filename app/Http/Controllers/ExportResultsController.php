@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use PhpOffice\PhpSpreadsheet\Exception;
 use App\Models\Assay;
 use Domain\Results\Exports\ResultExcelExport;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Maatwebsite\Excel\Excel;
+use PhpOffice\PhpSpreadsheet\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
 final class ExportResultsController

@@ -8,6 +8,6 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('assays', fn(Blueprint $table) => $table->string('sample_type')->nullable()->change());
+        Schema::table('assays', fn (Blueprint $table) => $table->string('sample_type')->nullable()->change());
     }
 };

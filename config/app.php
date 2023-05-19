@@ -3,11 +3,11 @@
 use App\Providers\AppServiceProvider;
 use App\Providers\AuthServiceProvider;
 use App\Providers\EventServiceProvider;
-use App\Providers\HorizonServiceProvider;
-use App\Providers\RouteServiceProvider;
 use App\Providers\FortifyServiceProvider;
-use App\Providers\JetstreamServiceProvider;
 use App\Providers\GoogleDriveServiceProvider;
+use App\Providers\HorizonServiceProvider;
+use App\Providers\JetstreamServiceProvider;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -163,18 +163,17 @@ return [
     |
     */
 
-    'providers' =>
-        ServiceProvider::defaultProviders()->merge([
-            AppServiceProvider::class,
-            AuthServiceProvider::class,
-            // App\Providers\BroadcastServiceProvider::class,
-            EventServiceProvider::class,
-            HorizonServiceProvider::class,
-            RouteServiceProvider::class,
-            FortifyServiceProvider::class,
-            JetstreamServiceProvider::class,
-            GoogleDriveServiceProvider::class,
-        ])->toArray(),
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        AppServiceProvider::class,
+        AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        EventServiceProvider::class,
+        HorizonServiceProvider::class,
+        RouteServiceProvider::class,
+        FortifyServiceProvider::class,
+        JetstreamServiceProvider::class,
+        GoogleDriveServiceProvider::class,
+    ])->toArray(),
 
     /*
     |--------------------------------------------------------------------------

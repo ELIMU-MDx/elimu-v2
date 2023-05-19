@@ -26,13 +26,13 @@ final class MeasurementEvaluator
         $parameters = $parameters->keyBy('target');
 
         return $measurements
-            ->groupBy(fn(Measurement $measurement) => "{$measurement->sample}-{$measurement->target}")
+            ->groupBy(fn (Measurement $measurement) => "{$measurement->sample}-{$measurement->target}")
             ->map(function (MeasurementCollection $measurements) use ($parameters) {
                 $target = $measurements->first()->target;
                 $onlyIncludedMeasurements = $measurements->included();
 
                 /** @var ResultCalculationParameter $parameter */
-                $parameter = $parameters->first(fn(ResultCalculationParameter $parameter) => strcasecmp($parameter->target, $target) === 0) ?? throw new BadMethodCallException("No parameter for target {$target} provided");
+                $parameter = $parameters->first(fn (ResultCalculationParameter $parameter) => strcasecmp($parameter->target, $target) === 0) ?? throw new BadMethodCallException("No parameter for target {$target} provided");
 
                 $qualification = $onlyIncludedMeasurements->qualify($parameter->cutoff);
 

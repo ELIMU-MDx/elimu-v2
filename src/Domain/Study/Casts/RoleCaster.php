@@ -17,11 +17,7 @@ final class RoleCaster implements CastsAttributes
     }
 
     /**
-     * @param Model $model
-     * @param  string  $key
-     * @param Role $value
-     * @param  array  $attributes
-     * @return string
+     * @param  Role  $value
      */
     public function set(Model $model, string $key, mixed $value, array $attributes): string
     {

@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class AcceptInvitationAsExistingUserController
 {
-    public function __invoke(Invitation $invitation, StatefulGuard $guard, AcceptInvitationAction $action, Session $session): View | Response
+    public function __invoke(Invitation $invitation, StatefulGuard $guard, AcceptInvitationAction $action, Session $session): View|Response
     {
         if (! $invitation->receiver) {
             return redirect(URL::signedRoute('invitations.accept.new', compact('invitation')));

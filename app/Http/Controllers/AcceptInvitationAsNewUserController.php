@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class AcceptInvitationAsNewUserController
 {
-    public function __invoke(Invitation $invitation, StatefulGuard $guard): View | Response
+    public function __invoke(Invitation $invitation, StatefulGuard $guard): View|Response
     {
         $guard->logout();
 

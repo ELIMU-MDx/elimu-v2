@@ -23,7 +23,7 @@ final class DeleteExperimentAction
         Sample::whereDoesntHave('results')->delete();
 
         $this->action
-            ->execute(Measurement::whereHas('experiment', fn($join) => $join
+            ->execute(Measurement::whereHas('experiment', fn ($join) => $join
                 ->where('study_id', $experiment->study_id)
                 ->where('assay_id', $experiment->assay_id))->get());
     }

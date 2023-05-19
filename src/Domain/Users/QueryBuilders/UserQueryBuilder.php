@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * @template TModelClass of \Illuminate\Database\Eloquent\Model
+ *
  * @extends Builder<TModelClass>
  */
 final class UserQueryBuilder extends Builder

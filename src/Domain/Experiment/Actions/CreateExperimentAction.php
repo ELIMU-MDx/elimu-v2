@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Domain\Experiment\Actions;
 
-use Spatie\DataTransferObject\Exceptions\UnknownProperties;
-use JsonException;
 use App\Models\Experiment;
 use App\Models\Measurement;
 use App\Models\Sample;
@@ -15,6 +13,8 @@ use Domain\Rdml\Converters\RdmlConverter;
 use Domain\Rdml\DataTransferObjects\QuantifyConfiguration;
 use Domain\Rdml\RdmlReader;
 use Illuminate\Database\Connection;
+use JsonException;
+use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 
 final class CreateExperimentAction
 {
@@ -58,7 +58,7 @@ final class CreateExperimentAction
                 ->pluck('id', 'identifier');
 
             $sampleLookupTable = $measurements
-                ->filter(fn(Measurement $measurement) => ! $sampleLookupTable->has($measurement->sample->identifier))
+                ->filter(fn (Measurement $measurement) => ! $sampleLookupTable->has($measurement->sample->identifier))
                 ->mapWithKeys(function (Measurement $measurement) use ($parameter, $experiment) {
                     $measurement->sample->study_id = $parameter->studyId;
                     $measurement->created_at = $experiment->created_at;
@@ -88,7 +88,7 @@ final class CreateExperimentAction
                 });
 
             $this->recalculateResultsAction->execute(
-                Measurement::whereHas('experiment', fn($join) => $join
+                Measurement::whereHas('experiment', fn ($join) => $join
                     ->where('study_id', $parameter->studyId)
                     ->where('assay_id', $parameter->assayId))
                     ->whereIn('sample_id', $measurements->pluck('sample_id'))

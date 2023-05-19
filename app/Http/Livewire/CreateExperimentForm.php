@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Livewire;
 
-use Spatie\DataTransferObject\Exceptions\UnknownProperties;
-use JsonException;
 use App\Models\Assay;
 use App\Models\User;
 use Domain\Assay\Actions\CreateAssayFromFileAction;
@@ -16,11 +14,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use JsonException;
 use Livewire\Component;
 use Livewire\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 use Maatwebsite\Excel\Validators\Failure;
 use Maatwebsite\Excel\Validators\ValidationException as ExcelValidationException;
+use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 
 /**
  * @property-read User user
@@ -69,8 +69,8 @@ final class CreateExperimentForm extends Component
         } catch (ExcelValidationException $exception) {
             throw ValidationException::withMessages([
                 'assayFile' => collect($exception->failures())
-                    ->flatMap(fn(Failure $failure, string $key) => collect($failure->errors())
-                        ->mapWithKeys(fn(string $errorMessage, string|int $errorKey) => [
+                    ->flatMap(fn (Failure $failure, string $key) => collect($failure->errors())
+                        ->mapWithKeys(fn (string $errorMessage, string|int $errorKey) => [
                             'assayFile.'.$key.$errorKey => sprintf(
                                 'Row %s (%s): %s',
                                 $failure->row(),

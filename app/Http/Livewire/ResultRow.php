@@ -44,7 +44,7 @@ final class ResultRow extends Component
         $measurements = $this->sample->results
             ->firstWhere('id', $measurement->result_id)
             ->measurements
-            ->filter(fn(Measurement $currentMeasurement) => $currentMeasurement->id !== $measurement->id)
+            ->filter(fn (Measurement $currentMeasurement) => $currentMeasurement->id !== $measurement->id)
             ->push($measurement);
 
         $recalculateResultsAction->execute($measurements);

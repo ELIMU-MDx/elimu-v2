@@ -18,6 +18,6 @@ final class ResultValidator
     public function validate(Result $result, ResultValidationParameter $validationParameter): Collection
     {
         return ResultValidationErrorFactory::all()
-            ->filter(fn(ResultValidationError $validator) => $validator->appliesFor($result) && ! $validator->validate($result, $validationParameter))->map(fn(ResultValidationError $validator) => $validator::IDENTIFIER);
+            ->filter(fn (ResultValidationError $validator) => $validator->appliesFor($result) && ! $validator->validate($result, $validationParameter))->map(fn (ResultValidationError $validator) => $validator::IDENTIFIER);
     }
 }

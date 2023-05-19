@@ -25,5 +25,5 @@ it('invites a user', function () {
         'email' => 'foo@bar.ch',
         'role' => (new Scientist())->identifier(),
     ]);
-    Mail::assertQueued(fn(NewUserInvitationMail $mail) => $mail->hasTo('foo@bar.ch'));
+    Mail::assertQueued(fn (NewUserInvitationMail $mail) => $mail->hasTo('foo@bar.ch'));
 });

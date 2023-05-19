@@ -2,7 +2,6 @@
 
 use Domain\Rdml\RdmlFileReader;
 use Illuminate\Http\File;
-
 use function PHPUnit\Framework\assertXmlStringEqualsXmlString;
 
 it('converts an rdml file to xml', function () {

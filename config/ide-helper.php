@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Session\Store;
-use Illuminate\Contracts\Auth\Authenticatable;
-use App\Models\User;
+
 return [
 
     /*

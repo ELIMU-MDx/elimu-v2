@@ -18,6 +18,6 @@ final class DataPointValidationAction
     public function execute(MeasurementCollection $dataPoints, ResultValidationParameter $parameter): Collection
     {
         return ResultValidationErrorFactory::all()
-            ->filter(fn(ResultValidationError $error) => ! $error->validate($dataPoints, $parameter));
+            ->filter(fn (ResultValidationError $error) => ! $error->validate($dataPoints, $parameter));
     }
 }

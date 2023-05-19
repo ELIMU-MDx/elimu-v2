@@ -14,7 +14,7 @@ final class RoleFactory
     {
         self::initialize();
 
-        return self::$roles->first(fn(Role $role) => $role->identifier() === $identifier) ?? throw new RuntimeException("Could not find role for identifier '{$identifier}'");
+        return self::$roles->first(fn (Role $role) => $role->identifier() === $identifier) ?? throw new RuntimeException("Could not find role for identifier '{$identifier}'");
     }
 
     public static function all(): RoleCollection
@@ -28,7 +28,7 @@ final class RoleFactory
     {
         self::initialize();
 
-        return self::$roles->map(fn(Role $role) => [
+        return self::$roles->map(fn (Role $role) => [
             'identifier' => $role->identifier(),
             'description' => $role->description(),
             'title' => $role->title(),

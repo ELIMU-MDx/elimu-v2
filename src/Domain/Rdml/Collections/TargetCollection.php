@@ -18,7 +18,7 @@ final class TargetCollection extends Collection
 {
     public function getById(string $id): Target
     {
-        $target = $this->first(fn(Target $target) => $target->id === $id);
+        $target = $this->first(fn (Target $target) => $target->id === $id);
 
         return $target ?? throw new BadMethodCallException("No target with id '{$id}' exists");
     }

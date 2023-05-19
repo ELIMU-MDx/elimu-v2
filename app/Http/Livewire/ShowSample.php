@@ -39,7 +39,7 @@ class ShowSample extends Component
         return $this->sample
             ->measurements
             ->reject(fn (Measurement $measurement) => $filters
-                    ->first(fn (MeasurementFilter $filter) => ! $filter->matches($measurement)) !== null
+                ->first(fn (MeasurementFilter $filter) => ! $filter->matches($measurement)) !== null
             );
     }
 

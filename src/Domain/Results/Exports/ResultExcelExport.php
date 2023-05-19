@@ -29,12 +29,11 @@ final class ResultExcelExport implements FromQuery, WithMapping, WithStrictNullC
 
     /**
      * @param  Sample  $sample
-     * @return array
      */
     public function map($sample): array
     {
         return $sample->results
-            ->flatMap(fn(Result $result) => [
+            ->flatMap(fn (Result $result) => [
                 'replicas_'.$result->target => $result->measurements->count(),
                 'mean_cq_'.$result->target => $result->cq,
                 'standard_deviation_cq_'.$result->target => $result->standard_deviation,
@@ -68,7 +67,7 @@ final class ResultExcelExport implements FromQuery, WithMapping, WithStrictNullC
             ->parameters()
             ->orderBy('target')
             ->get(['id', 'target'])
-            ->flatMap(fn(AssayParameter $parameter) => [
+            ->flatMap(fn (AssayParameter $parameter) => [
                 'replicas_'.$parameter->target,
                 'mean_cq_'.$parameter->target,
                 'standard_deviation_cq_'.$parameter->target,

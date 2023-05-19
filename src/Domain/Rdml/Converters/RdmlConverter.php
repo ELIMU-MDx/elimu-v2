@@ -22,7 +22,7 @@ final class RdmlConverter implements Arrayable
         $sampleLookupTable = $this->rdml
             ->measurements
             ->pluck('sample')
-            ->mapWithKeys(fn(string $sampleIdentifier) => [
+            ->mapWithKeys(fn (string $sampleIdentifier) => [
                 $sampleIdentifier => new Sample([
                     'identifier' => $sampleIdentifier,
                 ]),
@@ -30,7 +30,7 @@ final class RdmlConverter implements Arrayable
 
         return $this->rdml
             ->measurements
-            ->map(fn(MeasurementDTO $measurement) => new Measurement([
+            ->map(fn (MeasurementDTO $measurement) => new Measurement([
                 'sample' => $sampleLookupTable->get($measurement->sample),
                 'cq' => $measurement->cq,
                 'position' => $measurement->position,

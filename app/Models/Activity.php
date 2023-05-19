@@ -19,7 +19,7 @@ final class Activity extends BaseActivity
     public function attributes(): Collection
     {
         return collect($this->changes()->get('attributes'))
-            ->map(fn($value, $key) => "{$key}: {$value}");
+            ->map(fn ($value, $key) => "{$key}: {$value}");
     }
 
     protected static function booted(): void

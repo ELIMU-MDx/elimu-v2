@@ -2,9 +2,9 @@
 
 namespace App\View\Components;
 
-use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class AppLayout extends Component
 {

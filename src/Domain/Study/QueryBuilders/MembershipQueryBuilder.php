@@ -10,6 +10,7 @@ use Illuminate\Support\Arr;
 
 /**
  * @template TModelClass of \Illuminate\Database\Eloquent\Model
+ *
  * @extends Builder<TModelClass>
  */
 final class MembershipQueryBuilder extends Builder
@@ -21,7 +22,7 @@ final class MembershipQueryBuilder extends Builder
             ->exists();
     }
 
-    public function isRoleOfStudy(int $userId, int $studyId, array | Role $roles): bool
+    public function isRoleOfStudy(int $userId, int $studyId, array|Role $roles): bool
     {
         $roles = collect(Arr::wrap($roles))->map->identifier();
 

@@ -124,11 +124,6 @@
 
 
                 <h3 class="mt-6 font-bold">Comments</h3>
-                <div class="space-y-8 mt-6">
-                    <div class="h-px bg-gray-900 w-full"></div>
-                    <div class="h-px bg-gray-900 w-full"></div>
-                    <div class="h-px bg-gray-900 w-full"></div>
-                </div>
             </div>
         </div>
 

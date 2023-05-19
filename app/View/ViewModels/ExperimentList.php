@@ -109,7 +109,7 @@ final class ExperimentList
         return $controls
             ->map(fn (MeasurementModel $measurement) => Measurement::fromModel($measurement))
             ->pipeInto(MeasurementCollection::class)
-            ->groupBy('type')
+            ->groupBy(fn (Measurement $measurement) => $measurement->type->name)
             ->map(function (MeasurementCollection $measurements) use ($parameter, $validator) {
                 $result = new Result([
                     'sample' => $measurements->first()->sample,

@@ -7,7 +7,7 @@ namespace Domain\Rdml\Enums;
 enum MeasurementType: string
 {
     case SAMPLE = 'SAMPLE';
-    case POSTIVE_CONTROL = 'POSTIVE_CONTROL';
+    case POSTIVE_CONTROL = 'POSITIVE_CONTROL';
     case NEGATIVE_CONTROL = 'NEGATIVE_CONTROL';
     case NTC_CONTROL = 'NTC_CONTROL';
     case STANDARD = 'STANDARD';
@@ -20,6 +20,17 @@ enum MeasurementType: string
             'neg' => self::NEGATIVE_CONTROL,
             'std' => self::STANDARD,
             default => self::SAMPLE,
+        };
+    }
+
+    public static function toString(MeasurementType $type): string
+    {
+        return match ($type) {
+            self::POSTIVE_CONTROL => 'positive control',
+            self::NTC_CONTROL => 'ntc control',
+            self::NEGATIVE_CONTROL => 'negative control',
+            self::STANDARD => 'standard',
+            default => 'sample',
         };
     }
 

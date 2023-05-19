@@ -28,6 +28,7 @@
             <x-label for="name" value="{{ __('Team Name') }}"/>
 
             <x-input id="name"
+                     name="name"
                          type="text"
                          class="mt-1 block w-full"
                          wire:model.defer="state.name"

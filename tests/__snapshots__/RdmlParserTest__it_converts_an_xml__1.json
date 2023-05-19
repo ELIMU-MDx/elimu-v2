@@ -1916,7 +1916,7 @@
             "position": "D2",
             "excluded": false,
             "cq": 8.5736328073992,
-            "type": "POSTIVE_CONTROL",
+            "type": "POSITIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,
@@ -2152,7 +2152,7 @@
             "position": "D3",
             "excluded": false,
             "cq": 9.28857863597113,
-            "type": "POSTIVE_CONTROL",
+            "type": "POSITIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,
@@ -4748,7 +4748,7 @@
             "position": "D2",
             "excluded": false,
             "cq": 16.1724446759374,
-            "type": "POSTIVE_CONTROL",
+            "type": "POSITIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,
@@ -4984,7 +4984,7 @@
             "position": "D3",
             "excluded": false,
             "cq": 17.5972794565963,
-            "type": "POSTIVE_CONTROL",
+            "type": "POSITIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,
@@ -7580,7 +7580,7 @@
             "position": "D2",
             "excluded": false,
             "cq": 41.2326502953479,
-            "type": "POSTIVE_CONTROL",
+            "type": "POSITIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,
@@ -7816,7 +7816,7 @@
             "position": "D3",
             "excluded": false,
             "cq": 42.6525266820419,
-            "type": "POSTIVE_CONTROL",
+            "type": "POSITIVE_CONTROL",
             "amplificationDataPoints": [
                 {
                     "cycle": 1,

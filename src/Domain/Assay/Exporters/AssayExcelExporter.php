@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 
 final class AssayExcelExporter implements WithHeadings, FromQuery, WithMapping
 {
-    public function __construct(private int $assayId)
+    public function __construct(private readonly int $assayId)
     {
     }
 

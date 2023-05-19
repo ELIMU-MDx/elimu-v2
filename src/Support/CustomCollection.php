@@ -12,11 +12,7 @@ class CustomCollection extends Collection
     {
         $callback = $this->valueRetriever($callback);
 
-        $items = $this->map(function ($value) use ($callback) {
-            return $callback($value);
-        })->filter(function ($value) {
-            return ! is_null($value);
-        });
+        $items = $this->map(fn($value) => $callback($value))->filter(fn($value) => ! is_null($value));
 
         if ($items->count() <= 1) {
             return 0.0;
@@ -24,9 +20,7 @@ class CustomCollection extends Collection
 
         $average = (float) $items->avg();
 
-        $variance = $items->reduce(function (float $variance, float | int $value) use ($average) {
-            return $variance + (($value - $average) ** 2);
-        }, 0.0);
+        $variance = $items->reduce(fn(float $variance, float | int $value) => $variance + (($value - $average) ** 2), 0.0);
 
         return sqrt($variance / $items->count());
     }

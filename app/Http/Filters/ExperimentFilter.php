@@ -9,7 +9,7 @@ final class ExperimentFilter implements MeasurementFilter
     /**
      * @param  int[]  $experiments
      */
-    public function __construct(private array $experiments)
+    public function __construct(private readonly array $experiments)
     {
     }
 

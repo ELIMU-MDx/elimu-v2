@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @template TModelClass of \Illuminate\Database\Eloquent\Model
+ *
  * @extends Builder<TModelClass>
  */
 final class ExperimentQueryBuilder extends Builder
@@ -19,7 +20,7 @@ final class ExperimentQueryBuilder extends Builder
         return $this->addSelect([
             'count_samples' => Measurement::selectRaw('count(DISTINCT sample_id)')
                 ->whereColumn('experiment_id', 'experiments.id')
-                ->where('type', MeasurementType::SAMPLE()),
+                ->where('type', MeasurementType::SAMPLE),
         ]);
     }
 }

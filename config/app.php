@@ -1,5 +1,13 @@
 <?php
 
+use App\Providers\AppServiceProvider;
+use App\Providers\AuthServiceProvider;
+use App\Providers\EventServiceProvider;
+use App\Providers\HorizonServiceProvider;
+use App\Providers\RouteServiceProvider;
+use App\Providers\FortifyServiceProvider;
+use App\Providers\JetstreamServiceProvider;
+use App\Providers\GoogleDriveServiceProvider;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -157,15 +165,15 @@ return [
 
     'providers' =>
         ServiceProvider::defaultProviders()->merge([
-            App\Providers\AppServiceProvider::class,
-            App\Providers\AuthServiceProvider::class,
+            AppServiceProvider::class,
+            AuthServiceProvider::class,
             // App\Providers\BroadcastServiceProvider::class,
-            App\Providers\EventServiceProvider::class,
-            App\Providers\HorizonServiceProvider::class,
-            App\Providers\RouteServiceProvider::class,
-            App\Providers\FortifyServiceProvider::class,
-            App\Providers\JetstreamServiceProvider::class,
-            App\Providers\GoogleDriveServiceProvider::class,
+            EventServiceProvider::class,
+            HorizonServiceProvider::class,
+            RouteServiceProvider::class,
+            FortifyServiceProvider::class,
+            JetstreamServiceProvider::class,
+            GoogleDriveServiceProvider::class,
         ])->toArray(),
 
     /*

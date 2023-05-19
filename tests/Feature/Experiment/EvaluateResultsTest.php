@@ -1,7 +1,6 @@
 <?php
 
 declare(strict_types=1);
-
 use App\Models\Result;
 use Database\Factories\AssayFactory;
 use Database\Factories\AssayParameterFactory;
@@ -11,9 +10,10 @@ use Database\Factories\SampleFactory;
 use Domain\Experiment\Actions\RecalculateResultsAction;
 use Domain\Results\Enums\QualitativeResult;
 use Illuminate\Database\Eloquent\Factories\Sequence;
+use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 
 /**
- * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
+ * @throws UnknownProperties
  */
 it('evaluates results', function () {
     $measurements = MeasurementFactory::new(['target' => 'foo', 'excluded' => false])
@@ -44,7 +44,7 @@ it('evaluates results', function () {
         'target' => 'foo',
         'cq' => 3,
         'quantification' => 8.71,
-        'qualification' => QualitativeResult::POSITIVE(),
+        'qualification' => QualitativeResult::POSITIVE,
         'standard_deviation' => 0.71,
     ]);
     $this->assertDatabaseCount('results', 1);

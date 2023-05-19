@@ -44,14 +44,10 @@ class DemoFormRow extends Component
         $this->even = $even;
         $this->sample = $sample;
         $this->measurements = $measurements;
-        $this->calculationParameters = $assayParameters->map(function (AssayParameter $parameter) {
-            return ResultCalculationParameter::fromModel($parameter);
-        });
-        $this->validationParameters = $assayParameters->mapWithKeys(function (AssayParameter $parameter) {
-            return [
-                $parameter->target => ResultValidationParameter::fromModel($parameter),
-            ];
-        })->toArray();
+        $this->calculationParameters = $assayParameters->map(fn(AssayParameter $parameter) => ResultCalculationParameter::fromModel($parameter));
+        $this->validationParameters = $assayParameters->mapWithKeys(fn(AssayParameter $parameter) => [
+            $parameter->target => ResultValidationParameter::fromModel($parameter),
+        ])->toArray();
     }
 
     public function hydrateCalculationParameters($calculationParameters): void
@@ -108,12 +104,10 @@ class DemoFormRow extends Component
                     $result,
                     $this->validationParameters[strtolower($result->target)]
                 )
-                    ->map(function (string $errorIdentifier) use ($result) {
-                        return ResultValidationErrorFactory::get($errorIdentifier)->message(
-                            $result,
-                            $this->validationParameters[strtolower($result->target)]
-                        );
-                    });
+                    ->map(fn(string $errorIdentifier) => ResultValidationErrorFactory::get($errorIdentifier)->message(
+                        $result,
+                        $this->validationParameters[strtolower($result->target)]
+                    ));
 
                 return (object) array_merge(
                     $result->toArray(),

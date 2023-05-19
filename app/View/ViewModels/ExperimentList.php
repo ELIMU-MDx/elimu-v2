@@ -17,13 +17,14 @@ use Domain\Results\DataTransferObjects\Result;
 use Domain\Results\DataTransferObjects\ResultValidationParameter;
 use Domain\Results\ResultValidationErrors\ControlValidationError;
 use Illuminate\Support\Collection;
+use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 use Spatie\LaravelData\DataCollection;
 use Support\ValueObjects\Percentage;
 use Support\ValueObjects\RoundedNumber;
 
 final class ExperimentList
 {
-    public function __construct(private Collection $experiments)
+    public function __construct(private readonly Collection $experiments)
     {
     }
 
@@ -84,26 +85,24 @@ final class ExperimentList
     }
 
     /**
-     * @param  AssayParameter  $parameter
-     * @param  Collection  $controls
      * @return Collection<string> error messages
      *
-     * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
+     * @throws UnknownProperties
      */
     private function getControlErrors(AssayParameter $parameter, Collection $controls): Collection
     {
         $validator = app(ControlValidationError::class);
         $errors = [];
 
-        if (! blank($parameter->ntc_control) && ! $controls->firstWhere('type', MeasurementType::NTC_CONTROL())) {
+        if (! blank($parameter->ntc_control) && ! $controls->firstWhere('type', MeasurementType::NTC_CONTROL)) {
             $errors[] = 'No ntc control found';
         }
         if (! blank($parameter->negative_control) && ! $controls->firstWhere('type',
-            MeasurementType::NEGATIVE_CONTROL())) {
+            MeasurementType::NEGATIVE_CONTROL)) {
             $errors[] = 'No negative control found';
         }
         if (! blank($parameter->positive_control) && ! $controls->firstWhere('type',
-            MeasurementType::POSTIVE_CONTROL())) {
+            MeasurementType::POSTIVE_CONTROL)) {
             $errors[] = 'No positive control found';
         }
 

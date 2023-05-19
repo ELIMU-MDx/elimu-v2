@@ -13,17 +13,11 @@ use Illuminate\Support\Collection;
 final class ResultValidator
 {
     /**
-     * @param  \Domain\Results\DataTransferObjects\Result  $result
-     * @param  \Domain\Results\DataTransferObjects\ResultValidationParameter  $validationParameter
-     * @return \Illuminate\Support\Collection<\Domain\Results\ResultValidationErrors\ResultValidationError>
+     * @return Collection<ResultValidationError>
      */
     public function validate(Result $result, ResultValidationParameter $validationParameter): Collection
     {
         return ResultValidationErrorFactory::all()
-            ->filter(function (ResultValidationError $validator) use ($validationParameter, $result) {
-                return $validator->appliesFor($result) && ! $validator->validate($result, $validationParameter);
-            })->map(function (ResultValidationError $validator) {
-                return $validator::IDENTIFIER;
-            });
+            ->filter(fn(ResultValidationError $validator) => $validator->appliesFor($result) && ! $validator->validate($result, $validationParameter))->map(fn(ResultValidationError $validator) => $validator::IDENTIFIER);
     }
 }

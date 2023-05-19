@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Session\Store;
+use Illuminate\Contracts\Auth\Authenticatable;
+use App\Models\User;
 return [
 
     /*
@@ -169,8 +173,8 @@ return [
     */
 
     'extra' => [
-        'Eloquent' => ['Illuminate\Database\Eloquent\Builder', 'Illuminate\Database\Query\Builder'],
-        'Session' => ['Illuminate\Session\Store'],
+        'Eloquent' => [Builder::class, \Illuminate\Database\Query\Builder::class],
+        'Session' => [Store::class],
     ],
 
     'magic' => [],
@@ -186,7 +190,7 @@ return [
     */
 
     'interfaces' => [
-        \Illuminate\Contracts\Auth\Authenticatable::class => \App\Models\User::class,
+        Authenticatable::class => User::class,
     ],
 
     /*

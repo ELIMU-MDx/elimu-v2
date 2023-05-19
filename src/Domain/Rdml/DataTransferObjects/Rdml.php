@@ -15,11 +15,11 @@ final class Rdml extends DataTransferObject implements Arrayable
 {
     public string $version;
 
-    public ?string $instrument;
+    public ?string $instrument = null;
 
-    public ?CarbonImmutable $createdAt;
+    public ?CarbonImmutable $createdAt = null;
 
-    public ?CarbonImmutable $updatedAt;
+    public ?CarbonImmutable $updatedAt = null;
 
     public TargetCollection $targets;
 

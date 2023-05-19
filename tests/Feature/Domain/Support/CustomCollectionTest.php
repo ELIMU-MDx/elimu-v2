@@ -1,7 +1,8 @@
 <?php
 
+use Support\CustomCollection;
 it('calculates the standard deviation', function () {
-    $collection = new \Support\CustomCollection([
+    $collection = new CustomCollection([
         25.51,
         25.28,
         24.98,
@@ -16,7 +17,7 @@ it('calculates the standard deviation', function () {
 });
 
 it('calculates the standard deviation with callable', function () {
-    $collection = new \Support\CustomCollection([
+    $collection = new CustomCollection([
         new class
         {
             public float $cq = 25.51;

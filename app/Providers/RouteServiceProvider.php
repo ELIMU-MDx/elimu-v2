@@ -15,7 +15,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * This is used by Laravel authentication to redirect users after login.
      */
-    public const HOME = '/experiments';
+    final public const HOME = '/experiments';
 
     public function boot(): void
     {

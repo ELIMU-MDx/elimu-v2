@@ -1,7 +1,6 @@
 <?php
 
 declare(strict_types=1);
-
 use Domain\Rdml\Enums\MeasurementType;
 use Domain\Results\DataTransferObjects\Result;
 use Domain\Results\DataTransferObjects\ResultValidationParameter;
@@ -10,10 +9,11 @@ use Domain\Results\ResultValidationErrors\DivergingMeasurementsError;
 use Domain\Results\ResultValidationErrors\NotEnoughRepetitionsError;
 use Domain\Results\ResultValidationErrors\StandardDeviationExceedsCutoffError;
 use Domain\Results\ResultValidator;
+use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 use Support\ValueObjects\RoundedNumber;
 
 /**
- * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
+ * @throws UnknownProperties
  */
 it('is a valid result', function () {
     $validator = app(ResultValidator::class);
@@ -30,7 +30,7 @@ it('is a valid result', function () {
 });
 
 /**
- * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
+ * @throws UnknownProperties
  */
 it('has a too high standard deviation', function () {
     $validator = app(ResultValidator::class);
@@ -48,7 +48,7 @@ it('has a too high standard deviation', function () {
 });
 
 /**
- * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
+ * @throws UnknownProperties
  */
 it('has diverging results', function () {
     $validator = app(ResultValidator::class);
@@ -66,7 +66,7 @@ it('has diverging results', function () {
 });
 
 /**
- * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
+ * @throws UnknownProperties
  */
 it('has not enough repetitions', function () {
     $validator = app(ResultValidator::class);
@@ -88,107 +88,107 @@ dataset('controlsDataSet', [
     'positive control with null validation and error' => [
         'null',
         12,
-        MeasurementType::POSTIVE_CONTROL(),
+        MeasurementType::POSTIVE_CONTROL,
         true,
     ],
     'positive control with cutoff validation and error' => [
         'cutoff',
         51,
-        MeasurementType::POSTIVE_CONTROL(),
+        MeasurementType::POSTIVE_CONTROL,
         true,
     ],
     'positive control with custom parameter validation and error' => [
         11,
         12,
-        MeasurementType::POSTIVE_CONTROL(),
+        MeasurementType::POSTIVE_CONTROL,
         true,
     ],
     'negative control with null validation and error' => [
         'null',
         12,
-        MeasurementType::NEGATIVE_CONTROL(),
+        MeasurementType::NEGATIVE_CONTROL,
         true,
     ],
     'negative control with cutoff validation and error' => [
         'cutoff',
         51,
-        MeasurementType::NEGATIVE_CONTROL(),
+        MeasurementType::NEGATIVE_CONTROL,
         true,
     ],
     'negative control with custom parameter validation and error' => [
         11,
         12,
-        MeasurementType::NEGATIVE_CONTROL(),
+        MeasurementType::NEGATIVE_CONTROL,
         true,
     ],
     'ntc control with null validation and error' => [
         'null',
         12,
-        MeasurementType::NTC_CONTROL(),
+        MeasurementType::NTC_CONTROL,
         true,
     ],
     'ntc control with cutoff validation and error' => [
         'cutoff',
         51,
-        MeasurementType::NTC_CONTROL(),
+        MeasurementType::NTC_CONTROL,
         true,
     ],
     'ntc control with custom parameter validation and error' => [
         11,
         12,
-        MeasurementType::NTC_CONTROL(),
+        MeasurementType::NTC_CONTROL,
         true,
     ],
     'positive control with null validation' => [
         'null',
         null,
-        MeasurementType::POSTIVE_CONTROL(),
+        MeasurementType::POSTIVE_CONTROL,
     ],
     'positive control with cutoff validation' => [
         'cutoff',
         50,
-        MeasurementType::POSTIVE_CONTROL(),
+        MeasurementType::POSTIVE_CONTROL,
     ],
     'positive control with custom parameter validation' => [
         12,
         12,
-        MeasurementType::POSTIVE_CONTROL(),
+        MeasurementType::POSTIVE_CONTROL,
     ],
     'negative control with null validation' => [
         'null',
         null,
-        MeasurementType::NEGATIVE_CONTROL(),
+        MeasurementType::NEGATIVE_CONTROL,
     ],
     'negative control with cutoff validation' => [
         'cutoff',
         50,
-        MeasurementType::NEGATIVE_CONTROL(),
+        MeasurementType::NEGATIVE_CONTROL,
     ],
     'negative control with custom parameter validation' => [
         12,
         12,
-        MeasurementType::NEGATIVE_CONTROL(),
+        MeasurementType::NEGATIVE_CONTROL,
     ],
     'ntc control with null validation' => [
         'null',
         null,
-        MeasurementType::NTC_CONTROL(),
+        MeasurementType::NTC_CONTROL,
     ],
     'ntc control with cutoff validation' => [
         'cutoff',
         50,
-        MeasurementType::NTC_CONTROL(),
+        MeasurementType::NTC_CONTROL,
     ],
     'ntc control with custom parameter validation' => [
         12,
         12,
-        MeasurementType::NTC_CONTROL(),
+        MeasurementType::NTC_CONTROL,
     ],
 ]);
 
 // Helpers
 /**
- * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
+ * @throws UnknownProperties
  */
 function result(array $parameters): Result
 {
@@ -200,13 +200,11 @@ function result(array $parameters): Result
         'target' => 'ab',
         'averageCQ' => new RoundedNumber($cqs->avg()),
         'repetitions' => $cqs->count(),
-        'qualification' => QualitativeResult::POSITIVE(),
+        'qualification' => QualitativeResult::POSITIVE,
         'quantification' => null,
         'measurements' => test()->measurements(
-            $cqs->map(function ($cq) {
-                return ['cq' => $cq];
-            })->toArray(),
+            $cqs->map(fn ($cq) => ['cq' => $cq])->toArray(),
         ),
-        'type' => MeasurementType::SAMPLE(),
+        'type' => MeasurementType::SAMPLE,
     ], $parameters));
 }

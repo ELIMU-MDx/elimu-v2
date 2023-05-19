@@ -88,7 +88,6 @@ class StudyMemberManager extends Component
      * Confirm that the given team member should be removed.
      *
      * @param  int  $userId
-     * @return void
      */
     public function confirmingMemberRemoval($userId): void
     {
@@ -109,7 +108,6 @@ class StudyMemberManager extends Component
 
     /**
      * @param  int  $invitationId
-     * @return void
      */
     public function cancelTeamInvitation($invitationId): void
     {

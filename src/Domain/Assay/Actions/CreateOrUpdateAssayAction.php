@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Auth;
 final class CreateOrUpdateAssayAction
 {
     public function __construct(
-        private RecalculateResultsAction $recalculateResultsAction,
-        private Connection $connection
+        private readonly RecalculateResultsAction $recalculateResultsAction,
+        private readonly Connection $connection
     ) {
     }
 

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Livewire;
 
+use Spatie\DataTransferObject\Exceptions\UnknownProperties;
+use JsonException;
 use App\Models\Assay;
 use App\Models\User;
 use Domain\Assay\Actions\CreateAssayFromFileAction;
@@ -33,7 +35,7 @@ final class CreateExperimentForm extends Component
     /** @var array */
     public $assays;
 
-    /** @var \Livewire\TemporaryUploadedFile */
+    /** @var TemporaryUploadedFile */
     public $assayFile = null;
 
     /** @var array */
@@ -67,19 +69,15 @@ final class CreateExperimentForm extends Component
         } catch (ExcelValidationException $exception) {
             throw ValidationException::withMessages([
                 'assayFile' => collect($exception->failures())
-                    ->flatMap(function (Failure $failure, string $key) {
-                        return collect($failure->errors())
-                            ->mapWithKeys(function (string $errorMessage, string|int $errorKey) use ($failure, $key) {
-                                return [
-                                    'assayFile.'.$key.$errorKey => sprintf(
-                                        'Row %s (%s): %s',
-                                        $failure->row(),
-                                        $failure->attribute(),
-                                        $errorMessage
-                                    ),
-                                ];
-                            })->toArray();
-                    })->toArray(),
+                    ->flatMap(fn(Failure $failure, string $key) => collect($failure->errors())
+                        ->mapWithKeys(fn(string $errorMessage, string|int $errorKey) => [
+                            'assayFile.'.$key.$errorKey => sprintf(
+                                'Row %s (%s): %s',
+                                $failure->row(),
+                                $failure->attribute(),
+                                $errorMessage
+                            ),
+                        ])->toArray())->toArray(),
             ]);
         }
         $this->assayFile = null;
@@ -91,8 +89,8 @@ final class CreateExperimentForm extends Component
     }
 
     /**
-     * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
-     * @throws \JsonException
+     * @throws UnknownProperties
+     * @throws JsonException
      */
     public function createExperiment(CreateExperimentAction $createExperimentAction): mixed
     {

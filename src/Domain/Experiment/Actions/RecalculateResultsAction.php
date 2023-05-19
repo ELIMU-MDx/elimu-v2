@@ -26,8 +26,8 @@ use Support\ValueObjects\RoundedNumber;
 final class RecalculateResultsAction
 {
     public function __construct(
-        private MeasurementEvaluator $measurementEvaluator,
-        private ResultValidator $resultValidator,
+        private readonly MeasurementEvaluator $measurementEvaluator,
+        private readonly ResultValidator $resultValidator,
     ) {
     }
 
@@ -61,17 +61,15 @@ final class RecalculateResultsAction
 
     private function storeResults(BaseCollection $results, int $assayId): Collection
     {
-        $resultsData = $results->map(function (Result $result) use ($assayId) {
-            return [
-                'sample_id' => $result->sample,
-                'assay_id' => $assayId,
-                'target' => $result->target,
-                'cq' => $result->averageCQ->rounded(15),
-                'quantification' => $result->quantification?->rounded(2),
-                'qualification' => $result->qualification,
-                'standard_deviation' => $result->measurements->included()->standardDeviationCq()->rounded(15),
-            ];
-        })
+        $resultsData = $results->map(fn (Result $result) => [
+            'sample_id' => $result->sample,
+            'assay_id' => $assayId,
+            'target' => $result->target,
+            'cq' => $result->averageCQ->rounded(15),
+            'quantification' => $result->quantification?->rounded(2),
+            'qualification' => $result->qualification,
+            'standard_deviation' => $result->measurements->included()->standardDeviationCq()->rounded(15),
+        ])
             ->tap(function (BaseCollection $results) {
                 ResultModel::upsert(
                     $results->toArray(),
@@ -84,14 +82,11 @@ final class RecalculateResultsAction
             ->whereIn('assay_id', $resultsData->pluck('assay_id'))
             ->whereIn('target', $resultsData->pluck('target'))
             ->get()
-            ->keyBy(function (ResultModel $result) {
-                return "{$result->sample_id}-{$result->target}";
-            });
+            ->keyBy(fn (ResultModel $result) => "{$result->sample_id}-{$result->target}");
     }
 
     /**
      * @param  Collection<Measurement>  $measurements
-     * @return BaseCollection
      */
     private function getResultCalculationParameter(Collection $measurements): BaseCollection
     {
@@ -142,27 +137,21 @@ final class RecalculateResultsAction
         ResultError::whereIn('result_id', $resultModels->pluck('id'))->delete();
 
         ResultError::insert(
-            $results->flatMap(function (Result $result) use ($resultModels, $validationParameter) {
-                return $this->resultValidator->validate($result, $validationParameter->get(strtolower($result->target)))
-                    ->map(function (string $errorIdentifier) use ($resultModels, $validationParameter, $result) {
-                        return [
-                            'error' => ResultValidationErrorFactory::get($errorIdentifier)
-                                ->message($result, $validationParameter->get(strtolower($result->target))),
-                            'result_id' => $resultModels->get("{$result->sample}-{$result->target}")->id,
-                            'created_at' => now(),
-                            'updated_at' => now(),
-                        ];
-                    });
-            })->toArray()
+            $results->flatMap(fn (Result $result) => $this->resultValidator->validate($result, $validationParameter->get(strtolower($result->target)))
+                ->map(fn (string $errorIdentifier) => [
+                    'error' => ResultValidationErrorFactory::get($errorIdentifier)
+                        ->message($result, $validationParameter->get(strtolower($result->target))),
+                    'result_id' => $resultModels->get("{$result->sample}-{$result->target}")->id,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]))->toArray()
         );
     }
 
     private function storeMeasurements(Collection $resultModels, Collection $measurements): void
     {
         $measurements
-            ->groupBy(function (Measurement $measurement) {
-                return "{$measurement->sample_id}-{$measurement->target}";
-            })
+            ->groupBy(fn (Measurement $measurement) => "{$measurement->sample_id}-{$measurement->target}")
             ->each(function (Collection $measurements, string $sampleAndTarget) use ($resultModels) {
                 Measurement::whereIn('id', $measurements->pluck('id'))
                     ->update(['result_id' => $resultModels->get($sampleAndTarget)->id]);
@@ -180,9 +169,7 @@ final class RecalculateResultsAction
             ->groupBy('experiment_id')
             ->map(fn (Collection $groupedMeasurements) => $this->measurementEvaluator
                 ->results(
-                    $groupedMeasurements->map(function (Measurement $measurement) {
-                        return MeasurementDTO::fromModel($measurement);
-                    }),
+                    $groupedMeasurements->map(fn (Measurement $measurement) => MeasurementDTO::fromModel($measurement)),
                     $this->getResultCalculationParameter($groupedMeasurements)
                 )
             )
@@ -200,7 +187,7 @@ final class RecalculateResultsAction
                 'type' => $results->first()->type,
             ])
             )->each(function (Result $result) {
-                if ($result->qualification !== QualitativeResult::POSITIVE()) {
+                if ($result->qualification !== QualitativeResult::POSITIVE) {
                     $result->quantification = null;
                 }
             });
@@ -212,10 +199,8 @@ final class RecalculateResultsAction
             ->experiment
             ->assay
             ->parameters
-            ->mapWithKeys(function (AssayParameter $parameter) {
-                return [
-                    strtolower($parameter->target) => ResultValidationParameter::fromModel($parameter),
-                ];
-            });
+            ->mapWithKeys(fn (AssayParameter $parameter) => [
+                strtolower($parameter->target) => ResultValidationParameter::fromModel($parameter),
+            ]);
     }
 }

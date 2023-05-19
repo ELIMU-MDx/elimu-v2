@@ -13,7 +13,7 @@ use Support\DecimalValidationRule;
 
 final class AssayParameterExcelImporter implements ToModel, WithValidation, WithHeadingRow
 {
-    public function __construct(private int $assayId)
+    public function __construct(private readonly int $assayId)
     {
     }
 

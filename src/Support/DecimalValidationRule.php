@@ -8,9 +8,9 @@ use Illuminate\Contracts\Validation\Rule;
 
 final class DecimalValidationRule implements Rule
 {
-    private float $min;
+    private readonly float $min;
 
-    private float $max;
+    private readonly float $max;
 
     public function __construct(int $length, int $decimals)
     {

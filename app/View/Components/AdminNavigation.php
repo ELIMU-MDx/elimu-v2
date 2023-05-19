@@ -9,9 +9,7 @@ class AdminNavigation extends Component
 {
     public array $links;
 
-    public bool $responsive;
-
-    public function __construct(Request $request, bool $responsive = false)
+    public function __construct(Request $request, public bool $responsive = false)
     {
         $this->links = [
             [
@@ -39,7 +37,6 @@ class AdminNavigation extends Component
                 'active' => $request->is('quality-control/*'),
             ],
         ];
-        $this->responsive = $responsive;
     }
 
     public function render()

@@ -32,6 +32,6 @@ final class StandardDeviationExceedsCutoffError implements ResultValidationError
 
     public function appliesFor(Result $result): bool
     {
-        return $result->type === MeasurementType::SAMPLE();
+        return $result->type === MeasurementType::SAMPLE;
     }
 }

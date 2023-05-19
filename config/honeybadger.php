@@ -1,5 +1,21 @@
 <?php
 
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\DatabaseQueryExecuted;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\DatabaseTransactionStarted;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\DatabaseTransactionCommitted;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\DatabaseTransactionRolledBack;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\CacheHit;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\CacheMiss;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\JobQueued;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\MailSending;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\MailSent;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\MessageLogged;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\NotificationSending;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\NotificationSent;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\NotificationFailed;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\RedisCommandExecuted;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\RouteMatched;
+use Honeybadger\HoneybadgerLaravel\Breadcrumbs\ViewRendered;
 use Honeybadger\HoneybadgerLaravel\Breadcrumbs;
 
 return [
@@ -105,22 +121,22 @@ return [
          * Note that to track redis events, you need to call `Redis::enableEvents()` in your app.
          */
         'automatic' => [
-            Breadcrumbs\DatabaseQueryExecuted::class,
-            Breadcrumbs\DatabaseTransactionStarted::class,
-            Breadcrumbs\DatabaseTransactionCommitted::class,
-            Breadcrumbs\DatabaseTransactionRolledBack::class,
-            Breadcrumbs\CacheHit::class,
-            Breadcrumbs\CacheMiss::class,
-            Breadcrumbs\JobQueued::class,
-            Breadcrumbs\MailSending::class,
-            Breadcrumbs\MailSent::class,
-            Breadcrumbs\MessageLogged::class,
-            Breadcrumbs\NotificationSending::class,
-            Breadcrumbs\NotificationSent::class,
-            Breadcrumbs\NotificationFailed::class,
-            Breadcrumbs\RedisCommandExecuted::class,
-            Breadcrumbs\RouteMatched::class,
-            Breadcrumbs\ViewRendered::class,
+            DatabaseQueryExecuted::class,
+            DatabaseTransactionStarted::class,
+            DatabaseTransactionCommitted::class,
+            DatabaseTransactionRolledBack::class,
+            CacheHit::class,
+            CacheMiss::class,
+            JobQueued::class,
+            MailSending::class,
+            MailSent::class,
+            MessageLogged::class,
+            NotificationSending::class,
+            NotificationSent::class,
+            NotificationFailed::class,
+            RedisCommandExecuted::class,
+            RouteMatched::class,
+            ViewRendered::class,
         ],
     ],
 ];

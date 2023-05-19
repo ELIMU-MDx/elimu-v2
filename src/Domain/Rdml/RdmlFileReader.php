@@ -22,7 +22,7 @@ final class RdmlFileReader
         ZipArchive::ER_SEEK => 'Pointer error',
     ];
 
-    public function __construct(private ZipArchive $zipArchive)
+    public function __construct(private readonly ZipArchive $zipArchive)
     {
     }
 

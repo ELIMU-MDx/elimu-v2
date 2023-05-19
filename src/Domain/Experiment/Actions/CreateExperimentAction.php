@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Experiment\Actions;
 
+use Spatie\DataTransferObject\Exceptions\UnknownProperties;
+use JsonException;
 use App\Models\Experiment;
 use App\Models\Measurement;
 use App\Models\Sample;
@@ -17,15 +19,15 @@ use Illuminate\Database\Connection;
 final class CreateExperimentAction
 {
     public function __construct(
-        private RdmlReader $rdmlReader,
-        private Connection $connection,
-        private RecalculateResultsAction $recalculateResultsAction,
+        private readonly RdmlReader $rdmlReader,
+        private readonly Connection $connection,
+        private readonly RecalculateResultsAction $recalculateResultsAction,
     ) {
     }
 
     /**
-     * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
-     * @throws \JsonException
+     * @throws UnknownProperties
+     * @throws JsonException
      */
     public function execute(CreateExperimentParameter $parameter): Experiment
     {
@@ -56,9 +58,7 @@ final class CreateExperimentAction
                 ->pluck('id', 'identifier');
 
             $sampleLookupTable = $measurements
-                ->filter(function (Measurement $measurement) use ($sampleLookupTable) {
-                    return ! $sampleLookupTable->has($measurement->sample->identifier);
-                })
+                ->filter(fn(Measurement $measurement) => ! $sampleLookupTable->has($measurement->sample->identifier))
                 ->mapWithKeys(function (Measurement $measurement) use ($parameter, $experiment) {
                     $measurement->sample->study_id = $parameter->studyId;
                     $measurement->created_at = $experiment->created_at;
@@ -88,11 +88,9 @@ final class CreateExperimentAction
                 });
 
             $this->recalculateResultsAction->execute(
-                Measurement::whereHas('experiment', function ($join) use ($parameter) {
-                    return $join
-                        ->where('study_id', $parameter->studyId)
-                        ->where('assay_id', $parameter->assayId);
-                })
+                Measurement::whereHas('experiment', fn($join) => $join
+                    ->where('study_id', $parameter->studyId)
+                    ->where('assay_id', $parameter->assayId))
                     ->whereIn('sample_id', $measurements->pluck('sample_id'))
                     ->whereIn('target', $measurements->pluck('target'))
                     ->get()

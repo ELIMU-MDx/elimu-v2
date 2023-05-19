@@ -13,8 +13,8 @@ use Symfony\Component\HttpFoundation\File\File;
 final class RdmlReader
 {
     public function __construct(
-        private RdmlFileReader $fileReader,
-        private RdmlParser $rdmlParser,
+        private readonly RdmlFileReader $fileReader,
+        private readonly RdmlParser $rdmlParser,
     ) {
     }
 
@@ -34,7 +34,6 @@ final class RdmlReader
     }
 
     /**
-     * @param  Rdml  $rdml
      * @return Collection<QuantifyConfiguration>
      */
     private function quantifyConfigurationUsingStandards(Rdml $rdml): Collection

@@ -9,7 +9,7 @@ final class PositionFilter implements MeasurementFilter
     /**
      * @param  string[]  $positions
      */
-    public function __construct(private array $positions)
+    public function __construct(private readonly array $positions)
     {
     }
 

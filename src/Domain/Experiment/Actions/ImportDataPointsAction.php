@@ -18,9 +18,9 @@ use Symfony\Component\HttpFoundation\File\File;
 final class ImportDataPointsAction
 {
     public function __construct(
-        private RdmlReader $rdmlReader,
-        private Connection $connection,
-        private FilesystemManager $filesystemManager,
+        private readonly RdmlReader $rdmlReader,
+        private readonly Connection $connection,
+        private readonly FilesystemManager $filesystemManager,
     ) {
     }
 

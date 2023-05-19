@@ -18,7 +18,7 @@ use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 
 final class ResultExcelExport implements FromQuery, WithMapping, WithStrictNullComparison, WithProperties, ShouldAutoSize, WithHeadings
 {
-    public function __construct(private Assay $assay, private User $user)
+    public function __construct(private readonly Assay $assay, private readonly User $user)
     {
     }
 
@@ -34,17 +34,15 @@ final class ResultExcelExport implements FromQuery, WithMapping, WithStrictNullC
     public function map($sample): array
     {
         return $sample->results
-            ->flatMap(function (Result $result) {
-                return [
-                    'replicas_'.$result->target => $result->measurements->count(),
-                    'mean_cq_'.$result->target => $result->cq,
-                    'standard_deviation_cq_'.$result->target => $result->standard_deviation,
-                    'qualitative_result_'.$result->target => $result->resultErrors->isEmpty()
-                        ? $result->qualification
-                        : $result->resultErrors->pluck('error')->join("\n"),
-                    'quantitative_result_'.$result->target => $result->resultErrors->isEmpty() ? $result->quantification : '',
-                ];
-            })
+            ->flatMap(fn(Result $result) => [
+                'replicas_'.$result->target => $result->measurements->count(),
+                'mean_cq_'.$result->target => $result->cq,
+                'standard_deviation_cq_'.$result->target => $result->standard_deviation,
+                'qualitative_result_'.$result->target => $result->resultErrors->isEmpty()
+                    ? $result->qualification
+                    : $result->resultErrors->pluck('error')->join("\n"),
+                'quantitative_result_'.$result->target => $result->resultErrors->isEmpty() ? $result->quantification : '',
+            ])
             ->prepend($sample->identifier)
             ->toArray();
     }
@@ -70,15 +68,13 @@ final class ResultExcelExport implements FromQuery, WithMapping, WithStrictNullC
             ->parameters()
             ->orderBy('target')
             ->get(['id', 'target'])
-            ->flatMap(function (AssayParameter $parameter) {
-                return [
-                    'replicas_'.$parameter->target,
-                    'mean_cq_'.$parameter->target,
-                    'standard_deviation_cq_'.$parameter->target,
-                    'qualitative_result_'.$parameter->target,
-                    'quantitative_result_'.$parameter->target,
-                ];
-            })
+            ->flatMap(fn(AssayParameter $parameter) => [
+                'replicas_'.$parameter->target,
+                'mean_cq_'.$parameter->target,
+                'standard_deviation_cq_'.$parameter->target,
+                'qualitative_result_'.$parameter->target,
+                'quantitative_result_'.$parameter->target,
+            ])
             ->prepend('id')
             ->toArray();
     }

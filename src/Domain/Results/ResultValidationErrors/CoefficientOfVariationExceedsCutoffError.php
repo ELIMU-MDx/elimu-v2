@@ -37,6 +37,6 @@ final class CoefficientOfVariationExceedsCutoffError implements ResultValidation
 
     public function appliesFor(Result $result): bool
     {
-        return $result->type === MeasurementType::SAMPLE();
+        return $result->type === MeasurementType::SAMPLE;
     }
 }

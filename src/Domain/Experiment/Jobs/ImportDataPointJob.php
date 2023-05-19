@@ -14,7 +14,7 @@ final class ImportDataPointJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct(private Experiment $experiment)
+    public function __construct(private readonly Experiment $experiment)
     {
     }
 

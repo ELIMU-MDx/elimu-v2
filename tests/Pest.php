@@ -4,6 +4,7 @@ use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\DataTransferObjects\Measurement;
 use Domain\Rdml\Enums\MeasurementType;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+use Tests\TestCase;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 |
 */
 
-uses(Tests\TestCase::class, LazilyRefreshDatabase::class)
+uses(TestCase::class, LazilyRefreshDatabase::class)
     ->beforeEach(function () {
         $this->withoutVite();
     })
@@ -33,9 +34,7 @@ uses(Tests\TestCase::class, LazilyRefreshDatabase::class)
 |
 */
 
-expect()->extend('toBeOne', function () {
-    return $this->toBe(1);
-});
+expect()->extend('toBeOne', fn () => $this->toBe(1));
 
 function measurements(array $parameters): MeasurementCollection
 {
@@ -46,7 +45,7 @@ function measurements(array $parameters): MeasurementCollection
             'target' => 'ab',
             'position' => 'x',
             'excluded' => false,
-            'type' => MeasurementType::SAMPLE(),
+            'type' => MeasurementType::SAMPLE,
             'amplificationDataPoints' => collect(),
         ], $parameter));
     }

@@ -12,7 +12,7 @@ use Illuminate\Contracts\Mail\Factory;
 
 final class AddMemberAction
 {
-    public function __construct(private Factory $mail)
+    public function __construct(private readonly Factory $mail)
     {
     }
 
@@ -23,7 +23,7 @@ final class AddMemberAction
             'role' => RoleFactory::get($role),
             'study_id' => $studyId,
             'user_id' => $inviterId,
-            'status' => InvitationStatus::PENDING(),
+            'status' => InvitationStatus::PENDING,
         ]);
 
         $this->mail->send(new NewUserInvitationMail($invitation));

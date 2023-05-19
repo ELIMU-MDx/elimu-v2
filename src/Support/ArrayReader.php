@@ -13,7 +13,7 @@ use Traversable;
 
 final class ArrayReader implements IteratorAggregate
 {
-    public function __construct(private array $data)
+    public function __construct(private readonly array $data)
     {
     }
 

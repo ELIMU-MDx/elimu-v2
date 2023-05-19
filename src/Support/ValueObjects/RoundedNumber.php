@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Support\ValueObjects;
 
+use Stringable;
 use Support\Data;
 
-final class RoundedNumber extends Data
+final class RoundedNumber extends Data implements Stringable
 {
     public function __construct(public readonly ?float $number, public readonly int $precision = 2)
     {

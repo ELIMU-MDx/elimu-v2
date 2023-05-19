@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 final class AcceptInvitationFromSessionAction
 {
-    public function __construct(private AcceptInvitationAction $acceptInvitationAction)
+    public function __construct(private readonly AcceptInvitationAction $acceptInvitationAction)
     {
     }
 

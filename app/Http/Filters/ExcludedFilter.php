@@ -6,7 +6,7 @@ use App\Models\Measurement;
 
 final class ExcludedFilter implements MeasurementFilter
 {
-    public function __construct(private bool $showExcluded)
+    public function __construct(private readonly bool $showExcluded)
     {
     }
 

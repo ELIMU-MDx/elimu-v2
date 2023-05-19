@@ -27,7 +27,7 @@ final class Study extends Model
 
     public function pendingInvitations(): HasMany
     {
-        return $this->hasMany(Invitation::class)->where('status', InvitationStatus::PENDING());
+        return $this->hasMany(Invitation::class)->where('status', InvitationStatus::PENDING);
     }
 
     public function experiments(): HasMany

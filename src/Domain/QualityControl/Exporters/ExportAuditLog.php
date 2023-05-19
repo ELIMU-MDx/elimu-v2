@@ -17,7 +17,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 final class ExportAuditLog implements FromQuery, WithMapping, WithHeadings, WithStyles, ShouldAutoSize, WithColumnFormatting
 {
-    public function __construct(private int $studyId)
+    public function __construct(private readonly int $studyId)
     {
     }
 
@@ -47,12 +47,8 @@ final class ExportAuditLog implements FromQuery, WithMapping, WithHeadings, With
         return [
             $activity->event,
             class_basename($activity->subject_type),
-            collect($activity->properties->get('old', []))->map(function ($value, $key) {
-                return "{$key}: {$value}";
-            })->join("\n"),
-            collect($activity->properties->get('attributes', []))->map(function ($value, $key) {
-                return "{$key}: {$value}";
-            })->join("\n"),
+            collect($activity->properties->get('old', []))->map(fn($value, $key) => "{$key}: {$value}")->join("\n"),
+            collect($activity->properties->get('attributes', []))->map(fn($value, $key) => "{$key}: {$value}")->join("\n"),
             $activity->causer->name,
             Date::dateTimeToExcel($activity->created_at),
         ];

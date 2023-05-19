@@ -11,17 +11,17 @@ final class ResultValidationParameter extends DataTransferObject
 {
     public int $requiredRepetitions;
 
-    public ?float $standardDeviationCutoff;
+    public ?float $standardDeviationCutoff = null;
 
-    public ?float $coefficientOfVariationCutoff;
+    public ?float $coefficientOfVariationCutoff = null;
 
     public float $cutoff;
 
-    public string | float | null $positiveControl;
+    public string | float | null $positiveControl = null;
 
-    public string | float | null $negativeControl;
+    public string | float | null $negativeControl = null;
 
-    public string | float | null $ntcControl;
+    public string | float | null $ntcControl = null;
 
     public static function fromModel(AssayParameter $parameter): ResultValidationParameter
     {

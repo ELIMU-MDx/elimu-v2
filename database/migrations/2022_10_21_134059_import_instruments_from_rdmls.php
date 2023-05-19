@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Filesystem\FilesystemManager;
 use App\Models\Experiment;
 use Domain\Rdml\RdmlReader;
 use Illuminate\Database\Migrations\Migration;
@@ -9,7 +10,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        $fileSystem = app(\Illuminate\Filesystem\FilesystemManager::class);
+        $fileSystem = app(FilesystemManager::class);
         Experiment::all()
             ->lazy()
             ->each(function (Experiment $experiment) use ($fileSystem) {

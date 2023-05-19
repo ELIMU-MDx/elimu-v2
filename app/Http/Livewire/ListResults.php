@@ -17,7 +17,7 @@ final class ListResults extends Component
 {
     use WithPagination;
 
-    /** @var Collection<\App\Models\Assay> */
+    /** @var Collection<Assay> */
     public $assays;
 
     /** @var int */
@@ -47,9 +47,7 @@ final class ListResults extends Component
         $this->assays = Assay::whereHas('results')
             ->where('study_id', Auth::user()->study_id)
             ->with([
-                'parameters' => function ($query) {
-                    return $query->orderBy('target');
-                },
+                'parameters' => fn($query) => $query->orderBy('target'),
             ])
             ->get();
 

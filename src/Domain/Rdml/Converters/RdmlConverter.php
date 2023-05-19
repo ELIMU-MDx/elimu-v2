@@ -13,38 +13,31 @@ use Illuminate\Support\Collection;
 
 final class RdmlConverter implements Arrayable
 {
-    public function __construct(private Rdml $rdml)
+    public function __construct(private readonly Rdml $rdml)
     {
     }
 
-    /**
-     * @return Collection
-     */
     public function toMeasurements(): Collection
     {
         $sampleLookupTable = $this->rdml
             ->measurements
             ->pluck('sample')
-            ->mapWithKeys(function (string $sampleIdentifier) {
-                return [
-                    $sampleIdentifier => new Sample([
-                        'identifier' => $sampleIdentifier,
-                    ]),
-                ];
-            });
+            ->mapWithKeys(fn(string $sampleIdentifier) => [
+                $sampleIdentifier => new Sample([
+                    'identifier' => $sampleIdentifier,
+                ]),
+            ]);
 
         return $this->rdml
             ->measurements
-            ->map(function (MeasurementDTO $measurement) use ($sampleLookupTable) {
-                return new Measurement([
-                    'sample' => $sampleLookupTable->get($measurement->sample),
-                    'cq' => $measurement->cq,
-                    'position' => $measurement->position,
-                    'excluded' => $measurement->excluded,
-                    'target' => $measurement->target,
-                    'type' => $measurement->type,
-                ]);
-            });
+            ->map(fn(MeasurementDTO $measurement) => new Measurement([
+                'sample' => $sampleLookupTable->get($measurement->sample),
+                'cq' => $measurement->cq,
+                'position' => $measurement->position,
+                'excluded' => $measurement->excluded,
+                'target' => $measurement->target,
+                'type' => $measurement->type,
+            ]));
     }
 
     public function toArray(): array

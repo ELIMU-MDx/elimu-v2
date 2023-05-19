@@ -11,7 +11,7 @@ final class Math
     public static function qualifyCq(?float $cq, float $cutoff): QualitativeResult
     {
         return $cq !== null && $cq > 0 && $cq <= $cutoff
-            ? QualitativeResult::POSITIVE()
-            : QualitativeResult::NEGATIVE();
+            ? QualitativeResult::POSITIVE
+            : QualitativeResult::NEGATIVE;
     }
 }

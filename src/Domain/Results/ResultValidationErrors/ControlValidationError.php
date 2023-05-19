@@ -16,7 +16,7 @@ final class ControlValidationError implements ResultValidationError
 
     public function message(Result $result, ResultValidationParameter $parameter): string
     {
-        return "{$result->type->label} is invalid";
+        return "{$result->type->value} is invalid";
     }
 
     public function validate(Result $result, ResultValidationParameter $parameter): bool
@@ -33,7 +33,7 @@ final class ControlValidationError implements ResultValidationError
             'cutoff' => Math::qualifyCq(
                 $result->averageCQ->raw(),
                 $parameter->cutoff
-            ) === QualitativeResult::POSITIVE(),
+            ) === QualitativeResult::POSITIVE,
             default => $result->averageCQ->raw() !== null && $result->averageCQ->raw() <= $validationParameter,
         };
     }
@@ -42,7 +42,7 @@ final class ControlValidationError implements ResultValidationError
     {
         return in_array(
             $result->type,
-            [MeasurementType::NTC_CONTROL(), MeasurementType::NEGATIVE_CONTROL(), MeasurementType::POSTIVE_CONTROL()],
+            [MeasurementType::NTC_CONTROL, MeasurementType::NEGATIVE_CONTROL, MeasurementType::POSTIVE_CONTROL],
             true
         );
     }
@@ -50,11 +50,11 @@ final class ControlValidationError implements ResultValidationError
     private function getValidationParameter(
         MeasurementType $type,
         ResultValidationParameter $parameter
-    ): string | float | null {
+    ): string|float|null {
         return match ($type) {
-            MeasurementType::NTC_CONTROL() => $parameter->ntcControl,
-            MeasurementType::POSTIVE_CONTROL() => $parameter->positiveControl,
-            MeasurementType::NEGATIVE_CONTROL() => $parameter->negativeControl,
+            MeasurementType::NTC_CONTROL => $parameter->ntcControl,
+            MeasurementType::POSTIVE_CONTROL => $parameter->positiveControl,
+            MeasurementType::NEGATIVE_CONTROL => $parameter->negativeControl,
         };
     }
 }

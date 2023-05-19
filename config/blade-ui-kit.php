@@ -1,5 +1,31 @@
 <?php
 
+use BladeUIKit\Components\Alerts\Alert;
+use BladeUIKit\Components\Support\Avatar;
+use BladeUIKit\Components\DateTime\Carbon;
+use BladeUIKit\Components\Forms\Inputs\Checkbox;
+use BladeUIKit\Components\Forms\Inputs\ColorPicker;
+use BladeUIKit\Components\DateTime\Countdown;
+use BladeUIKit\Components\Support\Cron;
+use BladeUIKit\Components\Navigation\Dropdown;
+use BladeUIKit\Components\Editors\EasyMDE;
+use BladeUIKit\Components\Forms\Inputs\Email;
+use BladeUIKit\Components\Forms\Error;
+use BladeUIKit\Components\Forms\Form;
+use BladeUIKit\Components\Buttons\FormButton;
+use BladeUIKit\Components\Layouts\Html;
+use BladeUIKit\Components\Forms\Inputs\Input;
+use BladeUIKit\Components\Forms\Label;
+use BladeUIKit\Components\Buttons\Logout;
+use BladeUIKit\Components\Maps\Mapbox;
+use BladeUIKit\Components\Markdown\Markdown;
+use BladeUIKit\Components\Forms\Inputs\Password;
+use BladeUIKit\Components\Forms\Inputs\Pikaday;
+use BladeUIKit\Components\Layouts\SocialMeta;
+use BladeUIKit\Components\Forms\Inputs\Textarea;
+use BladeUIKit\Components\Markdown\ToC;
+use BladeUIKit\Components\Editors\Trix;
+use BladeUIKit\Components\Support\Unsplash;
 use BladeUIKit\Components;
 
 return [
@@ -16,32 +42,32 @@ return [
     */
 
     'components' => [
-        'alert' => Components\Alerts\Alert::class,
-        'avatar' => Components\Support\Avatar::class,
-        'carbon' => Components\DateTime\Carbon::class,
-        'checkbox' => Components\Forms\Inputs\Checkbox::class,
-        'color-picker' => Components\Forms\Inputs\ColorPicker::class,
-        'countdown' => Components\DateTime\Countdown::class,
-        'cron' => Components\Support\Cron::class,
-        'dropdown' => Components\Navigation\Dropdown::class,
-        'easy-mde' => Components\Editors\EasyMDE::class,
-        'email' => Components\Forms\Inputs\Email::class,
-        'error' => Components\Forms\Error::class,
-        'form' => Components\Forms\Form::class,
-        'form-button' => Components\Buttons\FormButton::class,
-        'html' => Components\Layouts\Html::class,
-        'input' => Components\Forms\Inputs\Input::class,
-        'label' => Components\Forms\Label::class,
-        'logout' => Components\Buttons\Logout::class,
-        'mapbox' => Components\Maps\Mapbox::class,
-        'markdown' => Components\Markdown\Markdown::class,
-        'password' => Components\Forms\Inputs\Password::class,
-        'pikaday' => Components\Forms\Inputs\Pikaday::class,
-        'social-meta' => Components\Layouts\SocialMeta::class,
-        'textarea' => Components\Forms\Inputs\Textarea::class,
-        'toc' => Components\Markdown\ToC::class,
-        'trix' => Components\Editors\Trix::class,
-        'unsplash' => Components\Support\Unsplash::class,
+        'alert' => Alert::class,
+        'avatar' => Avatar::class,
+        'carbon' => Carbon::class,
+        'checkbox' => Checkbox::class,
+        'color-picker' => ColorPicker::class,
+        'countdown' => Countdown::class,
+        'cron' => Cron::class,
+        'dropdown' => Dropdown::class,
+        'easy-mde' => EasyMDE::class,
+        'email' => Email::class,
+        'error' => Error::class,
+        'form' => Form::class,
+        'form-button' => FormButton::class,
+        'html' => Html::class,
+        'input' => Input::class,
+        'label' => Label::class,
+        'logout' => Logout::class,
+        'mapbox' => Mapbox::class,
+        'markdown' => Markdown::class,
+        'password' => Password::class,
+        'pikaday' => Pikaday::class,
+        'social-meta' => SocialMeta::class,
+        'textarea' => Textarea::class,
+        'toc' => ToC::class,
+        'trix' => Trix::class,
+        'unsplash' => Unsplash::class,
     ],
 
     /*

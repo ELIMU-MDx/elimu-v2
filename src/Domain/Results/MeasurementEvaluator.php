@@ -14,9 +14,8 @@ use Illuminate\Support\Collection;
 final class MeasurementEvaluator
 {
     /**
-     * @param  Collection  $measurements
      * @param  Collection<ResultCalculationParameter>  $parameters
-     * @return \Illuminate\Support\Collection<Result>
+     * @return Collection<Result>
      */
     public function results(Collection $measurements, Collection $parameters): Collection
     {
@@ -27,17 +26,13 @@ final class MeasurementEvaluator
         $parameters = $parameters->keyBy('target');
 
         return $measurements
-            ->groupBy(function (Measurement $measurement) {
-                return "{$measurement->sample}-{$measurement->target}";
-            })
+            ->groupBy(fn(Measurement $measurement) => "{$measurement->sample}-{$measurement->target}")
             ->map(function (MeasurementCollection $measurements) use ($parameters) {
                 $target = $measurements->first()->target;
                 $onlyIncludedMeasurements = $measurements->included();
 
                 /** @var ResultCalculationParameter $parameter */
-                $parameter = $parameters->first(function (ResultCalculationParameter $parameter) use ($target) {
-                    return strcasecmp($parameter->target, $target) === 0;
-                }) ?? throw new BadMethodCallException("No parameter for target {$target} provided");
+                $parameter = $parameters->first(fn(ResultCalculationParameter $parameter) => strcasecmp($parameter->target, $target) === 0) ?? throw new BadMethodCallException("No parameter for target {$target} provided");
 
                 $qualification = $onlyIncludedMeasurements->qualify($parameter->cutoff);
 

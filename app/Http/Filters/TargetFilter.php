@@ -9,7 +9,7 @@ final class TargetFilter implements MeasurementFilter
     /**
      * @param  string[]  $targets
      */
-    public function __construct(private array $targets)
+    public function __construct(private readonly array $targets)
     {
     }
 

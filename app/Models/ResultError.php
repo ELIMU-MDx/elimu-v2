@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Stringable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-final class ResultError extends Model
+final class ResultError extends Model implements Stringable
 {
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->error;
     }

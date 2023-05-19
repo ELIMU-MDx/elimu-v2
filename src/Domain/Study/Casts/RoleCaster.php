@@ -17,9 +17,9 @@ final class RoleCaster implements CastsAttributes
     }
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param Model $model
      * @param  string  $key
-     * @param  \Domain\Study\Roles\Role  $value
+     * @param Role $value
      * @param  array  $attributes
      * @return string
      */

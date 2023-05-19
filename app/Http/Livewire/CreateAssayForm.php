@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Livewire;
 
+use Illuminate\Validation\ValidationException;
 use App\Models\Assay;
 use App\Models\AssayParameter;
 use Domain\Assay\Actions\CreateOrUpdateAssayAction;
@@ -53,7 +54,7 @@ final class CreateAssayForm extends Component
     }
 
     /**
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function updatedTargets(): void
     {

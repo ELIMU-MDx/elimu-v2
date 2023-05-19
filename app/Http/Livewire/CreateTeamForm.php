@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Jetstream\RedirectsActions;
 use Livewire\Component;
@@ -40,7 +41,7 @@ class CreateTeamForm extends Component
     /**
      * Render the component.
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function render()
     {

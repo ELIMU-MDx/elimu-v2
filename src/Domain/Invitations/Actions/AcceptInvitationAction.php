@@ -10,7 +10,7 @@ use Illuminate\Database\Connection;
 
 final class AcceptInvitationAction
 {
-    public function __construct(private Connection $connection)
+    public function __construct(private readonly Connection $connection)
     {
     }
 

@@ -1,3 +1,4 @@
+@php use Domain\Results\Enums\QualitativeResult; @endphp
 <tr class="{{$even ? 'bg-gray-100' : 'bg-white'}} relative z-0">
     <td class="px-3 py-4 whitespace-nowrap text-sm text-left font-semibold">
         {{$sample}}
@@ -34,7 +35,7 @@
                 </ul>
             @else
                 <div class="text-sm text-gray-900">
-                    @if($result->qualification->label === 'POSITIVE')
+                    @if($result->qualification === QualitativeResult::POSITIVE)
                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                             Positive
                         </span>

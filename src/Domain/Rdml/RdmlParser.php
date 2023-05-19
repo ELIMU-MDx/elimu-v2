@@ -13,14 +13,16 @@ use Domain\Rdml\DataTransferObjects\Target;
 use Domain\Rdml\Enums\MeasurementType;
 use Domain\Rdml\LabelFormats\LabelFormatFactory;
 use Illuminate\Support\Arr;
+use JsonException;
 use RuntimeException;
+use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 use Support\ArrayReader;
 
 final class RdmlParser
 {
     /**
-     * @throws \JsonException
-     * @throws \Spatie\DataTransferObject\Exceptions\UnknownProperties
+     * @throws JsonException
+     * @throws UnknownProperties
      */
     public function extract(string $xml): Rdml
     {
@@ -82,7 +84,7 @@ final class RdmlParser
                                 'temperature' => $adp['tmp'] ?? null,
                                 'fluor' => $adp['fluor'] ?? null,
                             ])),
-                        'type' => MeasurementType::SAMPLE(),
+                        'type' => MeasurementType::SAMPLE,
                     ]);
 
                     if ($this->alreadyExists($measurements, $measurement)) {
@@ -134,7 +136,7 @@ final class RdmlParser
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     private function xmlToArray(string $xml): ArrayReader
     {
@@ -181,8 +183,6 @@ final class RdmlParser
 
     /**
      * @param  Measurement[]  $measurements
-     * @param  Measurement  $measurement
-     * @return bool
      */
     private function alreadyExists(array $measurements, Measurement $measurement): bool
     {

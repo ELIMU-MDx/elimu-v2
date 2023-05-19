@@ -18,7 +18,7 @@ final class CreateExperimentParameter extends DataTransferObject
 
     public int $creatorId;
 
-    public ?string $eln;
+    public ?string $eln = null;
 
     public function getExperiment(): Experiment
     {

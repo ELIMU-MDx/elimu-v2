@@ -6,11 +6,9 @@ namespace Domain\Study\Enums;
 
 use Spatie\Enum\Laravel\Enum;
 
-/**
- * @method static self PENDING()
- * @method static self ACCEPTED()
- * @method static self REJECTED()
- */
-final class InvitationStatus extends Enum
+enum InvitationStatus : string
 {
+    case PENDING = 'PENDING';
+    case ACCEPTED = 'ACCEPTED';
+    case REJECTED = 'REJECTED';
 }

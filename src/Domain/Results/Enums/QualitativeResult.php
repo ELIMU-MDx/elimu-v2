@@ -6,10 +6,8 @@ namespace Domain\Results\Enums;
 
 use Spatie\Enum\Laravel\Enum;
 
-/**
- * @method static self POSITIVE()
- * @method static self NEGATIVE()
- */
-final class QualitativeResult extends Enum
+enum QualitativeResult : string
 {
+    case POSITIVE = 'POSITIVE';
+    case NEGATIVE = 'NEGATIVE';
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Jetstream\Contracts\UpdatesTeamNames;
 use Livewire\Component;
@@ -25,10 +26,9 @@ class UpdateTeamNameForm extends Component
     /**
      * Mount the component.
      *
-     * @param  mixed  $team
      * @return void
      */
-    public function mount($team)
+    public function mount(mixed $team)
     {
         $this->team = $team;
 
@@ -38,7 +38,6 @@ class UpdateTeamNameForm extends Component
     /**
      * Update the team's name.
      *
-     * @param  \Laravel\Jetstream\Contracts\UpdatesTeamNames  $updater
      * @return void
      */
     public function updateTeamName(UpdatesTeamNames $updater)
@@ -65,7 +64,7 @@ class UpdateTeamNameForm extends Component
     /**
      * Render the component.
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function render()
     {

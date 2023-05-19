@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 
 final class CreateStudyMemberAction
 {
-    public function __construct(private Connection $connection)
+    public function __construct(private readonly Connection $connection)
     {
     }
 

@@ -43,7 +43,7 @@ class DemoForm extends Component
 
         try {
             app(RdmlReader::class)->read($this->rdml);
-        } catch (Exception $exception) {
+        } catch (Exception) {
             $this->addError('rdml', 'Could not parse rdml file');
         }
     }
@@ -62,16 +62,14 @@ class DemoForm extends Component
             $this->assay->getRealPath()
         )
             ->flatten(1)
-            ->map(function (Collection $parameter) {
-                return new AssayParameter([
-                    'target' => $parameter->get('target'),
-                    'cutoff' => $parameter->get('cutoff'),
-                    'standard_deviation_cutoff' => $parameter->get('cutoff_standard_deviation'),
-                    'required_repetitions' => $parameter->get('required_repetitions'),
-                    'slope' => $parameter->get('slope'),
-                    'intercept' => $parameter->get('intercept'),
-                ]);
-            });
+            ->map(fn (Collection $parameter) => new AssayParameter([
+                'target' => $parameter->get('target'),
+                'cutoff' => $parameter->get('cutoff'),
+                'standard_deviation_cutoff' => $parameter->get('cutoff_standard_deviation'),
+                'required_repetitions' => $parameter->get('required_repetitions'),
+                'slope' => $parameter->get('slope'),
+                'intercept' => $parameter->get('intercept'),
+            ]));
     }
 
     public function getMeasurementsProperty(RdmlReader $rdmlReader)
@@ -81,8 +79,8 @@ class DemoForm extends Component
         }
 
         try {
-            return $rdmlReader->read($this->rdml)->measurements->filter(fn (Measurement $measurement) => $measurement->type === MeasurementType::SAMPLE());
-        } catch (Throwable $exception) {
+            return $rdmlReader->read($this->rdml)->measurements->filter(fn (Measurement $measurement) => $measurement->type === MeasurementType::SAMPLE);
+        } catch (Throwable) {
             return [];
         }
     }

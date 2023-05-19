@@ -20,14 +20,14 @@ final class ResultFactory extends Factory
 
     public function definition(): array
     {
-        $qualification = $this->faker->randomElement([QualitativeResult::POSITIVE(), QualitativeResult::NEGATIVE()]);
+        $qualification = $this->faker->randomElement([QualitativeResult::POSITIVE, QualitativeResult::NEGATIVE]);
 
         return [
             'sample_id' => SampleFactory::new(),
             'assay_id' => AssayFactory::new(),
             'target' => $this->faker->word(),
             'cq' => $this->faker->boolean() ? $this->faker->randomFloat(nbMaxDecimals: 14, max: 99) : null,
-            'quantification' => $qualification === QualitativeResult::POSITIVE() ? $this->faker->randomFloat(nbMaxDecimals: 2,
+            'quantification' => $qualification === QualitativeResult::POSITIVE ? $this->faker->randomFloat(nbMaxDecimals: 2,
                 max: 9999) : null,
             'qualification' => $qualification,
             'standard_deviation' => $this->faker->randomFloat(nbMaxDecimals: 2, max: 99),

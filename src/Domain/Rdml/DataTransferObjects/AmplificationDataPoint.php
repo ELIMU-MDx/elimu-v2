@@ -11,7 +11,7 @@ final class AmplificationDataPoint extends DataTransferObject implements Arrayab
 {
     public float $cycle;
 
-    public ?float $temperature;
+    public ?float $temperature = null;
 
     public float $fluor;
 }

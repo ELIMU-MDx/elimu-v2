@@ -11,7 +11,7 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 final class Measurement extends DataTransferObject
 {
-    public ?float $quantity;
+    public ?float $quantity = null;
 
     public string $sample;
 
@@ -21,7 +21,7 @@ final class Measurement extends DataTransferObject
 
     public bool $excluded = false;
 
-    public ?float $cq;
+    public ?float $cq = null;
 
     public MeasurementType $type;
 

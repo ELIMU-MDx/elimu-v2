@@ -13,15 +13,11 @@ use Illuminate\Support\Collection;
 final class DataPointValidationAction
 {
     /**
-     * @param  MeasurementCollection  $dataPoints
-     * @param  \Domain\Results\DataTransferObjects\ResultValidationParameter  $parameter
-     * @return \Illuminate\Support\Collection<ResultValidationError>
+     * @return Collection<ResultValidationError>
      */
     public function execute(MeasurementCollection $dataPoints, ResultValidationParameter $parameter): Collection
     {
         return ResultValidationErrorFactory::all()
-            ->filter(function (ResultValidationError $error) use ($parameter, $dataPoints) {
-                return ! $error->validate($dataPoints, $parameter);
-            });
+            ->filter(fn(ResultValidationError $error) => ! $error->validate($dataPoints, $parameter));
     }
 }

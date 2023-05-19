@@ -11,7 +11,7 @@ use App\Models\Sample;
 
 final class DeleteExperimentAction
 {
-    public function __construct(private RecalculateResultsAction $action)
+    public function __construct(private readonly RecalculateResultsAction $action)
     {
     }
 
@@ -23,10 +23,8 @@ final class DeleteExperimentAction
         Sample::whereDoesntHave('results')->delete();
 
         $this->action
-            ->execute(Measurement::whereHas('experiment', function ($join) use ($experiment) {
-                return $join
-                    ->where('study_id', $experiment->study_id)
-                    ->where('assay_id', $experiment->assay_id);
-            })->get());
+            ->execute(Measurement::whereHas('experiment', fn($join) => $join
+                ->where('study_id', $experiment->study_id)
+                ->where('assay_id', $experiment->assay_id))->get());
     }
 }

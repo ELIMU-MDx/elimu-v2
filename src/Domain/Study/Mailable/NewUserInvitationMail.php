@@ -11,13 +11,10 @@ use Illuminate\Support\Facades\URL;
 
 final class NewUserInvitationMail extends Mailable implements ShouldQueue
 {
-    public Invitation $invitation;
-
     public string $acceptUrl;
 
-    public function __construct(Invitation $invitation)
+    public function __construct(public Invitation $invitation)
     {
-        $this->invitation = $invitation;
         $this->acceptUrl = URL::signedRoute(
             $invitation->receiver ? 'invitations.accept.existing' : 'invitations.accept.new',
             compact('invitation')

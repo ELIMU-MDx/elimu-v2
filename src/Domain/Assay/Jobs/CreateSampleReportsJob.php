@@ -14,7 +14,7 @@ use ZipArchive;
 
 final class CreateSampleReportsJob implements ShouldQueue, ShouldBeUnique
 {
-    public function __construct(private Assay $assay, private string $recipient)
+    public function __construct(private readonly Assay $assay, private readonly string $recipient)
     {
     }
 

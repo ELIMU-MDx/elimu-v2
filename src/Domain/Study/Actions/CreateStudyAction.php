@@ -12,7 +12,7 @@ use Illuminate\Database\Connection;
 
 final class CreateStudyAction
 {
-    public function __construct(private Connection $connection)
+    public function __construct(private readonly Connection $connection)
     {
     }
 

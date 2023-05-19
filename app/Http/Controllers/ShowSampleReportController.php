@@ -40,7 +40,7 @@ final class ShowSampleReportController
             hasQuantification: (bool) $targets->first(fn (SampleReportTarget $target
             ) => $target->quantification !== null),
             result: $targets->first(fn (SampleReportTarget $target
-            ) => $target->qualification === QualitativeResult::POSITIVE()) ? QualitativeResult::POSITIVE() : QualitativeResult::NEGATIVE(),
+            ) => $target->qualification === QualitativeResult::POSITIVE) ? QualitativeResult::POSITIVE : QualitativeResult::NEGATIVE,
             targets: $targets,
             controlTargets: new DataCollection(SampleReportTarget::class, $assay->parameters
                 ->filter(fn (AssayParameter $parameter) => $parameter->is_control)

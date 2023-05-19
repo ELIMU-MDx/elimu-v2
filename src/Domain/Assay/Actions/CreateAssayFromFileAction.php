@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Excel;
 
 final class CreateAssayFromFileAction
 {
-    public function __construct(private Connection $connection, private Excel $excel)
+    public function __construct(private readonly Connection $connection, private readonly Excel $excel)
     {
     }
 

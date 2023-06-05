@@ -2820,16 +2820,16 @@
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirschbaum-development/eloquent-power-joins.git",
-                "reference": "b9aa4c2364e2776e5aacca49160d4b519ae82768"
+                "reference": "85ff7684a25049aee6a1c9e26a751ce5be60d6d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirschbaum-development/eloquent-power-joins/zipball/b9aa4c2364e2776e5aacca49160d4b519ae82768",
-                "reference": "b9aa4c2364e2776e5aacca49160d4b519ae82768",
+                "url": "https://api.github.com/repos/kirschbaum-development/eloquent-power-joins/zipball/85ff7684a25049aee6a1c9e26a751ce5be60d6d9",
+                "reference": "85ff7684a25049aee6a1c9e26a751ce5be60d6d9",
                 "shasum": ""
             },
             "require": {
@@ -2876,9 +2876,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirschbaum-development/eloquent-power-joins/issues",
-                "source": "https://github.com/kirschbaum-development/eloquent-power-joins/tree/3.0.2"
+                "source": "https://github.com/kirschbaum-development/eloquent-power-joins/tree/3.0.3"
             },
-            "time": "2023-03-16T14:41:20+00:00"
+            "time": "2023-06-04T12:19:28+00:00"
         },
         {
             "name": "laravel/fortify",

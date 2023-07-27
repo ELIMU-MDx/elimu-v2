@@ -1,8 +1,8 @@
 <x-pdf-layout>
-    <div class="max-w-screen-md min-h-screen mx-auto p-10 flex flex-col">
-        <header class="border-b-2 border-gray-900 pb-2">
-            <p class="font-bold">{{$report->study}}</p>
-        </header>
+    <x-slot name="header">
+        <p class="font-bold">{{$report->study}}</p>
+    </x-slot>
+    <div class="max-w-screen-md min-h-screen mx-auto px-10 -mt-12 print:mt-0 flex flex-col">
         <div class="py-10 flex-grow flex flex-col">
             <h1 class="text-2xl text-center">Laboratory Result Form for {{$report->assayName}} RT-qPCR</h1>
 
@@ -93,7 +93,7 @@
 
             <div class="mt-12">
                 <h3 class="font-bold">Report released</h3>
-                <div class="grid grid-cols-3 grid-rows-2 gap-6 items-end mt-2">
+                <div class="grid grid-cols-3 grid-rows-2 gap-x-6 items-end mt-2">
                     <p class="row-start-1">Date and Time</p>
 
                     <div class="row-start-2 relative">
@@ -109,8 +109,27 @@
                 </div>
 
 
-                <h3 class="mt-8 font-bold">Report reviewed</h3>
-                <div class="grid grid-cols-3 grid-rows-2 gap-6 mt-2">
+                <h3 class="mt-8 font-bold">Laboratory Review of Report by</h3>
+                <div class="grid grid-cols-3 grid-rows-2 gap-x-6 items-end mt-2">
+                    <p class="row-start-1">Date and Time</p>
+
+                    <div class="row-start-2 relative">
+                        <div class="absolute w-full h-px bg-gray-900 bottom-0"></div>
+                    </div>
+
+                    <p class="row-start-1">Name</p>
+                    <div class="row-start-2 relative">
+                        <div class="absolute w-full h-px bg-gray-900 bottom-0"></div>
+                    </div>
+
+                    <p class="row-start-1">Signature</p>
+                    <div class="row-start-2 relative">
+                        <div class="absolute w-full h-px bg-gray-900 bottom-0"></div>
+                    </div>
+                </div>
+
+                <h3 class="mt-8 font-bold pagebreak">Clinician Review of Report by</h3>
+                <div class="grid grid-cols-3 grid-rows-2 gap-x-6 items-end mt-2">
                     <p class="row-start-1">Date and Time</p>
 
                     <div class="h-px bg-gray-900 w-full row-start-2"></div>
@@ -124,11 +143,25 @@
 
 
                 <h3 class="mt-6 font-bold">Comments</h3>
+
+                <div class="grid grid-cols-3 gap-y-16 gap-x-6 mt-2">
+                    <p class="col-span-1">Date, Name &amp; Signature</p>
+                    <p class="col-span-2">Comment</p>
+
+                    <div class="h-px bg-gray-900 w-full"></div>
+                    <div class="h-px bg-gray-900 w-full col-span-2"></div>
+                    <div class="h-px bg-gray-900 w-full"></div>
+                    <div class="h-px bg-gray-900 w-full col-span-2"></div>
+                    <div class="h-px bg-gray-900 w-full"></div>
+                    <div class="h-px bg-gray-900 w-full col-span-2"></div>
+                    <div class="h-px bg-gray-900 w-full"></div>
+                    <div class="h-px bg-gray-900 w-full col-span-2"></div>
+                </div>
             </div>
         </div>
-
-        <footer class="flex border-t-2 border-gray-900 mt-4 justify-between pt-2">
-            <p class="font-bold">ELIMU-MDx</p>
-        </footer>
     </div>
+
+    <x-slot name="footer">
+        <p class="font-bold">ELIMU-MDx</p>
+    </x-slot>
 </x-pdf-layout>

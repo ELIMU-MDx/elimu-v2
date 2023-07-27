@@ -39,4 +39,9 @@ final class Study extends Model
     {
         return $this->hasMany(Sample::class);
     }
+
+    public function assays(): HasMany
+    {
+        return $this->hasMany(Assay::class);
+    }
 }

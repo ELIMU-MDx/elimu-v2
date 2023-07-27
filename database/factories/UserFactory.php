@@ -44,7 +44,7 @@ class UserFactory extends Factory
         });
     }
 
-    public function withStudy(?Study $study = null): static
+    public function withStudy(Study $study = null): static
     {
         return $this->state([
             'study_id' => $study?->id ?? StudyFactory::new(),

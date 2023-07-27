@@ -20,7 +20,7 @@ abstract class TestCase extends BaseTestCase
         activity()->disableLogging();
     }
 
-    public function signIn(?User $user = null): static
+    public function signIn(User $user = null): static
     {
         return $this->actingAs($user ?? UserFactory::new()->create());
     }

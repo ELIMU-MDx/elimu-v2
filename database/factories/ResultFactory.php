@@ -41,7 +41,7 @@ final class ResultFactory extends Factory
         ]);
     }
 
-    public function withMeasurement(?MeasurementFactory $measurement = null): static
+    public function withMeasurement(MeasurementFactory $measurement = null): static
     {
         $measurement ??= MeasurementFactory::new();
 

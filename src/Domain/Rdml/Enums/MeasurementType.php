@@ -48,6 +48,6 @@ enum MeasurementType: string
 
     public static function isControl(MeasurementType $type): bool
     {
-        return in_array($type, static::controls(), true);
+        return in_array($type, self::controls(), true);
     }
 }

@@ -2178,16 +2178,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.5.0",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "b635f279edd83fc275f822a1188157ffea568ff6"
+                "reference": "8bd7c33a0734ae1c5d074360512beb716bef3f77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/b635f279edd83fc275f822a1188157ffea568ff6",
-                "reference": "b635f279edd83fc275f822a1188157ffea568ff6",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/8bd7c33a0734ae1c5d074360512beb716bef3f77",
+                "reference": "8bd7c33a0734ae1c5d074360512beb716bef3f77",
                 "shasum": ""
             },
             "require": {
@@ -2274,7 +2274,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.5.0"
+                "source": "https://github.com/guzzle/psr7/tree/2.6.0"
             },
             "funding": [
                 {
@@ -2290,7 +2290,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-17T16:11:26+00:00"
+            "time": "2023-08-03T15:06:02+00:00"
         },
         {
             "name": "guzzlehttp/uri-template",
@@ -3950,26 +3950,26 @@
         },
         {
             "name": "league/mime-type-detection",
-            "version": "1.11.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/mime-type-detection.git",
-                "reference": "ff6248ea87a9f116e78edd6002e39e5128a0d4dd"
+                "reference": "a6dfb1194a2946fcdc1f38219445234f65b35c96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/ff6248ea87a9f116e78edd6002e39e5128a0d4dd",
-                "reference": "ff6248ea87a9f116e78edd6002e39e5128a0d4dd",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/a6dfb1194a2946fcdc1f38219445234f65b35c96",
+                "reference": "a6dfb1194a2946fcdc1f38219445234f65b35c96",
                 "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
-                "php": "^7.2 || ^8.0"
+                "php": "^7.4 || ^8.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.2",
                 "phpstan/phpstan": "^0.12.68",
-                "phpunit/phpunit": "^8.5.8 || ^9.3"
+                "phpunit/phpunit": "^8.5.8 || ^9.3 || ^10.0"
             },
             "type": "library",
             "autoload": {
@@ -3990,7 +3990,7 @@
             "description": "Mime-type detection for Flysystem",
             "support": {
                 "issues": "https://github.com/thephpleague/mime-type-detection/issues",
-                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.11.0"
+                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.13.0"
             },
             "funding": [
                 {
@@ -4002,7 +4002,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-17T13:12:02+00:00"
+            "time": "2023-08-05T12:09:49+00:00"
         },
         {
             "name": "livewire/livewire",
@@ -7185,16 +7185,16 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "3.58.1",
+            "version": "3.58.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "1e526e2a28bdf267bcdf8b2c6dbb2c1160d8aec8"
+                "reference": "6503b2b429e10ff28a4cdb9fffaecc25ba6d032c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/1e526e2a28bdf267bcdf8b2c6dbb2c1160d8aec8",
-                "reference": "1e526e2a28bdf267bcdf8b2c6dbb2c1160d8aec8",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/6503b2b429e10ff28a4cdb9fffaecc25ba6d032c",
+                "reference": "6503b2b429e10ff28a4cdb9fffaecc25ba6d032c",
                 "shasum": ""
             },
             "require": {
@@ -7239,7 +7239,7 @@
                 "webpage"
             ],
             "support": {
-                "source": "https://github.com/spatie/browsershot/tree/3.58.1"
+                "source": "https://github.com/spatie/browsershot/tree/3.58.2"
             },
             "funding": [
                 {
@@ -7247,7 +7247,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-07-19T18:38:41+00:00"
+            "time": "2023-07-27T07:51:54+00:00"
         },
         {
             "name": "spatie/data-transfer-object",
@@ -7454,16 +7454,16 @@
         },
         {
             "name": "spatie/image",
-            "version": "2.2.6",
+            "version": "2.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image.git",
-                "reference": "f72ca52acd77ca03b7843a0f86e2411ce90aecfc"
+                "reference": "2f802853aab017aa615224daae1588054b5ab20e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image/zipball/f72ca52acd77ca03b7843a0f86e2411ce90aecfc",
-                "reference": "f72ca52acd77ca03b7843a0f86e2411ce90aecfc",
+                "url": "https://api.github.com/repos/spatie/image/zipball/2f802853aab017aa615224daae1588054b5ab20e",
+                "reference": "2f802853aab017aa615224daae1588054b5ab20e",
                 "shasum": ""
             },
             "require": {
@@ -7472,7 +7472,7 @@
                 "ext-mbstring": "*",
                 "league/glide": "^2.2.2",
                 "php": "^8.0",
-                "spatie/image-optimizer": "^1.1",
+                "spatie/image-optimizer": "^1.7",
                 "spatie/temporary-directory": "^1.0|^2.0",
                 "symfony/process": "^3.0|^4.0|^5.0|^6.0"
             },
@@ -7507,7 +7507,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/image/tree/2.2.6"
+                "source": "https://github.com/spatie/image/tree/2.2.7"
             },
             "funding": [
                 {
@@ -7519,20 +7519,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-06T10:20:33+00:00"
+            "time": "2023-07-24T13:54:13+00:00"
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "9551e2df936656bda3567901a033579345d52e88"
+                "reference": "af179994e2d2413e4b3ba2d348d06b4eaddbeb30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/9551e2df936656bda3567901a033579345d52e88",
-                "reference": "9551e2df936656bda3567901a033579345d52e88",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/af179994e2d2413e4b3ba2d348d06b4eaddbeb30",
+                "reference": "af179994e2d2413e4b3ba2d348d06b4eaddbeb30",
                 "shasum": ""
             },
             "require": {
@@ -7572,9 +7572,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/image-optimizer/issues",
-                "source": "https://github.com/spatie/image-optimizer/tree/1.7.0"
+                "source": "https://github.com/spatie/image-optimizer/tree/1.7.1"
             },
-            "time": "2023-07-22T16:28:37+00:00"
+            "time": "2023-07-27T07:57:32+00:00"
         },
         {
             "name": "spatie/laravel-activitylog",

@@ -45,7 +45,7 @@
         "barryvdh/laravel-debugbar": "^3.6",
         "barryvdh/laravel-ide-helper": "^2.12",
         "beyondcode/helo-laravel": "^1.4",
-        "driftingly/rector-laravel": "^0.21.0",
+        "driftingly/rector-laravel": "^0.22.0",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.2",
         "mockery/mockery": "^1.4.4",

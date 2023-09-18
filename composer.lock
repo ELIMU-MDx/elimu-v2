@@ -2943,16 +2943,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.22.0",
+            "version": "v10.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "9234388a895206d4e1df37342b61adc67e5c5d31"
+                "reference": "dbfd495557678759153e8d71cc2f6027686ca51e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/9234388a895206d4e1df37342b61adc67e5c5d31",
-                "reference": "9234388a895206d4e1df37342b61adc67e5c5d31",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/dbfd495557678759153e8d71cc2f6027686ca51e",
+                "reference": "dbfd495557678759153e8d71cc2f6027686ca51e",
                 "shasum": ""
             },
             "require": {
@@ -3052,7 +3052,7 @@
                 "league/flysystem-read-only": "^3.3",
                 "league/flysystem-sftp-v3": "^3.0",
                 "mockery/mockery": "^1.5.1",
-                "orchestra/testbench-core": "^8.4",
+                "orchestra/testbench-core": "^8.10",
                 "pda/pheanstalk": "^4.0",
                 "phpstan/phpstan": "^1.4.7",
                 "phpunit/phpunit": "^10.0.7",
@@ -3139,7 +3139,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-09-05T13:20:01+00:00"
+            "time": "2023-09-13T14:51:46+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -3290,16 +3290,16 @@
         },
         {
             "name": "laravel/prompts",
-            "version": "v0.1.6",
+            "version": "v0.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/prompts.git",
-                "reference": "b514c5620e1b3b61221b0024dc88def26d9654f4"
+                "reference": "554e7d855a22e87942753d68e23b327ad79b2070"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/prompts/zipball/b514c5620e1b3b61221b0024dc88def26d9654f4",
-                "reference": "b514c5620e1b3b61221b0024dc88def26d9654f4",
+                "url": "https://api.github.com/repos/laravel/prompts/zipball/554e7d855a22e87942753d68e23b327ad79b2070",
+                "reference": "554e7d855a22e87942753d68e23b327ad79b2070",
                 "shasum": ""
             },
             "require": {
@@ -3332,9 +3332,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/prompts/issues",
-                "source": "https://github.com/laravel/prompts/tree/v0.1.6"
+                "source": "https://github.com/laravel/prompts/tree/v0.1.7"
             },
-            "time": "2023-08-18T13:32:23+00:00"
+            "time": "2023-09-12T11:09:22+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -12874,16 +12874,16 @@
         },
         {
             "name": "nunomaduro/larastan",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/larastan.git",
-                "reference": "73e5be5f5c732212ce6ca77ffd2753a136f36a23"
+                "reference": "6c5e8820f3db6397546f3ce48520af9d312aed27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/larastan/zipball/73e5be5f5c732212ce6ca77ffd2753a136f36a23",
-                "reference": "73e5be5f5c732212ce6ca77ffd2753a136f36a23",
+                "url": "https://api.github.com/repos/nunomaduro/larastan/zipball/6c5e8820f3db6397546f3ce48520af9d312aed27",
+                "reference": "6c5e8820f3db6397546f3ce48520af9d312aed27",
                 "shasum": ""
             },
             "require": {
@@ -12946,7 +12946,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nunomaduro/larastan/issues",
-                "source": "https://github.com/nunomaduro/larastan/tree/v2.6.3"
+                "source": "https://github.com/nunomaduro/larastan/tree/v2.6.4"
             },
             "funding": [
                 {
@@ -12966,7 +12966,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-06-13T21:39:27+00:00"
+            "time": "2023-07-29T12:13:13+00:00"
         },
         {
             "name": "nunomaduro/phpinsights",
@@ -13605,16 +13605,16 @@
         },
         {
             "name": "phpmyadmin/sql-parser",
-            "version": "5.8.0",
+            "version": "5.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmyadmin/sql-parser.git",
-                "reference": "db1b3069b5dbc220d393d67ff911e0ae76732755"
+                "reference": "b877ee6262a00f0f498da5e01335e8a5dc01d203"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmyadmin/sql-parser/zipball/db1b3069b5dbc220d393d67ff911e0ae76732755",
-                "reference": "db1b3069b5dbc220d393d67ff911e0ae76732755",
+                "url": "https://api.github.com/repos/phpmyadmin/sql-parser/zipball/b877ee6262a00f0f498da5e01335e8a5dc01d203",
+                "reference": "b877ee6262a00f0f498da5e01335e8a5dc01d203",
                 "shasum": ""
             },
             "require": {
@@ -13636,7 +13636,7 @@
                 "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
                 "psalm/plugin-phpunit": "^0.16.1",
                 "vimeo/psalm": "^4.11",
-                "zumba/json-serializer": "^3.0"
+                "zumba/json-serializer": "~3.0.2"
             },
             "suggest": {
                 "ext-mbstring": "For best performance",
@@ -13688,20 +13688,20 @@
                     "type": "other"
                 }
             ],
-            "time": "2023-06-05T18:19:38+00:00"
+            "time": "2023-09-15T18:21:22+00:00"
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.27",
+            "version": "1.10.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "a9f44dcea06f59d1363b100bb29f297b311fa640"
+                "reference": "7f806b6f1403e6914c778140e2ba07c293cb4901"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/a9f44dcea06f59d1363b100bb29f297b311fa640",
-                "reference": "a9f44dcea06f59d1363b100bb29f297b311fa640",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/7f806b6f1403e6914c778140e2ba07c293cb4901",
+                "reference": "7f806b6f1403e6914c778140e2ba07c293cb4901",
                 "shasum": ""
             },
             "require": {
@@ -13750,7 +13750,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-05T09:57:55+00:00"
+            "time": "2023-09-13T09:49:47+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

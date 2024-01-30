@@ -5,13 +5,45 @@
 
 version: 2
 updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Europe/Zurich'
+    groups:
+      non-breaking:
+        update-types:
+          - "minor"
+          - "patch"
+      potentially-breaking:
+        update-types:
+          - "major"
   - package-ecosystem: "composer" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-      day: "monday"
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Europe/Zurich'
+    groups:
+      non-breaking:
+        update-types:
+          - "minor"
+          - "patch"
+      potentially-breaking:
+        update-types:
+          - "major"
+    registries:
+      - spatie-composer
+      - setasign-composer
+    open-pull-requests-limit: 20
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-      day: "monday"
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Europe/Zurich'
+    open-pull-requests-limit: 20

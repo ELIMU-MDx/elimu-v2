@@ -10,7 +10,7 @@ jobs:
   phpinsights:
     runs-on: ubuntu-latest
     steps:
-    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+    - uses: shivammathur/setup-php@6d7209f44a25a59e904b1ee9f3b0c33ab2cd888d
       with:
         php-version: '8.1.10'
     - uses: actions/checkout@v2

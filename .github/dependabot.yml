@@ -35,9 +35,6 @@ updates:
       potentially-breaking:
         update-types:
           - "major"
-    registries:
-      - spatie-composer
-      - setasign-composer
     open-pull-requests-limit: 20
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests

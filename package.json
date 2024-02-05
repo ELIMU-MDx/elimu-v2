@@ -20,6 +20,6 @@
         "vite": "^4.5.2"
     },
     "dependencies": {
-        "puppeteer": "^21.10.0"
+        "puppeteer": "^21.11.0"
     }
 }

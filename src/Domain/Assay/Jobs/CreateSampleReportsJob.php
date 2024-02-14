@@ -5,38 +5,36 @@ namespace Domain\Assay\Jobs;
 use App\Models\Assay;
 use App\Models\Result;
 use Domain\Assay\Mails\SendSampleReportsMail;
+use Illuminate\Bus\Batch;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\URL;
-use Spatie\Browsershot\Browsershot;
-use ZipArchive;
+use Illuminate\Support\Facades\Storage;
 
-final class CreateSampleReportsJob implements ShouldQueue, ShouldBeUnique
+final class CreateSampleReportsJob implements ShouldBeUnique, ShouldQueue
 {
+    use SerializesModels;
+
     public function __construct(private readonly Assay $assay, private readonly string $recipient)
     {
     }
 
     public function handle(): void
     {
-        $file = @tempnam('tmp', 'zip');
+        Bus::batch(
+            $this->assay->load('results.sample')
+                ->results
+                ->map(fn (Result $result) => new AddSampleReportToArchive($result))
+        )
+            ->name("Create report for assay {$this->assay->name}:{$this->assay->id}")
+            ->then(function (Batch $batch) {
+                $path = AddSampleReportToArchive::getZipArchivePath($batch);
+                Mail::to($this->recipient)->send(new SendSampleReportsMail($this->assay->name, AddSampleReportToArchive::getZipArchivePath($batch)));
 
-        $zip = new ZipArchive();
-        $zip->open($file, ZipArchive::OVERWRITE);
-
-        $this->assay->load('results.sample')->results->each(function (Result $result) use ($zip) {
-            $zip->addFromString($result->sample->identifier.'.pdf',
-                base64_decode(Browsershot::url(URL::temporarySignedRoute('samples.report',
-                    now()->addMinute(), [
-                        'sample' => $result->sample,
-                        'assay' => $result->assay,
-                    ]))->pages('1')->emulateMedia('print')->base64pdf()));
-        });
-
-        $zip->close();
-        Mail::to($this->recipient)->send(new SendSampleReportsMail($this->assay->name, $file));
-        unlink($file);
+                Storage::disk('local')->delete($path);
+            });
     }
 
     public function uniqueId(): string

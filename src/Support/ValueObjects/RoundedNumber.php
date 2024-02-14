@@ -28,7 +28,7 @@ final class RoundedNumber extends Data implements Stringable
         return $this->number;
     }
 
-    public function rounded(int $precision = null): ?float
+    public function rounded(?int $precision = null): ?float
     {
         return $this->number === null ? null : round($this->number, $precision ?? $this->precision);
     }

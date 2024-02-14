@@ -7,8 +7,8 @@ use App\Models\User;
 use Domain\Study\Roles\Owner;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /**
  * @method User|User[] create($attributes = [], ?Model $parent = null)
@@ -45,7 +45,7 @@ class UserFactory extends Factory
         });
     }
 
-    public function withStudy(Study $study = null): static
+    public function withStudy(?Study $study = null): static
     {
         return $this->state([
             'study_id' => $study?->id ?? StudyFactory::new(),

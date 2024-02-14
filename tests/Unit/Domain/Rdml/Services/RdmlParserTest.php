@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Domain\Rdml\DataTransferObjects\Measurement;
 use Domain\Rdml\DataTransferObjects\Rdml;
 use Domain\Rdml\RdmlParser;
+
 use function Spatie\Snapshots\assertMatchesJsonSnapshot;
 
 it('converts a xml to dto', function () {

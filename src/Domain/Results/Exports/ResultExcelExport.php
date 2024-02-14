@@ -16,7 +16,7 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithProperties;
 use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 
-final class ResultExcelExport implements FromQuery, WithMapping, WithStrictNullComparison, WithProperties, ShouldAutoSize, WithHeadings
+final class ResultExcelExport implements FromQuery, ShouldAutoSize, WithHeadings, WithMapping, WithProperties, WithStrictNullComparison
 {
     public function __construct(private readonly Assay $assay, private readonly User $user)
     {

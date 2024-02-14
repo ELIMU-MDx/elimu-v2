@@ -15,8 +15,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 final class Measurement extends Model
 {
-    use PowerJoins;
     use LogsActivity;
+    use PowerJoins;
 
     protected static array $recordEvents = ['updated'];
 

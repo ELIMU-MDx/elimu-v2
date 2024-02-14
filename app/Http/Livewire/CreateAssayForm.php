@@ -46,7 +46,7 @@ final class CreateAssayForm extends Component
         'parameters.*.required_repetitions' => 'required_repetitions',
     ];
 
-    public function mount(Assay $assay = null): void
+    public function mount(?Assay $assay = null): void
     {
         $this->assay = $assay ?? new Assay();
         $this->parameters = $this->assay->parameters ?? new Collection();

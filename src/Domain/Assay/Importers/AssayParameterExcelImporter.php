@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Support\DecimalValidationRule;
 
-final class AssayParameterExcelImporter implements ToModel, WithValidation, WithHeadingRow
+final class AssayParameterExcelImporter implements ToModel, WithHeadingRow, WithValidation
 {
     public function __construct(private readonly int $assayId)
     {

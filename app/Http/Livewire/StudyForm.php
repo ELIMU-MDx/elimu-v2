@@ -20,7 +20,7 @@ final class StudyForm extends Component
         'study.name' => 'required|string|max:255',
     ];
 
-    public function mount(Study $study = null)
+    public function mount(?Study $study = null)
     {
         $this->study = $study ?? new Study();
     }

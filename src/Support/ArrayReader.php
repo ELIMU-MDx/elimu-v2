@@ -27,7 +27,7 @@ final class ArrayReader implements IteratorAggregate
         return Arr::get($this->data, $key, $default);
     }
 
-    public function getString(string $key, string $default = null): string
+    public function getString(string $key, ?string $default = null): string
     {
         $value = $this->findString($key, $default);
 
@@ -38,7 +38,7 @@ final class ArrayReader implements IteratorAggregate
         return $value;
     }
 
-    public function findString(string $key, string $default = null): ?string
+    public function findString(string $key, ?string $default = null): ?string
     {
         $value = $this->find($key);
 
@@ -49,7 +49,7 @@ final class ArrayReader implements IteratorAggregate
         return $value;
     }
 
-    public function getInt(string $key, int $default = null): int
+    public function getInt(string $key, ?int $default = null): int
     {
         $value = $this->findInt($key, $default);
 
@@ -60,7 +60,7 @@ final class ArrayReader implements IteratorAggregate
         return $value;
     }
 
-    public function findInt(string $key, int $default = null): ?int
+    public function findInt(string $key, ?int $default = null): ?int
     {
         $value = $this->find($key);
 
@@ -71,7 +71,7 @@ final class ArrayReader implements IteratorAggregate
         return (int) $value;
     }
 
-    public function getFloat(string $key, float $default = null): float
+    public function getFloat(string $key, ?float $default = null): float
     {
         $value = $this->findFloat($key, $default);
 
@@ -82,7 +82,7 @@ final class ArrayReader implements IteratorAggregate
         return $value;
     }
 
-    public function findFloat(string $key, float $default = null): ?float
+    public function findFloat(string $key, ?float $default = null): ?float
     {
         $value = $this->find($key);
 
@@ -93,7 +93,7 @@ final class ArrayReader implements IteratorAggregate
         return (float) $value;
     }
 
-    public function getDateTime(string $key, CarbonImmutable $default = null): CarbonImmutable
+    public function getDateTime(string $key, ?CarbonImmutable $default = null): CarbonImmutable
     {
         $value = $this->findDateTime($key, $default);
 
@@ -104,7 +104,7 @@ final class ArrayReader implements IteratorAggregate
         return $value;
     }
 
-    public function findDateTime(string $key, CarbonImmutable $default = null): ?CarbonImmutable
+    public function findDateTime(string $key, ?CarbonImmutable $default = null): ?CarbonImmutable
     {
         $value = $this->find($key);
 

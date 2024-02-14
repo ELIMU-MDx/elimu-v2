@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 class CustomCollection extends Collection
 {
-    public function standardDeviation(callable|string $callback = null): float
+    public function standardDeviation(callable|string|null $callback = null): float
     {
         $callback = $this->valueRetriever($callback);
 

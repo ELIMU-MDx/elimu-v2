@@ -27,7 +27,7 @@ use Spatie\DataTransferObject\Exceptions\UnknownProperties;
  */
 final class CreateExperimentForm extends Component
 {
-    use WithFileUploads, AuthorizesRequests;
+    use AuthorizesRequests, WithFileUploads;
 
     /** @var bool */
     public $openModal = false;

@@ -7,7 +7,7 @@ use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-final class AssayExcelExporter implements WithHeadings, FromQuery, WithMapping
+final class AssayExcelExporter implements FromQuery, WithHeadings, WithMapping
 {
     public function __construct(private readonly int $assayId)
     {

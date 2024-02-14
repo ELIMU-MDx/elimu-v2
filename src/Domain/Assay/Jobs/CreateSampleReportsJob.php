@@ -23,15 +23,17 @@ final class CreateSampleReportsJob implements ShouldBeUnique, ShouldQueue
 
     public function handle(): void
     {
+        $recipient = $this->recipient;
+        $assayName = $this->assay->name;
         Bus::batch(
             $this->assay->load('results.sample')
                 ->results
                 ->map(fn (Result $result) => new AddSampleReportToArchive($result))
         )
             ->name("Create report for assay {$this->assay->name}:{$this->assay->id}")
-            ->then(function (Batch $batch) {
+            ->then(function (Batch $batch) use ($assayName, $recipient) {
                 $path = AddSampleReportToArchive::getZipArchivePath($batch);
-                Mail::to($this->recipient)->send(new SendSampleReportsMail($this->assay->name, AddSampleReportToArchive::getZipArchivePath($batch)));
+                Mail::to($recipient)->send(new SendSampleReportsMail($assayName, AddSampleReportToArchive::getZipArchivePath($batch)));
 
                 Storage::disk('local')->delete($path);
             })->dispatch();

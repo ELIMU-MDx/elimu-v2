@@ -39,6 +39,10 @@ final class AddSampleReportToArchive implements ShouldQueue
         if (! $batch instanceof Batch) {
             return;
         }
+
+        if ($batch->cancelled()) {
+            return;
+        }
         $zip = new ZipArchive();
         if ($zip->open(self::getZipArchivePath($batch), ZipArchive::CREATE) !== true) {
             // zip might be locked by another job already

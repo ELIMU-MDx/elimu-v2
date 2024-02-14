@@ -34,7 +34,7 @@ final class CreateSampleReportsJob implements ShouldBeUnique, ShouldQueue
                 Mail::to($this->recipient)->send(new SendSampleReportsMail($this->assay->name, AddSampleReportToArchive::getZipArchivePath($batch)));
 
                 Storage::disk('local')->delete($path);
-            });
+            })->dispatch();
     }
 
     public function uniqueId(): string

@@ -22,7 +22,7 @@ final class ShowSampleReportPdfController
             ->format('a4')
             ->withBrowsershot(
                 fn (Browsershot $browsershot) => $browsershot
-                    ->setChromePath('/home/forge/.cache/puppeteer/chrome/linux-1056772/chrome-linux/chrome')
+                   // ->setChromePath('/home/forge/.cache/puppeteer/chrome/linux-1056772/chrome-linux/chrome')
                     ->emulateMedia('print'),
             );
     }

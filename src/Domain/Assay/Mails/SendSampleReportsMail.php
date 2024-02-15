@@ -18,8 +18,12 @@ class SendSampleReportsMail extends Mailable
      *
      * @return void
      */
-    public function __construct(readonly public string $assayName, readonly private string $archive)
-    {
+    public function __construct(
+        readonly public string $assayName,
+        readonly private string $archive,
+        readonly public int $currentEmail,
+        readonly public int $totalEmails,
+    ) {
         //
     }
 

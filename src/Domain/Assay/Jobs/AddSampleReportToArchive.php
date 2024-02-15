@@ -13,9 +13,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\URL;
 use Spatie\Browsershot\Browsershot;
-use ZipArchive;
+use URL;
 
 final class AddSampleReportToArchive implements ShouldQueue
 {
@@ -25,7 +24,9 @@ final class AddSampleReportToArchive implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    public int $tried = 10;
+    public int $tries = 10;
+
+    public int $maxExceptions = 3;
 
     public function __construct(private Result $result)
     {
@@ -43,34 +44,30 @@ final class AddSampleReportToArchive implements ShouldQueue
         if ($batch->cancelled()) {
             return;
         }
-        $zip = new ZipArchive();
-        if ($zip->open(self::getZipArchivePath($batch), ZipArchive::CREATE) !== true) {
-            // zip might be locked by another job already
-            $this->release(10);
 
-            return;
-        }
+        $path = self::getZipArchivePath($batch, $this->result->sample->identifier);
 
-        $filename = $this->result->sample->identifier.'.pdf';
-        $zip->addFromString(
-            $this->result->sample->identifier.'.pdf',
-            base64_decode(Browsershot::url(URL::temporarySignedRoute('samples.report',
-                now()->addMinute(), [
-                    'sample' => $this->result->sample,
-                    'assay' => $this->result->assay,
-                ]))
-                ->pages('1')
-                ->emulateMedia('print')
-                ->base64pdf(),
-            ));
-        $zip->setCompressionName($filename, ZipArchive::CM_DEFLATE);
-        $zip->close();
+        ray(URL::temporarySignedRoute('samples.report',
+            now()->addMinutes(5), [
+                'sample' => $this->result->sample,
+                'assay' => $this->result->assay,
+            ]));
+
+        Browsershot::url(URL::temporarySignedRoute('samples.report',
+            now()->addMinutes(5), [
+                'sample' => $this->result->sample,
+                'assay' => $this->result->assay,
+            ]))
+            ->pages('1')
+            ->emulateMedia('print')
+            ->format('A4')
+            ->save(Storage::path($path));
     }
 
-    public static function getZipArchivePath(Batch $batch): string
+    public static function getZipArchivePath(Batch $batch, string $sampleIdentifier): string
     {
-        Storage::createDirectory('tmp');
+        Storage::createDirectory('tmp/'.$batch->id);
 
-        return Storage::disk('local')->path('tmp/question-images-'.($batch->id).'.zip');
+        return 'tmp/'.$batch->id.'/'.$sampleIdentifier.'.pdf';
     }
 }

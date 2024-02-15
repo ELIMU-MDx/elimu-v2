@@ -10,7 +10,7 @@ final class DownloadAssayReportsController
 {
     public function __invoke(Assay $assay)
     {
-        dispatch(new CreateSampleReportsJob($assay, Auth::user()->email));
+        dispatch_sync(new CreateSampleReportsJob($assay, Auth::user()->email));
 
         return 'You will receive a mail with the reports within the next few minutes.';
     }

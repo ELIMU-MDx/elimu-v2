@@ -35,6 +35,7 @@ final class CreateSampleReportsJob implements ShouldBeUnique, ShouldQueue
         $chunks->each(function (Collection $results, int $index) use ($totalChunks, $recipient, $assay) {
             Bus::batch(
                 $results
+                    ->toBase()
                     ->map(fn (Result $result) => new AddSampleReportToArchive($result))
             )
                 ->name("Create report for assay {$this->assay->name}:{$this->assay->id}")

@@ -47,12 +47,6 @@ final class AddSampleReportToArchive implements ShouldQueue
 
         $path = self::getZipArchivePath($batch, $this->result->sample->identifier);
 
-        ray(URL::temporarySignedRoute('samples.report',
-            now()->addMinutes(5), [
-                'sample' => $this->result->sample,
-                'assay' => $this->result->assay,
-            ]));
-
         Browsershot::url(URL::temporarySignedRoute('samples.report',
             now()->addMinutes(5), [
                 'sample' => $this->result->sample,

@@ -6,7 +6,6 @@ use App\Models\Assay;
 use App\Models\Sample;
 use Domain\Study\Actions\CreateSampleReportAction;
 use Spatie\Browsershot\Browsershot;
-use Spatie\LaravelPdf\Facades\Pdf;
 
 final class ShowSampleReportPdfController
 {
@@ -18,12 +17,13 @@ final class ShowSampleReportPdfController
     {
         $report = $this->createReport->execute($assay, $sample);
 
-        return Pdf::view('samples.report', compact('report'))
-            ->format('a4')
-            ->withBrowsershot(
-                fn (Browsershot $browsershot) => $browsershot
-                   // ->setChromePath('/home/forge/.cache/puppeteer/chrome/linux-1056772/chrome-linux/chrome')
-                    ->emulateMedia('print'),
-            );
+        return response(
+            Browsershot::html(view('samples.report', compact('report'))->render())
+                ->pages('1-2')
+                ->emulateMedia('print')
+                ->pdf()
+        )
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'inline; filename="sample-report.pdf"');
     }
 }

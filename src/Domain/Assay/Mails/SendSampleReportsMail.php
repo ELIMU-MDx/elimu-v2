@@ -3,13 +3,14 @@
 namespace Domain\Assay\Mails;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class SendSampleReportsMail extends Mailable
+class SendSampleReportsMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 

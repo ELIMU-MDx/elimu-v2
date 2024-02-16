@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('backup:clean')->dailyAt('01:30');
         $schedule->command('backup:run')->dailyAt('01:35');
         $schedule->job(new DeleteCachedSampleReportsJob())->hourly();
-        $schedule->job(new DeleteOldAirdropFiles())->hourly();
+        $schedule->job(new DeleteOldAirdropFiles())->daily();
     }
 
     /**

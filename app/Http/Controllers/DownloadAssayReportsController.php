@@ -17,6 +17,6 @@ final class DownloadAssayReportsController
 
         $durationEstimate = CarbonInterval::seconds(5 * $numberOfResults);
 
-        return 'You will receive a mail with the reports within about: '.$durationEstimate->forHumans();
+        return 'You will receive a mail with the reports within about: '.$durationEstimate->totalMinutes.' minutes.';
     }
 }

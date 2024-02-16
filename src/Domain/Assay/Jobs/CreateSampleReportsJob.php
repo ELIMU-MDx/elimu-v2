@@ -33,8 +33,7 @@ final class CreateSampleReportsJob implements ShouldBeUnique, ShouldQueue
 
         $chunks = $this->assay->load('results.sample')
             ->results
-            ->take(5)
-            ->chunk(1);
+            ->chunk(300);
         $totalChunks = $chunks->count();
         $lock = Cache::lock('create-sample-reports-'.$assay->id.'-'.md5($recipient), (int) CarbonInterval::hour()->totalSeconds);
 

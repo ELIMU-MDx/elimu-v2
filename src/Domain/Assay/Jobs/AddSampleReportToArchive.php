@@ -52,7 +52,7 @@ final class AddSampleReportToArchive implements ShouldQueue
                 'sample' => $this->result->sample,
                 'assay' => $this->result->assay,
             ]))
-            ->pages('1')
+            ->pages('1-2')
             ->emulateMedia('print')
             ->format('A4')
             ->save(Storage::path($path));

@@ -30,40 +30,41 @@ final class CreateSampleReportsJob implements ShouldBeUnique, ShouldQueue
 
         $chunks = $this->assay->load('results.sample')
             ->results
-            ->chunk(200);
+            ->chunk(400);
         $totalChunks = $chunks->count();
-        $chunks->each(function (Collection $results, int $index) use ($totalChunks, $recipient, $assay) {
-            Bus::batch(
-                $results
-                    ->toBase()
-                    ->map(fn (Result $result) => new AddSampleReportToArchive($result))
-            )
-                ->name("Create report for assay {$this->assay->name}:{$this->assay->id}")
-                ->then(function (Batch $batch) use ($totalChunks, $index, $assay, $recipient) {
-                    $zip = new ZipArchive();
-                    $zipPath = Storage::path('tmp/'.$batch->id.'/reports.zip');
-                    $zip->open(Storage::path('tmp/'.$batch->id.'/reports.zip'), ZipArchive::CREATE);
+        Bus::chain(
+            $chunks->map(function (Collection $results, int $index) use ($totalChunks, $recipient, $assay) {
+                $sampleIds = $results->map(fn (Result $result) => $result->sample->identifier)->toBase();
+                $assayName = $assay->name;
+                Bus::batch(
+                    $results
+                        ->toBase()
+                        ->map(fn (Result $result) => new AddSampleReportToArchive($result)),
+                )
+                    ->name("Create report for assay {$assay->name}:{$assay->id}")
+                    ->then(function (Batch $batch) use ($assayName, $sampleIds, $totalChunks, $index, $recipient) {
+                        $zip = new ZipArchive();
+                        $zipPath = Storage::path('tmp/'.$batch->id.'/reports.zip');
+                        $zip->open(Storage::path('tmp/'.$batch->id.'/reports.zip'), ZipArchive::CREATE);
 
-                    $assay
-                        ->loadMissing('results.sample')
-                        ->results
-                        ->take(100)
-                        ->each(fn (Result $result) => $zip->addFile(
-                            Storage::path(AddSampleReportToArchive::getZipArchivePath($batch, $result->sample->identifier)),
-                            $result->sample->identifier.'.pdf'
+                        $sampleIds
+                            ->each(fn (string $sampleIdentifier) => $zip->addFile(
+                                Storage::path(AddSampleReportToArchive::getZipArchivePath($batch, $sampleIdentifier)),
+                                $sampleIdentifier.'.pdf',
+                            ));
+
+                        $zip->close();
+                        Mail::to($recipient)->send(new SendSampleReportsMail(
+                            $assayName,
+                            $zipPath,
+                            $index + 1,
+                            $totalChunks,
                         ));
 
-                    $zip->close();
-                    Mail::to($recipient)->send(new SendSampleReportsMail(
-                        $assay->name,
-                        $zipPath,
-                        $index + 1,
-                        $totalChunks
-                    ));
-
-                    Storage::disk('local')->deleteDirectory('tmp/'.$batch->id);
-                })->dispatch();
-        });
+                        Storage::disk('local')->deleteDirectory('tmp/'.$batch->id);
+                    })->dispatch();
+            }),
+        );
 
     }
 

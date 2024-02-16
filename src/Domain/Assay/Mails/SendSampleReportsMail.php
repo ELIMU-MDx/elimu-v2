@@ -35,7 +35,7 @@ class SendSampleReportsMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Sample Reports for '.$this->assayName,
+            subject: 'Sample Reports for '.$this->assayName.' ('.$this->currentEmail.'/'.$this->totalEmails.')',
         );
     }
 

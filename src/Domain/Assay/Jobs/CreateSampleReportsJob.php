@@ -71,8 +71,6 @@ final class CreateSampleReportsJob implements ShouldBeUnique, ShouldQueue
                                 $index + 1,
                                 $totalChunks,
                             ));
-
-                            Storage::disk('local')->deleteDirectory('tmp/'.$batch->id);
                         });
                 })->all(),
                 function () use ($lock) {

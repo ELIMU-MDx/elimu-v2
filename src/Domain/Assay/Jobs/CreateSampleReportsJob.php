@@ -84,8 +84,6 @@ final class CreateSampleReportsJob implements ShouldBeUnique, ShouldQueue
                 report($e);
             })->dispatch();
 
-            ray('dispatched');
-
         } catch (Throwable $e) {
             $lock->release();
             throw $e;

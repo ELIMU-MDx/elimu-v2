@@ -12,17 +12,17 @@
             <x-slot name="content">
                 <div class="grid grid-cols-6 gap-6">
                     <div class="col-span-6 sm:col-span-4">
-                        <x-label for="name" value="{{ __('Name') }}"/>
+                        <x-label for="name">{{__('Name')}}</x-label>
                         <x-input name="name" class="mt-1 block w-full" wire:model="assay.name" required/>
                         <x-input-error for="assay.name" class="mt-2"/>
                     </div>
                     <div class="col-span-6 sm:col-span-4">
-                        <x-label for="sample_type" value="{{ __('Sample type') }}"/>
+                        <x-label for="sample_type" >{{__('Sample type')}}</x-label>
                         <x-input name="sample_type" class="mt-1 block w-full" wire:model="assay.sample_type"/>
                         <x-input-error for="assay.sample_type" class="mt-2"/>
                     </div>
                     <div class="col-span-6 sm:col-span-4">
-                        <x-label for="targets" value="{{ __('Targets') }}"/>
+                        <x-label for="targets" >{{__('Targets')}}</x-label>
                         <x-input name="targets" class="mt-1 block w-full" wire:model.live.debounce.500ms="targets" required/>
                         <x-input-error for="targets" class="mt-2"/>
                         <x-input-help>Targets seperated by comma. The form is going to be extended after entering a
@@ -53,14 +53,14 @@
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-4">
                                         <x-label for="description-{{$key}}"
-                                                     value="{{ __('Description') }}"/>
+                                        >{{__('Description')}}</x-label>
                                         <x-input name="description-{{$key}}" class="mt-1 block w-full"
                                                  wire:model="parameters.{{$key}}.description"/>
                                         <x-input-error for="parameters.{{$key}}.description" class="mt-2"/>
                                         <x-input-help>Is used in the report</x-input-help>
                                     </div>
                                     <div class="col-span-6 sm:col-span-4">
-                                        <x-label for="is-control-{{$key}}" value="{{ __('Is control target') }}"/>
+                                        <x-label for="is-control-{{$key}}" >{{__('Is control target')}}</x-label>
                                         <label class="flex items-center mt-1">
                                             <x-checkbox name="is-control-{{$key}}"
                                                         wire:model="parameters.{{$key}}.is_control"/>
@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="col-span-6 sm:col-span-4">
                                         <x-label for="positive-control-{{$key}}"
-                                                     value="{{ __('Positive control') }}"/>
+                                        >{{__('Positive control')}}</x-label>
                                         <x-input name="positive-control-{{$key}}" class="mt-1 block w-full"
                                                  wire:model="parameters.{{$key}}.positive_control"/>
                                         <x-input-error for="parameters.{{$key}}.positive_control" class="mt-2"/>
@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="col-span-6 sm:col-span-4">
                                         <x-label for="negative-control-{{$key}}"
-                                                     value="{{ __('Negative control') }}"/>
+                                        >{{__('Negative control')}}</x-label>
                                         <x-input name="negative-control-{{$key}}" class="mt-1 block w-full"
                                                  wire:model="parameters.{{$key}}.negative_control"/>
                                         <x-input-error for="parameters.{{$key}}.negative_control" class="mt-2"/>
@@ -89,7 +89,7 @@
                                         </x-input-help>
                                     </div>
                                     <div class="col-span-6 sm:col-span-4">
-                                        <x-label for="ntc-control-{{$key}}" value="{{ __('NTC control') }}"/>
+                                        <x-label for="ntc-control-{{$key}}"{{__('NTC control')}} /</div>>
                                         <x-input name="ntc-control-{{$key}}" class="mt-1 block w-full"
                                                  wire:model="parameters.{{$key}}.ntc_control"/>
                                         <x-input-error for="parameters.{{$key}}.ntc_control" class="mt-2"/>
@@ -98,14 +98,14 @@
                                         </x-input-help>
                                     </div>
                                     <div class="col-span-6 sm:col-span-4">
-                                        <x-label for="cutoff-{{$key}}" value="{{ __('Cutoff') }}"/>
+                                        <x-label for="cutoff-{{$key}}"{{__('Cutoff')}} /</div>>
                                         <x-input name="cutoff-{{$key}}" class="mt-1 block w-full"
                                                  wire:model="parameters.{{$key}}.cutoff"/>
                                         <x-input-error for="parameters.{{$key}}.cutoff" class="mt-2"/>
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-4">
-                                        <x-label for="cutoff-{{$key}}" value="{{ __('Validation using') }}"/>
+                                        <x-label for="cutoff-{{$key}}"{{__('Validation using')}} /</div>>
                                         <span class="isolate inline-flex rounded-md shadow-sm mt-1">
                                             <button
                                                 :class="{
@@ -133,7 +133,7 @@
                                     <div class="col-span-6 sm:col-span-4"
                                          x-show="validationMethod === 'coefficient_of_variation'">
                                         <x-label for="coefficient_of_variation_cutoff-{{$key}}"
-                                                     value="{{ __('Cutoff coefficient of variation') }}"/>
+                                        >{{__('Cutoff coefficient of variation')}}</x-label>
                                         <x-input name="coefficient_of_variation_cutoff-{{$key}}"
                                                  class="mt-1 block w-full"
                                                  wire:model="parameters.{{$key}}.coefficient_of_variation_cutoff"
@@ -145,7 +145,7 @@
                                     <div class="col-span-6 sm:col-span-4"
                                          x-show="validationMethod === 'standard_deviation'">
                                         <x-label for="cutoff_stddev-{{$key}}"
-                                                     value="{{ __('Cutoff standard deviation') }}"/>
+                                        >{{__('Cutoff standard deviation')}}</x-label>
                                         <x-input name="cutoff_stddev-{{$key}}" class="mt-1 block w-full"
                                                  wire:model="parameters.{{$key}}.standard_deviation_cutoff"
                                         placeholder="2.0"/>
@@ -153,7 +153,7 @@
                                                            class="mt-2"/>
                                     </div>
                                     <div class="col-span-6 sm:col-span-4">
-                                        <x-label for="quantify-{{$key}}" value="{{ __('Quantify') }}"/>
+                                        <x-label for="quantify-{{$key}}" >{{__('Quantify')}}</x-label>
                                         <label class="flex items-center mt-1">
                                             <x-checkbox name="quantify-{{$key}}" value="1" x-model="quantify"/>
                                             <span class="ml-4">Yes</span>
@@ -161,20 +161,20 @@
                                         <x-input-error for="parameters.{{$key}}.quantify" class="mt-2"/>
                                     </div>
                                     <div class="col-span-6 sm:col-span-4" x-show="quantify">
-                                        <x-label for="slope-{{$key}}" value="{{ __('Slope') }}"/>
+                                        <x-label for="slope-{{$key}}" >{{__('Slope')}}</x-label>
                                         <x-input name="slope-{{$key}}" class="mt-1 block w-full"
                                                  wire:model="parameters.{{$key}}.slope"/>
                                         <x-input-error for="parameters.{{$key}}.slope" class="mt-2"/>
                                     </div>
                                     <div class="col-span-6 sm:col-span-4" x-show="quantify">
-                                        <x-label for="intercept-{{$key}}" value="{{ __('Intercept') }}"/>
+                                        <x-label for="intercept-{{$key}}" >{{__('Intercept')}}</x-label>
                                         <x-input name="intercept-{{$key}}" class="mt-1 block w-full"
                                                  wire:model="parameters.{{$key}}.intercept"/>
                                         <x-input-error for="parameters.{{$key}}.intercept" class="mt-2"/>
                                     </div>
                                     <div class="col-span-6 sm:col-span-4">
                                         <x-label for="repetitions-{{$key}}"
-                                                     value="{{ __('Required repetitions') }}"/>
+                                        >{{__('Required repetitions')}}</x-label>
                                         <x-input name="repetitions-{{$key}}" type="number" min="1" value="1"
                                                  class="mt-1 block w-full"
                                                  wire:model="parameters.{{$key}}.required_repetitions"/>

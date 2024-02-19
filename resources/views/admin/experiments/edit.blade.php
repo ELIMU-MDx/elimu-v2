@@ -18,7 +18,7 @@
                 <x-slot name="content">
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-4">
-                            <x-label for="eln" value="{{ __('Eln') }}"/>
+                            <x-label for="eln">{{ __('Eln') }}</x-label>
                             <x-input type="text" name="eln" class="mt-1 block w-full" id="eln"
                                          value="{{$experiment->eln}}"/>
                             <x-input-error for="eln" class="mt-2"/>

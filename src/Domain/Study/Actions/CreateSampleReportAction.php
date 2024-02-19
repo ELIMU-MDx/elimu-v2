@@ -8,7 +8,6 @@ use App\Models\Assay;
 use App\Models\AssayParameter;
 use App\Models\Result;
 use App\Models\Sample;
-use chillerlan\QRCode\QRCode;
 use Domain\Results\Enums\QualitativeResult;
 use Spatie\LaravelData\DataCollection;
 
@@ -35,7 +34,6 @@ final class CreateSampleReportAction
 
         return new SampleReportData(
             study: $assay->study->name,
-            qrCode: (new QRCode())->render(route('samples.show', $sample)),
             sampleId: $sample->identifier,
             assayName: $assay->name,
             hasQuantification: (bool) $targets->first(fn (SampleReportTarget $target

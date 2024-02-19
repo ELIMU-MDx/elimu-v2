@@ -9,5 +9,38 @@ on:
       - 'phpstan-baseline.neon'
 
 jobs:
-  uneditable:
-    uses: elimu-mdx/.github/.github/workflows/phpstan.yml@main
+  phpstan:
+    #  skip test for ci commits
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+
+    runs-on: ubuntu-latest
+
+    name: phpstan
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Prepare The Environment
+        run: cp .env.example .env
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache/files
+          key: dependencies-laravel-composer-${{ hashFiles('composer.json') }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          coverage: none
+
+      - name: Install composer dependencies
+        uses: ramsey/composer-install@v2
+
+      - name: Generate Application Key
+        run: php artisan key:generate
+
+      - name: Run PHPStan
+        run: './vendor/bin/phpstan --error-format=github'

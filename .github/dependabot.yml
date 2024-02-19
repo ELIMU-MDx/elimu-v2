@@ -43,4 +43,12 @@ updates:
       day: 'monday'
       time: '09:00'
       timezone: 'Europe/Zurich'
+    groups:
+      non-breaking:
+        update-types:
+          - "minor"
+          - "patch"
+      potentially-breaking:
+        update-types:
+          - "major"
     open-pull-requests-limit: 20

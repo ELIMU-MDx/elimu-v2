@@ -25,7 +25,7 @@ jobs:
         run: cp .env.example .env
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache/files
           key: dependencies-laravel-composer-${{ hashFiles('composer.json') }}

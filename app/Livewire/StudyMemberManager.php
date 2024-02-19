@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Invitation;
 use App\Models\Study;
@@ -8,10 +8,10 @@ use Domain\Study\Actions\AddMemberAction;
 use Domain\Study\Actions\RemoveTeamMemberAction;
 use Domain\Study\Roles\RoleFactory;
 use Illuminate\Contracts\Auth\StatefulGuard;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
-use Illuminate\View\View;
 use Livewire\Component;
 
 class StudyMemberManager extends Component
@@ -81,7 +81,7 @@ class StudyMemberManager extends Component
 
         $this->study = $this->study->fresh();
 
-        $this->emit('saved');
+        $this->dispatch('saved');
     }
 
     /**

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Assay;
 use App\Models\User;
 use Domain\Assay\Actions\CreateAssayFromFileAction;
 use Domain\Experiment\Actions\CreateExperimentAction;
 use Domain\Experiment\DataTransferObjects\CreateExperimentParameter;
+use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
-use Illuminate\View\View;
 use JsonException;
 use Livewire\Component;
-use Livewire\TemporaryUploadedFile;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 use Maatwebsite\Excel\Validators\Failure;
 use Maatwebsite\Excel\Validators\ValidationException as ExcelValidationException;

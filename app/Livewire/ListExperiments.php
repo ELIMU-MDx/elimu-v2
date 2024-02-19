@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Assay;
 use App\Models\Experiment;
 use App\View\ViewModels\ExperimentList;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 use Livewire\Component;
 
 final class ListExperiments extends Component

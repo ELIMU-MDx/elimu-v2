@@ -1,5 +1,5 @@
 <div>
-    <div class="mt-10 sm:mt-0" x-data="{role: @entangle('addMemberForm.role').defer }">
+    <div class="mt-10 sm:mt-0" x-data="{role: @entangle('addMemberForm.role') }">
         <x-form-section submit="addMember">
             <x-slot name="title">
                 {{ __('Add Team Member') }}
@@ -20,7 +20,7 @@
                 <div class="col-span-6 sm:col-span-4">
                     <x-label for="email" value="{{ __('Email') }}"/>
                     <x-input name="email" id="email" type="email" class="mt-1 block w-full"
-                                 wire:model.defer="addMemberForm.email"/>
+                                 wire:model="addMemberForm.email"/>
                     <x-input-error for="addMemberForm.email" class="mt-2"/>
                 </div>
 
@@ -142,7 +142,7 @@
 @endif
 
 <!-- Remove Team Member Confirmation Modal -->
-    <x-confirmation-modal wire:model="confirmingMemberRemoval">
+    <x-confirmation-modal wire:model.live="confirmingMemberRemoval">
         <x-slot name="title">
             {{ __('Remove Team Member') }}
         </x-slot>

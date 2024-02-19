@@ -14,7 +14,7 @@
 
         <div class="flex justify-between items-center">
             <div>
-                <div class="relative inline-block text-left" x-data="{open: false, sort: @entangle('sort')}" wire:>
+                <div class="relative inline-block text-left" x-data="{open: false, sort: @entangle('sort').live}" wire:>
                     <div>
                         <x-custom-secondary-button
                             as="button"

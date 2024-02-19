@@ -1,8 +1,8 @@
 <div>
     @can('import-rdml')
         <x-primary-button type="button" wire:click="$set('openModal', true)">Upload rdml</x-primary-button>
-        <form wire:submit.prevent="createExperiment">
-            <x-dialog-modal wire:model="openModal">
+        <form wire:submit="createExperiment">
+            <x-dialog-modal wire:model.live="openModal">
                 <x-slot name="title">
                     {{ __('Upload rdml') }}
                 </x-slot>
@@ -12,7 +12,7 @@
                         <div>
                             <x-label for="rdml">Rdml</x-label>
                             <x-file-button name="rdml"
-                                           wire:model.defer="form.rdml"
+                                           wire:model="form.rdml"
                                            accept=".rdml"
                                            class="mt-1"
                                            multiple
@@ -27,7 +27,7 @@
                                 <select id="assay_id"
                                         name="assay_id"
                                         class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-l-md shadow-sm"
-                                        wire:model.defer="form.assay_id"
+                                        wire:model="form.assay_id"
                                 >
                                     <option>Choose assay</option>
                                     @foreach($assays as $id => $assay)
@@ -36,7 +36,7 @@
                                 </select>
                                 <x-file-button name="assay"
                                                id="assay-file-input"
-                                               wire:model.defer="assayFile"
+                                               wire:model="assayFile"
                                                accept=".xlsx"
                                                class="!rounded-l-none !border-l-transparent"
                                                :file="$assayFile"
@@ -53,7 +53,7 @@
                         </div>
                         <div>
                             <x-label for="meta">Link to ELN</x-label>
-                            <x-input type="text" name="eln" wire:model.defer="form.eln" class="mt-1"/>
+                            <x-input type="text" name="eln" wire:model="form.eln" class="mt-1"/>
                             <x-input-error for="form.eln"/>
                         </div>
                     </div>

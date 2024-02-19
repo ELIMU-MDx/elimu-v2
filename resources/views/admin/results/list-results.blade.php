@@ -36,7 +36,7 @@
                                           clip-rule="evenodd"/>
                                 </svg>
                             </div>
-                            <x-input type="search" name="search" id="search" class="pl-9" wire:model="search"
+                            <x-input type="search" name="search" id="search" class="pl-9" wire:model.live="search"
                                          placeholder="Search by sample"/>
                         </div>
                         <div class="text-gray-500 text-sm mx-2">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="ml-auto space-x-4">
                             @if(in_array($resultFilter, ['positive', 'negative']))
-                                <x-select name="target" id="target" class="mt-1" wire:model="targetFilter">
+                                <x-select name="target" id="target" class="mt-1" wire:model.live="targetFilter">
                                     <option value="all">All Targets</option>
                                     @foreach($this->currentTargets as $target)
                                         <option value="{{$target}}" checked="checked" wire:key="target-{{$target}}"
@@ -53,7 +53,7 @@
                                 </x-select>
                             @endif
 
-                            <x-select name="result" id="result" class="mt-1" wire:model="resultFilter">
+                            <x-select name="result" id="result" class="mt-1" wire:model.live="resultFilter">
                                 <option value="all">All</option>
                                 <option value="valid">Valid</option>
                                 <option value="invalid">Invalid</option>
@@ -61,7 +61,7 @@
                                 <option value="negative">Negative</option>
                             </x-select>
 
-                            <x-select name="assay" id="assay" class="mt-1" wire:model="currentAssayId">
+                            <x-select name="assay" id="assay" class="mt-1" wire:model.live="currentAssayId">
                                 @foreach($assays as $assay)
                                     <option value="{{$assay->id}}"
                                             wire:key="assay-{{$assay->id}}">{{$assay->name}}</option>

@@ -7,7 +7,7 @@
     </x-section-title>
 
     <div class="mt-5 md:mt-0 md:col-span-2">
-        <form @isset($submit)wire:submit.prevent="{{ $submit }}" @else action="{{$action}}" method="{{$method}}" @endif>
+        <form @isset($submit)wire:submit="{{ $submit }}" @else action="{{$action}}" method="{{$method}}" @endif>
             @isset($action)
                 @csrf
             @endif

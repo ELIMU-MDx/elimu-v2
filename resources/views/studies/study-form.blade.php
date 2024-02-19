@@ -10,12 +10,12 @@
     <x-slot name="form">
         <div class="col-span-6 sm:col-span-4">
             <x-label for="identifier" value="{{ __('Identifier') }}"/>
-            <x-input name="identifier" class="mt-1 block w-full" wire:model.defer="study.identifier" autofocus/>
+            <x-input name="identifier" class="mt-1 block w-full" wire:model="study.identifier" autofocus/>
             <x-input-error for="study.identifier" class="mt-2"/>
         </div>
         <div class="col-span-6 sm:col-span-4">
             <x-label for="name" value="{{ __('Study Name') }}"/>
-            <x-input name="name" class="mt-1 block w-full" wire:model.defer="study.name"/>
+            <x-input name="name" class="mt-1 block w-full" wire:model="study.name"/>
             <x-input-error for="study.name" class="mt-2"/>
         </div>
     </x-slot>

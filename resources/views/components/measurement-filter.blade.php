@@ -22,7 +22,7 @@
             <div class="space-y-6">
                 @foreach($options as $key => $option)
                     <div class="flex items-center max-w-full">
-                        <input id="{{$field}}-{{$key}}" wire:model="{{$field}}" value="{{$option}}" type="checkbox"
+                        <input id="{{$field}}-{{$key}}" wire:model.live="{{$field}}" value="{{$option}}" type="checkbox"
                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
                         <label for="{{$field}}-{{$key}}" class="ml-3 text-sm cursor-pointer text-gray-500 flex-1 block break-all">{{$option}}</label>
                     </div>

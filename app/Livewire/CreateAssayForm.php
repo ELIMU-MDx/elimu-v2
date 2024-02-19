@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Assay;
 use App\Models\AssayParameter;
 use Domain\Assay\Actions\CreateOrUpdateAssayAction;
 use Domain\Assay\Rules\ControlParameterValidationRule;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-use Illuminate\View\View;
 use Livewire\Component;
 use Support\DecimalValidationRule;
 

@@ -18,7 +18,7 @@
 
                 <!-- Member Email -->
                 <div class="col-span-6 sm:col-span-4">
-                    <x-label for="email" value="{{ __('Email') }}"/>
+                    <x-label for="email">{{ __('Email') }}</x-label>
                     <x-input name="email" id="email" type="email" class="mt-1 block w-full"
                                  wire:model="addMemberForm.email"/>
                     <x-input-error for="addMemberForm.email" class="mt-2"/>
@@ -26,7 +26,7 @@
 
                 <!-- Role -->
                 <div class="col-span-6 lg:col-span-4">
-                    <x-label for="role" value="{{ __('Role') }}"/>
+                    <x-label for="role">{{ __('Role') }}</x-label>
                     <x-input-error for="addMemberForm.role" class="mt-2"/>
 
                     <div class="mt-1">

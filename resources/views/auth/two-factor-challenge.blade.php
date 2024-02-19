@@ -19,12 +19,12 @@
                 @csrf
 
                 <div class="mt-4" x-show="! recovery">
-                    <x-label for="code" value="{{ __('Code') }}" />
+                    <x-label for="code">{{ __('Code') }}</x-label>
                     <x-input name="code" id="code" class="block mt-1 w-full" type="text" inputmode="numeric" name="code" autofocus x-ref="code" autocomplete="one-time-code" />
                 </div>
 
                 <div class="mt-4" x-show="recovery">
-                    <x-label for="recovery_code" value="{{ __('Recovery Code') }}" />
+                    <x-label for="recovery_code">{{ __('Recovery Code') }}</x-label>
                     <x-input name="recovery_code" id="recovery_code" class="block mt-1 w-full" type="text" name="recovery_code" x-ref="recovery_code" autocomplete="one-time-code" />
                 </div>
 

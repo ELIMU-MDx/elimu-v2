@@ -16,12 +16,12 @@
             @csrf
 
             <div>
-                <x-label for="email" value="{{ __('Email') }}" />
+                <x-label for="email" >{{ __('Email') }}</x-label>
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="$email"/>
             </div>
 
             <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
+                <x-label for="password" >{{ __('Password') }}</x-label>
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autofocus autocomplete="current-password" />
             </div>
 

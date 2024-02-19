@@ -3,12 +3,14 @@
 namespace Domain\Experiment\DataTransferObjects;
 
 use Carbon\CarbonImmutable;
-use Spatie\LaravelData\Attributes\DataCollectionOf;
-use Spatie\LaravelData\DataCollection;
+use Illuminate\Support\Collection;
 use Support\Data;
 
 final class ExperimentListItem extends Data
 {
+    /**
+     * @param  Collection<int, ExperimentTarget>  $targets
+     */
     public function __construct(
         readonly public int $experimentId,
         readonly public int $studyId,
@@ -18,8 +20,7 @@ final class ExperimentListItem extends Data
         readonly public string $assay,
         readonly public CarbonImmutable $runDate,
         readonly public CarbonImmutable $uploadedDate,
-        #[DataCollectionOf(ExperimentTarget::class)]
-        readonly public DataCollection $targets,
+        readonly public Collection $targets,
         readonly public ?string $eln = null,
         readonly public ?string $instrument = null,
     ) {

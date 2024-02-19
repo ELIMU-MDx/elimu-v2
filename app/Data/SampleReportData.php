@@ -3,22 +3,23 @@
 namespace App\Data;
 
 use Domain\Results\Enums\QualitativeResult;
-use Spatie\LaravelData\Attributes\DataCollectionOf;
-use Spatie\LaravelData\Data;
-use Spatie\LaravelData\DataCollection;
+use Illuminate\Support\Collection;
+use Support\Data;
 
 final class SampleReportData extends Data
 {
+    /**
+     * @param  Collection<int, SampleReportTarget>  $targets
+     * @param  Collection<int, SampleReportTarget>  $controlTargets
+     */
     public function __construct(
         readonly public string $study,
         readonly public string $sampleId,
         readonly public string $assayName,
         readonly public bool $hasQuantification,
         readonly public QualitativeResult $result,
-        #[DataCollectionOf(SampleReportTarget::class)]
-        readonly public DataCollection $targets,
-        #[DataCollectionOf(SampleReportTarget::class)]
-        readonly public DataCollection $controlTargets,
+        readonly public Collection $targets,
+        readonly public Collection $controlTargets,
     ) {
     }
 }

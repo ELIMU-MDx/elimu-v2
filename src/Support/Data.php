@@ -3,17 +3,13 @@
 namespace Support;
 
 use Livewire\Wireable;
-use Spatie\LaravelData\Data as LaravelData;
+use Spatie\LaravelData\Concerns\TransformableData;
+use Spatie\LaravelData\Concerns\WireableData;
+use Spatie\LaravelData\Contracts\TransformableData as TransformableDataContract;
+use Spatie\LaravelData\Dto as LaravelData;
 
-class Data extends LaravelData implements Wireable
+abstract class Data extends LaravelData implements TransformableDataContract, Wireable
 {
-    public function toLivewire(): array
-    {
-        return $this->toArray();
-    }
-
-    public static function fromLivewire($value): static
-    {
-        return static::withoutMagicalCreationFrom($value);
-    }
+    use TransformableData;
+    use WireableData;
 }

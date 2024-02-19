@@ -9,14 +9,13 @@ use App\Models\AssayParameter;
 use App\Models\Result;
 use App\Models\Sample;
 use Domain\Results\Enums\QualitativeResult;
-use Spatie\LaravelData\DataCollection;
 
 final class CreateSampleReportAction
 {
     public function execute(Assay $assay, Sample $sample): SampleReportData
     {
         $sample->load(['results' => fn ($query) => $query->withCount('resultErrors')]);
-        $targets = new DataCollection(SampleReportTarget::class, $assay->parameters
+        $targets = $assay->parameters
             ->reject(fn (AssayParameter $parameter) => $parameter->is_control)
             ->map(function (AssayParameter $parameter) use ($assay, $sample) {
                 /** @var Result $result */
@@ -30,7 +29,8 @@ final class CreateSampleReportAction
                     quantification: $result->quantification,
                     qualification: $result->result_errors_count > 0 ? 'Invalid' : ucfirst(strtolower($result->qualification))
                 );
-            }));
+            })
+            ->ensure(SampleReportTarget::class);
 
         return new SampleReportData(
             study: $assay->study->name,
@@ -41,7 +41,7 @@ final class CreateSampleReportAction
             result: $targets->first(fn (SampleReportTarget $target
             ) => $target->qualification === QualitativeResult::POSITIVE) ? QualitativeResult::POSITIVE : QualitativeResult::NEGATIVE,
             targets: $targets,
-            controlTargets: new DataCollection(SampleReportTarget::class, $assay->parameters
+            controlTargets: $assay->parameters
                 ->filter(fn (AssayParameter $parameter) => $parameter->is_control)
                 ->map(function (AssayParameter $parameter) use ($assay, $sample) {
                     /** @var Result $result */
@@ -55,7 +55,7 @@ final class CreateSampleReportAction
                         quantification: $result->quantification,
                         qualification: $result->result_errors_count > 0 ? 'Invalid' : ucfirst(strtolower($result->qualification))
                     );
-                }))
+                })
         );
     }
 }

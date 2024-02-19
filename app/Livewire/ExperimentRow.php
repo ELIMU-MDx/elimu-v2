@@ -8,8 +8,8 @@ use Domain\Experiment\Actions\DeleteExperimentAction;
 use Domain\Experiment\DataTransferObjects\ExperimentListItem;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Routing\Redirector;
 use Livewire\Component;
-use Livewire\Redirector;
 
 final class ExperimentRow extends Component
 {

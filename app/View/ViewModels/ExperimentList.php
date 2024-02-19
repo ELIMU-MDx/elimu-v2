@@ -18,7 +18,6 @@ use Domain\Results\DataTransferObjects\ResultValidationParameter;
 use Domain\Results\ResultValidationErrors\ControlValidationError;
 use Illuminate\Support\Collection;
 use Spatie\DataTransferObject\Exceptions\UnknownProperties;
-use Spatie\LaravelData\DataCollection;
 use Support\ValueObjects\Percentage;
 use Support\ValueObjects\RoundedNumber;
 
@@ -42,15 +41,14 @@ final class ExperimentList
                 assay: $experiment->assay->name,
                 runDate: $experiment->experiment_date->toImmutable(),
                 uploadedDate: $experiment->created_at->toImmutable(),
-                targets: new DataCollection(ExperimentTarget::class,
-                    $experiment->assay->parameters->map(fn (AssayParameter $parameter) => new ExperimentTarget(
-                        name: $parameter->target,
-                        errors: $this->getControlErrors($parameter,
-                            $experiment->controls->where('target', $parameter->target))->toArray(),
-                        quantification: $this->getTargetQuantification($parameter,
-                            $quantificationParameters->get($parameter->target))
-                    )
-                    )),
+                targets: $experiment->assay->parameters->map(fn (AssayParameter $parameter) => new ExperimentTarget(
+                    name: $parameter->target,
+                    errors: $this->getControlErrors($parameter,
+                        $experiment->controls->where('target', $parameter->target))->toArray(),
+                    quantification: $this->getTargetQuantification($parameter,
+                        $quantificationParameters->get($parameter->target))
+                )
+                ),
                 eln: $experiment->eln,
                 instrument: $experiment->instrument
             );

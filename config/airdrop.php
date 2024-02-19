@@ -75,7 +75,7 @@ return [
 
                 // Any time the webpack.mix.js file is changed, it could affect the
                 // the build steps, and therefore the built files.
-                base_path('vite.config.js'),
+                base_path('vite.config.mjs'),
 
                 // Depending on your package manager, you'll want to uncomment one
                 // of the following lines. Whenever JS packages are updated or

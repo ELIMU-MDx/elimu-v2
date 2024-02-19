@@ -6,19 +6,19 @@ namespace Domain\Experiment\DataTransferObjects;
 
 use App\Models\Experiment;
 use Illuminate\Http\UploadedFile;
-use Spatie\DataTransferObject\DataTransferObject;
+use Support\Data;
 
-final class CreateExperimentParameter extends DataTransferObject
+final class CreateExperimentParameter extends Data
 {
-    public UploadedFile $rdml;
+    public function __construct(
+        readonly public UploadedFile $rdml,
+        readonly public int $assayId,
+        readonly public int $studyId,
+        readonly public int $creatorId,
+        readonly public ?string $eln = null,
+    ) {
 
-    public int $assayId;
-
-    public int $studyId;
-
-    public int $creatorId;
-
-    public ?string $eln = null;
+    }
 
     public function getExperiment(): Experiment
     {

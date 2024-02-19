@@ -40,12 +40,10 @@ final class StandardsCollection extends Collection
         $regression = $this->linearRegression();
 
         return new QuantifyConfiguration(
-            [
-                'target' => $this->first()->target,
-                'slope' => round($regression['slope'], 4),
-                'intercept' => round($regression['intercept'], 4),
-                'correlationCoefficient' => round($this->correlationCoefficient(), 4),
-            ],
+            target: $this->first()->target,
+            slope: round($regression['slope'], 4),
+            intercept: round($regression['intercept'], 4),
+            correlationCoefficient: round($this->correlationCoefficient(), 4),
         );
     }
 }

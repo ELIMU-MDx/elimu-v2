@@ -13,7 +13,7 @@ final class StoreStudyController
 {
     public function __invoke(StoreStudyRequest $request, CreateStudyAction $createStudyAction): Response
     {
-        $createStudyAction->execute($request->user(), new CreateStudyParameter($request->validated()));
+        $createStudyAction->execute($request->user(), CreateStudyParameter::from($request->validated()));
 
         return redirect(route('currentStudy.show'));
     }

@@ -14,7 +14,6 @@ use Domain\Rdml\DataTransferObjects\QuantifyConfiguration;
 use Domain\Rdml\RdmlReader;
 use Illuminate\Database\Connection;
 use JsonException;
-use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 
 final class CreateExperimentAction
 {
@@ -26,7 +25,6 @@ final class CreateExperimentAction
     }
 
     /**
-     * @throws UnknownProperties
      * @throws JsonException
      */
     public function execute(CreateExperimentParameter $parameter): Experiment

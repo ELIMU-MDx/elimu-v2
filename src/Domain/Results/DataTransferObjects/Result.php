@@ -7,24 +7,21 @@ namespace Domain\Results\DataTransferObjects;
 use Domain\Rdml\Collections\MeasurementCollection;
 use Domain\Rdml\Enums\MeasurementType;
 use Domain\Results\Enums\QualitativeResult;
-use Spatie\DataTransferObject\DataTransferObject;
+use Support\Data;
 use Support\ValueObjects\RoundedNumber;
 
-final class Result extends DataTransferObject
+final class Result extends Data
 {
-    public string|int $sample;
+    public function __construct(
+        public string|int $sample,
+        public string $target,
+        public RoundedNumber $averageCQ,
+        public int $repetitions,
+        public QualitativeResult $qualification,
+        public MeasurementCollection $measurements,
+        public MeasurementType $type,
+        public ?RoundedNumber $quantification = null,
+    ) {
 
-    public string $target;
-
-    public RoundedNumber $averageCQ;
-
-    public int $repetitions;
-
-    public QualitativeResult $qualification;
-
-    public ?RoundedNumber $quantification = null;
-
-    public MeasurementCollection $measurements;
-
-    public MeasurementType $type;
+    }
 }

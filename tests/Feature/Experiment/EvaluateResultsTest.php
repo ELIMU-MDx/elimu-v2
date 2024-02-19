@@ -10,11 +10,7 @@ use Database\Factories\SampleFactory;
 use Domain\Experiment\Actions\RecalculateResultsAction;
 use Domain\Results\Enums\QualitativeResult;
 use Illuminate\Database\Eloquent\Factories\Sequence;
-use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 
-/**
- * @throws UnknownProperties
- */
 it('evaluates results', function () {
     $measurements = MeasurementFactory::new(['target' => 'foo', 'excluded' => false])
         ->for(SampleFactory::new())

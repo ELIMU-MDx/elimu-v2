@@ -7,38 +7,37 @@ namespace Domain\Rdml\DataTransferObjects;
 use App\Models\Measurement as MeasurementModel;
 use Domain\Rdml\Enums\MeasurementType;
 use Illuminate\Support\Collection;
-use Spatie\DataTransferObject\DataTransferObject;
+use Support\Data;
 
-final class Measurement extends DataTransferObject
+final class Measurement extends Data
 {
-    public ?float $quantity = null;
+    /**
+     * @param  Collection<AmplificationDataPoint>  $amplificationDataPoints
+     */
+    public function __construct(
+        public string $sample,
+        public string $target,
+        public string $position,
+        public bool $excluded,
+        public MeasurementType $type,
+        public Collection $amplificationDataPoints,
+        public ?float $quantity = null,
+        public ?float $cq = null,
+    ) {
 
-    public string $sample;
-
-    public string $target;
-
-    public string $position;
-
-    public bool $excluded = false;
-
-    public ?float $cq = null;
-
-    public MeasurementType $type;
-
-    /** @var Collection<AmplificationDataPoint> */
-    public Collection $amplificationDataPoints;
+    }
 
     public static function fromModel(MeasurementModel $measurement): Measurement
     {
-        return new Measurement([
-            'sample' => (string) $measurement->sample_id,
-            'target' => $measurement->target,
-            'position' => $measurement->position,
-            'excluded' => $measurement->excluded,
-            'cq' => $measurement->cq,
-            'type' => $measurement->type,
-            'amplificationDataPoints' => collect(),
-        ]);
+        return new Measurement(
+            sample: (string) $measurement->sample_id,
+            target: $measurement->target,
+            position: $measurement->position,
+            excluded: $measurement->excluded,
+            type: $measurement->type,
+            amplificationDataPoints: collect(),
+            cq: $measurement->cq,
+        );
     }
 
     public function is(MeasurementModel $measurement): bool

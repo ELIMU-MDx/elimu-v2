@@ -20,7 +20,6 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 use Maatwebsite\Excel\Validators\Failure;
 use Maatwebsite\Excel\Validators\ValidationException as ExcelValidationException;
-use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 
 /**
  * @property-read User user
@@ -89,7 +88,6 @@ final class CreateExperimentForm extends Component
     }
 
     /**
-     * @throws UnknownProperties
      * @throws JsonException
      */
     public function createExperiment(CreateExperimentAction $createExperimentAction): mixed

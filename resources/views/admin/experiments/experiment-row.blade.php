@@ -9,7 +9,7 @@
                         {{$experiment->name}}
                     </a>
                     @if($experiment->importPending)
-                        <span class="text-gray-600 ml-4 animate-pulse">importing adps...</span>
+                        <span class="text-gray-600 ml-4 animate-pulse" wire:poll>importing adps...</span>
                     @endif
                 </div>
                 <ul class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">

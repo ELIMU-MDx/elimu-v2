@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace Domain\Study\DataTransferObject;
 
-use Spatie\DataTransferObject\DataTransferObject;
+use Support\Data;
 
-final class CreateStudyParameter extends DataTransferObject
+final class CreateStudyParameter extends Data
 {
-    public string $identifier;
+    public function __construct(
+        public string $identifier,
+        public string $name,
+    ) {
 
-    public string $name;
+    }
 }

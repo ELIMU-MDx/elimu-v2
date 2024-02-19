@@ -2,15 +2,15 @@
 
 namespace Domain\Rdml\DataTransferObjects;
 
-use Spatie\DataTransferObject\DataTransferObject;
+use Support\Data;
 
-final class QuantifyConfiguration extends DataTransferObject
+final class QuantifyConfiguration extends Data
 {
-    public string $target;
-
-    public float $slope;
-
-    public float $intercept;
-
-    public float $correlationCoefficient;
+    public function __construct(
+        public string $target,
+        public float $slope,
+        public float $intercept,
+        public float $correlationCoefficient,
+    ) {
+    }
 }

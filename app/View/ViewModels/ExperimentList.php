@@ -17,7 +17,6 @@ use Domain\Results\DataTransferObjects\Result;
 use Domain\Results\DataTransferObjects\ResultValidationParameter;
 use Domain\Results\ResultValidationErrors\ControlValidationError;
 use Illuminate\Support\Collection;
-use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 use Support\ValueObjects\Percentage;
 use Support\ValueObjects\RoundedNumber;
 
@@ -84,8 +83,6 @@ final class ExperimentList
 
     /**
      * @return Collection<string> error messages
-     *
-     * @throws UnknownProperties
      */
     private function getControlErrors(AssayParameter $parameter, Collection $controls): Collection
     {
@@ -109,15 +106,15 @@ final class ExperimentList
             ->pipeInto(MeasurementCollection::class)
             ->groupBy(fn (Measurement $measurement) => $measurement->type->name)
             ->map(function (MeasurementCollection $measurements) use ($parameter, $validator) {
-                $result = new Result([
-                    'sample' => $measurements->first()->sample,
-                    'target' => $measurements->first()->target,
-                    'averageCQ' => $measurements->averageCq(),
-                    'repetitions' => $measurements->count(),
-                    'qualification' => $measurements->qualify((float) $parameter->cutoff),
-                    'measurements' => $measurements,
-                    'type' => $measurements->first()->type,
-                ]);
+                $result = new Result(
+                    sample: $measurements->first()->sample,
+                    target: $measurements->first()->target,
+                    averageCQ: $measurements->averageCq(),
+                    repetitions: $measurements->count(),
+                    qualification: $measurements->qualify((float) $parameter->cutoff),
+                    measurements: $measurements,
+                    type: $measurements->first()->type,
+                );
                 $resultParameter = ResultValidationParameter::fromModel($parameter);
 
                 if (! $validator->validate($result, $resultParameter)) {

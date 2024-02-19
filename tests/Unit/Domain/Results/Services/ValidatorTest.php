@@ -9,37 +9,30 @@ use Domain\Results\ResultValidationErrors\DivergingMeasurementsError;
 use Domain\Results\ResultValidationErrors\NotEnoughRepetitionsError;
 use Domain\Results\ResultValidationErrors\StandardDeviationExceedsCutoffError;
 use Domain\Results\ResultValidator;
-use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 use Support\ValueObjects\RoundedNumber;
 
-/**
- * @throws UnknownProperties
- */
 it('is a valid result', function () {
     $validator = app(ResultValidator::class);
     $result = result(['cq' => [12, 12]]);
-    $parameter = new ResultValidationParameter([
-        'requiredRepetitions' => 2,
-        'standardDeviationCutoff' => 1,
-        'cutoff' => 10,
-    ]);
+    $parameter = new ResultValidationParameter(
+        requiredRepetitions: 2,
+        cutoff: 10,
+        standardDeviationCutoff: 1,
+    );
 
     $errors = $validator->validate($result, $parameter);
 
     $this->assertEmpty($errors, 'Found errors '.$errors->join(', '));
 });
 
-/**
- * @throws UnknownProperties
- */
 it('has a too high standard deviation', function () {
     $validator = app(ResultValidator::class);
     $result = result(['cq' => [5, 10]]);
-    $parameter = new ResultValidationParameter([
-        'requiredRepetitions' => 2,
-        'standardDeviationCutoff' => 1,
-        'cutoff' => 50,
-    ]);
+    $parameter = new ResultValidationParameter(
+        requiredRepetitions: 2,
+        cutoff: 50,
+        standardDeviationCutoff: 1,
+    );
 
     $errors = $validator->validate($result, $parameter);
 
@@ -47,17 +40,14 @@ it('has a too high standard deviation', function () {
     expect($errors)->toContain(StandardDeviationExceedsCutoffError::IDENTIFIER);
 });
 
-/**
- * @throws UnknownProperties
- */
 it('has diverging results', function () {
     $validator = app(ResultValidator::class);
     $result = result(['cq' => [null, 10]]);
-    $parameter = new ResultValidationParameter([
-        'requiredRepetitions' => 2,
-        'standardDeviationCutoff' => 10,
-        'cutoff' => 50,
-    ]);
+    $parameter = new ResultValidationParameter(
+        requiredRepetitions: 2,
+        cutoff: 50,
+        standardDeviationCutoff: 10,
+    );
 
     $errors = $validator->validate($result, $parameter);
 
@@ -65,17 +55,14 @@ it('has diverging results', function () {
     expect($errors)->toContain(DivergingMeasurementsError::IDENTIFIER);
 });
 
-/**
- * @throws UnknownProperties
- */
 it('has not enough repetitions', function () {
     $validator = app(ResultValidator::class);
     $result = result(['cq' => [10]]);
-    $parameter = new ResultValidationParameter([
-        'requiredRepetitions' => 2,
-        'standardDeviationCutoff' => 10,
-        'cutoff' => 50,
-    ]);
+    $parameter = new ResultValidationParameter(
+        requiredRepetitions: 2,
+        cutoff: 50,
+        standardDeviationCutoff: 10,
+    );
 
     $errors = $validator->validate($result, $parameter);
 
@@ -187,15 +174,12 @@ dataset('controlsDataSet', [
 ]);
 
 // Helpers
-/**
- * @throws UnknownProperties
- */
 function result(array $parameters): Result
 {
     $cqs = collect($parameters['cq'] ?? [12, 12]);
     unset($parameters['cq']);
 
-    return new Result(array_merge([
+    return new Result(...array_merge([
         'sample' => 'xy',
         'target' => 'ab',
         'averageCQ' => new RoundedNumber($cqs->avg()),

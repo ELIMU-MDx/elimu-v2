@@ -11,10 +11,10 @@ it('evaluates to positive', function () {
     $measurements = measurements([['cq' => 2], ['cq' => 3]]);
 
     $results = $evaluator->results($measurements, collect([
-        new ResultCalculationParameter([
-            'target' => 'ab',
-            'cutoff' => 10,
-        ]),
+        new ResultCalculationParameter(
+            target: 'ab',
+            cutoff: 10,
+        ),
     ]));
 
     expect($results)->toHaveCount(1);
@@ -27,10 +27,10 @@ it('evaluates to negative', function (float $cutoff, array $cqs, ?float $average
     $measurements = measurements($cqs);
 
     $results = $evaluator->results($measurements, collect([
-        new ResultCalculationParameter([
-            'target' => 'ab',
-            'cutoff' => $cutoff,
-        ]),
+        new ResultCalculationParameter(
+            target: 'ab',
+            cutoff: $cutoff,
+        ),
     ]));
 
     expect($results)->toHaveCount(1);

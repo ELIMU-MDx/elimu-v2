@@ -34,13 +34,11 @@ uses(TestCase::class, LazilyRefreshDatabase::class)
 |
 */
 
-expect()->extend('toBeOne', fn () => $this->toBe(1));
-
 function measurements(array $parameters): MeasurementCollection
 {
     $measurements = [];
     foreach ($parameters as $parameter) {
-        $measurements[] = new Measurement(array_merge([
+        $measurements[] = new Measurement(...array_merge([
             'sample' => 'xy',
             'target' => 'ab',
             'position' => 'x',

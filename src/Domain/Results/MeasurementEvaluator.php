@@ -36,18 +36,18 @@ final class MeasurementEvaluator
 
                 $qualification = $onlyIncludedMeasurements->qualify($parameter->cutoff);
 
-                return new Result([
-                    'sample' => $measurements->first()->sample,
-                    'target' => $target,
-                    'averageCQ' => $onlyIncludedMeasurements->averageCq(),
-                    'repetitions' => $onlyIncludedMeasurements->count(),
-                    'qualification' => $qualification,
-                    'quantification' => $parameter->shouldQuantify()
+                return new Result(
+                    sample: $measurements->first()->sample,
+                    target: $target,
+                    averageCQ: $onlyIncludedMeasurements->averageCq(),
+                    repetitions: $onlyIncludedMeasurements->count(),
+                    qualification: $qualification,
+                    quantification: $parameter->shouldQuantify()
                         ? $onlyIncludedMeasurements->quantify($parameter->slope, $parameter->intercept)
                         : null,
-                    'measurements' => $measurements,
-                    'type' => $measurements->first()->type,
-                ]);
+                    measurements: $measurements,
+                    type: $measurements->first()->type,
+                );
             })
             ->toBase();
     }

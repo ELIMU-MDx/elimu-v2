@@ -15,14 +15,12 @@ use Domain\Rdml\LabelFormats\LabelFormatFactory;
 use Illuminate\Support\Arr;
 use JsonException;
 use RuntimeException;
-use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 use Support\ArrayReader;
 
 final class RdmlParser
 {
     /**
      * @throws JsonException
-     * @throws UnknownProperties
      */
     public function extract(string $xml): Rdml
     {
@@ -68,24 +66,22 @@ final class RdmlParser
                         continue;
                     }
                     $reactionId = $reactionReader->getString('@attributes.id');
-                    $measurement = new Measurement([
-                        'experiment' => $experimentId,
-                        'run' => $runId,
-                        'sample' => $reactionReader->getString('sample.@attributes.id'),
-                        'target' => $reactionReader->getString('data.tar.@attributes.id'),
-                        'position' => $this->getPosition($pcrFormat, $reactionId),
-                        'excluded' => $reactionReader->getBoolean('data.excl'),
-                        'cq' => $reactionReader->has('data.cq')
+                    $measurement = new Measurement(
+                        sample: $reactionReader->getString('sample.@attributes.id'),
+                        target: $reactionReader->getString('data.tar.@attributes.id'),
+                        position: $this->getPosition($pcrFormat, $reactionId),
+                        excluded: $reactionReader->getBoolean('data.excl'),
+                        type: MeasurementType::SAMPLE,
+                        amplificationDataPoints: collect($reactionReader->find('data.adp', []))
+                            ->map(fn (array $adp) => new AmplificationDataPoint(
+                                cycle: (float) $adp['cyc'],
+                                temperature: isset($adp['tmp']) ? ((float) $adp['tmp']) : null,
+                                fluor: isset($adp['fluor']) ? ((float) $adp['fluor']) : null,
+                            )),
+                        cq: $reactionReader->has('data.cq')
                             ? $reactionReader->findFloat('data.cq')
                             : $this->calculateCq($reactionReader->find('data.adp.*.fluor', [])),
-                        'amplificationDataPoints' => collect($reactionReader->find('data.adp', []))
-                            ->map(fn (array $adp) => new AmplificationDataPoint([
-                                'cycle' => $adp['cyc'],
-                                'temperature' => $adp['tmp'] ?? null,
-                                'fluor' => $adp['fluor'] ?? null,
-                            ])),
-                        'type' => MeasurementType::SAMPLE,
-                    ]);
+                    );
 
                     if ($this->alreadyExists($measurements, $measurement)) {
                         continue;
@@ -106,11 +102,11 @@ final class RdmlParser
             ->map(function (array $target) {
                 $targetReader = new ArrayReader($target);
 
-                return new Target([
-                    'id' => $targetReader->getString('@attributes.id'),
-                    'type' => $targetReader->getString('type'),
-                    'dye' => $targetReader->getString('dyeId.@attributes.id'),
-                ]);
+                return new Target(
+                    id: $targetReader->getString('@attributes.id'),
+                    type: $targetReader->getString('type'),
+                    dye: $targetReader->getString('dyeId.@attributes.id'),
+                );
             });
 
         return new Rdml(

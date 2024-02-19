@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Domain\Rdml\DataTransferObjects;
 
-use Illuminate\Contracts\Support\Arrayable;
-use Spatie\DataTransferObject\DataTransferObject;
+use Support\Data;
 
-final class AmplificationDataPoint extends DataTransferObject implements Arrayable
+final class AmplificationDataPoint extends Data
 {
-    public float $cycle;
+    public function __construct(
+        public float $cycle,
+        public ?float $temperature,
+        public float $fluor,
+    ) {
 
-    public ?float $temperature = null;
-
-    public float $fluor;
+    }
 }

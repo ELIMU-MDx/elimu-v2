@@ -14,6 +14,8 @@ final class AssayParameter extends Model
         'intercept' => 'float',
         'cutoff' => 'float',
         'is_control' => 'bool',
+        'coefficient_of_variation_cutoff' => 'float',
+        'standard_deviation_cutoff' => 'float',
     ];
 
     protected $appends = ['quantify'];

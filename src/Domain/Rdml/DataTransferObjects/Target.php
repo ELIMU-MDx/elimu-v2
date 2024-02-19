@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Domain\Rdml\DataTransferObjects;
 
-use Illuminate\Contracts\Support\Arrayable;
-use Spatie\DataTransferObject\DataTransferObject;
+use Support\Data;
 
-final class Target extends DataTransferObject implements Arrayable
+final class Target extends Data
 {
-    public string $id;
-
-    public string $type;
-
-    public string $dye;
+    public function __construct(
+        public string $id,
+        public string $type,
+        public string $dye,
+    ) {
+    }
 }

@@ -23,6 +23,7 @@ final class Measurement extends Model
     protected $casts = [
         'type' => MeasurementType::class,
         'excluded' => 'bool',
+        'cq' => 'float',
     ];
 
     public function experiment(): BelongsTo

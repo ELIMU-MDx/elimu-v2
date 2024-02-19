@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         Study::query()->delete();
         $user = User::create([
             'name' => 'Silvan',
-            'email' => 'silvan@kbuhl.ch',
+            'email' => 'safe.wing2218@kbuhl.ch',
             'email_verified_at' => now(),
             'password' => Hash::make('bFAojbkDNokvPGRZP7e8'),
         ]);

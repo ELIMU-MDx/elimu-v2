@@ -29,7 +29,7 @@ return [
                  * The list of directories and files that will be included in the backup.
                  */
                 'include' => [
-                    base_path(),
+                    storage_path(),
                 ],
 
                 /*
@@ -106,7 +106,7 @@ return [
          *
          * If you do not want any compressor at all, set it to null.
          */
-        'database_dump_compressor' => null,
+        'database_dump_compressor' => Spatie\DbDumper\Compressors\GzipCompressor::class,
 
         /*
          * The file extension used for the database dump files.
@@ -128,7 +128,6 @@ return [
              */
             'disks' => [
                 'local',
-                'google',
             ],
         ],
 
@@ -178,7 +177,7 @@ return [
         'notifiable' => Notifiable::class,
 
         'mail' => [
-            'to' => 'silvan@kbuhl.ch',
+            'to' => 'safe.wing2218@kbuhl.ch',
 
             'from' => [
                 'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
@@ -264,12 +263,12 @@ return [
             /*
              * The number of days for which daily backups must be kept.
              */
-            'keep_daily_backups_for_days' => 16,
+            'keep_daily_backups_for_days' => 3,
 
             /*
              * The number of weeks for which one weekly backup must be kept.
              */
-            'keep_weekly_backups_for_weeks' => 8,
+            'keep_weekly_backups_for_weeks' => 2,
 
             /*
              * The number of months for which one monthly backup must be kept.
@@ -279,7 +278,7 @@ return [
             /*
              * The number of years for which one yearly backup must be kept.
              */
-            'keep_yearly_backups_for_years' => 2,
+            'keep_yearly_backups_for_years' => 1,
 
             /*
              * After cleaning up the backups remove the oldest backup until

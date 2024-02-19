@@ -31,7 +31,7 @@
                      name="name"
                          type="text"
                          class="mt-1 block w-full"
-                         wire:model.defer="state.name"
+                         wire:model="state.name"
                          :disabled="! Gate::check('update', $team)"/>
 
             <x-input-error for="name" class="mt-2"/>

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Study;
 use Domain\Study\Actions\CreateStudyAction;
 use Domain\Study\DataTransferObject\CreateStudyParameter;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 use Livewire\Component;
 
 final class StudyForm extends Component
@@ -44,6 +44,6 @@ final class StudyForm extends Component
         }
 
         $this->study->save();
-        $this->emit('saved');
+        $this->dispatch('saved');
     }
 }

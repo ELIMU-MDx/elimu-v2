@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Assay;
 use App\Models\Sample;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\WithPagination;
 

@@ -128,7 +128,7 @@
         </div>
     </div>
 
-    <x-confirmation-modal wire:model="showDeleteConfirmationModal">
+    <x-confirmation-modal wire:model.live="showDeleteConfirmationModal">
         <x-slot name="title">
             {{ __('Delete Assay') }}
         </x-slot>

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Livewire\ListResults;
+use App\Livewire\ListResults;
 use Database\Factories\AssayFactory;
 use Database\Factories\MeasurementFactory;
 use Database\Factories\ResultFactory;

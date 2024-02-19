@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 use Laravel\Jetstream\Contracts\UpdatesTeamNames;
 use Livewire\Component;
 
@@ -46,9 +46,9 @@ class UpdateTeamNameForm extends Component
 
         $updater->update($this->user, $this->team, $this->state);
 
-        $this->emit('saved');
+        $this->dispatch('saved');
 
-        $this->emit('refresh-navigation-menu');
+        $this->dispatch('refresh-navigation-menu');
     }
 
     /**

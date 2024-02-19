@@ -53,7 +53,7 @@
                         <div class="px-4 pt-4 pb-2 max-w-full" id="filter-section-0" x-show="show">
                             <div class="space-y-6">
                                 <div class="flex items-center max-w-full">
-                                    <input id="filter-excluded" wire:model="filters.excluded" type="checkbox"
+                                    <input id="filter-excluded" wire:model.live="filters.excluded" type="checkbox"
                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                     <label for="filter-excluded"
                                            class="ml-3 text-sm cursor-pointer text-gray-500 flex-1 block break-all">Show

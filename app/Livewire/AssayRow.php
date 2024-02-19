@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Assay;
 use Domain\Assay\Actions\DeleteAssayAction;
+use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\Redirector;
 

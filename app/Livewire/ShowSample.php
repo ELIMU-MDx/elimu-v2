@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Http\Filters\MeasurementFilter;
 use App\Http\Filters\MeasurementFilterFactory;
@@ -138,7 +138,7 @@ class ShowSample extends Component
             ],
         ];
 
-        $this->emit('updated', ['series' => $this->getSeriesProperty()]);
+        $this->dispatch('updated', series: $this->getSeriesProperty());
 
         return view('livewire.show-sample', ['options' => $options]);
     }

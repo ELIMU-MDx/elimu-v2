@@ -37,7 +37,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
-        "beyondcode/helo-laravel": "^1.4",
+        "beyondcode/helo-laravel": "^2.0",
         "driftingly/rector-laravel": "^1",
         "fakerphp/faker": "^1.9.1",
         "larastan/larastan": "^2.9",
